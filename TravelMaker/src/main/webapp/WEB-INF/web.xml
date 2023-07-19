@@ -4,24 +4,4 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>FrontController</servlet-name>
-  	<display-name>FrontController</display-name>
-  	<description></description>
-  	<servlet-class>frontController.FrontController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>JoinCon</servlet-name>
-  	<display-name>JoinCon</display-name>
-  	<description></description>
-  	<servlet-class>controller.JoinCon</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>FrontController</servlet-name>
-  	<url-pattern>*.do</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>JoinCon</servlet-name>
-  	<url-pattern>/JoinCon</url-pattern>
-  </servlet-mapping>
 </web-app>

@@ -1,5 +1,6 @@
 package controller;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +8,7 @@ import command.Command;
 import model.MemberDAO;
 import model.MemberDTO;
 
+@WebServlet("/JoinCon")
 public class JoinCon implements Command {
 
 	@Override
