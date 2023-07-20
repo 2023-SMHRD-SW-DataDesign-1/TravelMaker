@@ -2,12 +2,14 @@ package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @AllArgsConstructor
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
 	@NonNull
 	String user_id;
@@ -23,7 +25,7 @@ public class UserDTO {
 	String user_pic;
 	String act_area;
 
-	public UserDTO(@NonNull String user_id, @NonNull String user_pw) {
+	public UserDTO(String user_id, String user_pw) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;

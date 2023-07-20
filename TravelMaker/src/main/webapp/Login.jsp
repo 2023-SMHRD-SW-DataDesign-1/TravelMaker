@@ -18,12 +18,13 @@
 			<div class="form sign-in">
 				<h2>로그인</h2>
 
-				<label for="id"> <span>ID</span> <input type="text" name="id"></label> 
-				<label> <span>Password</span> <input type="password" name="pw"></label>
+				<label for="id"> <span>ID</span> <input type="text"
+					name="id"></label> <label> <span>Password</span> <input
+					type="password" name="pw"></label>
 				<p class="forgot-pass">Forgot password?</p>
 				<!-- <button type="button" class="submit">Sign In</button> -->
 				<input type="submit" value="Sign In">
-				
+
 			</div>
 		</form>
 		<div class="sub-cont">
@@ -50,11 +51,12 @@
 				<div class="Join_form sign-up">
 					<h2>회원가입</h2>
 
-					<span>ID</span> <input type="text" name="id"> 
-					<span>Password</span> <input type="password" name="pw">
-					<span>Name</span> <input type="text" name="name"> 
-					<span>Email</span> <input type="email" name="email"> 
-					
+					<label for="id"> <span>ID</span> <input type="text"
+						name="id"></label> <label> <span>Password</span> <input
+						type="password" name="pw"></label> <label> <span>Name</span>
+						<input type="text" name="name"></label> <label> <span>Email</span>
+						<input type="email" name="email"></label>
+
 					<div class="join_check">
 						<div class="join_box1">
 							<input type="radio" id="nomal_user" name="type" value="회원"
