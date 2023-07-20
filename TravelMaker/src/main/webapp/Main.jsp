@@ -12,7 +12,7 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="author" content="Untree.co">
-   <link rel="shortcut icon" href="assetsBoard/css/favicon.png">
+   <link rel="shortcut icon" href="css/favicon.png">
 
    <meta name="description" content="" />
    <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -21,15 +21,15 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-   <link rel="stylesheet" href="assetsBoard/css/bootstrap.min.css">
-   <link rel="stylesheet" href="assetsBoard/css/owl.carousel.min.css">
-   <link rel="stylesheet" href="assetsBoard/css/owl.theme.default.min.css">
-   <link rel="stylesheet" href="assetsBoard/css/jquery.fancybox.min.css">
-   <link rel="stylesheet" href="assetsBoard/fonts/icomoon/style.css">
-   <link rel="stylesheet" href="assetsBoard/fonts/flaticon/font/flaticon.css">
-   <link rel="stylesheet" href="assetsBoard/css/daterangepicker.css">
-   <link rel="stylesheet" href="assetsBoard/css/aos.css">
-   <link rel="stylesheet" href="assetsBoard/css/style.css">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/owl.carousel.min.css">
+   <link rel="stylesheet" href="css/owl.theme.default.min.css">
+   <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+   <link rel="stylesheet" href="fonts/icomoon/style.css">
+   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+   <link rel="stylesheet" href="css/daterangepicker.css">
+   <link rel="stylesheet" href="css/aos.css">
+   <link rel="stylesheet" href="css/style.css">
 
    <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
 </head>
@@ -367,7 +367,7 @@
                <div class="owl-single owl-carousel no-nav">
                   <div class="testimonial mx-auto">
                      <figure class="img-wrap">
-                        <img src="assetsBoard/img/person_2.jpg" alt="Image" class="img-fluid">
+                        <img src="img/person_2.jpg" alt="Image" class="img-fluid">
                      </figure>
                      <h3 class="name">Adam Aderson</h3>
                      <blockquote>
@@ -377,7 +377,7 @@
 
                   <div class="testimonial mx-auto">
                      <figure class="img-wrap">
-                        <img src="assetsBoard/img/person_3.jpg" alt="Image" class="img-fluid">
+                        <img src="img/person_3.jpg" alt="Image" class="img-fluid">
                      </figure>
                      <h3 class="name">Lukas Devlin</h3>
                      <blockquote>
@@ -387,7 +387,7 @@
 
                   <div class="testimonial mx-auto">
                      <figure class="img-wrap">
-                        <img src="assetsBoard/img/person_4.jpg" alt="Image" class="img-fluid">
+                        <img src="img/person_4.jpg" alt="Image" class="img-fluid">
                      </figure>
                      <h3 class="name">Kayla Bryant</h3>
                      <blockquote>
@@ -711,18 +711,18 @@
       </div>
    </div>
 
-   <script src="assetsBoard/js/jquery-3.4.1.min.js"></script>
-   <script src="assetsBoard/js/popper.min.js"></script>
-   <script src="assetsBoard/js/bootstrap.min.js"></script>
-   <script src="assetsBoard/js/owl.carousel.min.js"></script>
-   <script src="assetsBoard/js/jquery.animateNumber.min.js"></script>
-   <script src="assetsBoard/js/jquery.waypoints.min.js"></script>
-   <script src="assetsBoard/js/jquery.fancybox.min.js"></script>
-   <script src="assetsBoard/js/aos.js"></script>
-   <script src="assetsBoard/js/moment.min.js"></script>
-   <script src="assetsBoard/js/daterangepicker.js"></script>
+   <script src="js/jquery-3.4.1.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/owl.carousel.min.js"></script>
+   <script src="js/jquery.animateNumber.min.js"></script>
+   <script src="js/jquery.waypoints.min.js"></script>
+   <script src="js/jquery.fancybox.min.js"></script>
+   <script src="js/aos.js"></script>
+   <script src="js/moment.min.js"></script>
+   <script src="js/daterangepicker.js"></script>
 
-   <script src="assetsBoard/js/typed.js"></script>
+   <script src="js/typed.js"></script>
    <script>
       $(function() {
          var slides = $('.slides'),
@@ -751,7 +751,7 @@
       })
    </script>
 
-   <script src="assetsBoard/js/custom.js"></script>
+   <script src="js/custom.js"></script>
 
 </body>
 
