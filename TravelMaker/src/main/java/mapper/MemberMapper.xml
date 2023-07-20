@@ -5,7 +5,7 @@
 <mapper namespace="mapper.MemberMapper">
 
   <insert id="join" parameterType="UserDTO">
-  	insert into user_info(user_id, user_type, user_name, user_email, user_pw) values(#{user_id}, #{user_type}, #{user_name}, #{user_email}, #{user_pw});
+  	insert into user_info(user_id, user_type, user_name, user_email, user_pw) values(#{user_id}, #{user_type}, #{user_name}, #{user_email}, #{user_pw})
   </insert>
   
   <select id="login" parameterType="UserDTO" resultType="UserDAO">

@@ -30,6 +30,7 @@ public class JoinCon implements Command {
 
 		UserDTO dto = new UserDTO(user_id, user_type, user_name, user_email, user_pw);
 		System.out.println(dto);
+		
 		UserDAO dao = new UserDAO();
 		int row = dao.join(dto);
 		System.out.println(row);
@@ -37,10 +38,10 @@ public class JoinCon implements Command {
 
 		if (row > 0) {
 			System.out.println("회원가입 성공");
-			moveURL = "forward./test_success.html";
+			moveURL = "forward./Main.jsp";
 		} else {
 			System.out.println("회원가입 실패");
-			moveURL = "test.html";
+			moveURL = "Main.jsp";
 		}
 
 		return moveURL;
