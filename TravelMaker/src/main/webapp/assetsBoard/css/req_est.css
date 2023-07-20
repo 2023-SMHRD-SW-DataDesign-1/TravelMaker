@@ -1,0 +1,347 @@
+req-est
+
+/* Styles for wrapping the search box */
+
+.main {
+    width: 50%;
+    margin: 50px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+/* req-est_calendar css 시작 */
+:root {
+    --salmon: #fb6542;
+    --blue: white;
+    --lemon: #ffbb00;
+ }
+ 
+ body {
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+    zoom: 1;
+ }
+ 
+ button {
+    background-color: white;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+ }
+ 
+ .pika-single.is-hidden {
+    display: none;
+ }
+ 
+ .is-inrange .pika-button,
+ .pika-button:hover {
+    border-color: var(--salmon);
+    background-color: rgba(254, 74, 73, 0.2);
+ }
+ 
+ 
+ .is-startrange .pika-button,
+ .is-selected .pika-button {
+    border-color: var(--salmon);
+    background-color: var(--salmon);
+ }
+ 
+ .pika-table {
+    width: 100%;
+ }
+ 
+ .pika-table th {
+    font-size: 11px;
+    padding-bottom: 8px;
+ }
+ 
+ .pika-table td {
+    padding-top: 14.5%;
+    position: relative;
+    width: 14.25%;
+ }
+ 
+ .pika-single button {
+    border: solid 1px #ddd;
+    display: inline-block;
+    padding: 0;
+ }
+ 
+ .pika-button {
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+ }
+ 
+ .pika-title {
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 32px;
+    margin-bottom: 8px;
+ }
+ 
+ .pika-title .pika-label {
+    padding-left: 8px;
+ }
+ 
+ .pika-title button {
+    padding: 8px;
+    position: absolute;
+    top: 0;
+ }
+ 
+ .pika-title .pika-prev {
+    left: 4px;
+ }
+ 
+ .pika-title .pika-next {
+    right: 4px;
+ }
+ 
+ .pika-select {
+    display: none;
+ }
+ 
+ .pika-lendar {
+    padding: 8px;
+ }
+ 
+ .calendar__start-wrapper {
+    border: solid var(--lemon) 2px;
+ }
+ 
+ .calendar__end-wrapper {
+    border: solid var(--salmon) 2px;
+ }
+ 
+ .calendar {
+    background-color: var(--blue);
+    padding: 0px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin: 0 auto;
+    display: flex;
+    
+    flex-direction: column;
+    width: 360px;
+ }
+ 
+ .calendar__pikaday {
+    background-color: white;
+ }
+ 
+ .calendar__reset {
+    cursor: pointer;
+    margin: 8px 0;
+    padding: 16px;
+    background-color: var(--lemon);
+    border: solid 1px var(--lemon);
+    color: #222;
+    font-size: 14px;
+    outline: none;
+ }
+ 
+ .calendar__reset:hover {
+    background-color: #ffcc00;
+ }
+ 
+ button.is-disabled,
+ .is-disabled .pika-button {
+    color: #ccc;
+    cursor: none;
+    border: solid 1px #eee;
+ }
+ 
+ .calendar__input {
+    padding: 16px 8px;
+    margin: 4px 0;
+    flex-basis: 0;
+    flex-grow: 1;
+    width: 100%;
+ }
+ 
+ .calendar__input:first-child {
+    margin-right: 4px;
+ }
+ 
+ .calendar__inputs {
+    display: flex;
+    width: 100%;
+ }
+ /* req-est_calendar css 끝 */
+
+ /* chat_box css 시작 */
+ * {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: sans-serif;
+ }
+ 
+ body {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 50px;
+ }
+ 
+ .container {
+   height: 400px;
+   width: 360px;
+   border: 1px solid #ffcc00;
+   position: relative;
+   overflow: hidden;
+ }
+ 
+ .username {
+   color: white;
+   background: #ffcc00;
+   position: absolute;
+   height: 40px;
+   width: 100%;
+   left: 0;
+   to: 0;
+   font-size: 16px;
+   letter-spacing: 2px;
+   display: flex;
+   align-items: center;
+   padding-left: 5px;
+   cursor: pointer;
+ }
+ 
+ textarea {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   height: 40px;
+   width: 80%;
+   border: none;
+   outline: none;
+   border-top: 1px solid black;
+   padding: 2px 5px;
+   font-size: 15px;
+   word-spacing: 2px;
+   resize: none;
+ }
+ 
+ #send {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   color: white;
+   background: #ffcc00;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: none;
+   outline: none;
+   width: 20%;
+ }
+ #send span {
+   psition: absolute;
+   height: 100%;
+   width: 100%;
+   top: 0;
+   left: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ .messages {
+   position: absolute;
+   bottom: 50px;
+   max-height: calc(100% - 90px);
+   left: 0;
+   width: 99%;
+   overflow-x: hidden;
+ }
+ 
+ .message-box, .reply-box {
+   width: 100%;
+   display: block;
+   margin: 3px 0px;
+ }
+ 
+ .reply-box {
+   text-align: right;
+ }
+ 
+ .message {
+   color: white;
+   background: #ffcc00;
+   position: relative;
+   margin: 0px 5px;
+   display: inline-block;
+   word-break: break-all;
+   max-width: 100%;
+   padding: 5px;
+   border-radius: 10px;
+ }
+ 
+ @keyframes push {
+   0% {
+     opacity: 0;
+     transform: scale(0.5);
+   }
+   100% {
+     opacity: 1;
+     transform: scale(1);
+   }
+ }
+ .push {
+   animation: push 0.3s cubic-bezier(0.49, 1.53, 0.96, 1.03) both;
+ }
+ 
+ .push2 {
+   animation: push 0.3s cubic-bezier(1, 0.51, 0.68, 1.44) both 0.3s;
+ }
+ 
+ .reply {
+   color: white;
+   background: #c0392b;
+   position: relative;
+   margin: 0px 5px;
+   display: inline-block;
+   word-break: break-all;
+   max-width: 100%;
+   padding: 5px;
+   border-radius: 10px;
+   text-align: left;
+ }
+ 
+ .messages span {
+   position: relative;
+   display: inline;
+   float: right;
+   height: 50px;
+   width: 30px;
+   text-align: center;
+   margin-top: 5px;
+   font-size: 25px;
+   color: #c0392b;
+ }
+
+/* chat_box css 끝 */
