@@ -50,18 +50,18 @@
 				<div class="Join_form sign-up">
 					<h2>회원가입</h2>
 
-					<label for="id"> <span>ID</span> <input type="text" name="id"></label> 
-					<label> <span>Password</span> <input type="password" name="pw"></label>
-					<label> <span>Name</span> <input type="text" name="name"></label> 
-					<label> <span>Email</span> <input type="email" name="email"></label> 
+					<span>ID</span> <input type="text" name="id"> 
+					<span>Password</span> <input type="password" name="pw">
+					<span>Name</span> <input type="text" name="name"> 
+					<span>Email</span> <input type="email" name="email"> 
 					
 					<div class="join_check">
 						<div class="join_box1">
-							<input type="radio" id="nomal_user" name="type" value="normal"
-								checked /> <label for="nomal_user">일반 회원</label>
+							<input type="radio" id="nomal_user" name="type" value="회원"
+								checked /> 일반 회원
 						</div>
 						<div class="join_box2">
-							<input type="radio" id="gosu_user" name="type" value="gosu" /> <label
+							<input type="radio" id="gosu_user" name="type" value="고수" /> <label
 								for="gosu_user">여행 고수</label>
 						</div>
 					</div>

@@ -17,15 +17,18 @@ public class JoinCon implements Command {
 		System.out.println("[JoinCon]");
 
 		String user_id = request.getParameter("id");
-		String user_pw = request.getParameter("pw");
-		String user_email = request.getParameter("email");
 		String user_type = request.getParameter("type");
+		String user_name = request.getParameter("name");
+		String user_email = request.getParameter("email");
+		String user_pw = request.getParameter("pw");
 
-		System.out.println(user_id);
-		System.out.println(user_pw);
-		System.out.println(user_type);
+		System.out.println("id : " + user_id);
+		System.out.println("type : " + user_type);
+		System.out.println("name : " + user_name);
+		System.out.println("email : " + user_email);
+		System.out.println("pw : " + user_pw);
 
-		UserDTO dto = new UserDTO(user_id, user_pw, user_email, user_type);
+		UserDTO dto = new UserDTO(user_id, user_type, user_name, user_email, user_pw);
 		System.out.println(dto);
 		UserDAO dao = new UserDAO();
 		int row = dao.join(dto);

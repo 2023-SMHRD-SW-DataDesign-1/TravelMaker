@@ -8,6 +8,7 @@
 
 	<typeAliases>
 		<typeAlias type="model.UserDTO" alias="UserDTO" />
+		<typeAlias type="model.UserDAO" alias="UserDAO" />
 	</typeAliases>
 
 	<environments default="development">

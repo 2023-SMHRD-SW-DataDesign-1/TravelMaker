@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 public class UserDTO {
 	@NonNull String user_id;
 	@NonNull String user_type;
-	String user_name;
+	@NonNull String user_name;
 	@NonNull String user_email;
 	@NonNull String user_pw;
 	int user_cash;
