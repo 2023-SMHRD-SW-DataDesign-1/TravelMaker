@@ -7,7 +7,7 @@
 <title>Login</title>
 <link rel='stylesheet'
 	href='https://fonts.googleapis.com/css?family=Open+Sans'>
-<link rel="stylesheet" href="assetsBoard/css/Login.css">
+<link rel="stylesheet" href="css/Login.css">
 </head>
 <body>
 	<!-- partial:index.partial.html -->
@@ -18,10 +18,12 @@
 			<div class="form sign-in">
 				<h2>로그인</h2>
 
-				<label> <span>ID</span> <input type="text" name="id"></label> 
+				<label for="id"> <span>ID</span> <input type="text" name="id"></label> 
 				<label> <span>Password</span> <input type="password" name="pw"></label>
 				<p class="forgot-pass">Forgot password?</p>
-				<button type="button" class="submit">Sign In</button>
+				<!-- <button type="button" class="submit">Sign In</button> -->
+				<input type="submit" value="Sign In">
+				
 			</div>
 		</form>
 		<div class="sub-cont">
@@ -48,7 +50,7 @@
 				<div class="Join_form sign-up">
 					<h2>회원가입</h2>
 
-					<label> <span>ID</span> <input type="text" name="id"></label> 
+					<label for="id"> <span>ID</span> <input type="text" name="id"></label> 
 					<label> <span>Password</span> <input type="password" name="pw"></label>
 					<label> <span>Name</span> <input type="text" name="name"></label> 
 					<label> <span>Email</span> <input type="email" name="email"></label> 
@@ -63,7 +65,8 @@
 								for="gosu_user">여행 고수</label>
 						</div>
 					</div>
-					<button type="button" class="submit">Sign Up</button>
+					<!-- <button type="button" class="submit">Sign Up</button> -->
+					<input type="submit" value="Sign Up">
 
 				</div>
 			</form>
@@ -72,7 +75,9 @@
 	</div>
 
 	<!-- partial -->
-	<script src="./assetsBoard/js/Login.js"></script>
-
+	<script src="js/Login.js"></script>
+	<script>
+		
+	</script>
 </body>
 </html>
