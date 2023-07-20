@@ -10,9 +10,9 @@ public class UserDAO {
 	private static SqlSessionFactory sqlSessionFactory = sqlSessionManager.getSqlSession();
 
 	public int join(UserDTO dto) {
-
 		SqlSession session = sqlSessionFactory.openSession(true);
 		int row = session.insert("join", dto);
+		System.out.println("123123");
 		session.close();
 
 		return row;
