@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
 import controller.JoinCon;
+import controller.LoginCon;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -22,6 +23,7 @@ public class FrontController extends HttpServlet {
 		list = new HashMap<String, Command>();
 		
 		list.put("JoinCon.do", new JoinCon());
+		list.put("LoginCon.do", new LoginCon());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

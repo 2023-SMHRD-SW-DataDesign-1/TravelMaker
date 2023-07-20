@@ -7,7 +7,7 @@
 	<properties resource="database/db.properties"></properties>
 
 	<typeAliases>
-		<typeAlias type="model.MemberDTO" alias="MemberDTO" />
+		<typeAlias type="model.UserDTO" alias="UserDTO" />
 	</typeAliases>
 
 	<environments default="development">
