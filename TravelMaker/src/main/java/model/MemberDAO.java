@@ -4,11 +4,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import model.MemberDTO;
-import database.SqlSessionManager;
+import database.sqlSessionManager;
 
 public class MemberDAO {
 
-	private static SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
+	private static SqlSessionFactory sqlSessionFactory = sqlSessionManager.getSqlSession();
 	
 	public int join(MemberDTO dto) {
 		System.out.println("알짜!");
