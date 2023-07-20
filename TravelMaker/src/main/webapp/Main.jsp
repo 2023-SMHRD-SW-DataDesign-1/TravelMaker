@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- /*
 * Template Name: Tour
 * Template Author: Untree.co
@@ -9,67 +11,82 @@
 <!doctype html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <meta name="author" content="Untree.co">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Untree.co">
 
-   <meta name="description" content="" />
-   <meta name="keywords" content="bootstrap, bootstrap4" />
+<meta name="description" content="" />
+<meta name="keywords" content="bootstrap, bootstrap4" />
 
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
+	rel="stylesheet">
 
-   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/owl.carousel.min.css">
-   <link rel="stylesheet" href="css/owl.theme.default.min.css">
-   <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-   <link rel="stylesheet" href="css/daterangepicker.css">
-   <link rel="stylesheet" href="css/aos.css">
-   <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="css/daterangepicker.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/style.css">
 
-   <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+<title>Tour Free Bootstrap Template for Travel Agency by
+	Untree.co</title>
 </head>
 
 <body>
 
 
-   <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-         <div class="site-mobile-menu-close">
-            <span class="icofont-close js-menu-toggle"></span>
-         </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-   </div>
-
-<!-- 네비게이션 시작 -->
-<!--로그인 전 네비-->
-<nav class="site-nav">
-	<div class="container">
-	   <div class="site-navigation">
-		  <a href="index.html" class="logo m-0"> Travel Maker <span class="text-primary"></span></a>
-
-		  <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-			 <li class="active"><a href="#">견적요청</a></li>
-			 <li><a href="#">받은견적</a></li>
-			 <li><a href="#">정보거래</a></li>
-			 <li><a href="#">커뮤니티</a></li>
-		  </ul>
-
-		  <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-			  
-			  <li class="has-children"><a href="#">채팅</a></li>			  
-			  <li class="active"><a href="Login.jsp">로그인 / 회원가입</a></li>	
-			 			 
-		  </ul>
-
-	   </div>
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
 	</div>
- </nav>
-<!-- 로그인 전 네비 끝 -->
 
-<!--로그인 후 네비-->
+	<!-- 네비게이션 시작 -->
+	<!--로그인 전 네비-->
+	<nav class="site-nav">
+		<div class="container">
+			<div class="site-navigation">
+				<a href="index.html" class="logo m-0"> Travel Maker <span
+					class="text-primary"></span></a>
 
-<!-- <nav class="site-nav">
+				<ul
+					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+					<li class="active"><a href="#">견적요청</a></li>
+					<li><a href="#">받은견적</a></li>
+					<li><a href="#">정보거래</a></li>
+					<li><a href="#">커뮤니티</a></li>
+				</ul>
+
+				<ul
+					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+
+					<!-- <li class="has-children"><a href="#">채팅</a></li>	 -->
+					<c:choose>
+						<c:when test="${info != null}">
+							<li class="active"><a href="LogoutCon.do">${info.user_name}님 로그아웃</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="active"><a href="Login.jsp">로그인 / 회원가입</a></li>
+						</c:otherwise>
+					</c:choose>
+
+
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+	<!-- 로그인 전 네비 끝 -->
+
+	<!--로그인 후 네비-->
+
+	<!-- <nav class="site-nav">
 	<div class="container">
 	   <div class="site-navigation">
 		  <a href="index.html" class="logo m-0"> Travel Maker <span class="text-primary"></span></a>
@@ -99,63 +116,68 @@
 	</div>
  </nav> -->
 
- <!--  로그인후 네비게이션 끝 -->
- <!-- 네비게이션 끝 -->
+	<!--  로그인후 네비게이션 끝 -->
+	<!-- 네비게이션 끝 -->
 
-<!-- 메인 견적요청 시작 -->
+	<!-- 메인 견적요청 시작 -->
 
-   <div class="hero">
-      <div class="container">
-         <div class="row align-items-center">
-            <div class="col-lg-7">
-               <div class="intro-wrap">
-                  <h1 class="mb-5"><span class="d-block">Make The Trip</span> Trip In <span class="typed-words"></span></h1>
+	<div class="hero">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-7">
+					<div class="intro-wrap">
+						<h1 class="mb-5">
+							<span class="d-block">Make The Trip</span> Trip In <span
+								class="typed-words"></span>
+						</h1>
 
-                  <div class="row">
-                     <div class="col-12">
-                        <form class="form">
-                           <div class="row mb-2">
-                              <div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-                                 <select name="" id="" class="form-control custom-select">
-                                    <option value="">Destination</option>
-                                    <option value="">Peru</option>
-                                    <option value="">Japan</option>
-                                    <option value="">Thailand</option>
-                                    <option value="">Brazil</option>
-                                    <option value="">United States</option>
-                                    <option value="">Israel</option>
-                                    <option value="">China</option>
-                                    <option value="">Russia</option>
-                                 </select>
-                              </div>
-                              <div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
-                                 <input type="text" class="form-control" name="daterange">
-                              </div>
-                              <div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
-                                 <input type="text" class="form-control" placeholder="# of People">
-                              </div>
+						<div class="row">
+							<div class="col-12">
+								<form class="form">
+									<div class="row mb-2">
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
+											<select name="" id="" class="form-control custom-select">
+												<option value="">Destination</option>
+												<option value="">Peru</option>
+												<option value="">Japan</option>
+												<option value="">Thailand</option>
+												<option value="">Brazil</option>
+												<option value="">United States</option>
+												<option value="">Israel</option>
+												<option value="">China</option>
+												<option value="">Russia</option>
+											</select>
+										</div>
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
+											<input type="text" class="form-control" name="daterange">
+										</div>
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
+											<input type="text" class="form-control"
+												placeholder="# of People">
+										</div>
 
-                           </div>    
-                           <div class="row align-items-center">
-                              <div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-                                 <input type="submit" class="btn btn-primary btn-block" value="Search">
-                              </div>
-                              <div class="col-lg-8">
-                                 <label class="control control--checkbox mt-3">
-                                    <span class="caption">Save this search</span>
-                                    <input type="checkbox" checked="checked" />
-                                    <div class="control__indicator"></div>
-                                 </label>
-                              </div>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
+									</div>
+									<div class="row align-items-center">
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
+											<input type="submit" class="btn btn-primary btn-block"
+												value="Search">
+										</div>
+										<div class="col-lg-8">
+											<label class="control control--checkbox mt-3"> <span
+												class="caption">Save this search</span> <input
+												type="checkbox" checked="checked" />
+												<div class="control__indicator"></div>
+											</label>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 
-			<!-- 메인-원그림사진 -->
-            <!-- <div class="col-lg-5">
+				<!-- 메인-원그림사진 -->
+				<!-- <div class="col-lg-5">
                <div class="slides">
                   <img src="images/hero-slider-1.jpg" alt="Image" class="img-fluid active">
                   <img src="images/hero-slider-2.jpg" alt="Image" class="img-fluid">
@@ -165,14 +187,14 @@
                </div>
             </div> -->
 
-         </div>
-      </div>
-   </div>
+			</div>
+		</div>
+	</div>
 
-   <!-- 메인 견적요청 끝 -->
+	<!-- 메인 견적요청 끝 -->
 
-   <!-- 메인 숙소, 카페 소개 시작-->
-   <!-- <div class="untree_co-section">
+	<!-- 메인 숙소, 카페 소개 시작-->
+	<!-- <div class="untree_co-section">
       <div class="container">
          <div class="row mb-5 justify-content-center">
             <div class="col-lg-6 text-center">
@@ -229,52 +251,52 @@
       </div>
    </div> -->
 
-   <!-- 메인 숙소, 카페 소개 끝-->
+	<!-- 메인 숙소, 카페 소개 끝-->
 
-   <!-- 메인 사용자수 시작 -->
-   <div class="untree_co-section count-numbers py-5">
-      <div class="container">
-         <div class="row">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-               <div class="counter-wrap">
-                  <div class="counter">
-                     <span class="" data-number="9313">0</span>
-                  </div>
-                  <span class="caption">누적 사용자</span>
-               </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-               <div class="counter-wrap">
-                  <div class="counter">
-                     <span class="" data-number="8492">0</span>
-                  </div>
-                  <span class="caption">누적 견적요청수</span>
-               </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-               <div class="counter-wrap">
-                  <div class="counter">
-                     <span class="" data-number="100">0</span>
-                  </div>
-                  <span class="caption">고수 이용자수</span>
-               </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-               <div class="counter-wrap">
-                  <div class="counter">
-                     <span class="" data-number="120">0</span>
-                  </div>
-                  <span class="caption">거래내역</span>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+	<!-- 메인 사용자수 시작 -->
+	<div class="untree_co-section count-numbers py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
+					<div class="counter-wrap">
+						<div class="counter">
+							<span class="" data-number="9313">0</span>
+						</div>
+						<span class="caption">누적 사용자</span>
+					</div>
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
+					<div class="counter-wrap">
+						<div class="counter">
+							<span class="" data-number="8492">0</span>
+						</div>
+						<span class="caption">누적 견적요청수</span>
+					</div>
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
+					<div class="counter-wrap">
+						<div class="counter">
+							<span class="" data-number="100">0</span>
+						</div>
+						<span class="caption">고수 이용자수</span>
+					</div>
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
+					<div class="counter-wrap">
+						<div class="counter">
+							<span class="" data-number="120">0</span>
+						</div>
+						<span class="caption">거래내역</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- 메인 사용자수 끝 -->
 
-   <!-- 메인-실시간 베스트 컨설팅 시작 -->
-<!-- 
+	<!-- 메인-실시간 베스트 컨설팅 시작 -->
+	<!-- 
    <div class="untree_co-section">
       <div class="container">
          <div class="row text-center justify-content-center mb-5">
@@ -349,58 +371,64 @@
       </div>
    </div> -->
 
-   <!-- 메인-실시간 베스트 컨설팅 끝 -->
+	<!-- 메인-실시간 베스트 컨설팅 끝 -->
 
-   <!-- 메인-이용후기 -->
+	<!-- 메인-이용후기 -->
 
-   <div class="untree_co-section testimonial-section mt-5">
-      <div class="container">
-         <div class="row justify-content-center">
-            <div class="col-lg-7 text-center">
-               <h2 class="section-title text-center mb-5">이용후기</h2>
+	<div class="untree_co-section testimonial-section mt-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-7 text-center">
+					<h2 class="section-title text-center mb-5">이용후기</h2>
 
-               <div class="owl-single owl-carousel no-nav">
-                  <div class="testimonial mx-auto">
-                     <figure class="img-wrap">
-                        <img src="img/person_2.jpg" alt="Image" class="img-fluid">
-                     </figure>
-                     <h3 class="name">Adam Aderson</h3>
-                     <blockquote>
-                        <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-                     </blockquote>
-                  </div>
+					<div class="owl-single owl-carousel no-nav">
+						<div class="testimonial mx-auto">
+							<figure class="img-wrap">
+								<img src="img/person_2.jpg" alt="Image" class="img-fluid">
+							</figure>
+							<h3 class="name">Adam Aderson</h3>
+							<blockquote>
+								<p>&ldquo;There live the blind texts. Separated they live in
+									Bookmarksgrove right at the coast of the Semantics, a large
+									language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
 
-                  <div class="testimonial mx-auto">
-                     <figure class="img-wrap">
-                        <img src="img/person_3.jpg" alt="Image" class="img-fluid">
-                     </figure>
-                     <h3 class="name">Lukas Devlin</h3>
-                     <blockquote>
-                        <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-                     </blockquote>
-                  </div>
+						<div class="testimonial mx-auto">
+							<figure class="img-wrap">
+								<img src="img/person_3.jpg" alt="Image" class="img-fluid">
+							</figure>
+							<h3 class="name">Lukas Devlin</h3>
+							<blockquote>
+								<p>&ldquo;There live the blind texts. Separated they live in
+									Bookmarksgrove right at the coast of the Semantics, a large
+									language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
 
-                  <div class="testimonial mx-auto">
-                     <figure class="img-wrap">
-                        <img src="img/person_4.jpg" alt="Image" class="img-fluid">
-                     </figure>
-                     <h3 class="name">Kayla Bryant</h3>
-                     <blockquote>
-                        <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-                     </blockquote>
-                  </div>
+						<div class="testimonial mx-auto">
+							<figure class="img-wrap">
+								<img src="img/person_4.jpg" alt="Image" class="img-fluid">
+							</figure>
+							<h3 class="name">Kayla Bryant</h3>
+							<blockquote>
+								<p>&ldquo;There live the blind texts. Separated they live in
+									Bookmarksgrove right at the coast of the Semantics, a large
+									language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
 
-               </div>
+					</div>
 
-            </div>
-         </div>
-      </div>
-   </div>
-   
-   <!-- 메인-이용후기 끝 -->
+				</div>
+			</div>
+		</div>
+	</div>
 
-   <!-- 메인-실시간 고수 포트폴리오 -->
-   <!-- <div class="untree_co-section">
+	<!-- 메인-이용후기 끝 -->
+
+	<!-- 메인-실시간 고수 포트폴리오 -->
+	<!-- <div class="untree_co-section">
       <div class="container">
          <div class="row justify-content-center text-center mb-5">
             <div class="col-lg-6">
@@ -491,8 +519,8 @@
       </div>
    </div> -->
 
-   <!-- 메인 - 실시간 고수 포트폴리오 시작 -->
-   <!-- <div class="untree_co-section">
+	<!-- 메인 - 실시간 고수 포트폴리오 시작 -->
+	<!-- <div class="untree_co-section">
 	<div class="container">
 	   <div class="row text-center justify-content-center mb-5">
 		  <div class="col-lg-7"><h2 class="section-title text-center">실시간 고수 포트폴리오</h2></div>
@@ -565,11 +593,11 @@
 
 	<!-- 메인 - 실시간 고수 포트폴리오 끝 -->
 
- </div>
+	</div>
 
- 	<!-- 메인 - 비디오창 시작 -->
-	
-   <!-- <div class="untree_co-section">
+	<!-- 메인 - 비디오창 시작 -->
+
+	<!-- <div class="untree_co-section">
       <div class="container">
          <div class="row justify-content-between align-items-center">
             
@@ -609,11 +637,11 @@
       </div>
    </div> -->
 
-   <!-- 메인 - 비디오창 끝 -->
+	<!-- 메인 - 비디오창 끝 -->
 
-   
-   <!-- 메인 -  연락창 배너 시작(쓸데없음) -->
-   <!-- <div class="py-5 cta-section">
+
+	<!-- 메인 -  연락창 배너 시작(쓸데없음) -->
+	<!-- <div class="py-5 cta-section">
       <div class="container">
          <div class="row text-center">
             <div class="col-md-12">
@@ -624,101 +652,109 @@
          </div>
       </div>
    </div> -->
-   <!-- 메인 -  연락창 배너 끝(쓸데없음) -->
+	<!-- 메인 -  연락창 배너 끝(쓸데없음) -->
 
-   <!-- 메인 - 고객센터 배너 시작 -->
-   <div class="site-footer">
-      <div class="inner first">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-6 col-lg-4">
-                  <div class="widget">
-                     <h3 class="heading">About Tour</h3>
-                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="widget">
-                     <ul class="list-unstyled social">
-                        <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li><a href="#"><span class="icon-instagram"></span></a></li>
-                        <li><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                        <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                        <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                        <li><a href="#"><span class="icon-apple"></span></a></li>
-                        <li><a href="#"><span class="icon-google"></span></a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-2 pl-lg-5">
-                  <div class="widget">
-                     <h3 class="heading">Pages</h3>
-                     <ul class="links list-unstyled">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-2">
-                  <div class="widget">
-                     <h3 class="heading">Resources</h3>
-                     <ul class="links list-unstyled">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-4">
-                  <div class="widget">
-                     <h3 class="heading">Contact</h3>
-                     <ul class="list-unstyled quick-info links">
-                        <li class="email"><a href="#">mail@example.com</a></li>
-                        <li class="phone"><a href="#">+1 222 212 3819</a></li>
-                        <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-	  <!-- 메인 - 고객센터 배너 끝 -->
+	<!-- 메인 - 고객센터 배너 시작 -->
+	<div class="site-footer">
+		<div class="inner first">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-4">
+						<div class="widget">
+							<h3 class="heading">About Tour</h3>
+							<p>Far far away, behind the word mountains, far from the
+								countries Vokalia and Consonantia, there live the blind texts.</p>
+						</div>
+						<div class="widget">
+							<ul class="list-unstyled social">
+								<li><a href="#"><span class="icon-twitter"></span></a></li>
+								<li><a href="#"><span class="icon-instagram"></span></a></li>
+								<li><a href="#"><span class="icon-facebook"></span></a></li>
+								<li><a href="#"><span class="icon-linkedin"></span></a></li>
+								<li><a href="#"><span class="icon-dribbble"></span></a></li>
+								<li><a href="#"><span class="icon-pinterest"></span></a></li>
+								<li><a href="#"><span class="icon-apple"></span></a></li>
+								<li><a href="#"><span class="icon-google"></span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-2 pl-lg-5">
+						<div class="widget">
+							<h3 class="heading">Pages</h3>
+							<ul class="links list-unstyled">
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">About</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-2">
+						<div class="widget">
+							<h3 class="heading">Resources</h3>
+							<ul class="links list-unstyled">
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">About</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4">
+						<div class="widget">
+							<h3 class="heading">Contact</h3>
+							<ul class="list-unstyled quick-info links">
+								<li class="email"><a href="#">mail@example.com</a></li>
+								<li class="phone"><a href="#">+1 222 212 3819</a></li>
+								<li class="address"><a href="#">43 Raymouth Rd.
+										Baltemoer, London 3910</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 메인 - 고객센터 배너 끝 -->
 
 
 
-      <div class="inner dark">
-         <div class="container">
-            <div class="row text-center">
-               <div class="col-md-8 mb-3 mb-md-0 mx-auto">
-                  <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ -->Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a>
-                  </p>
-               </div>
-               
-            </div>
-         </div>
-      </div>
-   </div>
+		<div class="inner dark">
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
+						<p>
+							Copyright &copy;
+							<script>document.write(new Date().getFullYear());</script>
+							. All Rights Reserved. &mdash; Designed with love by <a
+								href="https://untree.co" class="link-highlight">Untree.co</a>
+							<!-- License information: https://untree.co/license/ -->
+							Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+						</p>
+					</div>
 
-   <div id="overlayer"></div>
-   <div class="loader">
-      <div class="spinner-border" role="status">
-         <span class="sr-only">Loading...</span>
-      </div>
-   </div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-   <script src="js/jquery-3.4.1.min.js"></script>
-   <script src="js/popper.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/owl.carousel.min.js"></script>
-   <script src="js/jquery.animateNumber.min.js"></script>
-   <script src="js/jquery.waypoints.min.js"></script>
-   <script src="js/jquery.fancybox.min.js"></script>
-   <script src="js/aos.js"></script>
-   <script src="js/moment.min.js"></script>
-   <script src="js/daterangepicker.js"></script>
+	<div id="overlayer"></div>
+	<div class="loader">
+		<div class="spinner-border" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
 
-   <script src="js/typed.js"></script>
-   <script>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/daterangepicker.js"></script>
+
+	<script src="js/typed.js"></script>
+	<script>
       $(function() {
          var slides = $('.slides'),
          images = slides.find('img');
@@ -746,7 +782,7 @@
       })
    </script>
 
-   <script src="js/custom.js"></script>
+	<script src="js/custom.js"></script>
 
 </body>
 
