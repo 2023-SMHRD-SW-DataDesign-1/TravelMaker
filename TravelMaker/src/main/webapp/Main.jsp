@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="css/daterangepicker.css">
 <link rel="stylesheet" href="css/aos.css">
 <link rel="stylesheet" href="css/style.css">
+<link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
 
 <title>Tour Free Bootstrap Template for Travel Agency by
 	Untree.co</title>
@@ -57,7 +58,7 @@
 
 				<ul
 					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="#">견적요청</a></li>
+					<li><a href="#">견적요청</a></li>
 					<li><a href="#">받은견적</a></li>
 					<li><a href="#">정보거래</a></li>
 					<li><a href="#">커뮤니티</a></li>
@@ -69,10 +70,10 @@
 					<!-- <li class="has-children"><a href="#">채팅</a></li>	 -->
 					<c:choose>
 						<c:when test="${info != null}">
-							<li class="active"><a href="LogoutCon.do">${info.user_name}님 로그아웃</a></li>
+							<li><a href="LogoutCon.do">${info.user_name}님 로그아웃</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="active"><a href="Login.jsp">로그인 / 회원가입</a></li>
+							<li><a href="Login.jsp">로그인 / 회원가입</a></li>
 						</c:otherwise>
 					</c:choose>
 
