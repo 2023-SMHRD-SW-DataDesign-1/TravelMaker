@@ -63,7 +63,7 @@
 		  <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 			  
 			  <li class="has-children"><a href="#">채팅</a></li>			  
-			  <li class="active"><a href="#">로그인 / 회원가입</a></li>	
+			  <li class="active"><a href="Login.jsp">로그인 / 회원가입</a></li>	
 			 			 
 		  </ul>
 
