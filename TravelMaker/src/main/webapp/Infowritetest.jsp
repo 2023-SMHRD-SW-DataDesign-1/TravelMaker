@@ -18,7 +18,7 @@
 	rel="stylesheet">
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-	
+
 </head>
 <body>
 
@@ -28,7 +28,7 @@
 				<td><h3>게시판</h3></td>
 			</tr>
 		</table>
-			<input type="submit">
+		<input type="submit">
 
 		<table border="1" style="border-collapse: collapse;">
 			<tr height="30px;">
@@ -43,13 +43,9 @@
 			</tr>
 			<tr height="30px;">
 				<th align="center" width="150px;">내용</th>
-				<td>
-				<textarea name="boardcontents" id="summernote">
-				</textarea>
-				
-				<!-- <div id="summernote"></div> -->
-				</td>
-				
+				<td><textarea name="boardcontents" id="summernote">
+				</textarea> <!-- <div id="summernote"></div> --></td>
+
 			</tr>
 		</table>
 		<table style="border: 0px;">
@@ -61,46 +57,46 @@
 		</table>
 	</form>
 	<script>
-  
-	
-	
 		// 썸머노트
-/* 		$('#summernote').summernote({ // summernote를 사용하기 위한 선언
-			height : 350,
-			callbacks : { // 콜백을 사용
-				// 이미지를 업로드할 경우 이벤트를 발생
-				onImageUpload : function(files, editor, welEditable) {
-					sendFile(files[0], this);
-				}
-			}
-		}); */
-	    $(document).ready(function() {
-	        $('#summernote').summernote({
-	            placeholder: '내용을 작성하세요',
-	            height: 400,
-	            maxHeight: 400
-	        });
-	    });
 
-		function sendFile(files, editor) {
-			// 파일 전송을 위한 폼생성
-			data = new FormData();
-			data.append("uploadFile", files);
-
-			$.ajax({
-				data : data,
-				type : "post",
-				url : "내가 원하는 url",
-				// 원래 있던 기능을 막기 위해
-				cache : false,
-				contentType : false,
-				processData : false,
-
-				success : function(data) {
-					$(editor).summernote('editor.insertImage', data.url);
-				}
+		/* 		$('#summernote').summernote({ // summernote를 사용하기 위한 선언
+		 height : 350,
+		
+		 callbacks : { // 콜백을 사용
+		 // 이미지를 업로드할 경우 이벤트를 발생
+		 onImageUpload : function(files, editor, welEditable) {
+		 sendFile(files[0], this);
+		 }
+		 }
+		 });
+		 */
+		$(document).ready(function() {
+			$('#summernote').summernote({
+				placeholder : '내용을 작성하세요',
+				height : 400,
+				maxHeight : 400
 			});
-		}
+		});
+
+		/* 		function sendFile(files, editor) {
+		 // 파일 전송을 위한 폼생성
+		 data = new FormData();
+		 data.append("uploadFile", files);
+
+		 $.ajax({
+		 data : data,
+		 type : "post",
+		 url : "내가 원하는 url",
+		 // 원래 있던 기능을 막기 위해
+		 cache : false,
+		 contentType : false,
+		 processData : false,
+
+		 success : function(data) {
+		 $(editor).summernote('editor.insertImage', data.url);
+		 }
+		 });
+		 } */
 	</script>
 
 </body>

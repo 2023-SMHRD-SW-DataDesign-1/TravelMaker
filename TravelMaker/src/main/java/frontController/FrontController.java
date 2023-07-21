@@ -20,10 +20,10 @@ import controller.LogoutCon;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	HashMap<String, Command> list = null;
-	
+
 	public void init(ServletConfig config) throws ServletException {
 		list = new HashMap<String, Command>();
-		
+
 		list.put("JoinCon.do", new JoinCon());
 		list.put("LoginCon.do", new LoginCon());
 		list.put("LogoutCon.do", new LogoutCon());
@@ -43,6 +43,7 @@ public class FrontController extends HttpServlet {
 		
 		Command con = list.get(path);
 		String moveURL = con.execute(request, response);
+						
 		
 		if(moveURL.contains("forward")) {
 			moveURL = moveURL.substring("forward".length());
