@@ -2,16 +2,21 @@ package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class InfoDTO {
 	int info_num;
-	String user_id;
+	@NonNull String user_id;
 	String info_wr_date;
 	String info_cate;
-	String info_title;
-	String info_content;
+	@NonNull String info_title;
+	@NonNull String info_content;
 	String info_thumb;
 	int info_fee;	
 }

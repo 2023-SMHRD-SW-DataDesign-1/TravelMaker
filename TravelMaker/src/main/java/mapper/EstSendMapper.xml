@@ -5,7 +5,7 @@
 <mapper namespace="mapper.EstSendMapper">
 
   <insert id="est_send" parameterType="SendDTO">
-  insert into est_send values(#{est_send_num.nextval}, #{user_id}, sysdate, #{send_country}, #{send_place}, #{send_s_date}, #{send_e_date}, #{send_budget}, #{send_content})
+  insert into est_send values(est_send_num.nextval, #{user_id}, sysdate, #{send_country}, #{send_place}, #{send_s_date}, #{send_e_date}, #{send_budget}, #{send_content})
   </insert>
   
 </mapper>

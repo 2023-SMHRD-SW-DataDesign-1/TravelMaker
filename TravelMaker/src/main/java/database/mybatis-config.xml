@@ -8,9 +8,12 @@
 
 	<typeAliases>
 		<typeAlias type="model.UserDTO" alias="UserDTO" />
-		<typeAlias type="model.UserDAO" alias="UserDAO" />
 		<typeAlias type="model.SendDTO" alias="SendDTO" />
-		<typeAlias type="model.sendDAO" alias="SendDAO" />
+		<typeAlias type="model.ResDTO" alias="ResDTO" />
+		<typeAlias type="model.PortDTO" alias="PortDTO" />
+		<typeAlias type="model.InfoDTO" alias="InfoDTO" />
+		<typeAlias type="model.HisDTO" alias="HisDTO" />
+		
 	</typeAliases>
 
 	<environments default="development">
@@ -27,5 +30,7 @@
 
 	<mappers>
 		<mapper resource="mapper/MemberMapper.xml" />
+		<mapper resource="mapper/EstSendMapper.xml" />
+		<mapper resource="mapper/InfoMapper.xml" />
 	</mappers>
 </configuration>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +25,16 @@
 <!-- chat box link 끝 -->
 </head>
 <body>
+	<c:if test="${info == null}">
+		<script>
+			alert("로그인 후 이용해주세요.");
+			location.href="Login.jsp";
+		</script>
+	</c:if>
+	
 	<form action="SendCon.do">
 		<div>
-
+		
 			<!-- partial:index.partial.html -->
 			<div class="main">
 				<!-- 국가선택 시작 -->
