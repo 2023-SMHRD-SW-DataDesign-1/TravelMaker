@@ -5,6 +5,7 @@
 }
 
 body {
+    font-family: 'SUIT', sans-serif !important;
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
 	background: #ededed;
 }
@@ -32,7 +33,7 @@ input, button {
 	width: 640px;
 	height: 100%;
 	transition: transform 1.2s ease-in-out;
-	padding: 100px 30px 0;
+	padding: 120px 30px 0;
 }
 .Join_form {
 	position: relative;
@@ -198,7 +199,7 @@ h2 {
 	text-align: center;
 }
 
-label {
+.form>label, .Join_form>.Join_form_box>label {
 	display: block;
 	width: 260px;
 	margin: 25px auto 0;
@@ -211,14 +212,27 @@ label span {
 	text-transform: uppercase;
 }
 
-input {
+.cont label input, .Join_form>label>input {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding-bottom: 5px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+.submit {
 	display: block;
-	width: 100%;
-	margin-top: 5px;
-	padding-bottom: 5px;
+	background: #d4af7a;
+	text-transform: uppercase;
+	width: 260px;
+	margin: 25px auto 0;
 	font-size: 16px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-	text-align: center;
+	padding: 8px;
+	border-radius: 30px;
+	border: none;
+    cursor: pointer;
+    color: #fff;
 }
 
 .forgot-pass {
@@ -228,25 +242,51 @@ input {
 	color: #cfcfcf;
 }
 
-.submit {
-	margin-top: 20px;
-	margin-bottom: 20px;
-	background: #d4af7a;
-	text-transform: uppercase;
+.User_type{
+	display: inline-flex;
+	overflow: hidden;
+	border-radius: 30px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.25);
+	margin: 25px 50% 0 50%;
+	transform: translate(-50%, 0);
 }
+.User_type input{
+	display: none;
+}
+.User_type label{
+	width: 130px;
+	box-sizing: border-box;
+	padding: 8px 14px;
+	cursor: pointer;
+	background-color: #009578;
+	transition: background 0.1s;
+	text-align: center;
+	color: white;
+	font-size: 16px;
+}
+.User_type label:not(:last-of-type){
+	border-right: 1px solid #006B56;
+}
+.User_type input:checked + label{
+	background: #006B56;
+}
+/*
+
+==============수정전==============
 
 .join_check {
-	display: block;
-	border-radius: 50px;
+	display: flex;
+	border-radius: 30px;
 	width: 260px;
-	height: 100px;
+	height: 80px;
 	margin: 0 auto;
 	margin-top: 20px;
-	border: 3px solid black;
+	background-color: #1d428a;
 }
 .join_box1{
-	display: flex;
-	justify-content: center;
+	display: inline-block;
+	float: left;
+	width: 50%;
 }
 .join_box1 label{
 	margin: 0;
@@ -254,11 +294,12 @@ input {
 }
 .join_box1 input{
 	width: 20px;
-	margin: 0;
+	display: inline-block;
 }
 .join_box2{
-	display: flex;
-	justify-content: center;
+	display: inline-block;
+	float: left;
+	width: 50%;
 }
 .join_box2 label{
 	margin: 0;
@@ -266,8 +307,9 @@ input {
 }
 .join_box2 input{
 	width: 20px;
-	margin: 0;
+	display: inline-block;
 }
+*/
 .fb-btn span {
 	font-weight: bold;
 	color: #455a81;
