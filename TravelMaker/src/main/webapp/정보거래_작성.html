@@ -80,14 +80,7 @@ button {
 
 <body>
 
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
+	
 
 	<!--  nav start -->
 	<nav class="site-nav">
@@ -116,62 +109,7 @@ button {
 	</nav>
 	<!--  nav end -->
 
-	<!-- main img start -->
-	<div class="hero">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-7">
-					<div class="intro-wrap">
-						<h1 class="mb-5">
-							<span class="d-block">Make The Trip</span> Trip In <span
-								class="typed-words"></span>
-						</h1>
-						<div class="row">
-							<div class="col-12">
-								<form class="form">
-									<div class="row mb-2">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-											<select name="" id="" class="form-control custom-select">
-												<option value="">Destination</option>
-												<option value="">Peru</option>
-												<option value="">Japan</option>
-												<option value="">Thailand</option>
-												<option value="">Brazil</option>
-												<option value="">United States</option>
-												<option value="">Israel</option>
-												<option value="">China</option>
-												<option value="">Russia</option>
-											</select>
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
-											<input type="text" class="form-control" name="daterange">
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
-											<input type="text" class="form-control"
-												placeholder="# of People">
-										</div>
-									</div>
-									<div class="row align-items-center">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-											<input type="submit" class="btn btn-primary btn-block"
-												value="Search">
-										</div>
-										<div class="col-lg-8">
-											<label class="control control--checkbox mt-3"> <span
-												class="caption">Save this search</span> <input
-												type="checkbox" checked="checked" />
-												<div class="control__indicator"></div>
-											</label>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 
 	<!-- main img end -->
 
@@ -192,27 +130,11 @@ button {
 		</div>
 	</div>
 	<input id="inputTitle" placeholder="제목을 작성해주세요" />
-	<div id="summernote"></div>
-	<button>등록하기</button>
+	<!-- <div id="summernote"></div> -->
+	<textarea name="boardcontents" id="summernote">
+				</textarea>
+	 <button onclick="summit()">완료</button>
 	<!-- note end -->
-
-
-	<!-- main script start -->
-	<!-- <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="js/daterangepicker.js"></script>
-    <script src="js/typed.js"></script>
-    <script src="js/custom.js"></script> -->
-	<!-- main script end -->
-
-
 
 	<!-- note script start-->
 	<script>
@@ -243,9 +165,9 @@ button {
         
         
         const formData = new FormData;
-        formData.append("nickname", nickname);
-        formData.append("password", password);
-        formData.append("title", title);
+        formData.append("inputid", inputid);
+        formData.append("inputcash", inputcash);
+        formData.append("inputTitle", inputTitle);
         formData.append("content", content);
         console.log(content);
 
@@ -254,14 +176,14 @@ button {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
                 if (httpRequest.status === 200) {
                     console.log(httpRequest.response);
-                    location.href = "/index.php";
+                    location.href = "InfowriterCon";
                 } else {
                     alert("게시물 등록중 오류가 발생했습니다.");
                     button.disabled = false;
                 }
             }
         }
-        httpRequest.open('post', '/summitPost.php', true);
+        httpRequest.open('post', 'InfowriterCon', true);
         httpRequest.send(formData);
 
     }
