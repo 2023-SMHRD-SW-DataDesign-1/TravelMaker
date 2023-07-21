@@ -9,6 +9,8 @@
 	<typeAliases>
 		<typeAlias type="model.UserDTO" alias="UserDTO" />
 		<typeAlias type="model.UserDAO" alias="UserDAO" />
+		<typeAlias type="model.SendDTO" alias="SendDTO" />
+		<typeAlias type="model.sendDAO" alias="SendDAO" />
 	</typeAliases>
 
 	<environments default="development">

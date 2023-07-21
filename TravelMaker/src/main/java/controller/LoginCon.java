@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,27 +17,33 @@ public class LoginCon implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		System.out.println("[LoginCon]");
 
 		String user_id = request.getParameter("id");
 		String user_pw = request.getParameter("pw");
-		
+
 		System.out.println(user_id);
 		System.out.println(user_pw);
-		
+
 		UserDTO info = new UserDAO().login(new UserDTO(user_id, user_pw));
 		System.out.println(info);
-		
-		if(info != null) {
+
+		if (info != null) {
 			System.out.println("로그인 성공");
 			HttpSession session = request.getSession();
-			
+
 			session.setAttribute("info", info);
 		} else {
 			System.out.println("로그인 실패");
 		}
-		
-		
+
 		return "Main.jsp";
 	}
 

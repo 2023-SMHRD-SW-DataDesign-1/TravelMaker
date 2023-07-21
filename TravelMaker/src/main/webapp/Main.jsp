@@ -58,7 +58,7 @@
 
 				<ul
 					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li><a href="#">견적요청</a></li>
+					<li><a href="Est_send.jsp">견적요청</a></li>
 					<li><a href="#">받은견적</a></li>
 					<li><a href="#">정보거래</a></li>
 					<li><a href="#">커뮤니티</a></li>

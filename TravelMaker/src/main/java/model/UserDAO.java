@@ -12,7 +12,6 @@ public class UserDAO {
 	public int join(UserDTO dto) {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		int row = session.insert("join", dto);
-		System.out.println("123123");
 		session.close();
 
 		return row;

@@ -14,7 +14,7 @@
  
 	<!-- 로그인 화면 시작 -->
 	<div class="cont">
-		<form action="LoginCon.do">
+		<form action="LoginCon.do" method="post">
 			<div class="form sign-in">
 				<h2>로그인</h2>
 
@@ -47,7 +47,7 @@
 			<!-- 로그인 화면 끝 -->
 
 			<!-- 회원가입 화면 시작 -->
-			<form action="JoinCon.do">
+			<form action="JoinCon.do" method="post">
 				<div class="Join_form sign-up">
 					<h2>회원가입</h2>
 

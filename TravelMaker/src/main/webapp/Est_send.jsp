@@ -28,12 +28,10 @@
 
 			<!-- partial:index.partial.html -->
 			<div class="main">
-
-
 				<!-- 국가선택 시작 -->
 
 				<h4>국가선택</h4>
-				<select id="mounth">
+				<select id="mounth" name="send_country">
 					<option value="hide">-- 국가선택 --</option>
 					<option value="국내">국내</option>
 					<option value="동남아">동남아</option>
@@ -53,7 +51,7 @@
 
 				<h4>목적지설정</h4>
 				<div>
-					<input type="text" class="form-control" placeholder="목적지설정">
+					<input type="text" name="send_place" class="form-control" placeholder="목적지설정">
 				</div>
 
 
@@ -62,12 +60,11 @@
 				<!-- 예산선택 시작 -->
 				<h4>예산설정</h4>
 				<div>
-					<input type="text" class="form-control" placeholder="예산설정">
+					<input type="text"  name="send_budget" class="form-control" placeholder="예산설정">
 				</div>
 				<!-- 예산선택 끝 -->
 				<!-- 기존 p태크 링크  -->
 				<!-- <p class="mt-4 text-center"><a href="https://www.gungorbudak.com/blog/2018/12/12/bootstrap-4-search-box-with-search-icon/">See how it's done on my blog</a></p> -->
-
 			</div>
 			<!-- partial -->
 			<!-- req_est_calendar body 시작 -->
@@ -78,10 +75,8 @@
 			<section class="calendar">
 
 				<div class="calendar__inputs">
-					<input class="calendar__input" readonly="readonly" type="text"
-						id="calendar-start" placeholder="Start Date"> <input
-						class="calendar__input" readonly="readonly" type="text"
-						id="calendar-end" placeholder="End Date">
+					<input class="calendar__input" name="send_s_date" readonly="readonly" type="text" id="calendar-start" placeholder="Start Date"> 
+					<input class="calendar__input"  name="send_e_date" readonly="readonly" type="text" id="calendar-end" placeholder="End Date">
 				</div>
 
 				<!-- Empty container for Pikaday Datepickers -->
@@ -101,10 +96,11 @@
 			<!-- chat box body 시작 -->
 			<div class="container">
 				<div class="username">추가 요청사항</div>
-				<textarea placeholder="message..."></textarea>
-				<button id="send">
+				<textarea name="send_content" placeholder="message..."></textarea>
+				<<!-- button type="submit" id="send">
 					<span class="glyphicon glyphicon-send"></span>
-				</button>
+				</button> -->
+				<input type="submit" value="견적요청하기" id="send">
 
 				<div id="Box" class="messages">
 					<div class="message-box">
