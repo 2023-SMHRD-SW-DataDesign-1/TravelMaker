@@ -34,35 +34,38 @@ public class InfowriterCon implements Command {
 			e.printStackTrace();
 		}
 
+		
 		HttpSession session = request.getSession();
 
 		UserDTO udto = (UserDTO) session.getAttribute("info");
-		
-		System.out.println("세션 : " +  udto.getUser_id());
 
+		
+		
+		String user_id = udto.getUser_id();
 		String info_cate = request.getParameter("info_cate");
 		String info_title = request.getParameter("info_title");
 		String info_content = request.getParameter("info_content");
-		String info_fee = request.getParameter("info_fee");
+		int info_fee = Integer.parseInt(request.getParameter("info_fee"));
+		String info_lat = request.getParameter("lat");
+		String info_lng = request.getParameter("lng");
 
+		System.out.println("아이디 : " + user_id);
 		System.out.println("카테고리 : " + info_cate);
 		System.out.println("제목 : " + info_title);
 		System.out.println("내용 : " + info_content);
 		System.out.println("요금 : " + info_fee);
+		System.out.println("lat : " + info_lat);
+		System.out.println("lng : " + info_lng);
 
-//		InfoDAO idao = new InfoDAO();
-//		int row = idao.upload(new InfoDTO(user_id, info_title, info_content));
+		InfoDAO idao = new InfoDAO();
+		int row = idao.upload(new InfoDTO(user_id, info_cate, info_title, info_content, info_fee, info_lat, info_lng));
 
-//		HttpSession session = request.getSession();
-//		session.setAttribute("info_title", info_title);
-//		session.setAttribute("user_id", user_id);
-//		session.setAttribute("info_content", info_content);
 
-//		if (row > 0) {
-//			System.out.println("성공");
-//		} else {
-//			System.out.println("실패");
-//		}
+		if (row > 0) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
 
 		return "ShowInfo.jsp";
 	}

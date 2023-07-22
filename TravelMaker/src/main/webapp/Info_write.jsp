@@ -22,6 +22,10 @@
 	rel="stylesheet">
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<script async
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places&callback=initMap">
+	
+</script>
 <style>
 body {
 	padding: 1rem;
@@ -50,10 +54,80 @@ button {
 	font-size: x-large;
 	/* font-size: xx-large; */
 }
+
+.input_1 {
+	/* 제목 */
+	width: 500px;
+	height: 40px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+}
+
+.input_2 {
+	/* 받을금액 */
+	height: 55px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 3px solid black;
+}
+
+.input_3 {
+	/* 전송버튼 */
+	height: 55px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 3px solid black;
+	padding: 10px 30px;
+}
+
+.input_4 {
+	/* 간단한 설명 */
+	width: 900px;
+	height: 40px;
+	font-size: 15px;
+	border: 0;
+	/* border-radius: 15px; */
+	outline: none;
+	/* padding-left: 10px; */
+	background-color: rgb(230, 230, 230);
+}
+
+.select_1 {
+	/* 카테고리 */
+	width: 200px;
+	padding: .8em .5em;
+	border: 1px solid #999;
+	font-family: inherit;
+	background: url('arrow.jpg') no-repeat 95% 50%;
+	border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.div_1 {
+	margin: 15px 25px 15px 0px;
+	padding: 10px
+}
+
+.div_2 {
+	/* 오른쪽하단 고정 */
+	position: absolute;
+	right: 20px;
+
+	/* margin-left: 1500px; */
+}
+
+.div_3 {
+	margin: 15px 25px 15px 0px;
+}
 </style>
-<!-- note head end-->
-
-
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Untree.co">
@@ -77,77 +151,54 @@ button {
 <title>Tour Free Bootstrap Template for Travel Agency by
 	Untree.co</title>
 
+<style>
+	#map{
+	top:100px;
+	}
+</style>
 </head>
-
 <body>
 
-	<!--  nav start -->
-	<nav class="site-nav">
-		<div class="container">
-			<div class="site-navigation">
-				<a href="index.html" class="logo m-0"> Travel Maker <span
-					class="text-primary"></span></a>
-				<ul
-					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="#">견적요청</a></li>
-					<li><a href="#">받은견적</a></li>
-					<li><a href="#">정보거래</a></li>
-					<li><a href="#">커뮤니티</a></li>
-				</ul>
-				<ul
-					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="has-children"><a href="#">채팅</a></li>
-					<li class="has-children"><a href="#">프로필</a>
-						<ul class="dropdown">
-							<li><a href="elements.html">받은견적</a></li>
-							<li><a href="#">마이페이지</a></li>
-						</ul></li>
-				</ul>
-			</div>
+	<form action="InfowriterCon.do" method="post">
+
+		<div class="div_1">
+			<select class="select_1" name="info_cate">
+				<option disabled selected>카테고리</option>
+				<option value="명소">명소</option>
+				<option value="맛집">맛집</option>
+				<option value="숙소">숙소</option>
+			</select> &nbsp; &nbsp; &nbsp; 제목 : <input class="input_1" type="text"
+				name="info_title" placeholder="제목을 입력해주세요">
 		</div>
-	</nav>
-	<!--  nav end -->
-
-
-
-	<!-- main img end -->
-
-
-	<div class="row text-center justify-content-center mb-5">
-		<div class="col-lg-7">
-			<h1 class="section-title text-center">정보 공유 게시글 등록하기</h1>
+		<div class="div_3">
+			간단한 설명 : <input class="input_4" type="text" name=""
+				placeholder="간단한 설명을 입력해주세요">
 		</div>
-	</div>
 
-	<!-- note start-->
-	<form action="InfowriterCon.do">
-	카테고리 : <select name="info_cate">
-		<option value="명소">명소</option>
-		<option value="맛집">맛집</option>
-		<option value="숙소">숙소</option>
-	</select>
-	제목 : <input type="text" name="info_title">
-	내용 : <textarea name="info_content" id="summernote"></textarea>
-	요금 : <input type="text" name="info_fee">
-	
-	<input type="submit">
+
+		<textarea name="info_content" id="summernote"></textarea>
+		<div class="div_2">
+			받을금액 : <input class="input_2" type="text" name="info_fee"
+				placeholder="금액을 입력해주세요"> &nbsp; &nbsp; &nbsp; 
+	<!-- 사용자가 생성한 마커 정보를 서버로 전송하기 위한 HTML Form -->
+				<input type="hidden" id="lat-input" name="lat"> 
+				<input type="hidden" id="lng-input" name="lng">
+				 
+				<input class="input_3" type="submit" value="작성완료">
+		</div>
+
 	</form>
 
+	<!-- 사용자의 위치를 검색할 수 있는 검색 박스를 추가할 입력 요소 -->
+	<input id="search-location" type="text" placeholder="장소를 검색하세요">
 
-<!-- 	<div id="userInfoContainer">
-		<div>
-			<label for="inputid"> 아이디 : </label> <input id="inputid" />
-		</div>
-		<div>
-			<label for="inputcash"> 가격 설정 : </label> <input id="inputcash" />
-		</div>
-	</div>
-	<input id="inputTitle" placeholder="제목을 작성해주세요" />
-	<div id="summernote"></div>
-	<textarea name="boardcontents" id="summernote">
-				</textarea>
-	<button onclick="summit()">완료</button> -->
-	<!-- note end -->
+	<!-- 지도가 표시될 요소 -->
+
+
+	<div id="map" style="height: 400px;"></div>
+
+
+
 
 	<!-- note script start-->
 	<script>
@@ -160,139 +211,73 @@ button {
 			});
 		});
 
-		// summit 함수 만들기
-		/*     function summit() {
+		// 지도스크립트 시작
+		let marker; // 전역 변수로 마커 변수를 선언합니다.
 
-		 const button = event.srcElement;
-		 button.disabled = true;
+		// 구글 지도 API 스크립트 로딩 후 실행될 콜백 함수입니다.
+		function initMap() {
+			// 사용자의 위치를 검색할 수 있는 검색 박스를 추가합니다.
+			const input = document.getElementById('search-location');
+			const searchBox = new google.maps.places.SearchBox(input);
 
-		 // nickname, password, content를 가지고와서 formdata 로 전송
-		 const inputid = document.getElementById('inputid').value;
-		 const inputcash = document.getElementById('inputcash').value;
-		 const inputTitle = document.getElementById('inputTitle').value;
-		 const content = $('#summernote').summernote('code');
-		 console.log(inputid);
-		 console.log(inputcash);
-		 console.log(inputTitle);
-		 console.log(content);
-		
-		
-		 const formData = new FormData;
-		 formData.append("inputid", inputid);
-		 formData.append("inputcash", inputcash);
-		 formData.append("inputTitle", inputTitle);
-		 formData.append("content", content);
-		
+			// 지도 생성 및 설정
+			const map = new google.maps.Map(document.getElementById('map'), {
+				center : {
+					lat : 37.5,
+					lng : 127
+				}, // 지도 초기 중심 위치
+				zoom : 8
+			// 초기 줌 레벨
+			});
 
-		 const httpRequest = new XMLHttpRequest();
-		 httpRequest.onreadystatechange = () => {
-		 if (httpRequest.readyState === XMLHttpRequest.DONE) {
-		 if (httpRequest.status === 200) {
-		 console.log(httpRequest.response);
-		 location.href = "InfowriterCon";
-		 } else {
-		 alert("게시물 등록중 오류가 발생했습니다.");
-		 button.disabled = false;
-		 }
-		 }
-		 }
-		 httpRequest.open('post', 'InfowriterCon', true);
-		 httpRequest.send(formData);
+			// 지도에 검색 박스 추가
+			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-		 } */
+			// 검색 결과가 변경되었을 때, 해당 위치로 지도의 중심을 이동하고 마커를 생성합니다.
+			searchBox.addListener('places_changed', function() {
+				const places = searchBox.getPlaces();
+
+				if (places.length === 0) {
+					return;
+				}
+
+				// 검색 결과의 첫 번째 위치를 선택합니다.
+				const place = places[0];
+
+				// 선택한 위치로 지도의 중심 이동
+				map.setCenter(place.geometry.location);
+				map.setZoom(12); // 지도 줌 레벨 설정
+
+				// 기존 마커가 있을 경우 제거합니다.
+				if (marker) {
+					marker.setMap(null);
+				}
+
+				// 선택한 위치에 마커 생성
+				marker = new google.maps.Marker({
+					map : map,
+					position : place.geometry.location,
+					title : place.name,
+					draggable : true
+				// 마커를 드래그할 수 있도록 설정합니다.
+				});
+
+				// 마커의 드래그 이벤트 리스너를 추가하여 마커 위치가 변경될 때 Form에 마커 정보를 업데이트합니다.
+				marker.addListener('dragend', function() {
+					const latInput = document.getElementById('lat-input');
+					const lngInput = document.getElementById('lng-input');
+					latInput.value = marker.getPosition().lat();
+					lngInput.value = marker.getPosition().lng();
+				});
+			});
+		}
 	</script>
 	<!-- note script end -->
 
 	<br>
 
-	<!-- main 하단 start -->
-	<div class="site-footer">
-		<div class="inner first">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">About Tour</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.</p>
-						</div>
-						<div class="widget">
-							<ul class="list-unstyled social">
-								<li><a href="#"><span class="icon-twitter"></span></a></li>
-								<li><a href="#"><span class="icon-instagram"></span></a></li>
-								<li><a href="#"><span class="icon-facebook"></span></a></li>
-								<li><a href="#"><span class="icon-linkedin"></span></a></li>
-								<li><a href="#"><span class="icon-dribbble"></span></a></li>
-								<li><a href="#"><span class="icon-pinterest"></span></a></li>
-								<li><a href="#"><span class="icon-apple"></span></a></li>
-								<li><a href="#"><span class="icon-google"></span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2 pl-lg-5">
-						<div class="widget">
-							<h3 class="heading">Pages</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2">
-						<div class="widget">
-							<h3 class="heading">Resources</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">Contact</h3>
-							<ul class="list-unstyled quick-info links">
-								<li class="email"><a href="#">mail@example.com</a></li>
-								<li class="phone"><a href="#">+1 222 212 3819</a></li>
-								<li class="address"><a href="#">43 Raymouth Rd.
-										Baltemoer, London 3910</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
-		<div class="inner dark">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
-						<p>
-							Copyright &copy;
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
-							. All Rights Reserved. &mdash; Designed with love by <a
-								href="https://untree.co" class="link-highlight">Untree.co</a>
-							<!-- License information: https://untree.co/license/ -->
-							Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-						</p>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- <div id="overlayer"></div>
-    <div class="loader">
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div> -->
 
 	<!-- main 하단 end -->
-
 </body>
 </html>

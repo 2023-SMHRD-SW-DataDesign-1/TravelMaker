@@ -18,5 +18,7 @@ public class InfoDTO {
 	@NonNull String info_title;
 	@NonNull String info_content;
 	String info_thumb;
-	@NonNull int info_fee;	
+	@NonNull int info_fee;
+	@NonNull String info_lat;
+	@NonNull String info_lng;
 }

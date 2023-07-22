@@ -1,3 +1,4 @@
+<%@page import="model.InfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
@@ -10,9 +11,8 @@
 </head>
 <body>
 	<%
-	String info_title = (String) session.getAttribute("info_title");
-	String user_id = (String) session.getAttribute("user_id");
-	String info_content = (String) session.getAttribute("info_content");
+	InfoDAO idao = new InfoDAO();
+	idao.showInfo(info.user_id);
 	%>
 	<div>
 		<h1>제목나올부분</h1>
