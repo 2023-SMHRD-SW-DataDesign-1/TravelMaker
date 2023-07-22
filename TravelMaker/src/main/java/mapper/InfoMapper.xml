@@ -4,11 +4,15 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.InfoMapper">
 
-  <insert id="upload" parameterType="InfoDTO">
-  insert into info_trade values(info_num.nextval, #{user_id}, sysdate, #{info_cate}, #{info_title}, #{info_content}, null,#{info_fee}, #{info_lat}, #{info_lng})  </insert>
-    
-   <select id="showInfo" parameterType="InfoDTO" resultType="InfoDTO">
-   	select * from info_trade where user_id = #{user_id}
-   </select> 
-   
+	<insert id="upload" parameterType="InfoDTO">
+		insert into info_trade values(info_num.nextval, #{user_id}, sysdate,
+		#{info_cate}, #{info_title}, #{info_content}, null,#{info_fee},
+		#{info_lat}, #{info_lng})
+	</insert>
+
+	<select id="showInfo" parameterType="String"
+		resultType="InfoDTO">
+		select * from info_trade where user_id = #{user_id}
+	</select>
+
 </mapper>

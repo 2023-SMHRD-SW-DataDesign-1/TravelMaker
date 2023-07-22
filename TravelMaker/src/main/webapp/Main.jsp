@@ -71,7 +71,7 @@
 					
 					
 					<li><a href="Info_main.jsp">정보거래</a></li>
-					<li><a href="#">커뮤니티</a></li>
+					<li><a href="ShowInfo.jsp">커뮤니티</a></li>
 				</ul>
 
 				<ul

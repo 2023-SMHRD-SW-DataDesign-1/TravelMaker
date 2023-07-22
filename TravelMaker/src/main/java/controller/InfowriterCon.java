@@ -57,17 +57,15 @@ public class InfowriterCon implements Command {
 		System.out.println("lat : " + info_lat);
 		System.out.println("lng : " + info_lng);
 
-		InfoDAO idao = new InfoDAO();
-		int row = idao.upload(new InfoDTO(user_id, info_cate, info_title, info_content, info_fee, info_lat, info_lng));
+		/*
+		 * InfoDAO idao = new InfoDAO(); int row = idao.upload(new InfoDTO(user_id,
+		 * info_cate, info_title, info_content, info_fee, info_lat, info_lng));
+		 * 
+		 * 
+		 * if (row > 0) { System.out.println("성공"); } else { System.out.println("실패"); }
+		 */
 
-
-		if (row > 0) {
-			System.out.println("성공");
-		} else {
-			System.out.println("실패");
-		}
-
-		return "ShowInfo.jsp";
+		return "Main.jsp";
 	}
 
 }

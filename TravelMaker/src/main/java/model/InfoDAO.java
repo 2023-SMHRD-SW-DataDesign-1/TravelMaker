@@ -7,7 +7,7 @@ import database.sqlSessionManager;
 
 public class InfoDAO {
 	
-	SqlSessionFactory sqlSessionFactory = sqlSessionManager.getSqlSession();
+	static SqlSessionFactory sqlSessionFactory = sqlSessionManager.getSqlSession();
 	
 	public int upload(InfoDTO idto) {
 		SqlSession session = sqlSessionFactory.openSession(true);
@@ -16,9 +16,9 @@ public class InfoDAO {
 		return row;
 	}
 	
-	public InfoDTO showInfo(String user_id) {
+	public static InfoDTO showInfo(String user_id) {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		InfoDTO idto = session.selectOne("upload", user_id);
+		InfoDTO idto = session.selectOne("showInfo", user_id);
 		session.close();		
 		return idto;
 	}
