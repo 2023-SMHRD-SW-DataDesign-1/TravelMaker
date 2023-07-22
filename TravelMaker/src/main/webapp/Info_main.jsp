@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Untree.co">
     <link rel="shortcut icon" href="favicon.png">
@@ -28,8 +28,38 @@
     <link rel="stylesheet" href="css/style.css">
 
     <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+
+    <style>
+        /* .ct_btn {
+            position: absolute;
+            left: 1350px;
+            padding: 10px 30px;
+            position: fixed;
+        } */
+
+        .write_btn {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+
+            border: none;
+            border-radius: 16px;
+            background: royalblue;
+            color: white;
+            padding: 18px;
+            font-weight: bold;
+            box-shadow: 0px 5px 15px gray;
+            cursor: pointer;
+            font-size: 16px;
+            
+            z-index: 2;
+        }
+    </style>
+</head>
+
 <body>
-  <button class="write_btn">작성하러가기 💬</button>
+
+    <button class="write_btn">작성하러가기 💬</button>
 
     <!-- 명소 추천 카테고리 start -->
     <div class="untree_co-section">
@@ -272,4 +302,5 @@
     <script src="js/custom.js"></script>
 
 </body>
+
 </html>
