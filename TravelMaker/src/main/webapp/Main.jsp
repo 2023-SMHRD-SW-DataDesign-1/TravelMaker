@@ -59,8 +59,18 @@
 				<ul
 					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<li><a href="Est_send.jsp">견적요청</a></li>
-					<li><a href="Info_main.jsp">받은견적</a></li>
-					<li><a href="#">정보거래</a></li>
+					
+					<c:choose>
+						<c:when test="${info.user_type eq '회원' || info.user_type == null}">
+							<li><a href="Est_nomal_response.jsp">받은견적</a></li>
+						</c:when>
+						<c:when test="${info.user_type eq '고수'}">
+							<li><a href="Est_gosu_response.jsp">받은견적</a></li>
+						</c:when>
+					</c:choose>
+					
+					
+					<li><a href="Info_main.jsp">정보거래</a></li>
 					<li><a href="#">커뮤니티</a></li>
 				</ul>
 
@@ -70,7 +80,7 @@
 					<!-- <li class="has-children"><a href="#">채팅</a></li>	 -->
 					<c:choose>
 						<c:when test="${info != null}">
-							<li><a href="LogoutCon.do">${info.user_name}님 로그아웃</a></li>
+							<li><a href="LogoutCon.do">${info.user_name} ${info.user_type}님 로그아웃</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="Login.jsp">로그인 / 회원가입</a></li>

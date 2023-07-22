@@ -32,5 +32,6 @@
 		<mapper resource="mapper/MemberMapper.xml" />
 		<mapper resource="mapper/EstSendMapper.xml" />
 		<mapper resource="mapper/InfoMapper.xml" />
+		<mapper resource="mapper/EstResponseMapper.xml" />
 	</mappers>
 </configuration>
