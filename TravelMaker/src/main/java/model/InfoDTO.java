@@ -14,9 +14,11 @@ public class InfoDTO {
 	int info_num;
 	@NonNull String user_id;
 	String info_wr_date;
-	String info_cate;
+	@NonNull String info_cate;
 	@NonNull String info_title;
 	@NonNull String info_content;
 	String info_thumb;
-	int info_fee;	
+	@NonNull int info_fee;
+	@NonNull String info_lat;
+	@NonNull String info_lng;
 }

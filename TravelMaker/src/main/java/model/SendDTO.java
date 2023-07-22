@@ -2,11 +2,13 @@ package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class SendDTO {
 	int est_num;
 	String user_id;
