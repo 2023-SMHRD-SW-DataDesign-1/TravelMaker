@@ -34,13 +34,10 @@ public class InfowriterCon implements Command {
 			e.printStackTrace();
 		}
 
-		
 		HttpSession session = request.getSession();
 
 		UserDTO udto = (UserDTO) session.getAttribute("info");
 
-		
-		
 		String user_id = udto.getUser_id();
 		String info_cate = request.getParameter("info_cate");
 		String info_title = request.getParameter("info_title");
@@ -57,13 +54,14 @@ public class InfowriterCon implements Command {
 		System.out.println("lat : " + info_lat);
 		System.out.println("lng : " + info_lng);
 
-		/*
-		 * InfoDAO idao = new InfoDAO(); int row = idao.upload(new InfoDTO(user_id,
-		 * info_cate, info_title, info_content, info_fee, info_lat, info_lng));
-		 * 
-		 * 
-		 * if (row > 0) { System.out.println("성공"); } else { System.out.println("실패"); }
-		 */
+		InfoDAO idao = new InfoDAO();
+		int row = idao.upload(new InfoDTO(user_id, info_cate, info_title, info_content, info_fee, info_lat, info_lng));
+
+		if (row > 0) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
 
 		return "Main.jsp";
 	}
