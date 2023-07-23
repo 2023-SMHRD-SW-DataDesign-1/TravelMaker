@@ -11,7 +11,7 @@
 </head>
 <body>
 	<!-- partial:index.partial.html -->
- 
+
 	<!-- 로그인 화면 시작 -->
 	<div class="cont">
 		<form action="LoginCon.do" method="post">
@@ -61,7 +61,7 @@
 
 
 					<div class="User_type">
-						<input type="radio" id="nomal_user" name="type" value="회원" checked/>
+						<input type="radio" id="nomal_user" name="type" value="회원" checked />
 						<label id="label_box1" for="nomal_user">일반 회원</label> <input
 							type="radio" id="gosu_user" name="type" value="고수" /> <label
 							id="label_box2" for="gosu_user">여행 고수</label>
