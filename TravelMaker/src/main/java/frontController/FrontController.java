@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import controller.ConsultCon;
 import controller.InfowriterCon;
 import controller.JoinCon;
 import controller.LoginCon;
@@ -30,6 +31,7 @@ public class FrontController extends HttpServlet {
 		list.put("LogoutCon.do", new LogoutCon());
 		list.put("InfowriterCon.do", new InfowriterCon());
 		list.put("SendCon.do", new SendCon());
+		list.put("ConsultCon.do", new ConsultCon());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

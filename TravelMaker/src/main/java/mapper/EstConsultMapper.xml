@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.EstConsultMapper">
+
+	<insert id="uploadConsult" parameterType="ConsultDTO">
+		insert into est_consult values(consult_num.nextval,
+		#{est_num}, #{user_id}, sysdate, #{cons_lat}, #{cons_lng}, #{cons_content})
+	</insert>
+
+</mapper>

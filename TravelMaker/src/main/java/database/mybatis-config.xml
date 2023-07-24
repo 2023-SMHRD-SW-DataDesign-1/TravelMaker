@@ -12,6 +12,7 @@
 		<typeAlias type="model.PortDTO" alias="PortDTO" />
 		<typeAlias type="model.InfoDTO" alias="InfoDTO" />
 		<typeAlias type="model.HisDTO" alias="HisDTO" />
+		<typeAlias type="model.ConsultDTO" alias="ConsultDTO" />
 
 	</typeAliases>
 
@@ -33,5 +34,6 @@
 		<mapper resource="mapper/EstSendMapper.xml" />
 		<mapper resource="mapper/InfoMapper.xml" />
 		<mapper resource="mapper/EstResponseMapper.xml" />
+		<mapper resource="mapper/EstConsultMapper.xml" />
 	</mappers>
 </configuration>

@@ -27,8 +27,6 @@
 	
 </script>
 <style>
-
-
 h1 {
 	text-align: center;
 }
@@ -183,24 +181,11 @@ button {
 </head>
 <body>
 
-	<form action="InfowriterCon.do" method="post">
-
-		<div class="div_1">
-			<select class="select_1" name="info_cate">
-				<option disabled selected>카테고리</option>
-				<option value="명소">명소</option>
-				<option value="맛집">맛집</option>
-				<option value="숙소">숙소</option>
-			</select> &nbsp; &nbsp; &nbsp; 제목 : <input class="input_1" type="text"
-				name="info_title" placeholder="제목을 입력해주세요">
-		</div>
-		<div class="div_3">
-			간단한 설명 : <input class="input_4" type="text" name=""
-				placeholder="간단한 설명을 입력해주세요">
-		</div>
+	<form action="ConsultCon.do" method="post">
 
 
-		<textarea name="info_content" id="summernote"></textarea>
+
+		<textarea name="cons_content" id="summernote"></textarea>
 		<div class="div_2">
 			<!-- 사용자가 생성한 마커 정보를 서버로 전송하기 위한 HTML Form -->
 			<input type="hidden" id="lat-input" name="lat"> <input
@@ -303,6 +288,16 @@ button {
 			return customMarker;
 		}
 
+	    function updateHiddenFields() {
+	        // 각각의 위치 정보를 문자열로 저장합니다.
+	        const latPositions = markers.map(marker => marker.getPosition().lat()).join(';');
+	        const lngPositions = markers.map(marker => marker.getPosition().lng()).join(';');
+
+	        // 문자열을 숨겨진 필드에 설정합니다.
+	        document.getElementById('lat-input').value = latPositions;
+	        document.getElementById('lng-input').value = lngPositions;
+	    }
+		
 		function addMarker() {
 			markerCount++; // 마커가 추가될 때마다 숫자를 증가시킵니다.
 
@@ -314,6 +309,10 @@ button {
 			const center = map.getCenter();
 			const marker = createHTMLMarker(center, markerCount.toString());
 			markers.push(marker);
+
+			  // 위치 정보를 업데이트합니다.
+            updateHiddenFields();
+
 		}
 		function removeLastMarker() {
 			if (markers.length > 0) {
@@ -321,6 +320,10 @@ button {
 				lastMarker.setMap(null); // 가장 최근에 추가된 마커를 지도에서 제거
 				lastDeletedMarkerCount = parseInt(lastMarker.getLabel()); // 마지막으로 삭제된 마커의 번호를 기억합니다.
 				markerCount--; // 삭제된 마커의 숫자를 감소시킵니다.
+
+				  // 위치 정보를 업데이트합니다.
+	             updateHiddenFields();
+
 			}
 		}
 	</script>
