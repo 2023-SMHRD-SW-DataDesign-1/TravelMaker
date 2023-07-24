@@ -62,10 +62,10 @@
 					
 					<c:choose>
 						<c:when test="${info.user_type eq '회원' || info.user_type == null}">
-							<li><a href="Est_nomal_response.jsp">받은견적</a></li>
+							<li><a href="Est_nomal_response.jsp">받은 컨설팅</a></li>
 						</c:when>
 						<c:when test="${info.user_type eq '고수'}">
-							<li><a href="Est_gosu_response.jsp">받은견적</a></li>
+							<li><a href="Est_gosu_response.jsp">받은 견적</a></li>
 						</c:when>
 					</c:choose>
 					
