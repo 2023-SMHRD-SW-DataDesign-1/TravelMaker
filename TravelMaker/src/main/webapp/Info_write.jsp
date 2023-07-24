@@ -152,9 +152,9 @@ button {
 	Untree.co</title>
 
 <style>
-	#map{
-	top:100px;
-	}
+#map {
+	top: 100px;
+}
 </style>
 </head>
 <body>
@@ -179,18 +179,17 @@ button {
 		<textarea name="info_content" id="summernote"></textarea>
 		<div class="div_2">
 			받을금액 : <input class="input_2" type="text" name="info_fee"
-				placeholder="금액을 입력해주세요"> &nbsp; &nbsp; &nbsp; 
-	<!-- 사용자가 생성한 마커 정보를 서버로 전송하기 위한 HTML Form -->
-				<input type="hidden" id="lat-input" name="lat"> 
-				<input type="hidden" id="lng-input" name="lng">
-				 
-				<input class="input_3" type="submit" value="작성완료">
+				placeholder="금액을 입력해주세요"> &nbsp; &nbsp; &nbsp;
+			<!-- 사용자가 생성한 마커 정보를 서버로 전송하기 위한 HTML Form -->
+			<input id="search-location" type="text" placeholder="장소를 검색하세요">
+			<input type="hidden" id="lat-input" name="lat"> 
+			<input type="hidden" id="lng-input" name="lng"> 
+			<input class="input_3" type="submit" value="작성완료">
 		</div>
 
 	</form>
 
 	<!-- 사용자의 위치를 검색할 수 있는 검색 박스를 추가할 입력 요소 -->
-	<input id="search-location" type="text" placeholder="장소를 검색하세요">
 
 	<!-- 지도가 표시될 요소 -->
 

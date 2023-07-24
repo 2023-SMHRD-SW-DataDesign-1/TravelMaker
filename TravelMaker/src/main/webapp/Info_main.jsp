@@ -3,18 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Untree.co">
-    <link rel="shortcut icon" href="favicon.png">
-=======
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Untree.co">
 <link rel="shortcut icon" href="favicon.png">
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker.git
+
 
 <meta name="description" content="" />
 <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -35,36 +30,7 @@
 <link rel="stylesheet" href="css/aos.css">
 <link rel="stylesheet" href="css/style.css">
 
-<<<<<<< HEAD
-    <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
 
-    <style>
-        /* .ct_btn {
-            position: absolute;
-            left: 1350px;
-            padding: 10px 30px;
-            position: fixed;
-        } */
-
-        .write_btn {
-            position: fixed;
-            bottom: 50px;
-            right: 50px;
-
-            border: none;
-            border-radius: 16px;
-            background: royalblue;
-            color: white;
-            padding: 18px;
-            font-weight: bold;
-            box-shadow: 0px 5px 15px gray;
-            cursor: pointer;
-            font-size: 16px;
-            
-            z-index: 2;
-        }
-    </style>
-=======
 <title>Tour Free Bootstrap Template for Travel Agency by
 	Untree.co</title>
 
@@ -77,30 +43,27 @@
         } */
 .write_btn {
 	position: fixed;
-	bottom: 20px;
-	right: 20px;
+	bottom: 50px;
+	right: 50px;
 	border: none;
 	border-radius: 16px;
 	background: royalblue;
 	color: white;
-	padding: 12px;
+	padding: 18px;
 	font-weight: bold;
 	box-shadow: 0px 5px 15px gray;
 	cursor: pointer;
+	font-size: 16px;
 	z-index: 2;
 }
 </style>
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker.git
+
 </head>
 
 <body>
-<<<<<<< HEAD
 
-    <button class="write_btn">작성하러가기 💬</button>
-=======
-	<a href="Info_write.jsp"><button class="write_btn">작성하러가기 💬</button></a>
-	
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker.git
+	<a href="Info_write.jsp"><button class="write_btn">작성하러가기
+			💬</button></a> 
 
 	<!-- 명소 추천 카테고리 start -->
 	<div class="untree_co-section">
