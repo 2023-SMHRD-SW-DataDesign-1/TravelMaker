@@ -7,6 +7,8 @@
 <title>Login</title>
 <link rel='stylesheet'
 	href='https://fonts.googleapis.com/css?family=Open+Sans'>
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/Login.css">
 </head>
 <body>
@@ -65,6 +67,58 @@
 						<label id="label_box1" for="nomal_user">일반 회원</label> <input
 							type="radio" id="gosu_user" name="type" value="고수" /> <label
 							id="label_box2" for="gosu_user">여행 고수</label>
+					</div>
+					<!--<div class="container">
+						<h2>Video Category</h2>
+
+						<div class="select-box">
+							<div class="options-container">
+
+								<div class="option">
+									<input type="radio" class="radio" id="korean" name="act-area" value="국내" />
+									<label for="korean">국내</label>
+								</div>
+								<div class="option">
+									<input type="radio" class="radio" id="Southeast_Asia" name="act-area" value="동남아"/> 
+									<label for="Southeast_Asia">동남아</label>
+								</div>
+
+								<div class="option">
+									<input type="radio" class="radio" id="europe" name="act-area" value="유럽"/>
+									<label for="europe">유럽</label>
+								</div>
+
+								<div class="option">
+									<input type="radio" class="radio" id="North_America" name="act-area" value="북미"/>
+									<label for="North_America">북미</label>
+								</div>
+								<div class="option">
+									<input type="radio" class="radio" id="South_America" name="act-area" value="아프리카"/>
+									<label for="Africa">아프리카</label>
+								</div>
+								<div class="option">
+									<input type="radio" class="radio" id="europe" name="act-area" value="유럽"/>
+									<label for="europe">유럽</label>
+								</div>
+							</div>
+
+							<div class="selected">Select Video Category</div>
+						</div>
+					</div> -->
+					<div class="multi_select_box">
+						<label>Select Country</label> 
+						<select id="countries" class="multi_select" name="act_area" placeholder="Native Select"
+							data-silent-initial-value-set="false">
+							<option value="국내">국내</option>
+							<option value="동남아">동남아</option>
+							<option value="유럽">유럽</option>
+							<option value="북미">북미</option>
+							<option value="남미">남미</option>
+							<option value="아프리카">아프리카</option>
+							<option value="인도">인도</option>
+							<option value="중국">중국</option>
+							<option value="일본">일본</option>
+						</select>
 					</div>
 					<!-- 
 					<div class="join_check">
