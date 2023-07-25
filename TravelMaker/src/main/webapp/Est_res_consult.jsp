@@ -272,6 +272,7 @@ button {
 		
 		function addMarker() {
 			markerCount++; // 마커가 추가될 때마다 숫자를 증가시킵니다.
+			
 
 			// 마지막으로 삭제된 마커의 숫자보다 더 큰 숫자의 마커를 생성합니다.
 			if (markerCount <= lastDeletedMarkerCount) {
