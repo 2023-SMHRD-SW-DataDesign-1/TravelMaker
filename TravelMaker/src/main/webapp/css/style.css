@@ -1,5 +1,5 @@
 body {
-  font-family: 'SUIT', sans-serif !important;
+  /* font-family: 'SUIT', sans-serif !important; */
   font-family: "Inter", sans-serif;
   line-height: 1.5;
   background: #ffffff;
@@ -808,7 +808,7 @@ h4,
 
 .hero {
   background-image: url("https://png.pngtree.com/background/20230527/original/pngtree-small-model-airplane-rests-on-top-of-a-world-map-picture-image_2760828.jpg");
-  background-size: cover;
+  /* background-size: cover; */
   padding: 7rem 0 10rem 0;
   /* background: #6998AB; */
   margin-bottom: 100px;
@@ -822,7 +822,7 @@ h4,
 
 .hero h1 {
   color: #ffffff;
-  font-size: 60px;
+  font-size: 40px;
 }
 
 @media (max-width: 991.98px) {
