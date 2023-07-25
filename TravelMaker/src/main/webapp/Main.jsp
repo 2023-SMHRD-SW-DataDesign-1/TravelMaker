@@ -106,7 +106,7 @@
 		                              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
 		                                 aria-haspopup="true" aria-expanded="false">컨설팅</a>
 		                              <div class="dropdown-menu">
-		                                 <a class="dropdown-item" href="#">받은견적서</a>
+		                                 <a class="dropdown-item" href="Est_nomal_response.jsp">받은견적서</a>
 		                                 <a class="dropdown-item" href="#">받은컨설팅</a>
 		                              </div>
                            			</li>
@@ -114,6 +114,9 @@
                            		<c:when test="${info.user_type eq '고수' }">
 	                           		<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 		                              <a class="nav-link" href="Est_gosu_responseList.jsp">받은견적</a>
+		                            </li>
+	                           		<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+		                              <a class="nav-link" href="#">채택된견적</a>
 		                            </li>
                            		</c:when>
                            </c:choose>

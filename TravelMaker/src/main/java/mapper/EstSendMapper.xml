@@ -8,7 +8,8 @@
 		#{send_budget}, #{send_content})
 	</insert>
 
-	<select id="SendUserInfo" resultType="SendDTO" parameterType="String">
-		select * from est_send where user_id = #{user_id}
+	<select id="SendUserInfo" resultType="ResDTO" parameterType="String">
+		select * from est_res where est_num = (select est_num from est_send where user_id = #{user_id});
 	</select>
+	
 </mapper>
