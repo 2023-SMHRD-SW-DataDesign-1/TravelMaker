@@ -19,7 +19,6 @@ public class ConsultDAO {
 	}
 
 	public ArrayList<ConsultDTO> showConsult(String user_id) {
-		System.out.println("메서드진입");
 		SqlSession session = sqlSessionFactory.openSession(true);
 		List<ConsultDTO> cons_list = session.selectList("showConsult", user_id);
 		session.close();

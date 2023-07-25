@@ -46,7 +46,7 @@
 											aria-expanded="false">컨설팅</a>
 											<div class="dropdown-menu">
 												<a class="dropdown-item" href="Est_nomal_response.jsp">받은견적서</a>
-												<a class="dropdown-item" href="#">받은컨설팅</a>
+												<a class="dropdown-item" href="Est_ShowConsult.jsp">받은컨설팅</a>
 											</div></li>
 									</c:when>
 									<c:when test="${info.user_type eq '고수' }">
