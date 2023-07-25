@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -16,16 +19,16 @@ public class InfoDAO {
 		return row;
 	}
 
-	public static InfoDTO showInfo(String user_id) {
+	public ArrayList<InfoDTO> showInfo() {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		InfoDTO idto = session.selectOne("showInfo", user_id);
+		List<InfoDTO> info_list = session.selectList("showInfo");
 		session.close();
-		return idto;
+		return (ArrayList<InfoDTO>) info_list;
 	}
 
-	public String show() {
+	public String show(int info_num) {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		String tag = session.selectOne("show");
+		String tag = session.selectOne("show", info_num);
 		session.close();
 		return tag;
 

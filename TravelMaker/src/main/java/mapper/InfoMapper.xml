@@ -8,13 +8,12 @@
 		#{info_lat}, #{info_lng})
 	</insert>
 
-	<select id="showInfo" parameterType="String"
-		resultType="InfoDTO">
-		select * from info_trade where user_id = #{user_id}
+	<select id="showInfo" resultType="InfoDTO">
+		select * from info_trade
 	</select>
 	
-	<select id="show" resultType="String">
-		select info_content from info_trade
+	<select id="show" parameterType="int" resultType="String">
+		select info_content from info_trade where info_num=#{info_num}
 	</select>
 
 </mapper>

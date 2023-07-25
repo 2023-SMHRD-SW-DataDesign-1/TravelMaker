@@ -1,3 +1,8 @@
+<%@page import="java.util.regex.Pattern"%>
+<%@page import="java.util.regex.Matcher"%>
+<%@page import="model.InfoDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.InfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -63,7 +68,7 @@
 <body>
 
 	<a href="Info_write.jsp"><button class="write_btn">작성하러가기
-			💬</button></a> 
+			💬</button></a>
 
 	<!-- 명소 추천 카테고리 start -->
 	<div class="untree_co-section">
@@ -76,13 +81,63 @@
 
 			<div class="owl-carousel owl-3-slider">
 
+				<%
+				InfoDAO idao = new InfoDAO();
+				ArrayList<InfoDTO> info_list = idao.showInfo();
+
+				for (int i = 0; i < info_list.size(); i++) {
+					int info_num = info_list.get(i).getInfo_num();
+					System.out.println(info_num);
+
+					String htmlString = idao.show(info_num);
+
+					// 정규 표현식 패턴
+					String pattern = "<img\\s+[^>]*>";
+
+					// 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+					StringBuilder imgTags = new StringBuilder();
+
+					// 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+					Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
+
+					// 맨 앞에있는 img태그만
+					if (matcher.find()) {
+						imgTags.append(matcher.group());
+					}
+
+					// 결과 출력
+					System.out.println(imgTags.toString());
+				%>
+
 				<div class="item">
+					<a class="media-thumb" href="img/hero-slider-<%=(i + 1)%>.jpg"
+						data-fancybox="gallery">
+						<div class="media-text">
+							<h3><%= info_list.get(i).getInfo_title()%></h3>
+							<span class="location">-</span>
+						</div> <!-- <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid"> -->
+						
+							<%=imgTags%>
+						
+
+					</a>
+				</div>
+
+
+				<%
+				}
+				%>
+
+
+				<!-- <div class="item">
 					<a class="media-thumb" href="img/hero-slider-1.jpg"
 						data-fancybox="gallery">
 						<div class="media-text">
 							<h3>-</h3>
 							<span class="location">-</span>
 						</div> <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid">
+
+
 					</a>
 				</div>
 
@@ -104,7 +159,7 @@
 							<span class="location">-</span>
 						</div> <img src="img/hero-slider-3.jpg" alt="Image" class="img-fluid">
 					</a>
-				</div>
+				</div> -->
 
 
 
