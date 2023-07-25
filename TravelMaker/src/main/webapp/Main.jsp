@@ -58,14 +58,17 @@
 
 				<ul
 					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li><a href="Est_send.jsp">견적요청</a></li>
+					
 					
 					<c:choose>
 						<c:when test="${info.user_type eq '회원' || info.user_type == null}">
+							<li><a href="Est_send.jsp">컨설팅 요청</a></li>
 							<li><a href="Est_nomal_response.jsp">받은 컨설팅</a></li>
+							<li><a href="Est_nomal_response.jsp">확정 컨설팅</a></li>
 						</c:when>
 						<c:when test="${info.user_type eq '고수'}">
-							<li><a href="Est_gosu_response.jsp">받은 견적</a></li>
+							<li><a href="#">받은 컨설팅</a></li>
+							<li><a href="#">확정 컨설팅</a></li>
 						</c:when>
 					</c:choose>
 					
