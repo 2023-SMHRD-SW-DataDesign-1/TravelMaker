@@ -823,6 +823,8 @@ h4,
 .hero h1 {
   color: #ffffff;
   font-size: 40px;
+  text-align: left;
+  text-shadow: 2px 2px 8px #292929;
 }
 
 @media (max-width: 991.98px) {

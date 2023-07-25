@@ -68,7 +68,7 @@ body{
 	height: 28px;
 	width: auto;
 	display: block;
-  filter: brightness(10%);
+    /*filter: brightness(10%);*/
 	-webkit-transition : all 0.3s ease-out;
 	transition : all 0.3s ease-out;
 }
@@ -121,9 +121,9 @@ body{
 .nav-item:hover .nav-link{
 	color: #8167a9 !important;
 }
-.nav-item.active .nav-link{
+/*.nav-item.active .nav-link{
 	color: #777 !important;
-}
+}*/
 .nav-link {
 	position: relative;
 	padding: 5px 0 !important;
