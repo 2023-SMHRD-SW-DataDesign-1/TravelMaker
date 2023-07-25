@@ -86,7 +86,7 @@
                   <nav class="navbar navbar-expand-md navbar-light">
 
                      <a class="navbar-brand" href="https://front.codes/" target="_blank">
-                        <img src="/TravelMaker/img/여행을만들다_로고.png" alt=""></a>
+                        <img src="/TravelMaker/img/Logo.png" alt="Logo"></a>
 
                      <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -96,18 +96,28 @@
 
                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto py-4 py-md-0">
-                           <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                              <a class="nav-link" href="#">컨설팅요청</a>
-                           </li>
-                           <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-                              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                 aria-haspopup="true" aria-expanded="false">컨설팅</a>
-                              <div class="dropdown-menu">
-                                 <a class="dropdown-item" href="#">보낸 컨설팅</a>
-                                 <a class="dropdown-item" href="#">확정 컨설팅</a>
-
-                              </div>
-                           </li>
+               
+                           <c:choose>
+                                <c:when test="${info.user_type eq '회원' || info.user_type == null }">
+	                           		<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+		                              <a class="nav-link" href="Est_send.jsp">견적요청</a>
+		                            </li>
+		                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+		                              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+		                                 aria-haspopup="true" aria-expanded="false">컨설팅</a>
+		                              <div class="dropdown-menu">
+		                                 <a class="dropdown-item" href="#">받은견적서</a>
+		                                 <a class="dropdown-item" href="#">받은컨설팅</a>
+		                              </div>
+                           			</li>
+                           		</c:when>
+                           		<c:when test="${info.user_type eq '고수' }">
+	                           		<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+		                              <a class="nav-link" href="Est_gosu_responseList.jsp">받은견적</a>
+		                            </li>
+                           		</c:when>
+                           </c:choose>
+                           
 
                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                               <a class="nav-link" href="#">정보거래</a>
@@ -116,13 +126,20 @@
                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                               <a class="nav-link" href="#">커뮤니티</a>
                            </li>
-                           </li>
-                           <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                              <a class="nav-link" href="#">로그인</a>
-                           </li>
-                           <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                              <a class="nav-link" href="#">회원가입</a>
-                           </li>
+                           
+                           <c:choose>
+                           	<c:when test="${info != null }">
+                           		<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+	                              <a class="nav-link" href="LogoutCon.do">${info.user_name} ${info.user_type}님 로그아웃</a>
+	                            </li>
+                           	</c:when>
+                           	<c:otherwise>
+		                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+		                           <a class="nav-link" href="Login.jsp">로그인 / 회원가입</a>
+		                        </li>
+                           	</c:otherwise>
+                           </c:choose>
+                           
                         </ul>
                      </div>
 
@@ -720,7 +737,7 @@
         </div>
         <div class="btn-close"></div>
       </div>
-    </div><a id="codepen-link" href="https://www.codepen.io/seanfree" target="_blank"></a>
+    </div>
     
 
     <!-- 메인 대표 여행지 끝 -->
