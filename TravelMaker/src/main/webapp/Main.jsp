@@ -67,7 +67,7 @@
 							<li><a href="Est_nomal_response.jsp">확정 컨설팅</a></li>
 						</c:when>
 						<c:when test="${info.user_type eq '고수'}">
-							<li><a href="#">받은 컨설팅</a></li>
+							<li><a href="Est_gosu_responseList.jsp">받은 컨설팅</a></li>
 							<li><a href="#">확정 컨설팅</a></li>
 						</c:when>
 					</c:choose>
