@@ -1,5 +1,4 @@
 
-<%@page import="model.SendDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.ResDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -46,8 +45,7 @@ li {
 <body>
 
 	<div class="wrap">
-		<c:set var="gosu_response_list"
-			value="${ResDAO.gosu_responseList(info.user_id)}"></c:set>
+		<c:set var="gosu_response_list" value="${ResDAO.gosu_responseList(info.user_id)}"></c:set>
 
 		<h3>${info.user_id}님의받은견적요청 페이지</h3>
 		<c:forEach var="response_list" items="${gosu_response_list}"

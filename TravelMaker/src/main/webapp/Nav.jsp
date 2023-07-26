@@ -45,7 +45,7 @@
 											href="#" role="button" aria-haspopup="true"
 											aria-expanded="false">컨설팅</a>
 											<div class="dropdown-menu">
-												<a class="dropdown-item" href="Est_nomal_response.jsp">받은견적서</a>
+												<a class="dropdown-item" href="Est_nomal_responseList.jsp">받은견적서</a>
 												<a class="dropdown-item" href="Est_ShowConsult.jsp">받은컨설팅</a>
 											</div></li>
 											<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
