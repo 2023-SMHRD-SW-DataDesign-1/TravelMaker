@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/style.css">
 <!-- 네비 bar 수정본 link 시작 -->
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-<link rel="stylesheet" href="/TravelMaker/css/main_nav_correction.css">
+<link rel="stylesheet" href="css/main_nav_correction.css">
 <!-- 네비 bar 수정본 link 끝 -->
 </head>
 <body class="hero-anime">

@@ -36,7 +36,6 @@
 <link rel="stylesheet" href="css/daterangepicker.css">
 <link rel="stylesheet" href="css/aos.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="/TravelMaker/css/main_nav_correction.css">
 <title>Tour Free Bootstrap Template for Travel Agency by
 	Untree.co</title>
 
@@ -53,13 +52,13 @@
 <!-- 메인 사진첩 link시작 -->
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css'>
-<link rel="stylesheet" href="/TravelMaker/css/main_gallery_react.css">
+<link rel="stylesheet" href="css/main_gallery_react.css">
 <!-- 메인 사진첩 link시작 -->
 
 <!-- 메인 중간 텍스트 폰트 link 시작 -->
 <link rel='stylesheet'
 	href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css'>
-<link rel="stylesheet" href="/TravelMaker/css/middle_text.css">
+<link rel="stylesheet" href="css/middle_text.css">
 <!-- 메인 중간 텍스트 폰트 link 시작 -->
 
 
@@ -75,9 +74,9 @@
 		</div>
 		<div class="site-mobile-menu-body"></div>
 	</div>
-	
+
 	<!-- 네비게이션 시작 -->
-	
+
 	<jsp:include page="Nav.jsp"></jsp:include>
 
 	<!-- 네비게이션 끝 -->
@@ -91,72 +90,6 @@
 		<div class="container">
 
 			<div class="row align-items-center">
-
-				<!-- 메인 견적요청 틀 시작 -->
-				<div class="col-lg-7">
-
-
-					<div class="intro-wrap">
-						<h1 class="mb-5">
-							<span class="d-block">Make The Trip</span> Trip In <span
-								class="typed-words"></span>
-						</h1>
-
-						<div class="row">
-							<div class="col-12">
-								<form class="form">
-									<div class="row mb-2">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-
-
-											<select name="selectbox" id="selectbox"
-												class="form-control custom-select"
-												onchange="selectchange(this)">
-												<option value="">Destination</option>
-												<option value="l1">Peru</option>
-												<option value="l2">Japan</option>
-												<option value="l3">Thailand</option>
-												<option value="l4">Brazil</option>
-												<option value="l5">United States</option>
-												<!-- <option value="">Israel</option>
-                                    <option value="">China</option>
-                                    <option value="">Russia</option> -->
-											</select>
-
-
-
-
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
-											<input type="text" class="form-control" name="daterange">
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
-											<input type="text" class="form-control"
-												placeholder="# of People">
-										</div>
-
-									</div>
-									<div class="row align-items-center">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-											<input type="submit" class="btn btn-primary btn-block"
-												value="Search">
-										</div>
-										<div class="col-lg-8">
-											<label class="control control--checkbox mt-3"> <span
-												class="caption">Save this search</span> <input
-												type="checkbox" checked="checked" />
-												<div class="control__indicator"></div>
-											</label>
-										</div>
-									</div>
-								</form>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<!-- 메인 견적요청 틀 끝 -->
-				<!-- 메인-원그림사진 -->
 				<div class="col-lg-5">
 					<div class="slides">
 						<img src="img/hero-slider-1.jpg" alt="Image"
@@ -167,268 +100,28 @@
 						<img src="img/hero-slider-5.jpg" alt="Image" class="img-fluid">
 					</div>
 				</div>
+				<!-- 메인 견적요청 틀 시작 -->
+				<div class="col-lg-7">
+
+
+					<div class="intro-wrap">
+						<h1 class="mb-5">
+							<span class="d-block">Make The Trip</span> Trip In <span
+								class="typed-words"></span>
+						</h1>
+
+
+					</div>
+				</div>
+				<!-- 메인 견적요청 틀 끝 -->
+				<!-- 메인-원그림사진 -->
+
 
 			</div>
 		</div>
 	</div>
 
 	<!-- 메인 견적요청 끝 -->
-
-	<!-- 메인 숙소, 카페 소개 시작-->
-	<!-- <div class="untree_co-section">
-      <div class="container">
-         <div class="row mb-5 justify-content-center">
-            <div class="col-lg-6 text-center">
-               <h2 class="section-title text-center mb-3">고수 회원정보</h2>
-               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-            </div>
-         </div>
-         <div class="row align-items-stretch">
-            <div class="col-lg-4 order-lg-1">
-               <div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('images/hero-slider-1.jpg');"></div></div></div>
-            </div>
-
-            <div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
-
-               <div class="feature-1 d-md-flex">
-                  <div class="align-self-center">
-                     <span class="flaticon-house display-4 text-primary"></span>
-                     <h3>Beautiful Condo</h3>
-                     <p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-                  </div>
-               </div>
-
-               <div class="feature-1 ">
-                  <div class="align-self-center">
-                     <span class="flaticon-restaurant display-4 text-primary"></span>
-                     <h3>Restaurants & Cafe</h3>
-                     <p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-                  </div>
-               </div>
-
-            </div>
-
-            <div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" >
-
-               <div class="feature-1 d-md-flex">
-                  <div class="align-self-center">
-                     <span class="flaticon-mail display-4 text-primary"></span>
-                     <h3>Easy to Connect</h3>
-                     <p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-                  </div>
-               </div>
-
-               <div class="feature-1 d-md-flex">
-                  <div class="align-self-center">
-                     <span class="flaticon-phone-call display-4 text-primary"></span>
-                     <h3>24/7 Support</h3>
-                     <p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-                  </div>
-               </div>
-
-            </div>
-
-         </div>
-      </div>
-   </div> -->
-
-	<!-- 메인 숙소, 카페 소개 끝-->
-
-	<!-- 메인 members 시작 -->
-
-	<!-- 
-   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-   <div class="content">
-      <div class="content__container">
-         <p class="content__container__text">
-            Members
-         </p>
-
-         <ul class="content__container__list">
-            <li class="content__container__list__item">고객 : 30명</li>
-            <li class="content__container__list__item">고수 : 20명</li>
-            
-         </ul>
-
-      </div>
-   </div>
-
-   -->
-	<!-- 메인 members 끝 -->
-
-	<!-- 메인 사용자수 시작 -->
-
-	<!-- 
-   <div class="untree_co-section count-numbers py-5">
-      <div class="container">
-         <div class="row">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-               <div class="counter-wrap">
-                  <div class="counter">
-                     <span class="" data-number="9313">0</span>
-                  </div>
-                  <span class="caption">누적 사용자</span>
-               </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-               <div class="counter-wrap">
-                  <div class="counter">
-                     <span class="" data-number="8492">0</span>
-                  </div>
-                  <span class="caption">누적 견적요청수</span>
-               </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-               <div class="counter-wrap">
-                  <div class="counter">
-                     <span class="" data-number="100">0</span>
-                  </div>
-                  <span class="caption">고수 이용자수</span>
-               </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-               <div class="counter-wrap">
-                  <div class="counter">
-                     <span class="" data-number="120">0</span>
-                  </div>
-                  <span class="caption">거래내역</span>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   -->
-	<!-- 메인 사용자수 끝 -->
-
-	<!-- 메인-실시간 베스트 컨설팅 시작 -->
-	<!-- 
-   <div class="untree_co-section">
-      <div class="container">
-         <div class="row text-center justify-content-center mb-5">
-            <div class="col-lg-7"><h2 class="section-title text-center">실시간 베스트 컨설팅</h2></div>
-         </div>
-
-         <div class="owl-carousel owl-3-slider">
-
-            <div class="item">
-               <a class="media-thumb" href="images/hero-slider-1.jpg" data-fancybox="gallery">
-                  <div class="media-text">
-                     <h3>Pragser Wildsee</h3>
-                     <span class="location">Italy</span>
-                  </div>
-                  <img src="images/hero-slider-1.jpg" alt="Image" class="img-fluid">
-               </a> 
-            </div>
-
-            <div class="item">
-               <a class="media-thumb" href="images/hero-slider-2.jpg" data-fancybox="gallery">
-                  <div class="media-text">
-                     <h3>Oia</h3>
-                     <span class="location">Greece</span>
-                  </div>
-                  <img src="images/hero-slider-2.jpg" alt="Image" class="img-fluid">
-               </a> 
-            </div>
-
-            <div class="item">
-               <a class="media-thumb" href="images/hero-slider-3.jpg" data-fancybox="gallery">
-                  <div class="media-text">
-                     <h3>Perhentian Islands</h3>
-                     <span class="location">Malaysia</span>
-                  </div>
-                  <img src="images/hero-slider-3.jpg" alt="Image" class="img-fluid">
-               </a> 
-            </div>
-
-
-            <div class="item">
-               <a class="media-thumb" href="images/hero-slider-4.jpg" data-fancybox="gallery">
-                  <div class="media-text">
-                     <h3>Rialto Bridge</h3>
-                     <span class="location">Italy</span>
-                  </div>
-                  <img src="images/hero-slider-4.jpg" alt="Image" class="img-fluid">
-               </a> 
-            </div>
-
-            <div class="item">
-               <a class="media-thumb" href="images/hero-slider-5.jpg" data-fancybox="gallery">
-                  <div class="media-text">
-                     <h3>San Francisco, United States</h3>
-                     <span class="location">United States</span>
-                  </div>
-                  <img src="images/hero-slider-5.jpg" alt="Image" class="img-fluid">
-               </a> 
-            </div>
-
-            <div class="item">
-               <a class="media-thumb" href="images/hero-slider-1.jpg" data-fancybox="gallery">
-                  <div class="media-text">
-                     <h3>Lake Thun</h3>
-                     <span class="location">Switzerland</span>
-                  </div>
-                  <img src="images/hero-slider-2.jpg" alt="Image" class="img-fluid">
-               </a> 
-            </div>
-
-         </div>
-
-      </div>
-   </div> -->
-
-	<!-- 메인-실시간 베스트 컨설팅 끝 -->
-
-	<!-- 메인-이용후기 -->
-
-	<!-- <div class="untree_co-section testimonial-section mt-5">
-      <div class="container">
-         <div class="row justify-content-center">
-            <div class="col-lg-7 text-center">
-               <h2 class="section-title text-center mb-5">이용후기</h2>
-
-               <div class="owl-single owl-carousel no-nav">
-                  <div class="testimonial mx-auto">
-                     <figure class="img-wrap">
-                        <img src="images/person_2.jpg" alt="Image" class="img-fluid">
-                     </figure>
-                     <h3 class="name">Adam Aderson</h3>
-                     <blockquote>
-                        <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast
-                           of the Semantics, a large language ocean.&rdquo;</p>
-                     </blockquote>
-                  </div>
-
-                  <div class="testimonial mx-auto">
-                     <figure class="img-wrap">
-                        <img src="images/person_3.jpg" alt="Image" class="img-fluid">
-                     </figure>
-                     <h3 class="name">Lukas Devlin</h3>
-                     <blockquote>
-                        <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast
-                           of the Semantics, a large language ocean.&rdquo;</p>
-                     </blockquote>
-                  </div>
-
-                  <div class="testimonial mx-auto">
-                     <figure class="img-wrap">
-                        <img src="images/person_4.jpg" alt="Image" class="img-fluid">
-                     </figure>
-                     <h3 class="name">Kayla Bryant</h3>
-                     <blockquote>
-                        <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast
-                           of the Semantics, a large language ocean.&rdquo;</p>
-                     </blockquote>
-                  </div>
-
-               </div>
-
-            </div>
-         </div>
-      </div>
-   </div> -->
-
-	<!-- 메인-이용후기 끝 -->
 
 	<!-- 메인 중간1 텍스트 폰트 시작-->
 	<div class="hit-the-floor">gallery</div>
@@ -862,14 +555,14 @@
    </div> -->
 	<!-- 메인 -  연락창 배너 끝(쓸데없음) -->
 
-	
+
 	<!-- 푸터 시작 -->
-	
+
 	<jsp:include page="Footer.jsp"></jsp:include>
 
 	<!-- 푸터 끝 -->
-	
-	
+
+
 	<div id="overlayer"></div>
 	<div class="loader">
 		<div class="spinner-border" role="status">
