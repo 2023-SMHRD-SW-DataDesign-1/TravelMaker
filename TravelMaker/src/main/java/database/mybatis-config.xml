@@ -35,6 +35,5 @@
 		<mapper resource="mapper/InfoMapper.xml" />
 		<mapper resource="mapper/EstResponseMapper.xml" />
 		<mapper resource="mapper/EstConsultMapper.xml" />
-		<mapper resource="mapper/EstResponseMapper.xml" />
 	</mappers>
 </configuration>

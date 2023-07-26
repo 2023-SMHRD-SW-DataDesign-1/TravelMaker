@@ -1,4 +1,4 @@
-<%@page import="model.SendDTO"%>
+<%@page import="model.ResDAO"%>
 <%@page import="model.SendDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -21,23 +21,32 @@
 
 </head>
 <body>
-	<c:if test="${info == null}">
-		<script>
-			alert("로그인 후 이용해주세요.");
-			location.href = "Login.jsp";
-		</script>
-	</c:if>
-
-	<!-- partial:index.partial.html -->
 	<div class="wrapper">
+		<%
+		int est_num = Integer.parseInt(request.getParameter("est_num"));
+		System.out.println(est_num);
+		%>
+		<c:set var="nomal_responseList" value="${ResDAO.nomal_responseList(info.user_id)}"></c:set>
+		<c:set var="SendUserInfo" value="${SendDAO.SendUserInfo(info.user_id)}"></c:set>
 
-		<c:set var="send_user_info_list" value="${SendDAO.SendUserInfo(info.user_id)}"></c:set>
+		<div class="left-wrap">
+		<h3>나의 견적요청</h3>
+			<ul>
+				<li>${SendUserInfo.est_num}</li>
+				<li>${SendUserInfo.send_wr_date}</li>
+				<li>${SendUserInfo.send_country}</li>
+				<li>${SendUserInfo.send_place}</li>
+				<li>${SendUserInfo.send_s_date} ~ ${SendUserInfo.send_e_date}</li>
+				<li>${SendUserInfo.send_budget}</li>
+			</ul>
+		</div>
 
-		<c:forEach var="send_info" items="${send_user_info_list}" varStatus="status">
+		<c:forEach var="nomal_responseList" items="${nomal_responseList}"
+			varStatus="status">
 			<div class="card">
 				<button>견적승인</button>
 				<div class="img-wrap"></div>
-				<a href="#">${info.user_id}</a><br>
+				<a href="#">${nomal_responseList}</a><br>
 				<button>고수 마이페이지</button>
 				<br> <br>
 				<div class="text"
@@ -45,7 +54,7 @@
 					Lorem ipsum dolor sit amet consect adipis elit. Sapiente ipsa est
 					nulla dolorum cum modi, iste sit quia incidunt iusto suscipit totam
 					nihil vero eaque nobis dignissimos repellat magni culpa!
-					<h4>나의 견적요청</h4>
+					<h4>내가 받은견적</h4>
 					<!-- res_est_1-2 body 시작 -->
 
 					<!-- partial:index.partial.html -->
@@ -101,11 +110,7 @@
 									class="fas fa-arrow-right light-blue margin-suffix  second-color"></i>
 								<span class="margin-suffix">${send_info.send_budget}</span>
 							</div>
-							<!-- <div class="extra-data flex-row align-center sub-line">
-              <div class="margin-suffix second-color ">impactor </div>
-              <i class="fas fa-arrow-right light-blue margin-suffix  second-color"></i>
-              <span class="margin-suffix">Atreyu</span>
-            </div> -->
+							
 						</div>
 
 						<div class="line-item">
@@ -120,7 +125,8 @@
 								<!-- <div class="margin-suffix first-color">scope </div> -->
 								<i
 									class="fas fa-arrow-right light-blue margin-suffix  first-color"></i>
-								<span class="margin-suffix">${send_info.send_s_date} ~ ${send_info.send_e_date}</span>
+								<span class="margin-suffix">${send_info.send_s_date} ~
+									${send_info.send_e_date}</span>
 
 							</div>
 						</div>
