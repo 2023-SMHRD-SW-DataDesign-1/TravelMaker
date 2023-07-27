@@ -397,6 +397,34 @@
 	<script src="/TravelMaker/js/main_gallery_react.js"></script>
 	<!-- 메인 사진첩 script 끝 -->
 
+	<!--  메인 작은 사진 script 시작  -->
+	<script>
+	
+    // Function to hide/show the image based on viewport width
+    function hideImageOnResize() {
+      
+      var targetImage = document.getElementsByClassName('slides');
+      
+      //console.log(window.outerWidth, window.innerWidth);
+      
+      if (window.innerWidth <= 1200) {
+    	console.log('none');
+        targetImage[0].style.display = 'none';
+      } else {
+    	console.log('inline');
+        targetImage[0].style.display = 'block'; // or 'block' depending on your image container
+      }
+    }
+
+    // Call the function on page load
+    // hideImageOnResize();
+
+    // Call the function whenever the window is resized
+    window.addEventListener('resize',hideImageOnResize);
+    
+  </script>
+   
+	<!--  메인 작은 사진 script 끝  -->
 
 </body>
 
