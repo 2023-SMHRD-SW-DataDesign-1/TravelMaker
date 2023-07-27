@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.ResDTO"%>
+<%@page import="model.SendDTO"%>
 <%@page import="model.ResDAO"%>
 <%@page import="model.SendDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -20,168 +23,61 @@
 <!-- res_est_1-2 link 시작 -->
 
 </head>
+
+
+<jsp:include page="Nav.jsp"></jsp:include>
+
 <body>
+	<%
+	ResDAO rdao = new ResDAO();
+
+	SendDAO sdao = new SendDAO();
+	int est_num = Integer.parseInt(request.getParameter("est_num"));
+	SendDTO sdto = sdao.EstSend_nomalUser(est_num);
+	ArrayList<ResDTO> rdto_list = rdao.nomal_responseList(est_num);
+	%>
+
+
 	<div class="wrapper">
-		<%
-		int est_num = Integer.parseInt(request.getParameter("est_num"));
-		System.out.println(est_num);
-		%>
-		<c:set var="nomal_responseList" value="${ResDAO.nomal_responseList(info.user_id)}"></c:set>
-		<c:set var="SendUserInfo" value="${SendDAO.SendUserInfo(info.user_id)}"></c:set>
+
+
+		<!-- 일반유자가 요청한 본인의 견적에 대한 정보 -->
 
 		<div class="left-wrap">
-		<h3>나의 견적요청</h3>
+			<h3>나의 견적요청</h3>
 			<ul>
-				<li>${SendUserInfo.est_num}</li>
-				<li>${SendUserInfo.send_wr_date}</li>
-				<li>${SendUserInfo.send_country}</li>
-				<li>${SendUserInfo.send_place}</li>
-				<li>${SendUserInfo.send_s_date} ~ ${SendUserInfo.send_e_date}</li>
-				<li>${SendUserInfo.send_budget}</li>
+				<li><%=sdto.getEst_num()%></li>
+				<li><%=sdto.getSend_wr_date()%></li>
+				<li><%=sdto.getSend_country()%></li>
+				<li><%=sdto.getSend_content()%></li>
+				<li><%=sdto.getSend_s_date()%> ~ <%=sdto.getSend_e_date()%></li>
+				<li><%=sdto.getSend_budget()%></li>
 			</ul>
 		</div>
 
-		<c:forEach var="nomal_responseList" items="${nomal_responseList}"
-			varStatus="status">
-			<div class="card">
-				<button>견적승인</button>
-				<div class="img-wrap"></div>
-				<a href="#">${nomal_responseList}</a><br>
-				<button>고수 마이페이지</button>
-				<br> <br>
-				<div class="text"
-					data-config='{ "type": "text", "element": "div", "limit": 80, "more": "자세히보기 ↓", "less": "접기 ↑"}'>
-					Lorem ipsum dolor sit amet consect adipis elit. Sapiente ipsa est
-					nulla dolorum cum modi, iste sit quia incidunt iusto suscipit totam
-					nihil vero eaque nobis dignissimos repellat magni culpa!
-					<h4>내가 받은견적</h4>
-					<!-- res_est_1-2 body 시작 -->
+		<%
+		for (int i = 0; i < rdto_list.size(); i++) {
+		%>
+		<div class="send_gosu_content">
 
-					<!-- partial:index.partial.html -->
-					<section class="tree-view flex-column justify-center align-center">
-
-						<div class="line-item">
-							<div class="flex-row align-center sub-line">
-
-								<div
-									class="title text-uppercase flex-row justify-space-between align-center">
-									<span>국가</span> <span class="line-number"></span>
-								</div>
-							</div>
-							<div class="extra-data flex-row align-center sub-line">
-								<!-- <div class="margin-suffix first-color">국내 </div> -->
-								<i
-									class="fas fa-arrow-right first-color margin-suffix  second-color"></i>
-								<span class="margin-suffix">${send_info.send_country}</span>
-								<!-- <span class="margin-suffix">object2</span>
-			<span class="margin-suffix">object3</span> -->
-
-							</div>
-						</div>
-
-						<div class="line-item">
-							<div class="flex-row align-center sub-line">
-
-								<div
-									class="title text-uppercase flex-row justify-space-between align-center">
-									<span>목적지</span> <span class="line-number">2</span>
-								</div>
-							</div>
-							<div class="extra-data flex-row align-center sub-line">
-								<!-- <div class="margin-suffix first-color">scope </div> -->
-								<i
-									class="fas fa-arrow-right light-blue margin-suffix first-color"></i>
-								<span class="margin-suffix">${send_info.send_place}</span>
-
-							</div>
-						</div>
-
-						<div class="line-item">
-							<div class="flex-row align-center sub-line">
-
-								<div
-									class="title text-uppercase flex-row justify-space-between align-center">
-									<span>예산</span> <span class="line-number">3</span>
-								</div>
-							</div>
-							<div class="extra-data flex-row align-center sub-line">
-								<!-- <div class="margin-suffix  second-color">scope </div> -->
-								<i
-									class="fas fa-arrow-right light-blue margin-suffix  second-color"></i>
-								<span class="margin-suffix">${send_info.send_budget}</span>
-							</div>
-							
-						</div>
-
-						<div class="line-item">
-							<div class="flex-row align-center sub-line">
-
-								<div
-									class="title text-uppercase text-uppercase flex-row justify-space-between align-center">
-									<span>날짜</span> <span class="line-number">4</span>
-								</div>
-							</div>
-							<div class="extra-data flex-row align-center sub-line">
-								<!-- <div class="margin-suffix first-color">scope </div> -->
-								<i
-									class="fas fa-arrow-right light-blue margin-suffix  first-color"></i>
-								<span class="margin-suffix">${send_info.send_s_date} ~
-									${send_info.send_e_date}</span>
-
-							</div>
-						</div>
-
-						<div class="line-item">
-							<div class="flex-row align-center sub-line">
-
-								<div
-									class="title text-uppercase flex-row justify-space-between align-center">
-									<span>요청사항</span> <span class="line-number">5</span>
-								</div>
-							</div>
-							<div class="extra-data flex-row align-center sub-line">
-								<!-- <div class="margin-suffix first-color">scope </div> -->
-								<i
-									class="fas fa-arrow-right light-blue margin-suffix  first-color"></i>
-								<span class="margin-suffix">${send_info.send_content}</span>
-
-							</div>
-						</div>
-
-						<div class="line-item2">
-							<div class="flex-row align-center sub-line">
-
-								<div
-									class="title text-uppercase flex-row justify-space-between align-center">
-									<span>총 비용</span>
-
-									<!-- <span class="line-number">6</span> -->
-								</div>
-							</div>
-							<div class="extra-data flex-row align-center sub-line">
-								<!-- <div class="margin-suffix  third-color">scope </div> -->
-								<span class="margin-suffix">20,000원</span>
-								<!-- <span class="margin-suffix">object6</span> -->
-							</div>
-						</div>
-
-					</section>
-					<!-- partial -->
-					<!-- res_est_1-2 body 끝 -->
-
-				</div>
-				<!--<button class="reveal">Show more</button>-->
+			<%=rdto_list.get(i).getEst_num()%>
+			<%=rdto_list.get(i).getUser_id()%>
+			<%=rdto_list.get(i).getRes_wr_date()%>
+			<%=rdto_list.get(i).getRes_content()%>
+			<%=rdto_list.get(i).getRes_fee()%>
 
 
-			</div>
+		</div>
 
-		</c:forEach>
+
+		<%
+		}
+		%>
+
 	</div>
 
-	<script
-		src="https://cdn.jsdelivr.net/gh/tomik23/show-more@master/docs/showMore.min.js"></script>
-	<!-- partial -->
-	<script src="./js/res_est_customer.js"></script>
+
+	<jsp:include page="Footer.jsp"></jsp:include>
 
 </body>
 </html>

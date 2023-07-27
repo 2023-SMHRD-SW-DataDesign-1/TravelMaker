@@ -26,4 +26,12 @@ public class SendDAO {
 		
 		return send_user_info_list;
 	}
+	
+	public SendDTO EstSend_nomalUser(int est_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		SendDTO dto = session.selectOne("EstSend_nomalUser", est_num);
+		session.close();
+		
+		return dto;
+	}
 }

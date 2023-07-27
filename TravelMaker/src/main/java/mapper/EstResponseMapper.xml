@@ -11,6 +11,7 @@
 		select * from est_send where user_id = #{user_id}
 	</select>
 	
+	<!-- Est_nomal_response 에 대해 -->
 	<select id="nomal_responseList" resultType="ResDTO" parameterType="int">
 		select * from est_res where est_num = #{est_num}	
 	</select>
