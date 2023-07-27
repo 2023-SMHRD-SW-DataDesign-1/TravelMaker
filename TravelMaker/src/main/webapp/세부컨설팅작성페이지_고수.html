@@ -8,8 +8,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css'>
-  <link rel="stylesheet" href="css/세부컨설팅작성페이지_고수.css">
-  <link rel="stylesheet" href="css/style.css">  
+  <link rel="stylesheet" href="css/detail_consult.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   <!-- 세부작성페이지 link 및 스크립트 시작 -->
@@ -177,8 +176,9 @@
       /* top: 100px; */
       height: 300px;
       width: 800px;
+
       /* 지도랑 나란히 정렬 */
-      display: inline-block
+      /* display: inline-block */
     }
 
     #search-location {
@@ -195,7 +195,7 @@
       /* text-align: center;
    display: inline-block; */
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     /*  */
@@ -235,12 +235,18 @@
    left: 0x; */
     /* top: 100px */
     /* } */
+
+    /* #testdiv {
+      display: flex;
+      margin: auto;
+    } */
   </style>
   <!-- 세부작성페이지 스타일 끝 -->
 </head>
 
 <body>
   <!-- partial:index.partial.html -->
+  <div>
   <div>
     <nav role='navigation'>
       <ul>
@@ -270,6 +276,7 @@
           </a></li>
       </ul>
     </nav>
+  </div>
     <div>
       <div class="top-bar">
 
@@ -325,11 +332,8 @@
         <!-- 세부컨설팅작성페이지 바디 끝 -->
 
 
-
-
-
         <aside>
-          
+
 
           <!-- <div class="widget featured">
             <h2>Balance</h2>
@@ -339,12 +343,10 @@
           <div class="widget">
 
             <!-- 고객견적요청 시작 -->
-
-
             <div class="price-table-wrapper">
               <div class="pricing-table">
                 <h2 class="pricing-table__header">- 고객견적요청 -</h2>
-                
+
                 <a target="_blank" class="pricing-table__button" href="http://www.digimadmedia.com">
                   고객마이페이지 이동
                 </a>
@@ -359,9 +361,6 @@
 
             </div>
             <!-- 고객견적요청 끝 !! -->
-
-
-
             <!--
             <header>
               <h2>Quick Links</h2>
@@ -391,6 +390,11 @@
     </div>
   </div>
   <!-- partial -->
+
+
+
+
+
 
   <!-- 세부컨설팅작성페이지 스크립트 시작 -->
   <script>
