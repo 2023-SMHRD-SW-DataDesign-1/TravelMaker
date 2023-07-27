@@ -32,136 +32,43 @@
 	rel="stylesheet">
 
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-<link rel="stylesheet" href="css/daterangepicker.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/owl.carousel.min.css">
+<link rel="stylesheet" href="./css/owl.theme.default.min.css">
+<link rel="stylesheet" href="./css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="./fonts/icomoon/style.css">
+<link rel="stylesheet" href="./fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="./css/daterangepicker.css">
+<link rel="stylesheet" href="./css/aos.css">
+<link rel="stylesheet" href="./css/style.css">
 <!-- main head end -->
 
 
 <!-- =style 임시= -->
 <style>
 .container2 {
+	/* background-color: beige; */
+	/* border: 1px ridge rgb(151, 151, 151); */
 	background: #fff;
 	padding: 24px;
 	border-radius: 13px;
 	position: relative;
 	margin: 0 12px;
 	box-shadow: 0 10px 16px 0 #cde4dd;
-	left: 40px;
 }
 
-.container3 {
-	background: #fff;
-	padding: 24px;
-	border-radius: 13px;
-	position: relative;
-	margin: 0 12px;
-	box-shadow: 0 10px 16px 0 #cde4dd;
-	left: 20px;
+.ctbtn {
+	border: none;
+	background-color: rgb(206, 230, 240);
+	border-radius: 15px;
 }
 
-/* .ctbtn {
-         border: none;
-         background-color: rgb(206, 230, 240);
-         border-radius: 15px;
-      } */
 strong {
 	font-size: large;
 }
-
-/* btn 테스트 */
-.test_btn1 {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	margin-right: -2px;
-}
-
-.test_btn2 {
-	margin-left: -4px;
-}
-
-.test_btn3 {
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-left: -6px;
-}
-
-.btn_group button {
-	/* #5882FA; */
-	border: 1px solid #5882FA;
-	background-color: rgba(0, 0, 0, 0);
-	color: #5882FA;
-	padding: 4px;
-}
-
-.btn_group button:hover {
-	color: white;
-	background-color: #5882FA;
-}
-
-/* 모달 css start */
-#popupBtn {
-	font-weight: bold;
-	border: none;
-}
-
-#modalWrap {
-	position: fixed;
-	z-index: 1;
-	padding-top: 100px;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: rgba(0, 0, 0, 0.4);
-	display: none;
-}
-
-#modalBody {
-	width: 400px;
-	height: 400px;
-	padding: 30px 30px;
-	margin: 0 auto;
-	border: 1px solid #777;
-	background-color: #fff;
-}
-
-#closeBtn {
-	float: right;
-	font-weight: bold;
-	color: #777;
-	font-size: 25px;
-	cursor: pointer;
-}
-
-.div_modal {
-	width: 200px;
-	height: 100px;
-	font-size: 20px;
-	position: relative;
-	height: auto;
-}
-
-.modal_btn {
-	height: 50px;
-	width: 100px;
-	position: absolute;
-	bottom: 0px;
-	top: 230px;
-	left: 220px;
-}
-
-#input_cash {
-	width: 150px;
-}
 </style>
+
+<!-- ======= -->
 </head>
 
 <body>
@@ -176,61 +83,60 @@ strong {
 			<!-- ct name end -->
 
 			<!-- header start -->
-			<div class="container3">
-				<header>
+			<header>
 
-					<div class="container">
+				<div class="container">
 
-						<div class="profile">
+					<div class="profile">
 
-							<div class="profile-image">
+						<div class="profile-image">
 
-								<img
-									src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
-									alt="">
+							<img
+								src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
+								alt="">
 
-							</div>
+						</div>
 
-							<div class="profile-user-settings">
+						<div class="profile-user-settings">
 
-								<h1 class="profile-user-name">janedoe_</h1>
-								&nbsp; <span>5000캐시</span> &nbsp;
-								<button id="popupBtn">충전하기</button>
-								<button class="btn profile-settings-btn"
-									aria-label="profile settings">
-									<i class="fas fa-cog" aria-hidden="true"></i>
-								</button>
-								<!-- <button class="btn profile-edit-btn"></button> -->
-								<div id="btnWrap">
-									<!-- 모달창 -->
-									<div id="modalWrap">
-										<div id="modalBody">
-											<span id="closeBtn">&times;</span>
-											<!-- 모달창안 -->
-											<div class="div_h1">
-												<h1>캐쉬 충전하기</h1>
-												<br>
-											</div>
-											<div class="div_modal">
-												<input type="checkbox"> 10000원 <br> <input
-													type="checkbox"> 20000원<br> <input
-													type="checkbox"> 30000원<br> <input
-													type="checkbox"> 50000원<br> <input
-													type="checkbox"> <input type="text" id="input_cash"
-													placeholder="직접입력"><br>
-												<div class="modal_btn">
-													<button>결제하기</button>
-												</div>
+							<h1 class="profile-user-name">janedoe_</h1>
+
+							<button class="btn profile-edit-btn">5000캐시</button>
+							<button id="popupBtn">충전하기</button>
+							<button class="btn profile-settings-btn"
+								aria-label="profile settings">
+								<i class="fas fa-cog" aria-hidden="true"></i>
+							</button>
+							<!-- <button class="btn profile-edit-btn"></button> -->
+							<div id="btnWrap">
+								<!-- 모달창 -->
+								<div id="modalWrap">
+									<div id="modalBody">
+										<span id="closeBtn">&times;</span>
+										<!-- 모달창안 -->
+										<div class="div_h1">
+											<h1>캐쉬 충전하기</h1>
+											<br>
+										</div>
+										<div class="div_modal">
+											<input type="checkbox"> 10000원<br> 
+											<input type="checkbox"> 20000원<br> 
+											<input type="checkbox"> 30000원<br> 
+											<input type="checkbox"> 50000원<br> 
+											<input type="checkbox"> <input type="text" id="input_cash"
+												placeholder="직접입력"><br>
+											<div class="modal_btn">
+												<button>결제하기</button>
 											</div>
 										</div>
 									</div>
 								</div>
-
-
-
 							</div>
 
-							<!-- <div class="profile-stats">
+
+
+						</div>
+						<!-- <div class="profile-stats">
 
                             <ul>
                                 <li><span class="profile-stat-count">4.5</span> 리뷰평점</li>
@@ -240,91 +146,104 @@ strong {
 
                         </div> -->
 
-							<div class="profile-bio">
+						<div class="profile-bio">
 
-								<p>
-									<span class="profile-real-name">Jane Doe</span> <br> Lorem
-									ipsum dolor sit, amet consecteturadipisicing elit 📷✈️🏕️
-								</p>
-
-							</div>
+							<p>
+								<span class="profile-real-name">Jane Doe</span> <br> Lorem
+								ipsum dolor sit, amet consecteturadipisicing elit 📷✈️🏕️
+							</p>
 
 						</div>
 
 					</div>
 
-				</header>
-				<!-- header end -->
+				</div>
 
-				<!-- 나의 정보거래 내역 시작 -->
-				<main>
-					<div class="container2">
-						<strong> 나의 정보거래 내역</strong>
-						<p>
-							<b>[전체]</b> 총 3건
-						</p>
-						<p>
-						<div class="btn_group">
-							<button class="test_btn1">전체</button>
-							<button class="test_btn2">판매내역</button>
-							<button class="test_btn3">구매내역</button>
+			</header>
+			<!-- header end -->
+
+			<!-- 나의 정보거래 내역 시작 -->
+			<main>
+				<div class="container2">
+					<strong> 나의 정보거래 내역</strong>
+					<p>
+						<b>[전체]</b> 총 3건
+					</p>
+					<p>
+						<button class="ctbtn">전체</button>
+						<button class="ctbtn">판매내역</button>
+						<button class="ctbtn">구매내역</button>
+					</p>
+					<div class="gallery">
+
+						<div class="gallery-item" tabindex="0">
+
+							<img
+								src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+								class="gallery-image" alt="">
+
+							<div class="gallery-item-info">
+
+								<ul>
+									<li>판매자 : test</li>
+								</ul>
+
+							</div>
 						</div>
-						</p>
-						<div class="gallery">
 
-							<div class="gallery-item" tabindex="0">
+						<div class="gallery-item" tabindex="0">
 
-								<img
-									src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-									class="gallery-image" alt="">
+							<img
+								src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
+								class="gallery-image" alt="">
 
-								<div class="gallery-item-info">자세히보기</div>
-							</div>
+							<div class="gallery-item-info">
 
-							<div class="gallery-item" tabindex="0">
-
-								<img
-									src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
-									class="gallery-image" alt="">
-
-								<div class="gallery-item-info">자세히보기</div>
-							</div>
-
-							<div class="gallery-item" tabindex="0">
-
-								<img
-									src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
-									class="gallery-image" alt="">
-
-								<div class="gallery-item-info">자세히보기</div>
+								<ul>
+									<li>자세히보기</li>
+								</ul>
 
 							</div>
-							<!-- End of gallery -->
+						</div>
 
-							<div class="loader"></div>
+						<div class="gallery-item" tabindex="0">
+
+							<img
+								src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
+								class="gallery-image" alt="">
+
+							<div class="gallery-item-info">
+								<ul>
+									<li>자세히보기</li>
+								</ul>
+							</div>
 
 						</div>
-						<!-- End of container -->
-				</main>
-				<!-- 나의 정보거래 내역 끝 -->
-			</div>
+						<!-- End of gallery -->
+
+						<div class="loader"></div>
+
+					</div>
+					<!-- End of container -->
+			</main>
+			<!-- 나의 정보거래 내역 끝 -->
 
 			<!-- partial -->
-			<script src="js/script.js"></script>
+			<!-- <script src="./script.js"></script> -->
 
-			<!-- main script start -->
-			<script src="js/jquery-3.4.1.min.js"></script>
-			<script src="js/popper.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-			<script src="js/owl.carousel.min.js"></script>
-			<script src="js/jquery.animateNumber.min.js"></script>
-			<script src="js/jquery.waypoints.min.js"></script>
-			<script src="js/jquery.fancybox.min.js"></script>
-			<script src="js/aos.js"></script>
-			<script src="js/moment.min.js"></script>
-			<script src="js/daterangepicker.js"></script>
+			<!-- main script start============================================ -->
+			<script src="./js/jquery-3.4.1.min.js"></script>
+			<script src="./js/popper.min.js"></script>
+			<script src="./js/bootstrap.min.js"></script>
+			<script src="./js/owl.carousel.min.js"></script>
+			<script src="./js/jquery.animateNumber.min.js"></script>
+			<script src="./js/jquery.waypoints.min.js"></script>
+			<script src="./js/jquery.fancybox.min.js"></script>
+			<script src="./js/aos.js"></script>
+			<script src="./js/moment.min.js"></script>
+			<script src="./js/daterangepicker.js"></script>
 
-			<script src="js/typed.js"></script>
+			<script src="./js/typed.js"></script>
 			<!-- <script>
                     $(function () {
                         var slides = $('.slides'),
@@ -354,54 +273,7 @@ strong {
                 </script> -->
 
 			<script src="./js/custom.js"></script>
-			<!-- main script end -->
-
-			<!-- modal script start -->
-			<script>
-				const btn = document.getElementById('popupBtn');
-				const modal = document.getElementById('modalWrap');
-				const closeBtn = document.getElementById('closeBtn');
-
-				btn.onclick = function() {
-					modal.style.display = 'block';
-				}
-				closeBtn.onclick = function() {
-					modal.style.display = 'none';
-				}
-
-				window.onclick = function(event) {
-					if (event.target == modal) {
-						modal.style.display = "none";
-					}
-				}
-			</script>
-			<!-- modal script end -->
-
-			<script>
-				$(function() {
-
-					//직접입력 인풋박스 기존에는 숨어있다가
-
-					$("#selboxDirect").hide();
-
-					$("#selbox").change(function() {
-
-						//직접입력을 누를 때 나타남
-
-						if ($("#selbox").val() == "direct") {
-
-							$("#selboxDirect").show();
-
-						} else {
-
-							$("#selboxDirect").hide();
-
-						}
-
-					})
-
-				});
-			</script>
+			<!-- main script end============================================ -->
 </body>
 
 </html>

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>CodePen - Instagram Profile Layout with CSS Grid &amp;
@@ -13,7 +14,7 @@
 	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="./정보거래_카테고리별.css">
+<link rel="stylesheet" href="css/정보거래_카테고리별.css">
 <!--  href="style.css" => 정보거래_카테고리별.css -->
 
 <!-- main head start -->
@@ -103,15 +104,49 @@ strong {
 							<h1 class="profile-user-name">janedoe_</h1>
 
 							<button class="btn profile-edit-btn">5000캐시</button>
-							<button>충전하기</button>
-
+							<button id="popupBtn">충전하기</button>
 							<button class="btn profile-settings-btn"
 								aria-label="profile settings">
 								<i class="fas fa-cog" aria-hidden="true"></i>
 							</button>
+							<!-- <button class="btn profile-edit-btn"></button> -->
+							<div id="btnWrap">
+								<!-- 모달창 -->
+								<div id="modalWrap">
+									<div id="modalBody">
+										<span id="closeBtn">&times;</span>
+										<!-- 모달창안 -->
+										<div class="div_h1">
+											<h1>캐쉬 충전하기</h1>
+											<br>
+										</div>
+										<form action="Paytest.jsp">
+											<div class="div_modal">
+												<select name="charge">
+													<option value="5000">5000원</option>
+													<option value="10000">10000원</option>
+													<option value="30000">30000원</option>
+													<option value="50000">50000원</option>
+													<option type="number"></option>											
+												</select> 
+												<!-- <input type="checkbox" name="5000"> 5000원<br>
+												<input type="checkbox" name="10000"> 10000원<br>
+												<input type="checkbox" name="30000"> 30000원<br>
+												<input type="checkbox" name="50000"> 50000원<br>
+												<input type="checkbox"> <input type="text"
+													id="input_cash" name="free" placeholder="직접입력"><br> -->
+												<div class="modal_btn">
+													<button>결제하기</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+
 
 						</div>
-
 						<!-- <div class="profile-stats">
 
                             <ul>

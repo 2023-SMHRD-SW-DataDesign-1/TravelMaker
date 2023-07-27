@@ -14,4 +14,10 @@
 	<select id="nomal_responseList" resultType="ResDTO" parameterType="int">
 		select * from est_res where est_num = #{est_num}	
 	</select>
+	
+	<!-- 채택된견적 -->
+	<select id="showPaidlist" parameterType="String" resultType="ResDTO">
+		select * from est_res where paid = 1 and user_id = #{user_id}
+	</select>
+	
 </mapper>
