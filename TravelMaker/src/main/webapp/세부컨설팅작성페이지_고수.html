@@ -224,22 +224,18 @@
       background-color: #66CCCC;
     }
 
-    /*  */
 
-    /* #div_left {
-   width: 300px;
-   height: 900px;
-   background-color: #e6e6e6;
-   float: left;
-   position: fixed;
-   left: 0x; */
-    /* top: 100px */
-    /* } */
+    /* 네비게이션 바를 숨기기 위한 CSS 클래스 정의 */
+    .hide-on-small-screen {
+      display: block; /* 기본적으로 표시 */
+    }
 
-    /* #testdiv {
-      display: flex;
-      margin: auto;
-    } */
+    /* 미디어 쿼리를 사용하여 작은 화면에서 (너비 <= 1200px) 네비게이션 바를 숨김 */
+    @media screen and (max-width: 1455px) {
+      .hide-on-small-screen {
+        display: none; /* 작은 화면에서 숨김 */
+      }
+    }
   </style>
   <!-- 세부작성페이지 스타일 끝 -->
 </head>
@@ -247,7 +243,7 @@
 <body>
   <!-- partial:index.partial.html -->
   <div>
-  <div>
+  <div class="hide-on-small-screen">
     <nav role='navigation'>
       <ul>
         <li><a href="#">

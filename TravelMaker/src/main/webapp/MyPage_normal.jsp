@@ -169,7 +169,8 @@ strong {
 
 <body>
 	<%
-	UserDTO info = (UserDTO)session.getAttribute("info");	
+	UserDTO info = (UserDTO) session.getAttribute("info");
+	String user_id = info.getUser_id();
 	%>
 
 	<!-- ct name start -->
@@ -185,22 +186,53 @@ strong {
 			<!-- header start -->
 			<div class="container3">
 				<header>
-
 					<div class="container">
-
 						<div class="profile">
 
+						<!-- 프로필 사진 부분 -->
 							<div class="profile-image">
-
-								<img
-									src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
-									alt="">
-
+							    <!-- 사용자 프로필 사진이 있을 경우에만 사진을 보여줍니다 -->
+							    <% if (info.getUser_pic() != null && !info.getUser_pic().isEmpty()) { %>
+							        <img src="img/<%= info.getUser_pic() %>" alt="Profile Picture">
+							    <% } %>
+							
+							    <!-- 사용자 프로필 사진이 없을 경우에는 사진 업로드 기능을 보여줍니다 -->
+							    <% if (info.getUser_pic() == null || info.getUser_pic().isEmpty()) { %>
+							     	  <form action="UploadpicCon.do" method="post" enctype="multipart/form-data">
+							            <input type="file" name="profileImage" id="profileImageInput" accept="image/*">
+							            <img id="uploadedImage" src="" alt="">							            
+							            <input type="hidden" name="user_id" value="<%=user_id%>">
+							            <input type="submit" value="프로필사진 업로드">
+							        </form>
+							        
+							    <% } %>
 							</div>
+							
+							<!-- 프사 업로드 스크립트 -->
+
+							<script>
+							    const profileImageInput = document.getElementById("profileImageInput");
+							    const uploadedImage = document.getElementById("uploadedImage");
+							
+							    profileImageInput.addEventListener("change", function() {
+							        const file = profileImageInput.files[0];
+							        const reader = new FileReader();
+							
+							        reader.addEventListener("load", function() {
+							            uploadedImage.setAttribute("src", reader.result);
+							            uploadedImage.style.display = "block";
+							            profileImageInput.style.display = "none";
+							        });
+							
+							        if (file) {
+							            reader.readAsDataURL(file);
+							        }
+							    });
+							</script>
 
 							<div class="profile-user-settings">
 
-								<h1 class="profile-user-name">janedoe_</h1>
+								<h1 class="profile-user-name"><%=info.getUser_name()%></h1>
 								&nbsp; <span>현재금액 : <%=info.getUser_cash()%></span> &nbsp;
 								<button id="popupBtn">충전하기</button>
 								<button class="btn profile-settings-btn"
@@ -223,60 +255,71 @@ strong {
 													<br>
 												</div>
 												<div class="div_modal">
-													<input type="radio" name="charge" value="5000" onclick="hideCustomInput()"> 5000원 <br>
-													<input type="radio" name="charge" value="10000"	onclick="hideCustomInput()"> 10000원 <br>
-													<input type="radio" name="charge" value="30000"	onclick="hideCustomInput()"> 30000원 <br>
-													<input type="radio" name="charge" value="50000"	onclick="hideCustomInput()"> 50000원 <br>
-													<input type="radio" name="charge" id="customInputRadio" onclick="showCustomInput()"> 직접입력 
+													<input type="radio" name="charge" value="5000"
+														onclick="hideCustomInput()"> 5000원 <br> <input
+														type="radio" name="charge" value="10000"
+														onclick="hideCustomInput()"> 10000원 <br> <input
+														type="radio" name="charge" value="30000"
+														onclick="hideCustomInput()"> 30000원 <br> <input
+														type="radio" name="charge" value="50000"
+														onclick="hideCustomInput()"> 50000원 <br> <input
+														type="radio" name="charge" id="customInputRadio"
+														onclick="showCustomInput()"> 직접입력
 													<!-- 숨겨진 직접입력 값 입력 공간 -->
-													<input type="number" id="customInput" style="display: none;">
-													<!-- 값을 보내는 버튼 --> <br>
-													<input type="button" value="선택" onclick="sendChargeValue()">
+													<input type="number" id="customInput"
+														style="display: none;">
+													<!-- 값을 보내는 버튼 -->
+													<br> <input type="button" value="선택"
+														onclick="sendChargeValue()">
 												</div>
 											</div>
 										</div>
 								</div>
-								<!-- 모달 끝 -->		
+								<!-- 모달 끝 -->
 
 								</form>
-								
+
 								<!-- 모달 스크립트 시작 -->
 								<script>
-							      // "직접입력" 라디오 버튼과 숨겨진 입력 필드에 대한 참조를 가져옵니다.
-							      const customInputRadio = document.getElementById("customInputRadio");
-							      const customInput = document.getElementById("customInput");
-							
-							      function showCustomInput() {
-							         customInput.style.display = "block";
-							      }
-							
-							      function hideCustomInput() {
-							         customInput.style.display = "none";
-							      }
-							      
-							      function sendChargeValue() {
-							          var chargeValue;
-							
-							          // 직접입력 라디오 버튼이 선택되었는지 확인
-							          if (customInputRadio.checked) {
-							             // 직접입력 값 입력 공간에서 값을 가져오기
-							             chargeValue = customInput.value;
-							          } else {
-							             // 선택된 라디오 버튼의 값을 가져오기
-							             var selectedRadio = document.querySelector('input[name="charge"]:checked');
-							             chargeValue = selectedRadio.value;
-							          }
-							
-							          // 1000으로 나눈 나머지가 0인지 확인
-							          if (chargeValue % 1000 !== 0) {
-							             alert("1000단위로 입력해주세요.");
-							          } else {
-							             // Paytest 페이지로 값을 전달하기
-							             window.location.href = "Paytest.jsp?charge=" + chargeValue;
-							          }
-							       }
-							   </script>
-							   <!-- 모달 스크립트 끝 -->
+									// "직접입력" 라디오 버튼과 숨겨진 입력 필드에 대한 참조를 가져옵니다.
+									const customInputRadio = document
+											.getElementById("customInputRadio");
+									const customInput = document
+											.getElementById("customInput");
+
+									function showCustomInput() {
+										customInput.style.display = "block";
+									}
+
+									function hideCustomInput() {
+										customInput.style.display = "none";
+									}
+
+									function sendChargeValue() {
+										var chargeValue;
+
+										// 직접입력 라디오 버튼이 선택되었는지 확인
+										if (customInputRadio.checked) {
+											// 직접입력 값 입력 공간에서 값을 가져오기
+											chargeValue = customInput.value;
+										} else {
+											// 선택된 라디오 버튼의 값을 가져오기
+											var selectedRadio = document
+													.querySelector('input[name="charge"]:checked');
+											chargeValue = selectedRadio.value;
+										}
+
+										// 1000으로 나눈 나머지가 0인지 확인
+										if (chargeValue % 1000 !== 0) {
+											alert("1000단위로 입력해주세요.");
+										} else {
+											// Paytest 페이지로 값을 전달하기
+											window.location.href = "Paytest.jsp?charge="
+													+ chargeValue;
+										}
+									}
+								</script>
+								<!-- 모달 스크립트 끝 -->
 
 							</div>
 

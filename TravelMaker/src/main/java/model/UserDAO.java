@@ -39,7 +39,15 @@ public class UserDAO {
 		session.close();
 		
 		return user_info;
-
+	}
+	
+	public int uploadPic(PicDTO dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("uploadPic", dto);
+		System.out.println(row);
+		session.close();
+		
+		return row;		
 	}
 
 }
