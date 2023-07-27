@@ -862,6 +862,7 @@ h4,
   box-shadow: 0 25px 50px -10px rgba(26, 55, 77, 0.4);
   height: 608px;
   margin-bottom: -200px;
+  
 }
 
 @media (max-width: 991.98px) {
@@ -870,14 +871,16 @@ h4,
   }
 }
 
+
 .hero .slides img {
   position: absolute;
   border-radius: 200px;
   opacity: 0;
   -webkit-transition: 4s opacity ease;
   -o-transition: 4s opacity ease;
-  transition: 4s opacity ease;
-  background: #ffffff;
+  transition: 4s opacity ease;  background: #ffffff;
+  
+  
 }
 
 .hero .slides img.active {
@@ -1941,3 +1944,4 @@ h4,
 .site-footer ul.quick-info li.address:before {
   content: "\e8b4";
 }
+

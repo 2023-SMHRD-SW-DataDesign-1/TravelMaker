@@ -17,6 +17,7 @@ import controller.InfowriterCon;
 import controller.JoinCon;
 import controller.LoginCon;
 import controller.LogoutCon;
+import controller.PayCon;
 import controller.SendCon;
 
 @WebServlet("*.do")
@@ -32,6 +33,7 @@ public class FrontController extends HttpServlet {
 		list.put("InfowriterCon.do", new InfowriterCon());
 		list.put("SendCon.do", new SendCon());
 		list.put("ConsultCon.do", new ConsultCon());
+		list.put("PayCon.do", new PayCon());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

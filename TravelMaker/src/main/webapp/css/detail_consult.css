@@ -6,7 +6,7 @@ body {
   background: #AAA;
 }
 
-body > div {
+body>div {
   position: absolute;
   top: 0;
   left: 0;
@@ -17,6 +17,8 @@ body > div {
   min-width: 45em;
   margin: auto;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 nav {
@@ -27,6 +29,7 @@ nav {
   background: #FFF;
   margin-right: 1em;
 }
+
 nav ul {
   list-style: none;
   margin: 0;
@@ -35,6 +38,7 @@ nav ul {
   display: flex;
   flex-direction: column;
 }
+
 nav li {
   flex: 1;
   vertical-align: bottom;
@@ -43,20 +47,24 @@ nav li {
   align-items: center;
   border-bottom: solid 1px #E3E3E3;
 }
+
 nav li:last-child {
   border: none;
 }
+
 nav a {
   color: #AAA;
   text-decoration: none;
   font-weight: bold;
 }
+
 nav i[class*='icon-'] {
   display: block;
   font-size: 2em;
   margin-bottom: 0.3em;
 }
-nav + div {
+
+nav+div {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -66,8 +74,11 @@ div.top-bar {
   display: flex;
   height: 3em;
   margin-bottom: 1em;
+  width: 800px;
+  justify-content: center;
 }
-div.top-bar > div {
+
+div.top-bar>div {
   width: 24em;
   display: flex;
   margin-right: 1em;
@@ -76,11 +87,13 @@ div.top-bar > div {
   color: #AAA;
   font-weight: bold;
 }
-div.top-bar > div div {
+
+div.top-bar>div div {
   flex: 1;
   min-width: 12em;
 }
-div.top-bar > div button {
+
+div.top-bar>div button {
   display: block;
   width: 3em;
   color: #AAA;
@@ -88,7 +101,8 @@ div.top-bar > div button {
   border-left: solid 1px #E3E3E3;
   background: transparent;
 }
-div.top-bar > button {
+
+div.top-bar>button {
   display: block;
   width: 7em;
   text-transform: uppercase;
@@ -99,9 +113,11 @@ div.top-bar > button {
   background: rgb(200, 241, 198);
   color: #FFF;
 }
-div.top-bar > button i {
+
+div.top-bar>button i {
   display: none;
 }
+
 div.top-bar img {
   height: 2em;
   margin: 0.5em;
@@ -120,6 +136,7 @@ form.search {
   flex: 1;
   min-width: 10em;
 }
+
 form.search input {
   box-sizing: border-box;
   flex: 1;
@@ -131,6 +148,7 @@ form.search input {
   color: #AAA;
   font-weight: bold;
 }
+
 form.search button {
   width: 3em;
   height: 100%;
@@ -140,13 +158,18 @@ form.search button {
 }
 
 div.page {
-  flex: 1;
-  display: flex;
-/* 
+  /* flex: 1;
+  display: flex; */
+  /* 
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-*/  
+  min-height: 100vh;*/
+
+  /*  */
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 
@@ -166,6 +189,7 @@ aside {
   flex-direction: column;
   min-height: 30em;
 }
+
 [id="main"] h1 {
   position: absolute;
   top: 1em;
@@ -181,7 +205,8 @@ canvas {
   border-radius: 0.5rem 0.5rem 0 0;
   max-height: 15em;
 }
-canvas + h2 {
+
+canvas+h2 {
   height: 2em;
   background: #767066;
   margin: 0;
@@ -190,7 +215,8 @@ canvas + h2 {
   font-weight: bold;
   color: #D3CABB;
 }
-canvas + h2 a {
+
+canvas+h2 a {
   float: right;
   text-decoration: none;
   color: #D3CABB;
@@ -202,12 +228,14 @@ canvas + h2 a {
   padding-bottom: 1rem;
   margin-bottom: 1em;
 }
+
 .widget header {
   background: #7D7D7D;
   border-radius: 0.5rem 0.5rem 0 0;
   color: #FFF;
   position: relative;
 }
+
 .widget header:after {
   content: '';
   border-top: solid 0.5rem #7D7D7D;
@@ -218,28 +246,34 @@ canvas + h2 a {
   bottom: -0.5rem;
   left: 1rem;
 }
+
 .widget h2 {
   font-size: 1rem;
   margin: 0;
   padding: 1rem;
 }
+
 .widget p {
   margin: 0 1rem;
 }
+
 .widget.featured {
   /* background: #638E43; */
   background: rgb(200, 241, 198);
   color: #FFF;
 }
+
 .widget.featured p {
   font-weight: bold;
   font-size: 2em;
 }
+
 .widget menu {
   list-style: none;
   margin: 0 0 -1rem 0;
   padding: 0;
 }
+
 .widget menu a {
   display: block;
   text-decoration: none;
@@ -247,12 +281,15 @@ canvas + h2 a {
   font-weight: bold;
   padding: 0.7rem 1rem;
 }
+
 .widget menu li {
   border-bottom: solid 1px #E3E3E3;
 }
+
 .widget menu li:last-child {
   border: none;
 }
+
 .widget menu i[class*="icon-"] {
   float: right;
 }
@@ -262,14 +299,18 @@ form.widget {
   flex-direction: column;
   padding-bottom: 0.5em;
 }
+
 form.widget header {
   background: #66CCCC;
   margin-bottom: 0.5em;
 }
+
 form.widget header:after {
   border-top-color: #66CCCC !important;
 }
-form.widget input, form.widget textarea {
+
+form.widget input,
+form.widget textarea {
   margin: 0.5em 1em;
   border: 1px solid #E3E3E3;
   padding: 0.5em;
@@ -277,6 +318,7 @@ form.widget input, form.widget textarea {
   color: #AAA;
   font-weight: bold;
 }
+
 form.widget button[type="submit"] {
   margin: 0.5em 1em;
   border: none;
@@ -290,7 +332,7 @@ form.widget button[type="submit"] {
 }
 
 @media (max-width: 45em) {
-  body > div {
+  body>div {
     min-width: 15em;
     flex-direction: column;
   }
@@ -301,32 +343,38 @@ form.widget button[type="submit"] {
     margin-bottom: 1em;
     margin-right: 0;
   }
+
   nav ul {
     flex-direction: row;
     flex-wrap: wrap;
   }
+
   nav li {
     min-width: 7em;
     flex: 1;
   }
 
-  div.top-bar > div div {
+  div.top-bar>div div {
     min-width: 3em;
   }
-  div.top-bar > div button {
+
+  div.top-bar>div button {
     min-width: 3em;
   }
-  div.top-bar > button {
+
+  div.top-bar>button {
     width: 3em;
     min-width: 3em;
   }
-  div.top-bar > button i {
+
+  div.top-bar>button i {
     display: inline;
   }
 
   form.search {
     min-width: 3em;
   }
+
   form.search input {
     max-width: 0;
     margin: 0;
@@ -351,6 +399,7 @@ form.widget button[type="submit"] {
     display: none;
   }
 }
+
 @media (max-width: 36em) {
   nav {
     height: 21em;
@@ -360,11 +409,13 @@ form.widget button[type="submit"] {
     display: none;
   }
 }
+
 @media (max-width: 27.5em) {
   nav {
     height: 28em;
   }
 }
+
 /* req_est_info(customer) css 시작 */
 * {
   margin: 0;
@@ -432,6 +483,7 @@ h1 {
   line-height: 32px;
   padding-top: 70px;
 }
+
 h1 a {
   color: #66CCCC;
 }
@@ -441,9 +493,11 @@ h1 a {
   text-align: center;
   margin-top: 30px;
 }
+
 .price-table-wrapper .featured-table {
   box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.36);
 }
+
 .price-table-wrapper .pricing-table {
   display: inline-block;
   border: 1px solid #C8C8C8;
@@ -452,12 +506,14 @@ h1 a {
   margin: 20px;
   transition: all 0.3s ease-in-out;
 }
+
 .price-table-wrapper .pricing-table__header {
   padding: 20px;
   font-size: 20px;
   color: #909090;
   background: #E0E0E0;
 }
+
 .price-table-wrapper .pricing-table__price {
   color: #66CCCC;
   padding: 20px;
@@ -465,6 +521,7 @@ h1 a {
   font-size: 40px;
   font-weight: 500;
 }
+
 .price-table-wrapper .pricing-table__button {
   display: block;
   background: #66CCCC;
@@ -475,6 +532,7 @@ h1 a {
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
+
 .price-table-wrapper .pricing-table__button:before {
   position: absolute;
   left: -20%;
@@ -487,6 +545,7 @@ h1 a {
   opacity: 0.3;
   transition: all 0.3s ease-in-out;
 }
+
 .price-table-wrapper .pricing-table__button:after {
   position: absolute;
   content: ">";
@@ -499,34 +558,43 @@ h1 a {
   opacity: 0;
   transition: all 0.3s ease-in-out;
 }
+
 .price-table-wrapper .pricing-table__button:hover {
   background: black;
 }
+
 .price-table-wrapper .pricing-table__list {
   padding: 20px;
   color: #A0A0A0;
 }
+
 .price-table-wrapper .pricing-table__list li {
   padding: 15px;
   border-bottom: 1px solid #C8C8C8;
 }
+
 .price-table-wrapper .pricing-table__list li:last-child {
   border: none;
 }
+
 .price-table-wrapper .pricing-table:hover {
   box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.36);
 }
+
 .price-table-wrapper .pricing-table:hover .pricing-table__button {
   padding-left: 0;
   padding-right: 35px;
 }
+
 .price-table-wrapper .pricing-table:hover .pricing-table__button:before {
   top: -80%;
   transform: rotate(0deg);
   width: 100%;
 }
+
 .price-table-wrapper .pricing-table:hover .pricing-table__button:after {
   opacity: 1;
   padding-right: 15px;
 }
+
 /* 고객견적 css 끝 */

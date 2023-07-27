@@ -1,3 +1,4 @@
+<%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,46 +35,143 @@
 	rel="stylesheet">
 
 
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet" href="./css/owl.carousel.min.css">
-<link rel="stylesheet" href="./css/owl.theme.default.min.css">
-<link rel="stylesheet" href="./css/jquery.fancybox.min.css">
-<link rel="stylesheet" href="./fonts/icomoon/style.css">
-<link rel="stylesheet" href="./fonts/flaticon/font/flaticon.css">
-<link rel="stylesheet" href="./css/daterangepicker.css">
-<link rel="stylesheet" href="./css/aos.css">
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="css/daterangepicker.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/style.css">
 <!-- main head end -->
 
 
 <!-- =style 임시= -->
 <style>
 .container2 {
-	/* background-color: beige; */
-	/* border: 1px ridge rgb(151, 151, 151); */
 	background: #fff;
 	padding: 24px;
 	border-radius: 13px;
 	position: relative;
 	margin: 0 12px;
 	box-shadow: 0 10px 16px 0 #cde4dd;
+	left: 40px;
 }
 
-.ctbtn {
-	border: none;
-	background-color: rgb(206, 230, 240);
-	border-radius: 15px;
+.container3 {
+	background: #fff;
+	padding: 24px;
+	border-radius: 13px;
+	position: relative;
+	margin: 0 12px;
+	box-shadow: 0 10px 16px 0 #cde4dd;
+	left: 20px;
 }
 
+/* .ctbtn {
+         border: none;
+         background-color: rgb(206, 230, 240);
+         border-radius: 15px;
+      } */
 strong {
 	font-size: large;
 }
-</style>
 
-<!-- ======= -->
+/* btn 테스트 */
+.test_btn1 {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	margin-right: -2px;
+}
+
+.test_btn2 {
+	margin-left: -4px;
+}
+
+.test_btn3 {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left: -6px;
+}
+
+.btn_group button {
+	/* #5882FA; */
+	border: 1px solid #5882FA;
+	background-color: rgba(0, 0, 0, 0);
+	color: #5882FA;
+	padding: 4px;
+}
+
+.btn_group button:hover {
+	color: white;
+	background-color: #5882FA;
+}
+
+/* 모달 css start */
+#popupBtn {
+	font-weight: bold;
+	border: none;
+}
+
+#modalWrap {
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: none;
+}
+
+#modalBody {
+	width: 400px;
+	height: 400px;
+	padding: 30px 30px;
+	margin: 0 auto;
+	border: 1px solid #777;
+	background-color: #fff;
+}
+
+#closeBtn {
+	float: right;
+	font-weight: bold;
+	color: #777;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+.div_modal {
+	width: 200px;
+	height: 100px;
+	font-size: 20px;
+	position: relative;
+	height: auto;
+}
+
+.modal_btn {
+	height: 50px;
+	width: 100px;
+	position: absolute;
+	bottom: 0px;
+	top: 230px;
+	left: 220px;
+}
+
+#input_cash {
+	width: 150px;
+}
+</style>
 </head>
 
 <body>
+	<%
+	UserDTO info = (UserDTO)session.getAttribute("info");	
+	%>
+
 	<!-- ct name start -->
 	<div class="untree_co-section">
 		<div class="container">
@@ -85,68 +183,107 @@ strong {
 			<!-- ct name end -->
 
 			<!-- header start -->
-			<header>
+			<div class="container3">
+				<header>
 
-				<div class="container">
+					<div class="container">
 
-					<div class="profile">
+						<div class="profile">
 
-						<div class="profile-image">
+							<div class="profile-image">
 
-							<img
-								src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
-								alt="">
+								<img
+									src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
+									alt="">
 
-						</div>
+							</div>
 
-						<div class="profile-user-settings">
+							<div class="profile-user-settings">
 
-							<h1 class="profile-user-name">janedoe_</h1>
+								<h1 class="profile-user-name">janedoe_</h1>
+								&nbsp; <span>현재금액 : <%=info.getUser_cash()%></span> &nbsp;
+								<button id="popupBtn">충전하기</button>
+								<button class="btn profile-settings-btn"
+									aria-label="profile settings">
+									<i class="fas fa-cog" aria-hidden="true"></i>
+								</button>
+								<!-- <button class="btn profile-edit-btn"></button> -->
+								<div id="btnWrap">
 
-							<button class="btn profile-edit-btn">5000캐시</button>
-							<button id="popupBtn">충전하기</button>
-							<button class="btn profile-settings-btn"
-								aria-label="profile settings">
-								<i class="fas fa-cog" aria-hidden="true"></i>
-							</button>
-							<!-- <button class="btn profile-edit-btn"></button> -->
-							<div id="btnWrap">
-								<!-- 모달창 -->
-								<div id="modalWrap">
-									<div id="modalBody">
-										<span id="closeBtn">&times;</span>
-										<!-- 모달창안 -->
-										<div class="div_h1">
-											<h1>캐쉬 충전하기</h1>
-											<br>
-										</div>
-										<form action="Paytest.jsp">
-											<div class="div_modal">
-												<select name="charge">
-													<option value="5000">5000원</option>
-													<option value="10000">10000원</option>
-													<option value="30000">30000원</option>
-													<option value="50000">50000원</option>
-													<option type="number"></option>											
-												</select> 
-												<!-- <input type="checkbox" name="5000"> 5000원<br>
-												<input type="checkbox" name="10000"> 10000원<br>
-												<input type="checkbox" name="30000"> 30000원<br>
-												<input type="checkbox" name="50000"> 50000원<br>
-												<input type="checkbox"> <input type="text"
-													id="input_cash" name="free" placeholder="직접입력"><br> -->
-												<div class="modal_btn">
-													<button>결제하기</button>
+
+									<form action="Paytest.jsp">
+
+										<!-- 모달창 -->
+										<div id="modalWrap">
+											<div id="modalBody">
+												<span id="closeBtn">&times;</span>
+												<!-- 모달창안 -->
+												<div class="div_h1">
+													<h1>캐쉬 충전하기</h1>
+													<br>
+												</div>
+												<div class="div_modal">
+													<input type="radio" name="charge" value="5000" onclick="hideCustomInput()"> 5000원 <br>
+													<input type="radio" name="charge" value="10000"	onclick="hideCustomInput()"> 10000원 <br>
+													<input type="radio" name="charge" value="30000"	onclick="hideCustomInput()"> 30000원 <br>
+													<input type="radio" name="charge" value="50000"	onclick="hideCustomInput()"> 50000원 <br>
+													<input type="radio" name="charge" id="customInputRadio" onclick="showCustomInput()"> 직접입력 
+													<!-- 숨겨진 직접입력 값 입력 공간 -->
+													<input type="number" id="customInput" style="display: none;">
+													<!-- 값을 보내는 버튼 --> <br>
+													<input type="button" value="선택" onclick="sendChargeValue()">
 												</div>
 											</div>
-										</form>
-									</div>
+										</div>
 								</div>
+								<!-- 모달 끝 -->		
+
+								</form>
+								
+								<!-- 모달 스크립트 시작 -->
+								<script>
+							      // "직접입력" 라디오 버튼과 숨겨진 입력 필드에 대한 참조를 가져옵니다.
+							      const customInputRadio = document.getElementById("customInputRadio");
+							      const customInput = document.getElementById("customInput");
+							
+							      function showCustomInput() {
+							         customInput.style.display = "block";
+							      }
+							
+							      function hideCustomInput() {
+							         customInput.style.display = "none";
+							      }
+							      
+							      function sendChargeValue() {
+							          var chargeValue;
+							
+							          // 직접입력 라디오 버튼이 선택되었는지 확인
+							          if (customInputRadio.checked) {
+							             // 직접입력 값 입력 공간에서 값을 가져오기
+							             chargeValue = customInput.value;
+							          } else {
+							             // 선택된 라디오 버튼의 값을 가져오기
+							             var selectedRadio = document.querySelector('input[name="charge"]:checked');
+							             chargeValue = selectedRadio.value;
+							          }
+							
+							          // 1000으로 나눈 나머지가 0인지 확인
+							          if (chargeValue % 1000 !== 0) {
+							             alert("1000단위로 입력해주세요.");
+							          } else {
+							             // Paytest 페이지로 값을 전달하기
+							             window.location.href = "Paytest.jsp?charge=" + chargeValue;
+							          }
+							       }
+							   </script>
+							   <!-- 모달 스크립트 끝 -->
+
 							</div>
 
 
 
 						</div>
+
 						<!-- <div class="profile-stats">
 
                             <ul>
@@ -167,8 +304,7 @@ strong {
 						</div>
 
 					</div>
-
-				</div>
+			</div>
 
 			</header>
 			<!-- header end -->
@@ -181,9 +317,11 @@ strong {
 						<b>[전체]</b> 총 3건
 					</p>
 					<p>
-						<button class="ctbtn">전체</button>
-						<button class="ctbtn">판매내역</button>
-						<button class="ctbtn">구매내역</button>
+					<div class="btn_group">
+						<button class="test_btn1">전체</button>
+						<button class="test_btn2">판매내역</button>
+						<button class="test_btn3">구매내역</button>
+					</div>
 					</p>
 					<div class="gallery">
 
@@ -193,13 +331,7 @@ strong {
 								src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
 								class="gallery-image" alt="">
 
-							<div class="gallery-item-info">
-
-								<ul>
-									<li>판매자 : test</li>
-								</ul>
-
-							</div>
+							<div class="gallery-item-info">자세히보기</div>
 						</div>
 
 						<div class="gallery-item" tabindex="0">
@@ -208,13 +340,7 @@ strong {
 								src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
 								class="gallery-image" alt="">
 
-							<div class="gallery-item-info">
-
-								<ul>
-									<li>자세히보기</li>
-								</ul>
-
-							</div>
+							<div class="gallery-item-info">자세히보기</div>
 						</div>
 
 						<div class="gallery-item" tabindex="0">
@@ -223,11 +349,7 @@ strong {
 								src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
 								class="gallery-image" alt="">
 
-							<div class="gallery-item-info">
-								<ul>
-									<li>자세히보기</li>
-								</ul>
-							</div>
+							<div class="gallery-item-info">자세히보기</div>
 
 						</div>
 						<!-- End of gallery -->
@@ -238,53 +360,75 @@ strong {
 					<!-- End of container -->
 			</main>
 			<!-- 나의 정보거래 내역 끝 -->
+		</div>
 
-			<!-- partial -->
-			<script src="./script.js"></script>
+		<!-- partial -->
+		<script src="js/script.js"></script>
 
-			<!-- main script start============================================ -->
-			<script src="./js/jquery-3.4.1.min.js"></script>
-			<script src="./js/popper.min.js"></script>
-			<script src="./js/bootstrap.min.js"></script>
-			<script src="./js/owl.carousel.min.js"></script>
-			<script src="./js/jquery.animateNumber.min.js"></script>
-			<script src="./js/jquery.waypoints.min.js"></script>
-			<script src="./js/jquery.fancybox.min.js"></script>
-			<script src="./js/aos.js"></script>
-			<script src="./js/moment.min.js"></script>
-			<script src="./js/daterangepicker.js"></script>
+		<!-- main script start -->
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
+		<script src="js/jquery.animateNumber.min.js"></script>
+		<script src="js/jquery.waypoints.min.js"></script>
+		<script src="js/jquery.fancybox.min.js"></script>
+		<script src="js/aos.js"></script>
+		<script src="js/moment.min.js"></script>
+		<script src="js/daterangepicker.js"></script>
 
-			<script src="./js/typed.js"></script>
-			<!-- <script>
-                    $(function () {
-                        var slides = $('.slides'),
-                            images = slides.find('img');
+		<script src="js/typed.js"></script>
 
-                        images.each(function (i) {
-                            $(this).attr('data-id', i + 1);
-                        })
 
-                        var typed = new Typed('.typed-words', {
-                            strings: ["San Francisco.", " Paris.", " New Zealand.", " Maui.", " London."],
-                            typeSpeed: 80,
-                            backSpeed: 80,
-                            backDelay: 4000,
-                            startDelay: 1000,
-                            loop: true,
-                            showCursor: true,
-                            preStringTyped: (arrayPos, self) => {
-                                arrayPos++;
-                                console.log(arrayPos);
-                                $('.slides img').removeClass('active');
-                                $('.slides img[data-id="' + arrayPos + '"]').addClass('active');
-                            }
+		<script src="./js/custom.js"></script>
+		<!-- main script end -->
 
-                        });
-                    })
-                </script> -->
+		<!-- modal script start -->
+		<script>
+			const btn = document.getElementById('popupBtn');
+			const modal = document.getElementById('modalWrap');
+			const closeBtn = document.getElementById('closeBtn');
 
-			<script src="./js/custom.js"></script>
-			<!-- main script end============================================ -->
+			btn.onclick = function() {
+				modal.style.display = 'block';
+			}
+			closeBtn.onclick = function() {
+				modal.style.display = 'none';
+			}
+
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		</script>
+		<!-- modal script end -->
+
+		<script>
+			$(function() {
+
+				//직접입력 인풋박스 기존에는 숨어있다가
+
+				$("#selboxDirect").hide();
+
+				$("#selbox").change(function() {
+
+					//직접입력을 누를 때 나타남
+
+					if ($("#selbox").val() == "direct") {
+
+						$("#selboxDirect").show();
+
+					} else {
+
+						$("#selboxDirect").hide();
+
+					}
+
+				})
+
+			});
+		</script>
 </body>
 
 </html>
