@@ -159,6 +159,11 @@ button {
 </head>
 <body>
 
+	
+	<!-- 네비게이션 시작 -->
+	<jsp:include page="Nav.jsp"></jsp:include>
+	<!-- 네비게이션 끝 -->
+
 	<form action="InfowriterCon.do" method="post">
 
 		<div class="div_1">
