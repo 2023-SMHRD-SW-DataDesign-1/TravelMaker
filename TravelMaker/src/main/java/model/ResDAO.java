@@ -20,13 +20,13 @@ public class ResDAO {
 		return gosu_response_list;
 	}
 
-	public static ArrayList<ResDTO> nomal_responseList(String user_id) {
+	public ArrayList<ResDTO> nomal_responseList(int est_num) {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		ArrayList<ResDTO> nomal_response_list = (ArrayList) session.selectList("nomal_responseList", user_id);
+		List<ResDTO> nomal_response_list = session.selectList("nomal_responseList", est_num);
 		System.out.println("nomal_responseList 완료");
 		session.close();
 
-		return nomal_response_list;
+		return (ArrayList<ResDTO>) nomal_response_list;
 	}
 
 	public static ArrayList<SendDTO> nomal_response(String user_id) {

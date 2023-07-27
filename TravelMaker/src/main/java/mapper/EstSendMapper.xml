@@ -9,7 +9,11 @@
 	</insert>
 
 	<select id="SendUserInfo" resultType="ResDTO" parameterType="String">
-		select * from est_res where est_num = (select est_num from est_send where user_id = #{user_id});
+		select * from est_res where est_num = (select est_num from est_send where user_id = #{user_id})
+	</select>
+	
+	<select id="EstSend_nomalUser" resultType="SendDTO" parameterType="int">
+		select * from est_send where est_num = #{est_num}
 	</select>
 	
 </mapper>
