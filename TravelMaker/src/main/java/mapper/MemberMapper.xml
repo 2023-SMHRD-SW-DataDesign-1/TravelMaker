@@ -12,4 +12,14 @@
 		select * from user_info where user_id =#{user_id} and user_pw
 		=#{user_pw}
 	</select>
+	
+	<update id="chargeCash" parameterType="CashDTO" >
+		update user_info set user_cash = #{charge} where user_id = #{user_id}
+	</update>
+	
+	<select id="userInfo" parameterType="String" resultType="UserDTO">
+		select * from user_info where user_id =#{user_id}	
+	</select>
+	
+	
 </mapper>

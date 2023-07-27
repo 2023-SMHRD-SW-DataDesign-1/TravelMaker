@@ -1,3 +1,4 @@
+<%@page import="model.UserDTO"%>
 <%@page import="java.util.UUID"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -15,11 +16,12 @@
 
 	<%
 	int charge = Integer.parseInt(request.getParameter("charge"));
+	UserDTO udto = (UserDTO) session.getAttribute("info");
 
 	System.out.println(charge);
 
-	String user_id = "id나올부분";
-	String user_name = "이름나올부분";
+	String user_id = udto.getUser_id();
+	String user_name = udto.getUser_name();
 	String merchant_uid = UUID.randomUUID().toString();
 
 	%>
@@ -52,15 +54,12 @@
 				name : "도서", //결제창에 노출될 상품명
 				amount : <%=charge%>, //금액
 				buyer_id : "<%=user_id%>",
-				buyer_name : "<%=user_name%>
-		",
-				buyer_tel : "01012341234"
+				buyer_name : "<%=user_name%>"
 			},
 					function(rsp) { // callback
 						if (rsp.success) {
-							alert("완료 -> imp_uid : " + rsp.imp_uid
-									+ " / merchant_uid(orderKey) : "
-									+ rsp.merchant_uid);
+							alert("완료 -> imp_uid : " + rsp.imp_uid+ " / merchant_uid(orderKey) : "+ rsp.merchant_uid);
+							 window.location.href = "PayCon.do?charge=<%=charge%>&user_id=<%=user_id%>";
 						} else {
 							alert("실패 : 코드(" + rsp.error_code + ") / 메세지("
 									+ rsp.error_msg + ")");

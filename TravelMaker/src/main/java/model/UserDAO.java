@@ -21,7 +21,25 @@ public class UserDAO {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		UserDTO info = session.selectOne("login", dto);
 		session.close();
-		
+
 		return info;
 	}
+
+	public int chargeCash(CashDTO cdto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("chargeCash", cdto);
+		session.close();
+		
+		return row;
+	}
+
+	public UserDTO userInfo(String user_id) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		UserDTO user_info = session.selectOne("userInfo", user_id);
+		session.close();
+		
+		return user_info;
+
+	}
+
 }
