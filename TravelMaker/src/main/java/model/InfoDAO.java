@@ -31,7 +31,13 @@ public class InfoDAO {
 		String tag = session.selectOne("show", info_num);
 		session.close();
 		return tag;
+	}
 
+	public InfoDTO showInfoSelect(int info_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		InfoDTO show_info = session.selectOne("showInfoSelect", info_num);
+		session.close();
+		return show_info;
 	}
 
 }

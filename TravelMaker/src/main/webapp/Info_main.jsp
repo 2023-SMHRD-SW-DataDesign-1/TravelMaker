@@ -61,6 +61,12 @@
 	font-size: 16px;
 	z-index: 2;
 }
+
+#test111 {
+	height: 500px;
+	width: 200px;
+
+}
 </style>
 
 </head>
@@ -110,15 +116,19 @@
 				%>
 
 				<div class="item">
-					<a class="media-thumb" href="img/hero-slider-<%=(i + 1)%>.jpg"
-						data-fancybox="gallery">
+					<a class="media-thumb" href="Info_Show.jsp?info_num=<%=info_list.get(i).getInfo_num()%>">
 						<div class="media-text">
-							<h3><%= info_list.get(i).getInfo_title()%></h3>
+
+							<h3><%=info_list.get(i).getInfo_title()%></h3>
+
 							<span class="location">-</span>
 						</div> <!-- <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid"> -->
-						
-							<%=imgTags%>
-						
+
+						<div id="test111">
+						<%=imgTags%>
+							
+						</div>
+
 
 					</a>
 				</div>

@@ -61,7 +61,7 @@
 
 
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-									class="nav-link" href="#">정보거래</a></li>
+									class="nav-link" href="Info_main.jsp">정보거래</a></li>
 
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
 									class="nav-link" href="#">커뮤니티</a></li>

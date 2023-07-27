@@ -268,6 +268,11 @@ button {
 					latInput.value = marker.getPosition().lat();
 					lngInput.value = marker.getPosition().lng();
 				});
+				   // 위치 검색 후 마커를 생성했으므로, lat과 lng 값을 업데이트합니다.
+	            const latInput = document.getElementById('lat-input');
+	            const lngInput = document.getElementById('lng-input');
+	            latInput.value = place.geometry.location.lat();
+	            lngInput.value = place.geometry.location.lng();
 			});
 		}
 	</script>
