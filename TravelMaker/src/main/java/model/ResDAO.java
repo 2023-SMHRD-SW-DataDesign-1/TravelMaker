@@ -36,4 +36,13 @@ public class ResDAO {
 
 		return (ArrayList<SendDTO>) nomal_response;
 	}
+
+	public ArrayList<ResDTO> showPaidlist(String user_id) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<ResDTO> paid_list = session.selectList("showPaidlist", user_id);
+		session.close();
+
+		return (ArrayList<ResDTO>) paid_list;
+
+	}
 }

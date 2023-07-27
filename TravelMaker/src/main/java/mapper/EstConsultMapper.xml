@@ -10,7 +10,7 @@
 	</insert>
 
 	<select id="showConsult"  parameterType="String" resultType="ConsultDTO">
-		select * from est_consult where est_num = (select est_num from est_send where user_id=#{user_id})
+		select * from est_consult where est_num in(select est_num from est_send where user_id=#{user_id})
 	</select>
 
 </mapper>
