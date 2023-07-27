@@ -23,7 +23,13 @@ public class ConsultDAO {
 		List<ConsultDTO> cons_list = session.selectList("showConsult", user_id);
 		session.close();
 		return (ArrayList<ConsultDTO>) cons_list;
+	}
 
+	public ArrayList<SendDTO> showEstimate(String user_id) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<SendDTO> esti_list = session.selectList("showEstimate", user_id);
+		session.close();
+		return (ArrayList<SendDTO>) esti_list;
 	}
 
 }
