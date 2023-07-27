@@ -3,259 +3,436 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>CodePen - Instagram Profile Layout with CSS Grid &amp; Flexbox</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="./정보거래_카테고리별.css">
-    <!--  href="style.css" => 정보거래_카테고리별.css -->
-    <!-- main head start -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Untree.co">
-    <link rel="shortcut icon" href="./favicon.png">
-    <meta name="description" content="" />
-    <meta name="keywords" content="bootstrap, bootstrap4" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/owl.carousel.min.css">
-    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="./css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="./fonts/icomoon/style.css">
-    <link rel="stylesheet" href="./fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="./css/daterangepicker.css">
-    <link rel="stylesheet" href="./css/aos.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <!-- main head end -->
+<meta charset="UTF-8">
+<title>CodePen - Instagram Profile Layout with CSS Grid &amp;
+	Flexbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="css/정보거래_카테고리별.css">
+<!--  href="style.css" => 정보거래_카테고리별.css -->
+<!-- main head start -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Untree.co">
+<link rel="shortcut icon" href="./favicon.png">
+<meta name="description" content="" />
+<meta name="keywords" content="bootstrap, bootstrap4" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="css/daterangepicker.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/style.css">
+<!-- main head end -->
 
-    <!-- =style 임시= -->
-    <style>
-        .container2 {
-            margin: 15px 25px 15px 0px;
-            padding: 10px;
+<!-- =style 임시= -->
+<style>
+.container2 {
+	/* margin: 15px 25px 15px 0px;
+         padding: 10px; */
+	background: #fff;
+	padding: 24px;
+	border-radius: 13px;
+	position: relative;
+	margin: 0 12px;
+	box-shadow: 0 10px 16px 0 #cde4dd;
+	left: 40px;
+}
 
-            background: #fff;
-            padding: 24px;
-            border-radius: 13px;
-            position: relative;
-            margin: 0 12px;
-            box-shadow: 0 10px 16px 0 #cde4dd;
-        }
+.container3 {
+	background: #fff;
+	padding: 24px;
+	border-radius: 13px;
+	position: relative;
+	margin: 0 12px;
+	box-shadow: 0 10px 16px 0 #cde4dd;
+	left: 20px;
+}
 
-        .gallery {
-            flex-direction: column;
-        }
+.gallery {
+	flex-direction: column;
+}
 
-        strong {
-            font-size: large;
-        }
+strong {
+	font-size: large;
+}
 
-        .btnn {
-            /* 1 */
-            /* background-color: skyblue;
-            border: none;
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 15px; */
+.btnn {
+	position: relative;
+	border: none;
+	display: inline-block;
+	border-radius: 15px;
+	font-family: "paybooc-Light", sans-serif;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	font-weight: 600;
+	transition: 0.25s;
+}
 
-            position: relative;
-            border: none;
-            display: inline-block;
-            border-radius: 15px;
-            font-family: "paybooc-Light", sans-serif;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.25s;
-        }
-    </style>
-    <!-- ===== -->
+/* 모달 css start */
+#popupBtn {
+	color: white;
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#modalWrap {
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: none;
+}
+
+#modalBody {
+	width: 600px;
+	height: 565px;
+	padding: 30px 30px;
+	margin: 0 auto;
+	border: 1px solid #777;
+	background-color: #fff;
+}
+
+#closeBtn {
+	float: right;
+	font-weight: bold;
+	color: #777;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+/* =====btn2 */
+#popupBtn2 {
+	color: white;
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#modalWrap2 {
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: none;
+}
+
+#closeBtn2 {
+	float: right;
+	font-weight: bold;
+	color: #777;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+/* =====btn3 */
+#popupBtn3 {
+	color: white;
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#modalWrap3 {
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: none;
+}
+
+#closeBtn3 {
+	float: right;
+	font-weight: bold;
+	color: #777;
+	font-size: 25px;
+	cursor: pointer;
+}
+</style>
+
 
 </head>
 
 <body>
-    <!-- ct name start -->
-    <div class="untree_co-section">
-        <div class="container">
-            <div class="row text-center justify-content-center mb-5">
-                <div class="col-lg-7">
-                    <h1 class="section-title text-center">고수 마이페이지</h1>
-                </div>
-            </div>
-            <!-- ct name end -->
-            <!-- header start -->
-            <header>
-                <div class="container">
-                    <div class="profile">
-                        <div class="profile-image">
-                            <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
-                                alt="">
-                        </div>
-                        <div class="profile-user-settings">
-                            <h1 class="profile-user-name">janedoe_</h1>
-                            <button class="btn profile-edit-btn">5000캐시</button>
-                            <button>충전하기</button>
-                            <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog"
-                                    aria-hidden="true"></i></button>
-                        </div>
-                        <div class="profile-stats">
-                            <ul>
-                                <li><span class="profile-stat-count">4.5</span> 리뷰평점</li>
-                                <li><span class="profile-stat-count">22</span> 리뷰수</li>
-                                <li><span class="profile-stat-count">35</span> 고용수</li>
-                            </ul>
-                        </div>
-                        <div class="profile-bio">
-                            <p><span class="profile-real-name">Jane Doe</span> <br>
-                                Lorem ipsum dolor sit, amet consecteturadipisicing elit 📷✈️🏕️</p>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!-- header end -->
-            <!-- 포트폴리오 시작 -->
-            &nbsp;&nbsp;
-            <b>고수 서비스 상세설명</b>
-            <main>
-                <div class="container2">
-                    <strong>포트폴리오</strong>
-                    <!-- <h3>포트폴리오</h3> -->
-                    <div class="gallery">
-                        <div class="gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-                                class="gallery-image" alt="">
-                            <div class="gallery-item-info">
-                                <ul>
-                                    <li>자세히보기</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
-                                class="gallery-image" alt="">
-                            <div class="gallery-item-info">
-                                <ul>
-                                    <li>자세히보기</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
-                                class="gallery-image" alt="">
-                            <div class="gallery-item-info">
-                                <ul>
-                                    <li>자세히보기</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- End of gallery -->
-                        <div>
-                            <button class="btnn"> 포트폴리오 추가등록</button>
-                            <button class="btnn"> 수정</button>
-                        </div>
-                        <div class="loader"></div>
-                    </div>
-                    <!-- End of container -->
-            </main>
-            <!-- 포트폴리오 끝 -->
-            <br>
-            <!-- 사진 및 동영상 시작 -->
-            <main>
-                <div class="container2">
-                    <strong>사진 및 동영상</strong>
-                    <!-- <h3>사진 및 동영상</h3> -->
-                    <div class="gallery">
-                        <div class="gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-                                class="gallery-image" alt="">
-                            <div class="gallery-item-info">
-                                <ul>
-                                    <li>자세히보기</li>
-                                </ul>
-                                <!-- 좋아요, 댓글 표시 -->
-                                <!-- <ul>
+	<!-- 모달 html start -->
+	<!-- <div id="btnWrap">
+      <button typ="button" id="popupBtn">모달 팝업 띄우기</button>
+   </div>
+
+   <div id="modalWrap">
+      <div id="modalBody">
+         <span id="closeBtn">&times;</span>
+         <p>modal-popup 입니다.</p>
+      </div>
+   </div> -->
+	<!-- 모달 html end -->
+
+
+	<!-- ct name start -->
+	<div class="untree_co-section">
+		<div class="container">
+			<div class="row text-center justify-content-center mb-5">
+				<div class="col-lg-7">
+					<h1 class="section-title text-center">고수 마이페이지</h1>
+				</div>
+			</div>
+			<!-- ct name end -->
+			<!-- header start -->
+			<div class="container3">
+				<header>
+					<div class="container">
+						<div class="profile">
+							<div class="profile-image">
+								<img
+									src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
+									alt="">
+							</div>
+							<div class="profile-user-settings">
+								<h1 class="profile-user-name">janedoe_</h1>
+								<button class="btn profile-edit-btn">5000캐시</button>
+								<button>충전하기</button>
+								<button class="btn profile-settings-btn"
+									aria-label="profile settings">
+									<i class="fas fa-cog" aria-hidden="true"></i>
+								</button>
+							</div>
+							<div class="profile-stats">
+								<ul>
+									<li><span class="profile-stat-count">4.5</span> 리뷰평점</li>
+									<li><span class="profile-stat-count">22</span> 리뷰수</li>
+									<li><span class="profile-stat-count">35</span> 고용수</li>
+								</ul>
+							</div>
+							<div class="profile-bio">
+								<p>
+									<span class="profile-real-name">Jane Doe</span> <br> Lorem
+									ipsum dolor sit, amet consecteturadipisicing elit 📷✈️🏕️
+								</p>
+							</div>
+						</div>
+					</div>
+				</header>
+				<!-- header end -->
+				<!-- 포트폴리오 시작 -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>고수 서비스 상세설명</b>
+				<main>
+					<div class="container2">
+						<strong>포트폴리오</strong>
+						<!-- <h3>포트폴리오</h3> -->
+						<div class="gallery">
+							<div class="gallery-item" tabindex="0">
+								<img
+									src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+									class="gallery-image" alt="">
+								<div class="gallery-item-info">
+									<ul>
+										<li>자세히보기</li>
+									</ul>
+								</div>
+							</div>
+							<div class="gallery-item" tabindex="0">
+								<img
+									src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
+									class="gallery-image" alt="">
+								<div class="gallery-item-info">
+									<ul>
+										<li>자세히보기</li>
+									</ul>
+								</div>
+							</div>
+							<div class="gallery-item" tabindex="0">
+								<img
+									src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
+									class="gallery-image" alt="">
+								<div class="gallery-item-info">
+									<ul>
+										<li>자세히보기</li>
+									</ul>
+								</div>
+							</div>
+							<!-- End of gallery -->
+							<div>
+								<button class="btnn">포트폴리오 추가등록</button>
+								<button class="btnn">수정</button>
+							</div>
+							<div class="loader"></div>
+						</div>
+						<!-- End of container -->
+				</main>
+				<!-- 포트폴리오 끝 -->
+				<br>
+				<!-- 사진 및 동영상 시작 -->
+				<main>
+					<div class="container2">
+						<strong>사진 및 동영상</strong>
+						<!-- <h3>사진 및 동영상</h3> -->
+						<div class="gallery">
+							<div class="gallery-item" tabindex="0">
+								<img
+									src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+									class="gallery-image" alt="">
+								<div class="gallery-item-info" id="btnWrap">
+									<button typ="button" id="popupBtn">자세히보기</button>
+									<!-- 모달창 -->
+									<div id="modalWrap">
+										<div id="modalBody">
+											<span id="closeBtn">&times;</span>
+											<p>
+												<img
+													src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop">
+											</p>
+										</div>
+									</div>
+									<!-- 좋아요, 댓글 표시 -->
+									<!-- <ul>
                                     <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i
                                             class="fas fa-heart" aria-hidden="true"></i> 56</li>
                                     <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i
                                             class="fas fa-comment" aria-hidden="true"></i> 2</li>
                                 </ul> -->
-                            </div>
-                        </div>
-                        <div class="gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
-                                class="gallery-image" alt="">
-                            <div class="gallery-item-info">
-                                <ul>
-                                    <li>자세히보기</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
-                                class="gallery-image" alt="">
-                            <div class="gallery-item-info">
-                                <ul>
-                                    <li>자세히보기</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- End of gallery -->
-                        <div>
-                            <button class="btnn"> 사진 및 동영상 추가등록</button>
-                            <button class="btnn"> 수정</button>
-                        </div>
-                        <div class="loader"></div>
-                    </div>
-                    <!-- End of container -->
-            </main>
-            <!-- 사진 및 동영상 끝 -->
-            <!-- partial -->
-            <script src="./script.js"></script>
-            <!-- main script start============================================ -->
-            <script src="./js/jquery-3.4.1.min.js"></script>
-            <script src="./js/popper.min.js"></script>
-            <script src="./js/bootstrap.min.js"></script>
-            <script src="./js/owl.carousel.min.js"></script>
-            <script src="./js/jquery.animateNumber.min.js"></script>
-            <script src="./js/jquery.waypoints.min.js"></script>
-            <script src="./js/jquery.fancybox.min.js"></script>
-            <script src="./js/aos.js"></script>
-            <script src="./js/moment.min.js"></script>
-            <script src="./js/daterangepicker.js"></script>
-            <script src="./js/typed.js"></script>
-            <script>
-                $(function () {
-                    var slides = $('.slides'),
-                        images = slides.find('img');
-                    images.each(function (i) {
-                        $(this).attr('data-id', i + 1);
-                    })
-                    var typed = new Typed('.typed-words', {
-                        strings: ["San Francisco.", " Paris.", " New Zealand.", " Maui.", " London."],
-                        typeSpeed: 80,
-                        backSpeed: 80,
-                        backDelay: 4000,
-                        startDelay: 1000,
-                        loop: true,
-                        showCursor: true,
-                        preStringTyped: (arrayPos, self) => {
-                            arrayPos++;
-                            console.log(arrayPos);
-                            $('.slides img').removeClass('active');
-                            $('.slides img[data-id="' + arrayPos + '"]').addClass('active');
-                        }
-                    });
-                })
-            </script>
-            <script src="./js/custom.js"></script>
-            <!-- main script end============================================ -->
+								</div>
+							</div>
+							<div class="gallery-item" tabindex="0">
+								<img
+									src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
+									class="gallery-image" alt="">
+								<div class="gallery-item-info" id="btnWrap">
+									<button typ="button" id="popupBtn2">자세히보기</button>
+									<div id="modalWrap2">
+										<div id="modalBody">
+											<span id="closeBtn2">&times;</span>
+											<p>
+												<img
+													src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop">
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="gallery-item" tabindex="0">
+								<img
+									src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
+									class="gallery-image" alt="">
+								<div class="gallery-item-info" id="btnWrap">
+									<button typ="button" id="popupBtn3">자세히보기</button>
+									<div id="modalWrap3">
+										<div id="modalBody">
+											<span id="closeBtn3">&times;</span>
+											<p>
+												<img
+													src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop">
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- End of gallery -->
+							<div>
+								<button class="btnn">사진 및 동영상 추가등록</button>
+								<button class="btnn">수정</button>
+							</div>
+							<div class="loader"></div>
+						</div>
+						<!-- End of container -->
+				</main>
+			</div>
+
+			<!-- 사진 및 동영상 끝 -->
+			<!-- partial -->
+			<script src="js/script.js"></script>
+			<!-- main script start============================================ -->
+			<script src="js/jquery-3.4.1.min.js"></script>
+			<script src="js/popper.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/owl.carousel.min.js"></script>
+			<script src="js/jquery.animateNumber.min.js"></script>
+			<script src="js/jquery.waypoints.min.js"></script>
+			<script src="js/jquery.fancybox.min.js"></script>
+			<script src="js/aos.js"></script>
+			<script src="js/moment.min.js"></script>
+			<script src="js/daterangepicker.js"></script>
+			<script src="js/typed.js"></script>
+
+			<script src="js/custom.js"></script>
+			<!-- main script end============================================ -->
+
+			<!-- modal script start -->
+			<script>
+				const btn = document.getElementById('popupBtn');
+				const modal = document.getElementById('modalWrap');
+				const closeBtn = document.getElementById('closeBtn');
+
+				const btn2 = document.getElementById('popupBtn2');
+				const modal2 = document.getElementById('modalWrap2');
+				const closeBtn2 = document.getElementById('closeBtn2');
+
+				const btn3 = document.getElementById('popupBtn3');
+				const modal3 = document.getElementById('modalWrap3');
+				const closeBtn3 = document.getElementById('closeBtn3');
+
+				btn.onclick = function() {
+					modal.style.display = 'block';
+				}
+				closeBtn.onclick = function() {
+					modal.style.display = 'none';
+				}
+
+				window.onclick = function(event) {
+					if (event.target == modal) {
+						modal.style.display = "none";
+					}
+				}
+
+				btn2.onclick = function() {
+					modal2.style.display = 'block';
+				}
+				closeBtn2.onclick = function() {
+					modal2.style.display = 'none';
+				}
+
+				btn3.onclick = function() {
+					modal3.style.display = 'block';
+				}
+				closeBtn3.onclick = function() {
+					modal3.style.display = 'none';
+				}
+			</script>
+			<!-- modal script end -->
 </body>
 
 </html>
