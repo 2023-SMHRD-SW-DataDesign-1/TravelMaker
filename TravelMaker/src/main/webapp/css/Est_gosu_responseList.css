@@ -587,7 +587,6 @@ button, a {
   &:before { top: 0;}
   &:after { bottom: 0; }*/
 }
-
 .more-wrapper {
   position: relative;
 }

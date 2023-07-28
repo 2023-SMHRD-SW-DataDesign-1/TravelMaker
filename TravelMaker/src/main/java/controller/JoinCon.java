@@ -31,6 +31,7 @@ public class JoinCon implements Command {
 		String user_name = request.getParameter("name");
 		String user_email = request.getParameter("email");
 		String user_pw = request.getParameter("pw");
+		String act_area = request.getParameter("act_area");
 
 		System.out.println("id : " + user_id);
 		System.out.println("type : " + user_type);
@@ -38,7 +39,7 @@ public class JoinCon implements Command {
 		System.out.println("email : " + user_email);
 		System.out.println("pw : " + user_pw);
 
-		UserDTO dto = new UserDTO(user_id, user_type, user_name, user_email, user_pw);
+		UserDTO dto = new UserDTO(user_id, user_type, user_name, user_email, user_pw, act_area);
 		System.out.println(dto);
 		
 		UserDAO dao = new UserDAO();

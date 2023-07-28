@@ -43,6 +43,21 @@ public class ResDAO {
 		session.close();
 
 		return (ArrayList<ResDTO>) paid_list;
+	}
 
+	public ArrayList<ResDTO> showUnPaidlist(String user_id) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<ResDTO> paid_list = session.selectList("showUnPaidlist", user_id);
+		session.close();
+
+		return (ArrayList<ResDTO>) paid_list;
+	}
+	
+	public int GosuResponse(ResDTO dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.insert("GosuResponse", dto);
+		session.close();
+	
+		return row;
 	}
 }

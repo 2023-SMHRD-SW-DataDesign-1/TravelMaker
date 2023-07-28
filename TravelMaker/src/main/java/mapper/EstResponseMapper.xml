@@ -21,4 +21,13 @@
 		select * from est_res where paid = 1 and user_id = #{user_id}
 	</select>
 	
+	<select id="showUnPaidlist" parameterType="String" resultType="ResDTO">
+		select * from est_res where paid = 0 and user_id = #{user_id}
+	</select>
+	
+	<insert id="GosuResponse" parameterType="ResDTO">
+		insert into est_res(res_num, est_num, user_id, res_wr_date, res_content, res_fee)
+		values(res_num_seq.nextVal, #{est_num}, #{user_id}, sysdate, #{res_content}, #{res_fee})
+	</insert>
+	
 </mapper>

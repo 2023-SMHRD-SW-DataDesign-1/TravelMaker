@@ -1,4 +1,6 @@
 
+<%@page import="model.SendDTO"%>
+<%@page import="model.SendDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
@@ -34,7 +36,9 @@
             flex-direction: row;
             flex-wrap: wrap;
         }
-
+		.editor-contents form{
+			width: 60%;
+		}
         #tip-title-box {
             width: 100%;
             display: flex;
@@ -54,22 +58,26 @@
         }
 
         #editor-box {
-            width: 700px;
+            width: 100%;
+            height: 500px;
+            margin-bottom: 10px;
         }
-		#deitor-box textare{
+		#editor-box textarea{
 			width: 100%;
-			height: 60%;
+			height: 100%;
+			resize: none;
 		}
         #btn-box {
             width: 100%;
-            display: flex;
-            justify-content: center;
         }
-
-        #btn-box-center {
-            width: 700px;
-        }
-
+		#btn-box-center{
+			display: flex;
+			justify-content: space-between;
+		}
+		#btn-box-center div{
+			display: flex;
+			font-weight: bold;
+		}
         #cancel-btn {
             width: 160px;
             height: 40px;
@@ -91,19 +99,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            border: none;
         }
 
         .div_test {
             background-color: aliceblue;
             box-shadow: 2px 5px 15px 5px gainsboro;
-
-
             text-align: center;
-
-            width: 100%;
+            width: 60%;
             height: 100px;
+            margin: 20px auto;
         }
-
+		.div_test_title{
+			width: 60%;
+			font-size: 2rem;
+			font-weight: 500;
+			display: block;
+			margin: 25px auto;
+		}
         .div_title {
             text-align: center;
 
@@ -114,7 +127,12 @@
 </head>
 
 <body>
+	<%
+	SendDAO sdao = new SendDAO();
 	
+	int est_num = Integer.parseInt(request.getParameter("est_num"));
+	SendDTO sdto = sdao.EstSend_nomalUser(est_num);
+	%>
 	<div class="hero-anime">
 		<div class="navigation-wrap bg-light start-header start-style">
 		<div class="container">
@@ -156,7 +174,7 @@
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
 											class="nav-link" href="Est_gosu_responseList.jsp">받은견적</a></li>
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-											class="nav-link" href="#">채택된견적</a></li>
+											class="nav-link" href="Paid_est.jsp">채택된견적</a></li>
 									</c:when>
 								</c:choose>
 
@@ -190,48 +208,51 @@
 	</div>
 	
     <div class="div_title">
-        <h2 style="padding: 30px 0;"><b>test</b>님의 견적 요청사항</h2>
+        <h2 style="padding: 30px 0;"><b><%=sdto.getUser_id()%></b>님의 견적 요청사항</h2>
     </div>
 
+    <span class="div_test_title">견적서 작성</span>
     <div class="div_test">
         <div style="border: 1px solid rgb(237, 239, 240); float: left; width: 20%; height: 100px; padding: 30px 0;">
             국가선택<br>
-            <b>일본</b>
+            <b><%=sdto.getSend_country()%></b>
         </div>
         <div style="border: 1px solid rgb(237, 239, 240); float: left; width: 20%; height: 100px; padding: 30px 0;">
             목적지설정<br>
-            <b>오사카</b>
+            <b><%=sdto.getSend_place()%></b>
         </div>
         <div style="border: 1px solid rgb(237, 239, 240); float: left; width: 20% ; height: 100px; padding: 30px 0;">
             예산설정<br>
-            <b>100만~120만</b>
+            <b><%=sdto.getSend_budget()%></b>
         </div>
         <div style="border: 1px solid rgb(237, 239, 240); float: left; width: 20% ; height: 100px; padding: 30px 0;">
             날짜선택<br>
-            <b>7/24~7/25</b>
+            <b><%=sdto.getSend_s_date()%> ~<br> <%=sdto.getSend_e_date()%></b>
         </div>
         <div style="border: 1px solid rgb(237, 239, 240); float: left; width: 20% ; height: 100px; padding: 30px 0;">
             추가요청사항<br>
-            <b>맛집위주</b>
+            <b><%=sdto.getSend_content()%></b>
         </div>
     </div>
 
     <div class="editor-contents">
-        <div id="tip-title-box">
-            <input id="tip-title" placeholder="제목을 입력해 주세요">
-        </div>
+    	<form action="GosuResponseCon.do?est_num=<%=est_num%>" method="post">
         <!-- Editor -->
         <div id="editor-box">
-            <textarea rows="10" cols="10"></textarea>
+            <textarea name="res_content"></textarea>
         </div>
         <!-- Submit -->
         <div id="btn-box">
             <div id="btn-box-center">
-                <div id="cancel-btn">취소</div>
-                <div id="submit-btn">견적서보내기</div>
+                <a href="Est_gosu_responseList.jsp" id="cancel-btn">취소</a>
+                <div>
+	                <input type="number" name="res_fee" class="fee-box" palceholder="원하시는 가격을 입력해주세요.">
+	                <input type="submit" id="submit-btn" value="견적서보내기">
+                </div>
             </div>
         </div>
-       </div>
+        </form>
+	</div>
        
        <jsp:include page="Footer.jsp"></jsp:include>
        

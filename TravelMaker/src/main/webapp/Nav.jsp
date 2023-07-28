@@ -54,7 +54,7 @@
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
 											class="nav-link" href="Est_gosu_responseList.jsp">받은견적</a></li>
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-											class="nav-link" href="#">채택된견적</a></li>
+											class="nav-link" href="Paid_est.jsp">채택된견적</a></li>
 									</c:when>
 								</c:choose>
 
