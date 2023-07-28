@@ -23,5 +23,9 @@
 	<select id="showCateInfo" parameterType="String" resultType="InfoDTO">
 		select * from info_trade where info_cate = #{info_cate}	
 	</select>
+	
+	<select id="countBuy" parameterType="int" resultType="int">
+		select count(info_num) from trade_his where info_num = #{info_num}
+	</select>
 
 </mapper>
