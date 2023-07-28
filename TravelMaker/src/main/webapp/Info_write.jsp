@@ -165,7 +165,7 @@ button {
 		<div class="div_1">
 			<select class="select_1" name="info_cate">
 				<option disabled selected>카테고리</option>
-				<option value="명소">명소</option>
+				<option value="사진">사진</option>
 				<option value="맛집">맛집</option>
 				<option value="숙소">숙소</option>
 			</select> &nbsp; &nbsp; &nbsp; 제목 : <input class="input_1" type="text"
