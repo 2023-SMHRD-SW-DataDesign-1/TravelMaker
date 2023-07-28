@@ -39,13 +39,21 @@ public class InfoDAO {
 		session.close();
 		return show_info;
 	}
-	
-	public ArrayList<InfoDTO> showCateInfo(String info_cate){
+
+	public ArrayList<InfoDTO> showCateInfo(String info_cate) {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		List<InfoDTO> pic_list = session.selectList("showCateInfo", info_cate);
 		session.close();
-		return (ArrayList<InfoDTO>) pic_list;		
-	}	
-	
+		return (ArrayList<InfoDTO>) pic_list;
+	}
+
+	public int countBuy(int info_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int buy = session.selectOne("countBuy", info_num);
+		session.close();
+		
+		return buy;
+
+	}
 
 }

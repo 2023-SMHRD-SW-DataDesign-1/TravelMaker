@@ -1,3 +1,4 @@
+<%@page import="model.UserDTO"%>
 <%@page import="model.InfoDTO"%>
 <%@page import="java.util.regex.Pattern"%>
 <%@page import="java.util.regex.Matcher"%>
@@ -58,13 +59,21 @@
 	String infouser_id = request.getParameter("infouser_id");
 	System.out.println(info_num);
 	
+	UserDTO info = (UserDTO) session.getAttribute("info");
+	
+	InfoDAO idao = new InfoDAO();
+	
+	int buy = idao.countBuy(info_num);
+			
+	
+	
 	%>
 
     <!-- img start -->
     <!-- 이미지 알고리즘 -->
     
     	<%
-    	InfoDAO idao = new InfoDAO();
+    	
     	InfoDTO idto = idao.showInfoSelect(info_num);    	
     	
     	String htmlString = idto.getInfo_content();
@@ -163,14 +172,15 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
-                        <h2 class="section-title"><%=info_fee %> </h2>
+                      
                         <form class="contact-form bg-white">
                             <div class="row">
                                 <div class="col-md-6">
 
 
                                     <div class="form-group">
-                                        <label class="text-black" for="fname"><%=infouser_id %></label>
+                                        <label class="text-black" for="fname">작성자 : <%=infouser_id %></label>
+                                        <label class="text-black" for="fname">글번호 : <%=info_num%></label>
                                         <!-- <input type="text" class="form-control" id="fname"> -->
                                     </div>
                                 </div>
@@ -188,12 +198,30 @@
                                 <!-- like 시작 -->
                                 <button class="like__btn2 animated">
                                     <i class="like__icon2 fa fa-heart"></i>
-                                    <span class="like__number">99</span>
+                                    
+                                    <span class="like__number">구매횟수 : <%=buy %></span>
                                 </button>
                                 <!-- like 끝 -->
                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                 <!-- 구매버튼 시작 -->
-                                <button type="submit" class="btn btn-primary" disabled='disabled'>구매완료</button>
+                               
+
+                                <button id="purchaseButton" class="btn btn-primary">구매하기</button>
+                                
+                                <!-- 구매버튼 스크립트 -->
+                                <script>
+								  document.addEventListener('DOMContentLoaded', function() {
+								    // "구매하기" 버튼을 변수
+								    const purchaseButton = document.getElementById('purchaseButton');
+								
+								    // "구매하기" 버튼에 클릭 이벤트 리스너
+								    purchaseButton.addEventListener('click', function() {
+								    // 버튼 클릭 시 "InfoBuyCon.do"
+								    window.location.href = 'InfoBuyCon.do?user_id=<%=info.getUser_id()%>&user_cash=<%=info.getUser_cash()%>&info_fee=<%=info_fee%>';
+								    });
+								  });
+								</script>
+                                
                                 <!-- 구매버튼 끝-->
                             </div>
                         </form>

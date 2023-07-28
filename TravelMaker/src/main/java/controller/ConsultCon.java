@@ -38,6 +38,9 @@ public class ConsultCon implements Command {
 		String user_id = "sun";
 		String cons_lat = request.getParameter("lat");
 		String cons_lng = request.getParameter("lng");
+		
+		System.out.println("lat : " + cons_lat);
+		System.out.println("lng : " + cons_lng);
 		String cons_content = request.getParameter("cons_content");
 
 		ConsultDAO cdao = new ConsultDAO();

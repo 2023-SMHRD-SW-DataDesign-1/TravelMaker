@@ -57,5 +57,14 @@ public class UserDAO {
 		
 		return row;		
 	}
+	
+	public int buyInfo(UserDTO dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("buyInfo", dto);
+		session.close();
+		
+		return row;
+		
+	}
 
 }

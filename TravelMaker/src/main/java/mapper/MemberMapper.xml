@@ -28,6 +28,9 @@
 		update user_info set user_pic = null where user_id = #{user_id}
 	</update>
 	
+	<update id="buyInfo" parameterType="UserDTO">
+		update user_info set user_cash = #{user_cash} where user_id = #{user_id}
+	</update>
 	
 	
 </mapper>

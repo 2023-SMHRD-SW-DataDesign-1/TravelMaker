@@ -15,6 +15,7 @@ import command.Command;
 import controller.ConsultCon;
 import controller.DeletepicCon;
 import controller.GosuResponseCon;
+import controller.InfoBuyCon;
 import controller.InfowriterCon;
 import controller.JoinCon;
 import controller.LoginCon;
@@ -40,6 +41,7 @@ public class FrontController extends HttpServlet {
 		list.put("UploadpicCon.do", new UploadpicCon());
 		list.put("DeletepicCon.do", new DeletepicCon());
 		list.put("GosuResponseCon.do", new GosuResponseCon());
+		list.put("InfoBuyCon.do", new InfoBuyCon());
 		
 		
 	}
