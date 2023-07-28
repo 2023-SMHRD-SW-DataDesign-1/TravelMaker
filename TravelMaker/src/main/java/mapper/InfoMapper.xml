@@ -5,7 +5,7 @@
 	<insert id="upload" parameterType="InfoDTO">
 		insert into info_trade values(info_num.nextval, #{user_id}, sysdate,
 		#{info_cate}, #{info_title}, #{info_content}, null,#{info_fee},
-		#{info_lat}, #{info_lng})
+		#{info_lat}, #{info_lng}, #{info_brief})
 	</insert>
 
 	<select id="showInfo" resultType="InfoDTO">

@@ -84,9 +84,11 @@
 		<div class="container">
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
-					<a href="Info_CateList.jsp?info_cate=사진">
 					<h2 class="section-title text-center">나만 알고있던 인스타감성 포토스팟📸</h2>
+					<a href="Info_CateList.jsp?info_cate=사진">
+						<button>보러가기💬</button>
 					</a>
+				
 				</div>
 			</div>
 
@@ -114,7 +116,13 @@
 					// 맨 앞에있는 img태그만
 					if (matcher.find()) {
 						imgTags.append(matcher.group());
-					}
+					}			
+					
+					// imgTags가 비어있는 경우, 다음 반복으로 넘어감
+				    if (imgTags.toString().isEmpty()) {
+				        continue;
+				    }
+					
 				%>
 
 				<div class="item">
@@ -145,6 +153,9 @@
 				<div class="col-lg-7">
 					<h2 class="section-title text-center">혼자 몰래가서 배터지게 먹고오는 🥘</h2>
 				</div>
+					<a href="Info_CateList.jsp?info_cate=맛집">
+						<button>보러가기💬</button>
+					</a>
 			</div>
 
 			<div class="owl-carousel owl-3-slider">
@@ -170,6 +181,13 @@
 				if (matcher.find()) {
 					imgTags.append(matcher.group());
 				}
+				
+				System.out.println(imgTags.toString());
+				
+				// imgTags가 비어있는 경우, 다음 반복으로 넘어감
+			    if (imgTags.toString().isEmpty()) {
+			        continue;
+			    }
 			%>
 			
 				<div class="item">
@@ -198,6 +216,9 @@
 				<div class="col-lg-7">
 					<h2 class="section-title text-center">공유금지🤫 구름위에서 자는거처럼 편안하게🏡</h2>
 				</div>
+					<a href="Info_CateList.jsp?info_cate=숙소">
+						<button>보러가기💬</button>
+					</a>
 			</div>
 
 			<div class="owl-carousel owl-3-slider">
@@ -223,6 +244,11 @@
 				if (matcher.find()) {
 					imgTags.append(matcher.group());
 				}				
+				
+				// imgTags가 비어있는 경우, 다음 반복으로 넘어감
+			    if (imgTags.toString().isEmpty()) {
+			        continue;
+			    }
 			%>
 
 				<div class="item">

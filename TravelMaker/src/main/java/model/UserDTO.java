@@ -32,9 +32,4 @@ public class UserDTO {
 		this.user_pw = user_pw;
 	}
 
-
-
-	
-	
-
 }

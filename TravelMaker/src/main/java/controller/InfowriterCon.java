@@ -45,6 +45,7 @@ public class InfowriterCon implements Command {
 		int info_fee = Integer.parseInt(request.getParameter("info_fee"));
 		String info_lat = request.getParameter("lat");
 		String info_lng = request.getParameter("lng");
+		String info_brief = request.getParameter("info_brief");
 
 		System.out.println("아이디 : " + user_id);
 		System.out.println("카테고리 : " + info_cate);
@@ -55,7 +56,7 @@ public class InfowriterCon implements Command {
 		System.out.println("lng : " + info_lng);
 
 		InfoDAO idao = new InfoDAO();
-		int row = idao.upload(new InfoDTO(user_id, info_cate, info_title, info_content, info_fee, info_lat, info_lng));
+		int row = idao.upload(new InfoDTO(user_id, info_cate, info_title, info_content, info_fee, info_lat, info_lng, info_brief));
 
 		if (row > 0) {
 			System.out.println("성공");
