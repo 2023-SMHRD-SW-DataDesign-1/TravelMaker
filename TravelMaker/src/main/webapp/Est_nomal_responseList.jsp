@@ -40,7 +40,7 @@ li {
 	<div class="wrap">
 		<c:set var="nomal_response" value="${ResDAO.nomal_response(info.user_id)}"></c:set>
 
-		<h3>${info.user_id}님의받은견적요청페이지</h3>
+		<h3>내가 쓴 견적요청</h3>
 		<c:forEach var="response_list" items="${nomal_response}" varStatus="status">
 			<div class="list_box">
 			<ul>
@@ -49,7 +49,7 @@ li {
 				<li>${response_list.send_country}</li>
 				<li>${response_list.send_s_date} ~ ${response_list.send_e_date}</li>
 				<li>${response_list.send_content}</li>
-				<li><a href="Est_nomal_response.jsp?est_num=${response_list.est_num}">받은견적 보러가기</a></li>
+				<li><a href="Est_nomal_response.jsp?est_num=${response_list.est_num}">받은견적서 보러가기</a></li>
 			</ul>
 		</div>
 		</c:forEach>

@@ -39,5 +39,13 @@ public class InfoDAO {
 		session.close();
 		return show_info;
 	}
+	
+	public ArrayList<InfoDTO> showCateInfo(String info_cate){
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<InfoDTO> pic_list = session.selectList("showCateInfo", info_cate);
+		session.close();
+		return (ArrayList<InfoDTO>) pic_list;		
+	}	
+	
 
 }
