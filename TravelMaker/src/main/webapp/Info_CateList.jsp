@@ -67,7 +67,7 @@
 
 <%
 String info_cate = request.getParameter("info_cate");
-System.out.println(info_cate);
+
 %>
 
 
@@ -76,7 +76,7 @@ System.out.println(info_cate);
 		<div class="container">
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
-					<h1 class="section-title text-center">사진 추천 둘러보기</h1>
+					<h1 class="section-title text-center"><%=info_cate%>정보거래</h1>
 				</div>
 			</div>
 			<!-- ct name end -->
@@ -91,9 +91,16 @@ System.out.println(info_cate);
 							<%
 							InfoDAO idao = new InfoDAO();
 							ArrayList<InfoDTO> pic_list = idao.showCateInfo(info_cate);
-			
+							
+							
 							for (int i = 0; i < pic_list.size(); i++) {
 								int info_num = pic_list.get(i).getInfo_num();
+								String info_title = pic_list.get(i).getInfo_title();
+								String info_brief = pic_list.get(i).getInfo_brief();
+								int info_fee = pic_list.get(i).getInfo_fee();
+								String infouser_id = pic_list.get(i).getUser_id();
+								
+								
 								String htmlString = idao.show(info_num);
 								// 정규 표현식 패턴
 								String pattern = "<img\\s+[^>]*>";
@@ -108,23 +115,26 @@ System.out.println(info_cate);
 								if (matcher.find()) {
 									imgTags.append(matcher.group());
 								}
+								
+								// imgTags가 비어있는 경우, 다음 반복으로 넘어감
+							    if (imgTags.toString().isEmpty()) {
+							        continue;
+							    }
 							%>
 
-						<div class="gallery-item" tabindex="0">
-							<%=imgTags%>
-							<div class="gallery-item-info">
-
-								<ul>
-									<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i
-											class="fas fa-heart" aria-hidden="true"></i> 56</li>
-									<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i
-											class="fas fa-comment" aria-hidden="true"></i> 2</li>
-
-								</ul>
-
+						<a href="Info_DetailPage.jsp?info_num=<%=info_num%>&info_title=<%=info_title%>&info_brief=<%=info_brief%>&info_fee=<%=info_fee%>&infouser_id=<%=infouser_id%>">
+							<div class="gallery-item" tabindex="0">
+									<%=imgTags%>							
+								<div class="gallery-item-info">
+									<ul>
+										<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i
+												class="fas fa-heart" aria-hidden="true"></i> 56</li>
+										<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i
+												class="fas fa-comment" aria-hidden="true"></i> 2</li>
+									</ul>
+								</div>
 							</div>
-
-						</div>
+						</a>						
 						
 						<%} %>
 

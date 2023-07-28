@@ -160,7 +160,7 @@ button {
 <body>
 
 
-	<form action="InfowriterCon.do" method="post">
+	<form action="InfowriterCon.do" method="post" onsubmit="return validateForm()">
 
 		<div class="div_1">
 			<select class="select_1" name="info_cate">
@@ -168,27 +168,62 @@ button {
 				<option value="사진">사진</option>
 				<option value="맛집">맛집</option>
 				<option value="숙소">숙소</option>
-			</select> &nbsp; &nbsp; &nbsp; 제목 : <input class="input_1" type="text"
-				name="info_title" placeholder="제목을 입력해주세요">
+			</select> &nbsp; &nbsp; &nbsp; 제목 : 
+			<input class="input_1" type="text" name="info_title" placeholder="제목을 입력해주세요">
 		</div>
 		<div class="div_3">
-			간단한 설명 : <input class="input_4" type="text" name=""
-				placeholder="간단한 설명을 입력해주세요">
+			간단한 설명 : <input class="input_4" type="text" name="info_brief" placeholder="간단한 설명을 입력해주세요">
 		</div>
 
 
 		<textarea name="info_content" id="summernote"></textarea>
 		<div class="div_2">
-			받을금액 : <input class="input_2" type="text" name="info_fee"
-				placeholder="금액을 입력해주세요"> &nbsp; &nbsp; &nbsp;
+			받을금액 : <input class="input_2" type="text" name="info_fee" placeholder="금액을 입력해주세요"> &nbsp; &nbsp; &nbsp;
 			<!-- 사용자가 생성한 마커 정보를 서버로 전송하기 위한 HTML Form -->
 			<input id="search-location" type="text" placeholder="장소를 검색하세요">
 			<input type="hidden" id="lat-input" name="lat"> 
 			<input type="hidden" id="lng-input" name="lng"> 
-			<input class="input_3" type="submit" value="작성완료">
+			<input type="submit" value="작성완료">
+			
 		</div>
 
 	</form>
+	
+	<!-- 금액제한 스크립트 -->
+	<script>
+	function validateForm() {
+          var chargeValue;
+
+        	 // input값 가져오기
+             var selectedRadio = document.querySelector('input[name="info_fee"]');
+             chargeValue = selectedRadio.value;
+             var info_cate = document.getElementsByName('info_cate')[0].value;
+             var info_title = document.getElementsByName('info_title')[0].value;
+             var info_brief = document.getElementsByName('info_brief')[0].value;
+             var info_content = document.getElementById('summernote').value;
+             var info_fee = document.getElementsByName('info_fee')[0].value;
+             var lat_input = document.getElementById('lat-input').value;
+             var lng_input = document.getElementById('lng-input').value;
+             
+             if (info_cate === "" || info_title === "" || info_brief === "" || info_content === "" || info_fee === "" || lat_input === "" || lng_input === "") {
+                 alert("모든 값을 입력해주세요.");
+              // 폼 제출을 방지
+                 return false; 
+             }
+          
+
+         	 // 100으로 나눈 나머지가 0인지 확인
+         	 if (chargeValue % 100 !== 0) {
+          	   	alert("금액을 100단위로 입력해주세요.");
+           	 	return false;
+             
+       		 }  
+         	// 모든 필드가 채워져 있으면 폼 제출
+         	 return true; 
+          }
+       
+	</script>
+	
 
 	<!-- 사용자의 위치를 검색할 수 있는 검색 박스를 추가할 입력 요소 -->
 

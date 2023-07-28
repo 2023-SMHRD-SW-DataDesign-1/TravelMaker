@@ -21,4 +21,5 @@ public class InfoDTO {
 	@NonNull int info_fee;
 	@NonNull String info_lat;
 	@NonNull String info_lng;
+	@NonNull String info_brief;
 }
