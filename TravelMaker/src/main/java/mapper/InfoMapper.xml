@@ -19,5 +19,9 @@
 	<select id="showInfoSelect" parameterType="int" resultType="InfoDTO">
 		select * from info_trade where info_num=#{info_num}
 	</select>
+	
+	<select id="showCateInfo" parameterType="String" resultType="InfoDTO">
+		select * from info_trade where info_cate = #{info_cate}	
+	</select>
 
 </mapper>

@@ -67,6 +67,9 @@
 	width: 200px;
 
 }
+#test111 img{
+	height: 100%;
+}
 </style>
 
 </head>
@@ -76,27 +79,29 @@
 	<a href="Info_write.jsp"><button class="write_btn">작성하러가기
 			💬</button></a>
 
-	<!-- 명소 추천 카테고리 start -->
+	<!-- 사진 추천 카테고리 start -->
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
-					<h2 class="section-title text-center">명소 둘러보기</h2>
+					<a href="Info_CateList.jsp?info_cate=사진">
+					<h2 class="section-title text-center">나만 알고있던 인스타감성 포토스팟📸</h2>
+					</a>
 				</div>
 			</div>
 
 			<div class="owl-carousel owl-3-slider">
-
+			
+			<!-- 사진 썸네일 알고리즘 -->
 				<%
 				InfoDAO idao = new InfoDAO();
-				ArrayList<InfoDTO> info_list = idao.showInfo();
+				String info_cate = "사진";
+				ArrayList<InfoDTO> pic_list = idao.showCateInfo(info_cate);
+				
 
-				for (int i = 0; i < info_list.size(); i++) {
-					int info_num = info_list.get(i).getInfo_num();
-					System.out.println(info_num);
-
+				for (int i = 0; i < pic_list.size(); i++) {
+					int info_num = pic_list.get(i).getInfo_num();
 					String htmlString = idao.show(info_num);
-
 					// 정규 표현식 패턴
 					String pattern = "<img\\s+[^>]*>";
 
@@ -110,16 +115,13 @@
 					if (matcher.find()) {
 						imgTags.append(matcher.group());
 					}
-
-					// 결과 출력
-					System.out.println(imgTags.toString());
 				%>
 
 				<div class="item">
-					<a class="media-thumb" href="Info_Show.jsp?info_num=<%=info_list.get(i).getInfo_num()%>">
+					<a class="media-thumb" href="Info_Show.jsp?info_num=<%=pic_list.get(i).getInfo_num()%>">
 						<div class="media-text">
 
-							<h3><%=info_list.get(i).getInfo_title()%></h3>
+							<h3><%=pic_list.get(i).getInfo_title()%></h3>
 
 							<span class="location">-</span>
 						</div> <!-- <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid"> -->
@@ -128,96 +130,60 @@
 						<%=imgTags%>
 							
 						</div>
-
-
 					</a>
 				</div>
-
-
-				<%
-				}
-				%>
-
-
-				<!-- <div class="item">
-					<a class="media-thumb" href="img/hero-slider-1.jpg"
-						data-fancybox="gallery">
-						<div class="media-text">
-							<h3>-</h3>
-							<span class="location">-</span>
-						</div> <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid">
-
-
-					</a>
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="img/hero-slider-2.jpg"
-						data-fancybox="gallery">
-						<div class="media-text">
-							<h3>-</h3>
-							<span class="location">-</span>
-						</div> <img src="img/hero-slider-2.jpg" alt="Image" class="img-fluid">
-					</a>
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="img/hero-slider-3.jpg"
-						data-fancybox="gallery">
-						<div class="media-text">
-							<h3>-</h3>
-							<span class="location">-</span>
-						</div> <img src="img/hero-slider-3.jpg" alt="Image" class="img-fluid">
-					</a>
-				</div> -->
-
-
-
+				<%}%>
 			</div>
 		</div>
 	</div>
-	<!-- 명소 추천 카테고리 end -->
+	<!-- 사진 추천 카테고리 end -->
 
 	<!-- 맛집 추천 카테고리 start -->
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
-					<h2 class="section-title text-center">맛집 둘러보기</h2>
+					<h2 class="section-title text-center">혼자 몰래가서 배터지게 먹고오는 🥘</h2>
 				</div>
 			</div>
 
 			<div class="owl-carousel owl-3-slider">
+			
+			<!-- 맛집 썸네일 알고리즘 -->
+			<%
+			info_cate = "맛집";
+			ArrayList<InfoDTO> food_list = idao.showCateInfo(info_cate);
+			
+			for (int i = 0; i < food_list.size(); i++) {
+				int info_num = food_list.get(i).getInfo_num();
+				String htmlString = idao.show(info_num);
+				// 정규 표현식 패턴
+				String pattern = "<img\\s+[^>]*>";
 
-				<div class="item">
-					<a class="media-thumb" href="img/hero-slider-1.jpg"
-						data-fancybox="gallery">
-						<div class="media-text">
-							<h3>-</h3>
-							<span class="location">-</span>
-						</div> <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid">
-					</a>
-				</div>
+				// 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+				StringBuilder imgTags = new StringBuilder();
 
-				<div class="item">
-					<a class="media-thumb" href="img/hero-slider-2.jpg"
-						data-fancybox="gallery">
-						<div class="media-text">
-							<h3>-</h3>
-							<span class="location">-</span>
-						</div> <img src="img/hero-slider-2.jpg" alt="Image" class="img-fluid">
-					</a>
-				</div>
+				// 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+				Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
 
+				// 맨 앞에있는 img태그만
+				if (matcher.find()) {
+					imgTags.append(matcher.group());
+				}
+			%>
+			
 				<div class="item">
-					<a class="media-thumb" href="img/hero-slider-3.jpg"
-						data-fancybox="gallery">
+					<a class="media-thumb" href="Info_Show.jsp?info_num=<%=food_list.get(i).getInfo_num()%>">
 						<div class="media-text">
-							<h3>-</h3>
+							<h3><%=food_list.get(i).getInfo_title()%></h3>
 							<span class="location">-</span>
-						</div> <img src="img/hero-slider-3.jpg" alt="Image" class="img-fluid">
+						</div> 
+						<div id="test111" >
+						<%=imgTags%>							
+						</div>
 					</a>
-				</div>
+				</div>				
+				<%}%>
 			</div>
 
 		</div>
@@ -230,41 +196,47 @@
 		<div class="container">
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
-					<h2 class="section-title text-center">숙소 둘러보기</h2>
+					<h2 class="section-title text-center">공유금지🤫 구름위에서 자는거처럼 편안하게🏡</h2>
 				</div>
 			</div>
 
 			<div class="owl-carousel owl-3-slider">
+			
+			<!-- 숙소 알고리즘 -->
+			<%
+			info_cate = "숙소";
+			ArrayList<InfoDTO> hotel_list = idao.showCateInfo(info_cate);
+			
+			for (int i = 0; i < hotel_list.size(); i++) {
+				int info_num = hotel_list.get(i).getInfo_num();
+				String htmlString = idao.show(info_num);
+				// 정규 표현식 패턴
+				String pattern = "<img\\s+[^>]*>";
+
+				// 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+				StringBuilder imgTags = new StringBuilder();
+
+				// 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+				Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
+
+				// 맨 앞에있는 img태그만
+				if (matcher.find()) {
+					imgTags.append(matcher.group());
+				}				
+			%>
 
 				<div class="item">
-					<a class="media-thumb" href="img/hero-slider-1.jpg"
-						data-fancybox="gallery">
+						<a class="media-thumb" href="Info_Show.jsp?info_num=<%=hotel_list.get(i).getInfo_num()%>">
 						<div class="media-text">
-							<h3>-</h3>
+							<h3><%=hotel_list.get(i).getInfo_title()%></h3>
 							<span class="location">-</span>
-						</div> <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid">
+						</div> 
+						<div id="test111" >
+						<%=imgTags%>							
+						</div>
 					</a>
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="img/hero-slider-2.jpg"
-						data-fancybox="gallery">
-						<div class="media-text">
-							<h3>-</h3>
-							<span class="location">-</span>
-						</div> <img src="img/hero-slider-2.jpg" alt="Image" class="img-fluid">
-					</a>
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="img/hero-slider-3.jpg"
-						data-fancybox="gallery">
-						<div class="media-text">
-							<h3>-</h3>
-							<span class="location">-</span>
-						</div> <img src="img/hero-slider-3.jpg" alt="Image" class="img-fluid">
-					</a>
-				</div>
+				</div>				
+				<%}%>
 			</div>
 
 		</div>
