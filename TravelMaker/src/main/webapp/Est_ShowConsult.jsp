@@ -148,6 +148,7 @@ button {
 	System.out.println(cons_list.get(1).getCons_lat());
 	%>
 
+	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 지도 시작 -->
 
 
@@ -167,7 +168,7 @@ for (int i = 0; i < cons_list.size(); i++) {
 }
 %>
 
-
+	<jsp:include page="Footer.jsp"></jsp:include>
 
 
 

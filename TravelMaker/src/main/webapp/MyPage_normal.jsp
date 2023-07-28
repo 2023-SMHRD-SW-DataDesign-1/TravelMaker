@@ -49,6 +49,9 @@
 
 <!-- =style 임시= -->
 <style>
+.container{
+	margin-top: 94px;
+}
 .container2 {
 	background: #fff;
 	padding: 24px;
@@ -260,6 +263,11 @@ strong {
 	}
 	%>
 
+	<!-- 네비게이션 시작 -->
+	<jsp:include page="Nav.jsp"></jsp:include>
+	<!-- 네비게이션 끝 -->
+	
+	
 	<!-- ct name start -->
 	<div class="untree_co-section">
 		<div class="container">
@@ -546,6 +554,9 @@ strong {
 						<!-- End of container -->
 				</main>
 				<!-- 나의 정보거래 내역 끝 -->
+				
+				
+			
 			</div>
 
 			<!-- partial -->
@@ -615,6 +626,9 @@ strong {
 
 				});
 			</script>
+		<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
 </body>
 
 </html>

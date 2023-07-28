@@ -27,10 +27,6 @@
 	
 </script>
 <style>
-body {
-	padding: 1rem;
-}
-
 h1 {
 	text-align: center;
 }
@@ -159,6 +155,9 @@ button {
 </head>
 <body>
 
+	<!-- 네비게이션 시작 -->
+	<jsp:include page="Nav.jsp"></jsp:include>
+	<!-- 네비게이션 끝 -->
 
 	<form action="InfowriterCon.do" method="post" onsubmit="return validateForm()">
 
@@ -188,6 +187,10 @@ button {
 		</div>
 
 	</form>
+	
+		<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
 	
 	<!-- 금액제한 스크립트 -->
 	<script>

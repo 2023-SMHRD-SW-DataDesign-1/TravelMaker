@@ -8,8 +8,6 @@
 <meta charset="UTF-8">
 <title>견적요청</title>
 <link rel='stylesheet'
-	href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-<link rel='stylesheet'
 	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
 <!-- req_est_calendar link 시작 -->
@@ -19,8 +17,6 @@
 	rel="stylesheet">
 <!-- req_est_calendar link 끝 -->
 <!-- chat box link 시작 -->
-<link rel='stylesheet'
-	href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/Est_request.css">
 <!-- chat box link 끝 -->
 </head>
@@ -32,9 +28,11 @@
 		</script>
 	</c:if>
 	
+	<jsp:include page="Nav.jsp"></jsp:include>
+	
 	<form action="SendCon.do">
 		<div>
-		
+	
 			<!-- partial:index.partial.html -->
 			<div class="main">
 				<!-- 국가선택 시작 -->
@@ -126,6 +124,8 @@
 
 		</div>
 	</form>
-
+	
+	<jsp:include page="Footer.jsp"></jsp:include>
+	
 </body>
 </html>

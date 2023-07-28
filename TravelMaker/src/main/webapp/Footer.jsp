@@ -10,11 +10,39 @@
 </head>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+	@media screen and (min-width: 576px){
+		.container_footer{
+			max-width: 540px;
+			margin: 0 auto;
+		}
+	}
+	@media screen and (min-width: 768px){
+		.container_footer{
+			max-width: 720px;
+			margin: 0 auto;
+		}
+	}
+	@media screen and (min-width: 992px){
+		.container_footer{
+			max-width: 960px;
+			margin: 0 auto;
+		}
+	}
+	@media screen and (min-width: 1200px){
+		.container_footer{
+			max-width: 1140px;
+			margin: 0 auto;
+		}
+	}
+</style>
+
 <body>
 	<!-- 메인 - 고객센터 배너 시작 -->
 	<div class="site-footer">
 		<div class="inner first">
-			<div class="container">
+			<div class="container_footer">
 				<div class="row">
 					<div class="col-md-6 col-lg-4">
 						<div class="widget">
@@ -53,7 +81,7 @@
 
 
 		<div class="inner dark">
-			<div class="container">
+			<div class="container_footer">
 				<div class="row text-center">
 					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
 						<p>

@@ -133,6 +133,14 @@
 	int est_num = Integer.parseInt(request.getParameter("est_num"));
 	SendDTO sdto = sdao.EstSend_nomalUser(est_num);
 	%>
+	
+	<!-- 네비게이션 시작 -->
+
+	<jsp:include page="Nav.jsp"></jsp:include>
+
+	<!-- 네비게이션 끝 -->
+	
+	
 	<div class="hero-anime">
 		<div class="navigation-wrap bg-light start-header start-style">
 		<div class="container">
@@ -254,8 +262,13 @@
         </form>
 	</div>
        
-       <jsp:include page="Footer.jsp"></jsp:include>
-       
+	<!-- 푸터 시작 -->
+
+	<jsp:include page="Footer.jsp"></jsp:include>
+
+	<!-- 푸터 끝 -->
+	
+	
         <script>
             $(document).ready(function () {
                 $('#summernote').summernote({

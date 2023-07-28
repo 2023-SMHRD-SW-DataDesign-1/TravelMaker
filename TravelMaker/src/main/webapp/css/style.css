@@ -1,6 +1,5 @@
 body {
   font-family: 'SUIT', sans-serif !important;
-  font-family: "Inter", sans-serif;
   line-height: 1.5;
   overflow-x: hidden;
   font-size: 14px;
@@ -67,17 +66,6 @@ a.text-primary {
 
 a.text-primary:hover {
   color: #1A374D !important;
-}
-
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4 {
-  font-family: "Source Serif Pro", serif;
 }
 
 .btn {

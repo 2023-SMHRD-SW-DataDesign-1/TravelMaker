@@ -25,7 +25,6 @@
 </head>
 
 
-<jsp:include page="Nav.jsp"></jsp:include>
 
 <body>
 	<%
@@ -36,7 +35,10 @@
 	SendDTO sdto = sdao.EstSend_nomalUser(est_num);
 	ArrayList<ResDTO> rdto_list = rdao.nomal_responseList(est_num);
 	%>
-
+	
+	<!-- 네비게이션 시작 -->
+	<jsp:include page="Nav.jsp"></jsp:include>
+	<!-- 네비게이션 끝 -->
 
 	<div class="wrapper">
 
@@ -76,8 +78,10 @@
 
 	</div>
 
-
+	<!-- 푸터 시작 -->
 	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
+	
 
 </body>
 </html>

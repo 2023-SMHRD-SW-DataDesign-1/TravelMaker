@@ -14,7 +14,11 @@
   <link rel="stylesheet" href="css/res_est_2_2_master.css">
 
 </head>
-
+<style>
+.app-container{
+	margin-top: 94px;
+}
+</style>
 <body>
    <%
     	ConsultDAO cdao = new ConsultDAO();
@@ -24,6 +28,11 @@
     	System.out.println(esti_list.size());        
         %>
   <!-- partial:index.partial.html -->
+  
+  <!-- 네비게이션 시작 -->
+	<jsp:include page="Nav.jsp"></jsp:include>
+	<!-- 네비게이션 끝 -->
+  
   <div class="app-container">
     <div class="app-header">
       <div class="app-header-left">
@@ -142,6 +151,12 @@
 
     </div>
   </div>
+  
+  <!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
+	
+	
   <!-- partial -->
   <script src="js/res_est_2_2_master.js"></script>
 

@@ -14,9 +14,35 @@
 <link rel="stylesheet" href="css/main_nav_correction.css">
 <!-- 네비 bar 수정본 link 끝 -->
 </head>
+<style>
+	@media screen and (min-width: 576px){
+		.container_nav{
+			max-width: 540px;
+			margin: 0 auto;
+		}
+	}
+	@media screen and (min-width: 768px){
+		.container_nav{
+			max-width: 720px;
+			margin: 0 auto;
+		}
+	}
+	@media screen and (min-width: 992px){
+		.container_nav{
+			max-width: 960px;
+			margin: 0 auto;
+		}
+	}
+	@media screen and (min-width: 1200px){
+		.container_nav{
+			max-width: 1140px;
+			margin: 0 auto;
+		}
+	}
+</style>
 <body class="hero-anime">
 	<div class="navigation-wrap bg-light start-header start-style">
-		<div class="container">
+		<div class="container_nav">
 			<div class="row">
 				<div class="col-12">
 					<nav class="navbar navbar-expand-md navbar-light">
