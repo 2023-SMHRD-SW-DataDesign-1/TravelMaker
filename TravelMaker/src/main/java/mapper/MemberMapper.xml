@@ -25,4 +25,10 @@
 		update user_info set user_pic = #{user_pic} where user_id=#{user_id}
 	</update>
 	
+	<update id="deletePic" parameterType="String">
+		update user_info set user_pic = null where user_id = #{user_id}
+	</update>
+	
+	
+	
 </mapper>

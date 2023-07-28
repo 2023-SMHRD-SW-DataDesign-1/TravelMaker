@@ -49,5 +49,13 @@ public class UserDAO {
 		
 		return row;		
 	}
+	
+	public int deletePic(String user_id) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("deletePic", user_id);
+		session.close();
+		
+		return row;		
+	}
 
 }

@@ -171,7 +171,31 @@ strong {
 	<%
 	UserDTO info = (UserDTO) session.getAttribute("info");
 	String user_id = info.getUser_id();
+	String uploadSuccess = request.getParameter("upload_success");
+	String deleteSuccess = request.getParameter("delete_success");
 	%>
+	<!-- 사진 업로드 성공 시 -->
+	<%
+	if(uploadSuccess != null && uploadSuccess.equals("true")){
+	%>
+	<script>
+		alert("업로드 완료");
+	</script>	
+	<%	
+	}
+	%>
+	
+		<%
+	if(deleteSuccess != null && deleteSuccess.equals("true")){
+	%>
+	<script>
+		alert("삭제 완료");
+	</script>	
+	<%	
+	}
+	%>
+	
+	
 
 	<!-- ct name start -->
 	<div class="untree_co-section">
@@ -194,7 +218,64 @@ strong {
 							    <!-- 사용자 프로필 사진이 있을 경우에만 사진을 보여줍니다 -->
 							    <% if (info.getUser_pic() != null && !info.getUser_pic().isEmpty()) { %>
 							        <img src="img/<%= info.getUser_pic() %>" alt="Profile Picture">
+							         <button id="deleteProfileBtn">프로필 사진 삭제</button>
 							    <% } %>
+							    
+							    <!-- 모달 창 -->
+								<div id="confirmModal" style="display: none;">
+								  <div id="confirmModalContent">
+								    <p>정말 삭제하시겠습니까?</p>
+								    <form action="DeletepicCon.do" id="deleteProfileForm" method="post">
+									    <!-- 필요한 경우 추가적인 폼 입력 요소를 추가하세요 -->
+									    <input type="hidden" name="user_id" value="<%=user_id%>">
+									</form>
+								    <div id="confirmBtnWrap">
+								      <button id="confirmYesBtn">예</button>
+								      <button id="confirmNoBtn">아니오</button>
+								    </div>
+								  </div>
+								</div>
+								
+								<!-- 프로필 사진 삭제 스크립트 -->
+								<script>
+								  const deleteProfileBtn = document.getElementById('deleteProfileBtn');
+								  const confirmModal = document.getElementById('confirmModal');
+								  const confirmYesBtn = document.getElementById('confirmYesBtn');
+								  const confirmNoBtn = document.getElementById('confirmNoBtn');
+								
+								  // 삭제 버튼 클릭 시 모달 창 보이기
+								  deleteProfileBtn.addEventListener('click', function() {
+								    confirmModal.style.display = 'block';
+								  });
+								  
+								    function handleProfilePicDeletion(result) {
+								        if (result.success) {
+								            alert("프로필 사진이 삭제되었습니다.");
+								            location.reload(); // 페이지 새로고침
+								        } else {
+								            alert("프로필 사진 삭제에 실패했습니다.");
+								        }
+								    }
+								
+								  // 모달 창에서 "예" 버튼 클릭 시 프로필 사진 삭제 실행
+								  confirmYesBtn.addEventListener('click', function() {		
+									  // 폼 요소를 가져옵니다.
+								        const deleteProfileForm = document.getElementById('deleteProfileForm');
+
+								        // DeletepicCon.do로 폼을 제출합니다.
+								        deleteProfileForm.submit();
+								    
+								
+								    // 모달 창 닫기
+								    confirmModal.style.display = 'none';
+								  });
+								
+								  // 모달 창에서 "아니오" 버튼 클릭 시 모달 창 닫기
+								  confirmNoBtn.addEventListener('click', function() {
+								    confirmModal.style.display = 'none';
+								  });
+								</script>
+							    
 							
 							    <!-- 사용자 프로필 사진이 없을 경우에는 사진 업로드 기능을 보여줍니다 -->
 							    <% if (info.getUser_pic() == null || info.getUser_pic().isEmpty()) { %>
