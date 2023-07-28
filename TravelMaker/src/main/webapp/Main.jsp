@@ -324,6 +324,7 @@
 
 	<!-- 푸터 시작 -->
 
+	<jsp:include page="Footer.jsp"></jsp:include>
 
 	<!-- 푸터 끝 -->
 

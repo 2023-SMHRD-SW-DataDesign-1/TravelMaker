@@ -21,8 +21,7 @@
 				<div class="col-12">
 					<nav class="navbar navbar-expand-md navbar-light">
 
-						<a class="navbar-brand" href="https://front.codes/"
-							target="_blank"> <img src="/TravelMaker/img/Logo.png"
+						<a class="navbar-brand" href="Main.jsp" target="_blank"> <img src="/TravelMaker/img/Logo.png"
 							alt="Logo"></a>
 
 						<button class="navbar-toggler" type="button"
@@ -61,10 +60,10 @@
 
 
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-									class="nav-link" href="#">정보거래</a></li>
+									class="nav-link" href="info_main.jsp">정보거래</a></li>
 
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-									class="nav-link" href="#">커뮤니티</a></li>
+								<!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+									class="nav-link" href="#">커뮤니티</a></li> -->
 
 								<c:choose>
 									<c:when test="${info != null }">
@@ -87,7 +86,6 @@
 		</div>
 	</div>
 
-   <script src="js/custom.js"></script>
    
    <!-- 메인 네비 수정본 script 시작 -->
    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
