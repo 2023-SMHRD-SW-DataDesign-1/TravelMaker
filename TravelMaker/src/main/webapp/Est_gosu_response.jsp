@@ -25,7 +25,6 @@
 <style>
         /* @import "//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css"; */
         .editor-contents {
-            height: 700px;
             padding-bottom: 50px;
             margin-top: 50px;
             width: 100%;
@@ -56,9 +55,11 @@
 
         #editor-box {
             width: 700px;
-            height: 100%;
         }
-
+		#deitor-box textare{
+			width: 100%;
+			height: 60%;
+		}
         #btn-box {
             width: 100%;
             display: flex;
@@ -221,7 +222,7 @@
         </div>
         <!-- Editor -->
         <div id="editor-box">
-            <div id="summernote"></div>
+            <textarea rows="10" cols="10"></textarea>
         </div>
         <!-- Submit -->
         <div id="btn-box">

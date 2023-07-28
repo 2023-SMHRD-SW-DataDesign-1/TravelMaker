@@ -76,13 +76,13 @@ button, a {
 }
 
 .app-container {
+  margin-top: 80px;
   width: 100%;
   display: flex;
   flex-direction: column;
   height: 100%;
   background-color: var(--app-container);
   transition: 0.2s;
-  max-width: 1800px;
 }
 .app-container button, .app-container input, .app-container optgroup, .app-container select, .app-container textarea {
   font-family: "DM Sans", sans-serif;
@@ -278,9 +278,6 @@ button, a {
   flex-direction: column;
 }
 .projects-section-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding-bottom: 32px;
 }
 .projects-section-header {
@@ -307,8 +304,6 @@ button, a {
 }
 
 .item-status {
-  display: flex;
-  flex-direction: column;
   margin-right: 16px;
 }
 .item-status:not(:last-child) .status-type:after {
@@ -332,7 +327,7 @@ button, a {
 
 .status-type {
   position: relative;
-  padding-right: 24px;
+  padding-right: 15px;
   color: var(--secondary-color);
 }
 
@@ -638,8 +633,6 @@ button, a {
 }
 
 .project-footer-box {
-  display: flex;
-  justify-content: space-between;
   padding-top: 16px;
   position: relative;
 }
@@ -656,7 +649,18 @@ button, a {
   left: -16px;
   height: 1px;
 } */
-
+.project-move-box{
+	display: flex;
+	justify-content: space-between;
+}
+.project-move-box a{
+	padding: 8px;
+	background-color: #f3b77e;
+	margin-bottom: 1rem;
+	color: white;
+	border-radius: 15px;
+	box-shadow: 1px 1px 5px #95622f;
+}
 .participants {
   display: flex;
   align-items: center;
