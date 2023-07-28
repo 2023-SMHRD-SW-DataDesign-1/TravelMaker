@@ -14,6 +14,7 @@
 		<typeAlias type="model.HisDTO" alias="HisDTO" />
 		<typeAlias type="model.ConsultDTO" alias="ConsultDTO" />
 		<typeAlias type="model.CashDTO" alias="CashDTO" />
+		<typeAlias type="model.PicDTO" alias="PicDTO" />
 
 	</typeAliases>
 

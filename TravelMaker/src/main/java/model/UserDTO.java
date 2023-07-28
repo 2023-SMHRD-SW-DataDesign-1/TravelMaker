@@ -31,4 +31,14 @@ public class UserDTO {
 		this.user_pw = user_pw;
 	}
 
+	public UserDTO(String user_id, String user_pic) {
+		super();
+		this.user_id = user_id;
+		this.user_pic = user_pic;
+	}
+	
+
+	
+	
+
 }

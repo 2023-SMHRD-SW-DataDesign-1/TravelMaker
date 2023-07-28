@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
 import controller.ConsultCon;
+import controller.DeletepicCon;
 import controller.InfowriterCon;
 import controller.JoinCon;
 import controller.LoginCon;
 import controller.LogoutCon;
 import controller.PayCon;
 import controller.SendCon;
+import controller.UploadpicCon;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -34,6 +36,8 @@ public class FrontController extends HttpServlet {
 		list.put("SendCon.do", new SendCon());
 		list.put("ConsultCon.do", new ConsultCon());
 		list.put("PayCon.do", new PayCon());
+		list.put("UploadpicCon.do", new UploadpicCon());
+		list.put("DeletepicCon.do", new DeletepicCon());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -54,10 +58,8 @@ public class FrontController extends HttpServlet {
 		if (moveURL.contains("forward")) {
 			moveURL = moveURL.substring("forward".length());
 			RequestDispatcher rd = request.getRequestDispatcher(moveURL);
-//			System.out.println("성공"); 
 			rd.forward(request, response);
 		} else {
-//			System.out.println("실패");
 			response.sendRedirect(moveURL);
 		}
 	}
