@@ -224,10 +224,10 @@
 			<div class="row align-items-center">
 				<div class="col-lg-5">
 					<div class="slides">
-						<img src="img/hero-slider-1.jpg" alt="Image"
-							class="img-fluid active"> <img src="img/hero-slider-2.jpg"
-							alt="Image" class="img-fluid"> <img
-							src="img/hero-slider-3.jpg" alt="Image" class="img-fluid">
+						<img src="img/2272C43A571CA7C011.jpg" alt="Image"class="img-fluid active"> 
+<!-- 						<img src="img/hero-slider-1.jpg" alt="Image"class="img-fluid active">  -->
+						<img src="img/hero-slider-2.jpg" alt="Image" class="img-fluid"> 
+						<img src="img/hero-slider-3.jpg" alt="Image" class="img-fluid">
 						<img src="img/hero-slider-4.jpg" alt="Image" class="img-fluid">
 						<img src="img/hero-slider-5.jpg" alt="Image" class="img-fluid">
 					</div>
@@ -238,7 +238,7 @@
 
 					<div class="intro-wrap">
 						<h1 class="mb-5">
-							<span class="d-block">Make The Trip</span> Trip In <span
+							<span class="d-block">여행을 만들다</span> Make <span
 								class="typed-words"></span>
 						</h1>
 
@@ -377,7 +377,7 @@
 
 	<!-- 메인 중간2 텍스트 폰트 시작 -->
 	<!-- partial:index.partial.html -->
-	<div class="hit-the-floor">popular destinations</div>
+	<div class="hit-the-floor">유명한 여행지</div>
 
 	<div
 		class="alternative-versions absolute bottom-0 w-full flex justify-center underline space-x-4 p-12">
