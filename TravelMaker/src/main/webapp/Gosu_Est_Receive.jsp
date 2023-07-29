@@ -1,16 +1,15 @@
-<%@page import="model.UserDTO"%>
-<%@page import="model.SendDTO"%>
-<%@page import="model.SendDAO"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.ResDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>받은견적서 보러가기 전</title>
+<title>고수-받은견적</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/Est_gosu_responseList.css">
 <style type="text/css">
@@ -47,21 +46,18 @@
 </head>
 <body>
 
+	<c:if test="${info == null}">
+		<script>
+			alert("로그인 후 이용해주세요.");
+			location.href="Login.jsp";
+		</script>
+	</c:if>
 
 	<!-- 네비게이션 시작 -->
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
 	
-	<%
-	SendDAO sdao = new SendDAO();
-	UserDTO udto = (UserDTO) session.getAttribute("info");
-	String user_id = udto.getUser_id();
-	ArrayList<SendDTO> send_list = sdao.showSend(user_id);
-	
-	%>
-	
-	
-	
+	<c:set var="gosu_response_list" value="${ResDAO.gosu_responseList(info.user_id)}"></c:set>
 
 	<div class="app-container">
 		<div class="app-content">
@@ -74,7 +70,7 @@
 					<div class="projects-status">
 						<div class="item-status">
 							<span class="status-type">전체 컨설팅</span>
-							<span class="status-number"><%=send_list.size() %></span> 
+							<span class="status-number">${gosu_response_list.size()}</span> 
 						</div>
 					</div>
 				</div>
@@ -83,31 +79,31 @@
 				
 				<%-- <h3 class="center">${response_list.send_country}</h3> --%>
 				<div class="project-boxes jsGridView">
-				<% for(int i = 0; i < send_list.size(); i++){%>
 				
+				<c:forEach var="response_list" items="${gosu_response_list}" varStatus="status">
 					<div class="project-box-wrapper">
 						<div class="project-box" style="background-color: #fee4cb;">
 							<div class="project-box-content-header">
-								<p class="box-content-header"><%=send_list.get(i).getSend_place()%></p>
+								<p class="box-content-header">${response_list.send_place}</p>
+								<p class="box-content-subheader">${response_list.user_id}</p>
 							</div>
 							<div class="box-progress-wrapper">
-								<p class="box-progress-header"><%=send_list.get(i).getSend_s_date()%>~<%=send_list.get(i).getSend_e_date()%></p>
+								<p class="box-progress-header">${response_list.send_s_date}~${response_list.send_e_date}</p>
 								<div class="box-progress-bar">
 									<!-- <span class="box-progress"
 										style="width: 60%; background-color: #ff942e"></span> -->
 								</div>
 							</div>
 							<div class="project-footer-box">
-								<span><%=send_list.get(i).getSend_content()%></span>
+								<span>${response_list.send_content}</span>
 								<div class="project-move-box">
-									<p>요청금액 <%=send_list.get(i).getSend_budget()%></p>
-									<a href="Est_nomal_response.jsp?est_num=<%=send_list.get(i).getEst_num()%>">견적서 보러가기</a>
+									<p>요청금액 ${response_list.send_budget}</p>
+									<a href="Est_gosu_response.jsp?est_num=${response_list.est_num}">견적작성</a>
 								</div>
 							</div>
 						</div>
 					</div>
-			
-				<%} %>
+				</c:forEach>
 					<!-- gosu-response 목록 끝 -->
 					
 				</div>

@@ -16,4 +16,12 @@
 		select * from est_send where est_num = #{est_num}
 	</select>
 	
+	<select id="consultedEst" parameterType="String" resultType="SendDTO">
+		select * from est_send where est_num in(select est_num from est_consult where est_num in(select est_num from est_send where user_id=#{user_id}))
+	</select>
+	
+	<select id="showSend" parameterType="String" resultType="SendDTO">
+		select * from est_send where user_id = #{user_id}
+	</select>
+	
 </mapper>

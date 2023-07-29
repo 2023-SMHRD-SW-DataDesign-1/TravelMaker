@@ -10,6 +10,14 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/Login.css">
+<style>
+.signUpButton {
+    background-color: #cccccc; /* 회색 배경 색상 설정 */
+    /* 필요한 다른 스타일 속성들을 추가로 설정할 수 있습니다. */
+}
+</style>
+
+
 </head>
 <body>
 	<!-- partial:index.partial.html -->
@@ -49,16 +57,55 @@
 			<!-- 로그인 화면 끝 -->
 
 			<!-- 회원가입 화면 시작 -->
-			<form action="JoinCon.do" method="post">
+			<form action="JoinCon.do" method="post" onsubmit="return validateForm();">
 				<div class="Join_form sign-up">
 					<h2>회원가입</h2>
 
 					<div class="Join_form_box">
-						<label for="id"> <span>ID</span> <input type="text"
-							name="id"></label> <label> <span>Password</span> <input
-							type="password" name="pw"></label> <label> <span>Name</span>
-							<input type="text" name="name"></label> <label> <span>Email</span>
-							<input type="email" name="email"></label>
+						<label for="id"> <span>ID</span> 
+						<input type="text" name="id" id="idInput"></label> 
+						<div id="duplicateMessage" style="color: red;"></div> <!-- 메시지를 출력할 요소 추가 -->
+						
+						<!-- 아이디 중복검사 -->
+						
+						<script>
+						    $(document).ready(function() {
+						       
+						        $("#idInput").on("focusout", function() {
+						            const enteredId = $(this).val();
+					
+						            $.ajax({
+						                type: "POST",
+						                url: "DuplicateCon",
+						                data: { id: enteredId },
+						                dataType: "json",
+						                success: function(response) {
+						                    const duplicateMessage = $("#duplicateMessage");
+						                    const signUpBtn = $("#signUpBtn"); // 회원가입 버튼 선택
+						                    if (response.status === "duplicate") {
+						                        duplicateMessage.text("중복된 아이디입니다.");
+						                        signUpBtn.prop("disabled", true);
+						                        signUpBtn.addClass("signUpButton"); // 회원가입 버튼 클래스 추가 (비활성화 스타일 적용)
+						                    } else {
+						                        duplicateMessage.text("");
+						                        signUpBtn.prop("disabled", false);
+						                        signUpBtn.removeClass("signUpButton"); // 회원가입 버튼 클래스 제거 (활성화 상태에서 기본 스타일 적용)
+						                    }
+						                },
+						                error: function(xhr, status, error) {
+						                    console.error("AJAX 요청 중 오류가 발생했습니다:", error);
+						                }
+						            });
+						        });
+						    });
+						</script>
+						
+						<label> <span>Password</span> 
+						<input type="password" name="pw" id="pwInput"></label> 
+						<label> <span>Name</span>
+						<input type="text" name="name" id="nameInput"></label> 
+						<label> <span>Email</span>
+						<input type="email" name="email" id="emailInput"></label>
 					</div>
 
 
@@ -107,8 +154,7 @@
 					</div> -->
 					<div class="multi_select_box">
 						<label>Select Country</label> 
-						<select id="countries" class="multi_select" name="act_area" placeholder="Native Select"
-							data-silent-initial-value-set="false">
+						<select id="countries" class="multi_select" name="act_area" placeholder="Native Select" data-silent-initial-value-set="false">
 							<option value="국내">국내</option>
 							<option value="동남아">동남아</option>
 							<option value="유럽">유럽</option>
@@ -134,7 +180,24 @@
 					 -->
 
 					<!-- <button type="button" class="submit">Sign Up</button> -->
-					<input class="submit" type="submit" value="Sign Up">
+					<input class="submit signUpButton" type="submit" value="Sign Up" id="signUpBtn" disabled>
+					
+					<script>
+						function validateForm() {
+						    const idInput = $("#idInput").val();
+						    const pwInput = $("#pwInput").val();
+						    const nameInput = $("#nameInput").val();
+						    const emailInput = $("#emailInput").val();
+						
+						    if (!idInput || !pwInput || !nameInput || !emailInput) {
+						        alert("모든 값을 입력해주세요.");
+						        return false; // 회원가입 처리가 진행되지 않도록 false 반환
+						    }
+
+						    return true; // 회원가입 처리를 진행할 수 있도록 true 반환
+						}
+					</script>					
+					
 
 				</div>
 			</form>

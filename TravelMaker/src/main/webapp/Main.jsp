@@ -1,3 +1,4 @@
+<%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
@@ -86,7 +87,33 @@
    }
 </style>
 
+
 <body>
+
+<!-- 회원가입 성공 시 알림창 -->
+<%
+    String signupSuccess = request.getParameter("signup");
+    if (signupSuccess != null && signupSuccess.equals("success")) {
+%>
+    <script>
+        alert("회원가입 성공! 환영합니다.");
+        <%signupSuccess = null;%>
+    </script>
+<%
+    }
+%>
+<!-- 로그인 실패 알림창 -->
+<%
+    String loginfail = request.getParameter("loginfail");
+    if (loginfail != null && loginfail.equals("true")) {
+%>
+    <script>
+        alert("ID 또는 PW를 잘 못 입력하셨습니다.");
+        <%loginfail = null;%>
+    </script>
+<%
+    }
+%>
 
 	<div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
@@ -124,13 +151,29 @@
 												aria-expanded="false">컨설팅</a>
 												<div class="dropdown-menu">
 													<a class="dropdown-item" href="Est_nomal_responseList.jsp">받은견적서</a>
-													<a class="dropdown-item" href="Est_ShowConsult.jsp">받은컨설팅</a>
+													<a id="reqlogin" class="dropdown-item" href="Est_normal_consultedEst.jsp">받은컨설팅</a>
+													<script>
+													  // 알림 메시지를 표시하는 함수를 정의합니다.
+													  function showAlertMessage() {
+													    alert("로그인하세요"); // 원하는 알림 메시지로 변경하세요.
+													  }
+													
+													  // "받은컨설팅" 링크에 이벤트 리스너를 추가합니다.
+													  document.getElementById("reqlogin").addEventListener("click", function(event) {
+													    // 'info' 변수가 'null'인지 확인합니다.
+													    if (${info == null }) {
+													      event.preventDefault(); // 링크의 기본 동작(지정된 URL로 이동)을 막습니다.
+													      showAlertMessage(); // 알림 메시지를 표시합니다.
+													    }
+													  });
+													</script>
+														
 												</div></li>
 
 										</c:when>
 										<c:when test="${info.user_type eq '고수' }">
 											<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-												class="nav-link" href="Est_gosu_responseList.jsp">받은견적</a></li>
+												class="nav-link" href="Gosu_Est_Receive.jsp">받은견적</a></li>
 											<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
 												class="nav-link" href="Paid_est.jsp">채택된견적</a></li>
 										</c:when>

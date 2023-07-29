@@ -378,12 +378,10 @@ main {
 										<div class="upload_test">
 											<form action="UploadpicCon.do" method="post"
 												enctype="multipart/form-data">
-												<input type="file" name="profileImage"
-													id="profileImageInput" accept="image/*"> <img
-													id="uploadedImage" src="" alt=""> <input
-													type="hidden" name="user_id" value="<%=user_id%>"
-													class="button_test"> <input type="submit"
-													value="프로필사진 업로드하기" class="button_test2">
+												<input type="file" name="profileImage" id="profileImageInput" accept="image/*"> 
+												<img id="uploadedImage" src="" alt=""> 
+												<input type="hidden" name="user_id" value="<%=user_id%>" class="button_test"> 
+												<input type="submit" value="프로필사진 업로드하기" class="button_test2" id="uploadButton">
 											</form>
 										</div>
 										<%
@@ -394,35 +392,39 @@ main {
 									<!-- 프사 업로드 스크립트 -->
 
 									<script>
-										const profileImageInput = document
-												.getElementById("profileImageInput");
-										const uploadedImage = document
-												.getElementById("uploadedImage");
+										const profileImageInput = document.getElementById("profileImageInput");
+										const uploadedImage = document.getElementById("uploadedImage");
+									    const uploadButton = document.getElementById("uploadButton");
+										
+									    // 업로드 버튼을 비활성화하는 함수
+									    function disableUploadButton() {
+									        uploadButton.disabled = true;
+									        uploadButton.style.backgroundColor = "gray"; // 비활성화 시 배경색을 회색으로 설정
+									    }
 
-										profileImageInput
-												.addEventListener(
-														"change",
-														function() {
-															const file = profileImageInput.files[0];
-															const reader = new FileReader();
+									    // 업로드 버튼을 활성화하는 함수
+									    function enableUploadButton() {
+									        uploadButton.disabled = false;
+									        uploadButton.style.backgroundColor = "#5882FA"; // 활성화 시 배경색을 파란색으로 설정
+									    }
 
-															reader
-																	.addEventListener(
-																			"load",
-																			function() {
-																				uploadedImage
-																						.setAttribute(
-																								"src",
-																								reader.result);
-																				uploadedImage.style.display = "block";
-																				profileImageInput.style.display = "none";
-																			});
+										profileImageInput.addEventListener("change",function() {
+											const file = profileImageInput.files[0];
+											const reader = new FileReader();
+											// 사용자가 파일을 선택한 후에 "업로드하기" 버튼을 활성화합니다
+								            enableUploadButton();
+											reader.addEventListener("load",function() {
+												uploadedImage.setAttribute("src",reader.result);
+												uploadedImage.style.display = "block";
+												profileImageInput.style.display = "none";
+												});
+											if (file) {
+												reader.readAsDataURL(file);
+												}
+											});
+										
+										disableUploadButton()
 
-															if (file) {
-																reader
-																		.readAsDataURL(file);
-															}
-														});
 									</script>
 
 									<div class="profile-user-settings">

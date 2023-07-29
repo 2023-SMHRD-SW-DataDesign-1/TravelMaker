@@ -180,7 +180,7 @@
 									</c:when>
 									<c:when test="${info.user_type eq '고수' }">
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-											class="nav-link" href="Est_gosu_responseList.jsp">받은견적</a></li>
+											class="nav-link" href="Gosu_Est_Receive.jsp">받은견적</a></li>
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
 											class="nav-link" href="Paid_est.jsp">채택된견적</a></li>
 									</c:when>
@@ -252,7 +252,7 @@
         <!-- Submit -->
         <div id="btn-box">
             <div id="btn-box-center">
-                <a href="Est_gosu_responseList.jsp" id="cancel-btn">취소</a>
+                <a href="Gosu_Est_Receive.jsp" id="cancel-btn">취소</a>
                 <div>
 	                <input type="number" name="res_fee" class="fee-box" palceholder="원하시는 가격을 입력해주세요.">
 	                <input type="submit" id="submit-btn" value="견적서보내기">

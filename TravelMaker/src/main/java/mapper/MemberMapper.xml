@@ -32,5 +32,9 @@
 		update user_info set user_cash = #{user_cash} where user_id = #{user_id}
 	</update>
 	
+	<select id="duplicateId" parameterType="String" resultType="int">
+		select count(user_id) from user_info where user_id=#{user_id}
+	</select>
+	
 	
 </mapper>

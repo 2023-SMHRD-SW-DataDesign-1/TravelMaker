@@ -17,5 +17,9 @@
 	<select id="showEstimate" parameterType="String" resultType="SendDTO">
 		select * from est_send where user_id = #{user_id} and est_num in(select est_num from est_consult)	
 	</select>
+	
+	<select id="showfinalConsult" parameterType="int" resultType="ConsultDTO">
+		select * from est_consult where est_num = #{est_num}
+	</select>
 
 </mapper>

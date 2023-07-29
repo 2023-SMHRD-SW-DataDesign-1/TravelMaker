@@ -49,7 +49,7 @@ public class JoinCon implements Command {
 
 		if (row > 0) {
 			System.out.println("회원가입 성공");
-			moveURL = "forward./Main.jsp";
+			moveURL = "forward./Main.jsp?signup=success";
 		} else {
 			System.out.println("회원가입 실패");
 			moveURL = "Main.jsp";

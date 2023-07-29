@@ -35,16 +35,19 @@ public class LoginCon implements Command {
 		UserDTO info = new UserDAO().login(new UserDTO(user_id, user_pw));
 		System.out.println(info);
 
+		String moveURL = "";
+		
 		if (info != null) {
 			System.out.println("로그인 성공");
 			HttpSession session = request.getSession();
-
 			session.setAttribute("info", info);
+			moveURL = "Main.jsp";
 		} else {
 			System.out.println("로그인 실패");
+			moveURL = "Main.jsp?loginfail=true";
 		}
 
-		return "Main.jsp";
+		return moveURL;
 	}
 
 }

@@ -11,6 +11,29 @@
 <!-- iamport.payment.js -->
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+<style>
+body{
+	background-color: #e0c4ff;
+}
+button {
+	cursor: pointer;
+	display: block;
+	position: absolute;
+	width: 500px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: none;
+	border-radius: 25px;
+	font-size: 70px;
+	background-color: #a268e1;
+	color: white;
+	font-weight: bold;
+	box-shadow: 10px 10px 20px #8140c861;
+}
+</style>
 </head>
 <body>
 
@@ -23,17 +46,10 @@
 	String user_id = udto.getUser_id();
 	String user_name = udto.getUser_name();
 	String merchant_uid = UUID.randomUUID().toString();
-
 	%>
 
 
-
-	<div>
-		<h2>IAMPORT 결제 데모</h2>
-		<li>
-			<button id="iamportPayment" type="button">결제테스트</button>
-		</li>
-	</div>
+	<button id="iamportPayment" type="button">결제하기</button>
 
 	<!-- <script src="js/PaymentAPI.js"></script> -->
 	<script>
@@ -60,12 +76,12 @@
 						if (rsp.success) {
 							alert("완료 -> imp_uid : " + rsp.imp_uid+ " / merchant_uid(orderKey) : "+ rsp.merchant_uid);
 							 window.location.href = "PayCon.do?charge=<%=charge%>&user_id=<%=user_id%>";
-						} else {
-							alert("실패 : 코드(" + rsp.error_code + ") / 메세지("
-									+ rsp.error_msg + ")");
-						}
-					});
+								} else {
+									alert("실패 : 코드(" + rsp.error_code
+											+ ") / 메세지(" + rsp.error_msg + ")");
+								}
+							});
 		}
-	</script>
+		</script>
 </body>
 </html>

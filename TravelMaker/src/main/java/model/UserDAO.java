@@ -64,7 +64,14 @@ public class UserDAO {
 		session.close();
 		
 		return row;
+	}
+	
+	public int duplicateId(String user_id) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.selectOne("duplicateId", user_id);
+		session.close();
 		
+		return row;
 	}
 
 }

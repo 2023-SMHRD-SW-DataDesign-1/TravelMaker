@@ -1,5 +1,3 @@
-<%@page import="model.SendDTO"%>
-<%@page import="model.SendDAO"%>
 <%@page import="model.UserDTO"%>
 <%@page import="model.ConsultDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -9,405 +7,174 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>CodePen - Flat UI Kit - Dribbble Rebound</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/6035/grid.css'>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>
-  <link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/6035/icomoon-scrtpxls.css'>
-  <link rel="stylesheet" href="css/show_consult_page.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<meta charset="UTF-8">
 
-  <!-- 세부컨설팅작성페이지 link 및 script 시작 -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- include summernote css/js -->
-  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places&callback=initMap">
-    </script>
-  <!-- 세부컨설팅작성페이지 link 및 script 끝 -->
+<!-- note head tart-->
 
-  <!--  -->
+<title>글쓰기</title>
+<!-- include libraries(jQuery, bootstrap) -->
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<!-- include summernote css/js-->
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<script async
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places,marker&callback=initMap">	
+</script>
+<style>
+h1 {
+	text-align: center;
+}
 
-  <!--  -->
+button {
+	float: right;
+	color: white;
+	background-color: skyblue;
+	border: none;
+	padding: 10px 50px;
+}
 
-  <!-- 세부컨설팅작성페이지 스타일1 시작 -->
-  <style>
-    h1 {
-      text-align: center;
-    }
+#userInfoContainer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+}
 
-    /* button {
-     float: right;
-     color: white;
-     background-color: skyblue;
-     border: none;
-     padding: 10px 30px;
-  }
-*/
-    .input_3 {
-      /* 전송버튼 */
-      height: 55px;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      border-bottom: 3px solid black;
-      padding: 10px 30px;
-    }
+#inputTitle {
+	width: 100%;
+	font-size: x-large;
+	/* font-size: xx-large; */
+}
 
-    .div_2 {
-      /* 오른쪽하단 고정 */
-      position: absolute;
-      right: 20px;
-      /* margin-left: 1500px; */
-    }
+.input_1 {
+	/* 제목 */
+	width: 500px;
+	height: 40px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+}
 
-    .price-tag {
-      background-color: #4285F4;
-      border-radius: 8px;
-      color: #FFFFFF;
-      font-size: 14px;
-      padding: 10px 15px;
-      position: relative;
-    }
+.input_2 {
+	/* 받을금액 */
+	height: 55px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 3px solid black;
+}
 
-    .price-tag::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 100%;
-      transform: translate(-50%, 0);
-      width: 0;
-      height: 0;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-top: 8px solid #4285F4;
-    }
+.input_3 {
+	/* 전송버튼 */
+	height: 55px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 3px solid black;
+	padding: 10px 30px;
+}
 
-    [class$=api-load-alpha-banner] {
-      display: none;
-    }
-  </style>
-  <!-- 세부컨설팅작성페이지 style1 끝 -->
+.input_4 {
+	/* 간단한 설명 */
+	width: 900px;
+	height: 40px;
+	font-size: 15px;
+	border: 0;
+	/* border-radius: 15px; */
+	outline: none;
+	/* padding-left: 10px; */
+	background-color: rgb(230, 230, 230);
+}
 
-  <!-- 세부컨설팅작성페이지 style2 시작 -->
-  <style>
-    /*    */
-    .editor-contents {
-      height: 300px;
-      padding-bottom: 50px;
-      /* margin-top: 50px; */
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
+.select_1 {
+	/* 카테고리 */
+	width: 200px;
+	padding: .8em .5em;
+	border: 1px solid #999;
+	font-family: inherit;
+	background: url('arrow.jpg') no-repeat 95% 50%;
+	border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
 
-    #tip-title-box {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
+.div_1 {
+	margin: 15px 25px 15px 0px;
+	padding: 10px
+}
 
-    #tip-title {
-      width: 700px;
-      height: 40px;
-      border: 1px #D8D8D8 solid;
-      border-radius: 5px;
-      margin: 0;
-      padding: 0 10px;
-      margin-bottom: 10px;
-      font-family: 'Apple SD Gothic Neo';
-      font-size: 14px;
-    }
+.div_2 {
+	/* 오른쪽하단 고정 */
+	position: absolute;
+	right: 20px;
 
-    #editor-box {
-      width: 800px;
-      height: 100%;
-      display: inline-block;
+	/* margin-left: 1500px; */
+}
 
-    }
+.div_3 {
+	margin: 15px 25px 15px 0px;
+}
+</style>
 
-    #btn-box-center {
-      width: 800px;
-    }
-
-    #cancel-btn {
-      width: 160px;
-      height: 40px;
-      border-radius: 7px;
-      border: 1px #D8D8D8 solid;
-      float: left;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #submit-btn {
-      width: 160px;
-      height: 40px;
-      border-radius: 7px;
-      background-color: #5882FA;
-      color: white;
-      float: right;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #map {
-      /* top: 100px; */
-      height: 300px;
-      width: 630px;
-      /* 지도랑 나란히 정렬 */
-      display: inline-block
-    }
-
-    #search-location {
-      width: 170px;
-      height: 40px;
-      font-size: 14px;
-      border: 1px solid #535353;
-      background-color: rgb(230, 230, 230);
-    }
-
-    #btn_group {
-      /* text-align: center;
-     display: inline-block; */
-      display: flex;
-      justify-content: center;
-    }
-
-    /*  */
-    #test_btn1 {
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      margin-right: 0px;
-    }
-
-    #test_btn2 {
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      margin-left: -1px;
-    }
-
-    #btn_group button {
-      /* #5882FA; */
-      border: 1px solid #5882FA;
-      background-color: rgba(0, 0, 0, 0);
-      color: #5882FA;
-      padding: 5px;
-    }
-
-    #btn_group button:hover {
-      color: white;
-      background-color: #5882FA;
-    }
-
-    /*  */
-
-    /* #div_left {
-     width: 300px;
-     height: 900px;
-     background-color: #e6e6e6;
-     float: left;
-     position: fixed;
-     left: 0x; */
-    /* top: 100px */
-    /* } */
-  </style>
-  <!-- 세부컨설팅작성페이지 style2 끝 -->
 </head>
-
 <body>
+
+
+
+
+
 	<%
 	System.out.println("est_showconsult 진입");
 	ConsultDAO csdao = new ConsultDAO();
 
 	UserDTO udto = (UserDTO) session.getAttribute("info");
-	//String user_id = "user_test";
-	String user_id = udto.getUser_id();
-	// System.out.println("로그인 한 아이디 : " + user_id);
-	int est_num = Integer.parseInt(request.getParameter("est_num"));
-	ConsultDTO show_final_consult = csdao.showfinalConsult(est_num);
-	System.out.println("show_final_consult : " + show_final_consult);
-	System.out.println("경도 : " + show_final_consult.getCons_lat());
-	
-	SendDAO sdao = new SendDAO();
-	SendDTO show_send = sdao.EstSend_nomalUser(est_num);
+	String user_id = "user_test";
+	//String user_id = udto.getUser_id();
+	System.out.println("로그인 한 아이디 : " + user_id);
+	ArrayList<ConsultDTO> cons_list = csdao.showConsult(user_id);
 
+	System.out.println(cons_list.size());
+	System.out.println(cons_list.get(1).getCons_lat());
 	%>
 
-
-  <!-- partial:index.partial.html -->
-  <div class="container">
-    <div class="grid_4">
-      <section class="box widget locations">
-        <div class="avatar">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6035/scrtpxls_location.png" />
-        </div>
-        <div class="details">
-          <h2>De Westerkerk</h2>
-          <p>Prinsengracht 281</p>
-          <a href="#" class="btn btn-primary btn-block btn-large">고수 마이페이지</a>
-        </div>
-      </section>
-
-      <!-- 견적요청 리스트 시작 -->
-      <div class="scroll-cards">
-        <!-- 사이드 1번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <img src="https://randomuser.me/api/portraits/men/20.jpg" />
-            <div class="mail-names">
-              <p><%=udto.getUser_name()%> 고객님의 견적요청</p>
-            </div>
-          </div>
-          <div class="mail-info">
-            <!-- 동남아여행 -->
-          </div>
-          <div>
-          </div>
-          <div class="check1">
-            <div class="bottom-info">
-
-            </div>
-            <div class="date">8:30 AM</div>
-          </div>
-        </div>
-        <!-- 사이드 1번째 박스 끝 -->
-
-        <!-- 사이드 2번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              어디로가세요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_country() %>
-
-            <div>
-            </div>
-            <div class="bottom-info">
-              </label>
-
-            </div>
-
-          </div>
-        </div>
-        <!-- 사이드 2번째 박스 끝 -->
-
-        <!-- 사이드 3번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              구체적인 목적지가 어디세요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_place() %>
-          </div>
-          <div>
-          </div>
-          <div class="bottom-info">
-
-          </div>
-        </div>
-        <!-- 사이드 3번째 박스 끝 -->
-
-        <!-- 사이드 4번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              예산이 얼마나 되세요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_budget() %>
-          </div>
-          <div>
-          </div>
-          <div class="bottom-info">
-
-          </div>
-        </div>
-        <!-- 사이드 4번째 박스 끝 -->
-
-        <!-- 사이드 5번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              언제 가세요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_s_date()%>~<%=show_send.getSend_e_date()%>
-          </div>
-          <div>
-          </div>
-          <div class="bottom-info">
-
-          </div>
-        </div>
-        <!-- 사이드 5번째 박스 끝 -->
-
-        <!-- 사이드 6번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              고수에게 추가적인 요청사항이 있나요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_content() %>
-          </div>
-          <div>
-          </div>
-          <div class="bottom-info">
-
-          </div>
-        </div>
-        <!-- 사이드 6번째 박스 끝 -->
-      </div>
-      <!-- 견적요청 리스트 끝 -->
+	<jsp:include page="Nav.jsp"></jsp:include>
+	<!-- 지도 시작 -->
 
 
+
+	<!-- 내용 -->
+
+<%
+for (int i = 0; i < cons_list.size(); i++) {
+    %>
+    <div>
+        <div id="map_<%= i %>" style="height: 500px;"></div>
+        <%=cons_list.get(i).getCons_content() %>
+        <%=cons_list.get(i).getCons_wr_date() %>
     </div>
-    <div class="grid_8">
+    <hr>
+<%
+}
+%>
 
-      <div class="inner_container">
+	<jsp:include page="Footer.jsp"></jsp:include>
 
 
-        <!-- 지도 body시작 -->
 
-  
-
-            <div id="editor-box">
-              <div id="map"></div>
-            </div>
- 
-
-        <!-- 지도 body끝 -->
-
-        <!-- 여기에 경로 넣을 자리 body 시작 -->
-        <%=show_final_consult.getCons_content() %>
-
-        <!-- 여기에 경로 넣을 자리 body 시작 -->
-      </div>
-    </div>
-  </div>
-  <!-- partial -->
-
-  <!-- 세부컨설팅작성페이지 script 시작 -->
 
 	<script>
 
@@ -429,38 +196,38 @@
     }
 
     function initMap() {
+        let map;
+        
 
-            const latPositions = '<%= show_final_consult.getCons_lat() %>'.split(';');
-            const lngPositions = '<%= show_final_consult.getCons_lng() %>'.split(';');
-            const mapContainer = document.getElementById('map');
-            const lat = parseFloat(latPositions[0]);
-            const lng = parseFloat(lngPositions[0]);
-            console.log(lat);
-            const defaultPosition = { lat: lat, lng: lng };
+        <% for (int i = 0; i < cons_list.size(); i++) { %>
+            const latPositions_<%= i %> = '<%= cons_list.get(i).getCons_lat() %>'.split(';');
+            const lngPositions_<%= i %> = '<%= cons_list.get(i).getCons_lng() %>'.split(';');
+            const mapContainer_<%= i %> = document.getElementById('map_<%= i %>');
+            const lat_<%= i %> = parseFloat(latPositions_<%= i %>[0]);
+            const lng_<%= i %> = parseFloat(lngPositions_<%= i %>[0]);
+            const defaultPosition_<%= i %> = { lat: lat_<%= i %>, lng: lng_<%= i %> };
 
-            const map = new google.maps.Map(mapContainer, {
-                center: defaultPosition,
+            const map_<%= i %> = new google.maps.Map(mapContainer_<%= i %>, {
+                center: defaultPosition_<%= i %>,
                 zoom: 15
             });
 
-            for (let j = 0; j < latPositions.length; j++) {
+            for (let j = 0; j < latPositions_<%= i %>.length; j++) {
                 markerCount++;
-                const lat = parseFloat(latPositions[j]);
-                const lng = parseFloat(lngPositions[j]);
+                const lat = parseFloat(latPositions_<%= i %>[j]);
+                const lng = parseFloat(lngPositions_<%= i %>[j]);
                 const position = { lat: lat, lng: lng };
-                const marker = createHTMLMarker(map, position, markerCount.toString());
+                const marker = createHTMLMarker(map_<%= i %>, position, markerCount.toString());
                 markers.push(marker);
             }
             markerCount = 0; // 초기화
- 
+        <% } %>
     }
 
     // initMap 함수를 콜백으로 등록
     document.addEventListener('DOMContentLoaded', initMap);
     </script>
 
-
-
 </body>
-
 </html>
+

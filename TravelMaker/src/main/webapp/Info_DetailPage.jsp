@@ -75,12 +75,7 @@
 	
 	
 	String notification = (String) session.getAttribute("notification");
-	
-
 	System.out.println("노티피 : " + notification);
-	
-
-	
 	%>
 
 	<!-- 알림 메시지가 존재할 경우 해당 알림을 표시 -->

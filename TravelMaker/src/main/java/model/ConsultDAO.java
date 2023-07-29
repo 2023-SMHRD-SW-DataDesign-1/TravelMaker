@@ -31,5 +31,12 @@ public class ConsultDAO {
 		session.close();
 		return (ArrayList<SendDTO>) esti_list;
 	}
+	
+	public ConsultDTO showfinalConsult(int est_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		ConsultDTO show_final_consult = session.selectOne("showfinalConsult", est_num);
+		session.close();
+		return show_final_consult;
+	}
 
 }

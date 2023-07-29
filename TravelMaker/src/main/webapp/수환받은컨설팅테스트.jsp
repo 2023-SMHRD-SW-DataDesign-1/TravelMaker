@@ -1,5 +1,3 @@
-<%@page import="model.SendDTO"%>
-<%@page import="model.SendDAO"%>
 <%@page import="model.UserDTO"%>
 <%@page import="model.ConsultDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -233,178 +231,20 @@
 	ConsultDAO csdao = new ConsultDAO();
 
 	UserDTO udto = (UserDTO) session.getAttribute("info");
-	//String user_id = "user_test";
-	String user_id = udto.getUser_id();
+	String user_id = "user_test";
+	//String user_id = udto.getUser_id();
 	// System.out.println("로그인 한 아이디 : " + user_id);
-	int est_num = Integer.parseInt(request.getParameter("est_num"));
+	int est_num = 124;
 	ConsultDTO show_final_consult = csdao.showfinalConsult(est_num);
 	System.out.println("show_final_consult : " + show_final_consult);
 	System.out.println("경도 : " + show_final_consult.getCons_lat());
-	
-	SendDAO sdao = new SendDAO();
-	SendDTO show_send = sdao.EstSend_nomalUser(est_num);
 
 	%>
 
 
   <!-- partial:index.partial.html -->
-  <div class="container">
-    <div class="grid_4">
-      <section class="box widget locations">
-        <div class="avatar">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6035/scrtpxls_location.png" />
-        </div>
-        <div class="details">
-          <h2>De Westerkerk</h2>
-          <p>Prinsengracht 281</p>
-          <a href="#" class="btn btn-primary btn-block btn-large">고수 마이페이지</a>
-        </div>
-      </section>
 
-      <!-- 견적요청 리스트 시작 -->
-      <div class="scroll-cards">
-        <!-- 사이드 1번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <img src="https://randomuser.me/api/portraits/men/20.jpg" />
-            <div class="mail-names">
-              <p><%=udto.getUser_name()%> 고객님의 견적요청</p>
-            </div>
-          </div>
-          <div class="mail-info">
-            <!-- 동남아여행 -->
-          </div>
-          <div>
-          </div>
-          <div class="check1">
-            <div class="bottom-info">
-
-            </div>
-            <div class="date">8:30 AM</div>
-          </div>
-        </div>
-        <!-- 사이드 1번째 박스 끝 -->
-
-        <!-- 사이드 2번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              어디로가세요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_country() %>
-
-            <div>
-            </div>
-            <div class="bottom-info">
-              </label>
-
-            </div>
-
-          </div>
-        </div>
-        <!-- 사이드 2번째 박스 끝 -->
-
-        <!-- 사이드 3번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              구체적인 목적지가 어디세요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_place() %>
-          </div>
-          <div>
-          </div>
-          <div class="bottom-info">
-
-          </div>
-        </div>
-        <!-- 사이드 3번째 박스 끝 -->
-
-        <!-- 사이드 4번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              예산이 얼마나 되세요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_budget() %>
-          </div>
-          <div>
-          </div>
-          <div class="bottom-info">
-
-          </div>
-        </div>
-        <!-- 사이드 4번째 박스 끝 -->
-
-        <!-- 사이드 5번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              언제 가세요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_s_date()%>~<%=show_send.getSend_e_date()%>
-          </div>
-          <div>
-          </div>
-          <div class="bottom-info">
-
-          </div>
-        </div>
-        <!-- 사이드 5번째 박스 끝 -->
-
-        <!-- 사이드 6번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <div class="mail-names">
-              고수에게 추가적인 요청사항이 있나요?
-            </div>
-          </div>
-          <div class="mail-info">
-            <%=show_send.getSend_content() %>
-          </div>
-          <div>
-          </div>
-          <div class="bottom-info">
-
-          </div>
-        </div>
-        <!-- 사이드 6번째 박스 끝 -->
-      </div>
-      <!-- 견적요청 리스트 끝 -->
-
-
-    </div>
-    <div class="grid_8">
-
-      <div class="inner_container">
-
-
-        <!-- 지도 body시작 -->
-
-  
-
-            <div id="editor-box">
-              <div id="map"></div>
-            </div>
- 
-
-        <!-- 지도 body끝 -->
-
-        <!-- 여기에 경로 넣을 자리 body 시작 -->
-        <%=show_final_consult.getCons_content() %>
-
-        <!-- 여기에 경로 넣을 자리 body 시작 -->
-      </div>
-    </div>
-  </div>
+        <div id="map" style="height: 500px;"></div>
   <!-- partial -->
 
   <!-- 세부컨설팅작성페이지 script 시작 -->
