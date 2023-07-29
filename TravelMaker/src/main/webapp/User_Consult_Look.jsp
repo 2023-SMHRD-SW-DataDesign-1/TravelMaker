@@ -13,7 +13,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Flat UI Kit - Dribbble Rebound</title>
+  <title>일반회원 - 받은 컨설팅 조회</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/6035/grid.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>

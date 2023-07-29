@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>받은견적서 보러가기 전</title>
+<title>받은견적서 조회 전</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/Est_gosu_responseList.css">
 <style type="text/css">
@@ -101,7 +101,7 @@
 								<span><%=send_list.get(i).getSend_content()%></span>
 								<div class="project-move-box">
 									<p>요청금액 <%=send_list.get(i).getSend_budget()%></p>
-									<a href="Est_nomal_response.jsp?est_num=<%=send_list.get(i).getEst_num()%>">견적서 보러가기</a>
+									<a href="User_Est_Look.jsp?est_num=<%=send_list.get(i).getEst_num()%>">견적서 보러가기</a>
 								</div>
 							</div>
 						</div>

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>List</title>
+<title>일반회원 - 받은 컨설팅 조회 전</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/Est_gosu_responseList.css">
 <style type="text/css">
@@ -101,7 +101,7 @@
 								<span><%=consulted_list.get(i).getSend_content()%></span>
 								<div class="project-move-box">
 									<p>요청금액 <%=consulted_list.get(i).getSend_budget()%></p>
-									<a href="Est_ShowConsult.jsp?est_num=<%=consulted_list.get(i).getEst_num()%>">컨설팅 보러가기</a>
+									<a href="User_Consult_Look.jsp?est_num=<%=consulted_list.get(i).getEst_num()%>">컨설팅 보러가기</a>
 								</div>
 							</div>
 						</div>

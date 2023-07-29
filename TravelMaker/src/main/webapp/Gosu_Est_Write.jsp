@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CodePen - Remove Elipsis &amp; Reveal</title>
+<title>고수 - 견적서 작성</title>
     <!-- include libraries(jQuery, bootstrap) -->
 <!--     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -166,14 +166,14 @@
 									<c:when
 										test="${info.user_type eq '회원' || info.user_type == null }">
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-											class="nav-link" href="Est_nomal_send.jsp">견적요청</a></li>
+											class="nav-link" href="User_Est_Send.jsp">견적요청</a></li>
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active"><a
 											class="nav-link dropdown-toggle" data-toggle="dropdown"
 											href="#" role="button" aria-haspopup="true"
 											aria-expanded="false">컨설팅</a>
 											<div class="dropdown-menu">
-												<a class="dropdown-item" href="Est_nomal_responseList.jsp">받은견적서</a>
-												<a class="dropdown-item" href="Est_ShowConsult.jsp">받은컨설팅</a>
+												<a class="dropdown-item" href="EUser_Est_Receive.jsp">받은견적서</a>
+												<a class="dropdown-item" href="User_Consult_Receive.jsp">받은컨설팅</a>
 											</div></li>
 											<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
 											class="nav-link" href="MyPage_normal.jsp">마이페이지</a></li>
@@ -182,7 +182,7 @@
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
 											class="nav-link" href="Gosu_Est_Receive.jsp">받은견적</a></li>
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-											class="nav-link" href="Paid_est.jsp">채택된견적</a></li>
+											class="nav-link" href="Gosu_Est_Paid.jsp">채택된견적</a></li>
 									</c:when>
 								</c:choose>
 

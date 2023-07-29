@@ -98,7 +98,7 @@
 								<span>${response_list.send_content}</span>
 								<div class="project-move-box">
 									<p>요청금액 ${response_list.send_budget}</p>
-									<a href="Est_gosu_response.jsp?est_num=${response_list.est_num}">견적작성</a>
+									<a href="Gosu_Est_Write.jsp?est_num=${response_list.est_num}">견적작성</a>
 								</div>
 							</div>
 						</div>

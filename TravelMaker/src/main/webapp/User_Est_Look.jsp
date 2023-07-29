@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CodePen - Remove Elipsis &amp; Reveal</title>
+<title>받은 견적서 조회</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/gh/tomik23/show-more@master/docs/show-more.css" />
 <!-- res_est_1-2 link 시작 -->
