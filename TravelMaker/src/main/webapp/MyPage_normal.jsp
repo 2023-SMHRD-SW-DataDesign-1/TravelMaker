@@ -534,7 +534,7 @@ main {
 											</p>
 										</div>
 											<c:if test="${info.user_type eq '고수'}">
-												<button class="portfoilo-move-button" id="portfolio-button">포트폴리오 이동하기</button>
+												<button class="portfoilo-move-button" id="portfolio-button">포트폴리오</button>
 											</c:if>
 										
 									</div>
@@ -678,7 +678,7 @@ main {
 					// "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
 					purchaseButton.addEventListener('click', function() {
 						// 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
-						window.location.href = 'portfolio_write.jsp';
+						window.location.href = 'portfolio_list.jsp';
 					});
 				});
 			</script>

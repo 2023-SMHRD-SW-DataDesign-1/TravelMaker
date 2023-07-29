@@ -21,6 +21,7 @@ import controller.JoinCon;
 import controller.LoginCon;
 import controller.LogoutCon;
 import controller.PayCon;
+import controller.PortCon;
 import controller.SendCon;
 import controller.UploadpicCon;
 
@@ -42,6 +43,7 @@ public class FrontController extends HttpServlet {
 		list.put("DeletepicCon.do", new DeletepicCon());
 		list.put("GosuResponseCon.do", new GosuResponseCon());
 		list.put("InfoBuyCon.do", new InfoBuyCon());
+		list.put("PortCon.do", new PortCon());
 		
 		
 	}
