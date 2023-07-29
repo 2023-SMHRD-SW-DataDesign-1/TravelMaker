@@ -20,13 +20,6 @@
 <link rel="stylesheet" href="css/정보거래_카테고리별.css">
 <!--  href="style.css" => 정보거래_카테고리별.css -->
 
-<!-- main head start -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="Untree.co">
-<link rel="shortcut icon" href="../favicon.png">
-
 <meta name="description" content="" />
 <meta name="keywords" content="bootstrap, bootstrap4" />
 
@@ -455,7 +448,7 @@ main {
 														<!-- 모달창안 -->
 
 														<div class="div_modal">
-															<h1>💵 캐쉬 충전하기</h1>
+															<h1>Add cash💵</h1>
 															<br>
 															<p>
 																<input type="radio" name="charge" value="5000"
@@ -532,7 +525,6 @@ main {
 											}
 										</script>
 										<!-- 모달 스크립트 끝 -->
-										<!--  </div></div> -->
 
 										<div class="profile-bio">
 											<p>
@@ -686,7 +678,7 @@ main {
 					// "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
 					purchaseButton.addEventListener('click', function() {
 						// 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
-						window.location.href = 'Main.jsp';
+						window.location.href = 'portfolio_write.jsp';
 					});
 				});
 			</script>
