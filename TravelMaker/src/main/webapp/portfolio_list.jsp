@@ -1,3 +1,4 @@
+<%@page import="model.PortDAO"%>
 <%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -213,6 +214,27 @@ main {
 }
 </style>
 </head>
+<% 
+	String noti= (String) session.getAttribute("noti");
+	System.out.println("노티피 : " + noti);
+	
+	PortDAO pdao = new PortDAO();
+	
+
+	
+	%>
+
+	<!-- 알림 메시지가 존재할 경우 해당 알림을 표시 -->
+	
+	<script>
+	<% if (noti != null) { %>
+		alert("<%=noti%>");
+		<%
+		// 알림 메시지를 띄운 후에, notification 세션을 제거합니다.
+		session.removeAttribute("noti");
+		%>
+	<% } %>
+	</script>
 <body>
 
 	<%
@@ -518,9 +540,7 @@ main {
 												📷✈️🏕️
 											</p>
 										</div>
-											<c:if test="${info.user_type eq '고수'}">
-												<button class="portfoilo-move-button" id="portfolio-button">포트폴리오 이동하기</button>
-											</c:if>
+											<button class="portfoilo-move-button" id="portfolio-button">포트폴리오 작성하기</button>
 										
 									</div>
 								</div>
@@ -531,9 +551,9 @@ main {
 
 				<main>
 					<div class="mypage_container2">
-						<span>
-						하이 마이네임이즈 진혁
-						</span>
+						<div>
+						
+						</div>
 					</div>
 				</main>
 				
@@ -619,7 +639,7 @@ main {
 					// "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
 					purchaseButton.addEventListener('click', function() {
 						// 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
-						window.location.href = 'Main.jsp';
+						window.location.href = 'portfolio_write.jsp';
 					});
 				});
 			</script>
