@@ -1,3 +1,4 @@
+<%@page import="model.HisDTO"%>
 <%@page import="model.UserDTO"%>
 <%@page import="model.InfoDTO"%>
 <%@page import="java.util.regex.Pattern"%>
@@ -43,32 +44,56 @@
 
 
 </head>
+
 <style>
 .untree_co-section{
 	margin-top: 94px;
 }
 </style>
+
 <body>
 
 
 	<%
 	int info_num = Integer.parseInt(request.getParameter("info_num"));
-	String info_title = request.getParameter("info_title");
-	String info_brief = request.getParameter("info_brief");
-	int info_fee = Integer.parseInt(request.getParameter("info_fee"));
-	String infouser_id = request.getParameter("infouser_id");
+	UserDTO info = (UserDTO) session.getAttribute("info");
+	InfoDAO idao = new InfoDAO();
+	String user_id = info.getUser_id();
+	HisDTO show_his = idao.searchHis(new InfoDTO(user_id, info_num));
+	
+	
+	InfoDTO info_list = idao.showInfoSelect(info_num);
+	String info_title = info_list.getInfo_title();
+	String info_brief = info_list.getInfo_brief();
+	int info_fee = info_list.getInfo_fee();
+	String infouser_id = info_list.getUser_id();
+	
 	System.out.println(info_num);
 	
-	UserDTO info = (UserDTO) session.getAttribute("info");
 	
-	InfoDAO idao = new InfoDAO();
+	int buy = idao.countBuy(info_num);	
 	
-	int buy = idao.countBuy(info_num);
-			
 	
+	String notification = (String) session.getAttribute("notification");
+	
+
+	System.out.println("노티피 : " + notification);
+	
+
 	
 	%>
 
+	<!-- 알림 메시지가 존재할 경우 해당 알림을 표시 -->
+	
+	<script>
+	<% if (notification != null) { %>
+		alert("<%=notification%>");
+		<%
+		// 알림 메시지를 띄운 후에, notification 세션을 제거합니다.
+		session.removeAttribute("notification");
+		%>
+	<% } %>
+	</script>
     <!-- img start -->
     <!-- 이미지 알고리즘 -->
     
@@ -94,7 +119,6 @@
 		%>
     
     
-	<jsp:include page="Nav.jsp"></jsp:include>
     
     <div class="untree_co-section">
         <div class="container my-5">
@@ -173,7 +197,7 @@
                 <div class="col-lg-4">
                     <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
                       
-                        <form class="contact-form bg-white">
+                       
                             <div class="row">
                                 <div class="col-md-6">
 
@@ -205,26 +229,37 @@
                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                 <!-- 구매버튼 시작 -->
                                
-
-                                <button id="purchaseButton" class="btn btn-primary">구매하기</button>
-                                
-                                <!-- 구매버튼 스크립트 -->
-                                <script>
-								  document.addEventListener('DOMContentLoaded', function() {
-								    // "구매하기" 버튼을 변수
-								    const purchaseButton = document.getElementById('purchaseButton');
+                               <form action="InfoBuyCon.do?user_id=<%=info.getUser_id()%>&info_fee=<%=info_fee%>&user_cash=<%=info.getUser_cash()%>&info_num=<%=info_num%>" method="post">
+                               	<input type="submit" value="구매하기">
+                               </form>
+                               
+                               <%boolean hasShowHis = show_his != null;%>
+                               <button id="purchaseButton" <% if (hasShowHis) { %>class="blue-button"<% } else { %>class="gray-button" disabled<% } %>>
+    							상세정보 보러가기
+								</button>
+                               
+                               <!-- 버튼 스크립트 -->
+								<script>
+								    document.addEventListener('DOMContentLoaded', function() {
+								        const purchaseButton = document.getElementById('purchaseButton');
 								
-								    // "구매하기" 버튼에 클릭 이벤트 리스너
-								    purchaseButton.addEventListener('click', function() {
-								    // 버튼 클릭 시 "InfoBuyCon.do"
-								    window.location.href = 'InfoBuyCon.do?user_id=<%=info.getUser_id()%>&user_cash=<%=info.getUser_cash()%>&info_fee=<%=info_fee%>';
+								        <% if (hasShowHis) { %>
+								        purchaseButton.addEventListener('click', function() {
+								            window.location.href = 'Info_DetailShow.jsp';
+								        });
+								        <% } else { %>
+								        purchaseButton.addEventListener('click', function() {
+								            alert('구매해주세요');
+								        });
+								        <% } %>
 								    });
-								  });
 								</script>
+	
+                              
                                 
-                                <!-- 구매버튼 끝-->
+        
+      
                             </div>
-                        </form>
                     </div>
 
                 </div>
@@ -232,7 +267,84 @@
         </div>
     </div>
 
-	<jsp:include page="Footer.jsp"></jsp:include>
+    <!-- main 하단 start -->
+    <div class="site-footer">
+        <div class="inner first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <h3 class="heading">About Tour</h3>
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                                there live the
+                                blind texts.</p>
+                        </div>
+                        <div class="widget">
+                            <ul class="list-unstyled social">
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                                <li><a href="#"><span class="icon-apple"></span></a></li>
+                                <li><a href="#"><span class="icon-google"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2 pl-lg-5">
+                        <div class="widget">
+                            <h3 class="heading">Pages</h3>
+                            <ul class="links list-unstyled">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="widget">
+                            <h3 class="heading">Resources</h3>
+                            <ul class="links list-unstyled">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <h3 class="heading">Contact</h3>
+                            <ul class="list-unstyled quick-info links">
+                                <li class="email"><a href="#">mail@example.com</a></li>
+                                <li class="phone"><a href="#">+1 222 212 3819</a></li>
+                                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="inner dark">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+                        <p>Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash;
+                            Designed with
+                            love by <a href="https://untree.co" class="link-highlight">Untree.co</a>
+                            <!-- License information: https://untree.co/license/ -->Distributed By <a
+                                href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="overlayer"></div>
     <div class="loader">
@@ -261,6 +373,7 @@
     <script src="js/typed.js"></script>
 
     <script src="js/custom.js"></script>
+
 
 
 </body>

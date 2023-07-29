@@ -22,4 +22,13 @@ public class InfoDTO {
 	@NonNull String info_lat;
 	@NonNull String info_lng;
 	@NonNull String info_brief;
+	
+	
+	public InfoDTO(String user_id, int info_num) {
+		super();
+		this.info_num = info_num;
+		this.user_id = user_id;
+	}
+	
+	
 }

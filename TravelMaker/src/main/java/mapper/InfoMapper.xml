@@ -27,5 +27,13 @@
 	<select id="countBuy" parameterType="int" resultType="int">
 		select count(info_num) from trade_his where info_num = #{info_num}
 	</select>
+	
+	<select id="searchHis" parameterType="InfoDTO" resultType="HisDTO">
+		select * from trade_his where user_id=#{user_id} and info_num=#{info_num}
+	</select>
+	
+	<insert id="insertHis" parameterType="InfoDTO">
+		insert into trade_his(his_num, user_id, info_num) values(his_num_seq.nextval, #{user_id}, #{info_num})
+	</insert>
 
 </mapper>
