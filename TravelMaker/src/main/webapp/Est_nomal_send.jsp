@@ -40,7 +40,7 @@
     </header>
 
     <main class="main">
-      <form action="#" method="GET" id="survey-form" class="survey" novalidate>
+      <form action="SendCon.do" method="post" id="survey-form" class="survey" novalidate>
         <div class="progressbar" tabindex="0" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"
           aria-valuetext="Question 1 of 5: How long have you been using our product?">
           <span class="progressbar__step active" aria-hidden="true"></span>
@@ -57,7 +57,7 @@
             <span class="visuallyhidden">Question 1 of 5 </span>어디로 가세요?
           </h2>
           <div class="form-group">
-            <select name="country" id="dropdown" name="country">
+            <select name="send_country" id="dropdown">
               <option value>국가선택</option>
               <option value="Afghanistan">국내</option>
               <option value="Åland Islands">동남아</option>
@@ -84,7 +84,7 @@
           </h2>
           <div class="form-group form-group-textarea">
             <label for="recommendation"></label>
-            <textarea name="recommendText" id="recommendation" spellcheck="false"  placeholder="세부 목적지를 작성해 주세요"></textarea>
+            <textarea name="send_place" id="recommendation" spellcheck="false"  placeholder="세부 목적지를 작성해 주세요"></textarea>
           </div>
           <p class="error-message"></p>
         </section>
@@ -100,15 +100,14 @@
 
           <div class="price-range-block">
             <!-- <div class="sliderText">Price Range Slider</div> -->
-            <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+           <!--  <div id="slider-range" class="price-filter-range" name="rangeInput"></div> -->
             <div style="margin-bottom:10px">
-              <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price"
+              <!-- <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price"
                 class="price-range-field" />
               <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price"
-                class="price-range-field" />
+                class="price-range-field" /> -->
+                <input type="number" name="send_budget" class="send_budget"/>
             </div>
-            <button class="price-range-search" id="price-range-submit">Search</button>
-            <div id="searchResults" class="search-results-block"></div>
           </div>
           <!-- =========== -->
           <p class="error-message"></p>
@@ -126,9 +125,8 @@
           <!-- 캘린더 시작 -->
           <section class="calendar">
             <div class="calendar__inputs">
-              <input class="calendar__input" readonly="readonly" type="text" id="calendar-start"
-                placeholder="Start Date">
-              <input class="calendar__input" readonly="readonly" type="text" id="calendar-end" placeholder="End Date">
+              <input class="calendar__input" name="send_s_date" readonly="readonly" type="text" id="calendar-start" placeholder="Start Date">
+              <input class="calendar__input" name="send_e_date" readonly="readonly" type="text" id="calendar-end" placeholder="End Date">
             </div>
             <!-- 리셋버튼-->
             <div class="calendar__pikaday" id="calendar-container"></div>
@@ -157,7 +155,7 @@
           <div class="survey__panel__personaldetails">
             <div class="form-group form-group-textarea">
               <label for="recommendation"></label>
-              <textarea name="recommendText" id="recommendation" spellcheck="false" placeholder="요청사항을 작성해 주세요"></textarea>
+              <textarea name="send_content" id="recommendation" spellcheck="false" placeholder="요청사항을 작성해 주세요"></textarea>
             </div>
           </div>
 
