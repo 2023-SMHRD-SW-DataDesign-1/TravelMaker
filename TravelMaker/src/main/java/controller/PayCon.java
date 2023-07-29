@@ -3,6 +3,7 @@ package controller;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.Command;
 import model.CashDTO;
@@ -36,6 +37,10 @@ public class PayCon implements Command {
 			System.out.println("입금실패");
 			moveURL = "Mypage_normal.jsp";
 		}
+		
+		UserDTO info = udao.userInfo(user_id);
+		HttpSession session = request.getSession();
+		session.setAttribute("info", info);
 		
 		
 
