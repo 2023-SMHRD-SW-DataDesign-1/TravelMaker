@@ -49,7 +49,7 @@
 	-webkit-transition : all 0.3s ease-out;
 	transition : all 0.3s ease-out;
 }
-.start-header.scroll-on .navbar-brand img{
+.start-header.scroll-on .navbar_logo img{
 	height: 24px;
 	-webkit-transition : all 0.3s ease-out;
 	transition : all 0.3s ease-out;
@@ -63,10 +63,11 @@
 	-webkit-transition : all 0.3s ease-out;
 	transition : all 0.3s ease-out;
 }
-.navbar{
+.main_navbar{
 	padding: 0;
+	display: flex;
 }
-.navbar-brand img{
+.navbar_logo img{
 	height: 28px;
 	width: auto;
 	display: block;

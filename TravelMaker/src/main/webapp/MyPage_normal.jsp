@@ -1,6 +1,8 @@
 <%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -188,7 +190,7 @@ strong {
 	height: 190px;
 	width: 200px;
 	margin: 15px auto;
-	background-color: black;
+	background-color: #e2e2e2;
 }
 
 .profile_test {
@@ -228,7 +230,8 @@ strong {
 	/* cursor: pointer; */
 	font-size: 15px;
 }
-main{
+
+main {
 	margin-top: 34px;
 }
 </style>
@@ -237,8 +240,9 @@ main{
 <body>
 	<%
 	UserDTO info = (UserDTO) session.getAttribute("info");
-	// String user_id = info.getUser_id();
-	String user_id = "sori";
+	String user_id = info.getUser_id();
+	String act_area = info.getAct_area();
+	/* String user_id = "sori"; */
 	String uploadSuccess = request.getParameter("upload_success");
 	String deleteSuccess = request.getParameter("delete_success");
 	%>
@@ -482,10 +486,10 @@ main{
 														</div>
 													</div>
 												</div>
+											</form>
 										</div>
 										<!-- 모달 끝 -->
 
-										</form>
 
 										<!-- 모달 스크립트 시작 -->
 										<script>
@@ -532,11 +536,15 @@ main{
 
 										<div class="profile-bio">
 											<p>
-												<span class="profile-real-name">Jane Doe</span> <br>
+												<span class="profile-real-name">활동 지역 : <%=info.getAct_area() %></span> <br>
 												Lorem ipsum dolor sit, amet consecteturadipisicing elit
 												📷✈️🏕️
 											</p>
 										</div>
+											<c:if test="${info.user_type eq '고수'}">
+												<button class="portfoilo-move-button" id="portfolio-button">포트폴리오 이동하기</button>
+											</c:if>
+										
 									</div>
 								</div>
 							</div>
@@ -596,7 +604,7 @@ main{
 				</main>
 				<!-- 나의 정보거래 내역 끝 -->
 			</div>
-			
+
 			<!-- 푸터 시작 -->
 			<jsp:include page="Footer.jsp"></jsp:include>
 			<!-- 푸터 끝 -->
@@ -666,6 +674,20 @@ main{
 
 					})
 
+				});
+			</script>
+			<!-- 버튼 스크립트 -->
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					// "구매하기" 버튼을 ID로 찾아서 변수에 할당합니다.
+					const purchaseButton = document
+							.getElementById('portfolio-button');
+
+					// "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
+					purchaseButton.addEventListener('click', function() {
+						// 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
+						window.location.href = 'Main.jsp';
+					});
 				});
 			</script>
 </body>

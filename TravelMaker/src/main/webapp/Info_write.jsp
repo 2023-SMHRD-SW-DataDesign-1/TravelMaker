@@ -26,6 +26,7 @@
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places&callback=initMap">
 	
 </script>
+
 <style>
 h1 {
 	text-align: center;
@@ -135,12 +136,11 @@ button {
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="css/owl.carousel.min.css">
 <link rel="stylesheet" href="css/owl.theme.default.min.css">
 <link rel="stylesheet" href="css/jquery.fancybox.min.css">
 <link rel="stylesheet" href="fonts/icomoon/style.css">
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
 <link rel="stylesheet" href="css/daterangepicker.css">
 <link rel="stylesheet" href="css/aos.css">
 <link rel="stylesheet" href="css/style.css">
@@ -151,6 +151,9 @@ button {
 #map {
 	top: 100px;
 }
+.write_main_content{
+	margin-top: 130px;
+}
 </style>
 </head>
 <body>
@@ -159,7 +162,7 @@ button {
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
 
-	<form action="InfowriterCon.do" method="post" onsubmit="return validateForm()">
+	<form action="InfowriterCon.do" method="post" onsubmit="return validateForm()" class="write_main_content">
 
 		<div class="div_1">
 			<select class="select_1" name="info_cate">
@@ -188,9 +191,7 @@ button {
 
 	</form>
 	
-		<!-- 푸터 시작 -->
-	<jsp:include page="Footer.jsp"></jsp:include>
-	<!-- 푸터 끝 -->
+
 	
 	<!-- 금액제한 스크립트 -->
 	<script>
@@ -236,7 +237,9 @@ button {
 	<div id="map" style="height: 400px;"></div>
 
 
-
+		<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
 
 	<!-- note script start-->
 	<script>
@@ -317,7 +320,8 @@ button {
 	</script>
 	<!-- note script end -->
 
-	<br>
+   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
 
