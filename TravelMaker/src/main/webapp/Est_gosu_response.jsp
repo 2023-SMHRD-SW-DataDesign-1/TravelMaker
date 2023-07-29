@@ -166,7 +166,7 @@
 									<c:when
 										test="${info.user_type eq '회원' || info.user_type == null }">
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-											class="nav-link" href="Est_send.jsp">견적요청</a></li>
+											class="nav-link" href="Est_nomal_send.jsp">견적요청</a></li>
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active"><a
 											class="nav-link dropdown-toggle" data-toggle="dropdown"
 											href="#" role="button" aria-haspopup="true"

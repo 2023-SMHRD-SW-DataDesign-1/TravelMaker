@@ -45,9 +45,9 @@
 		<div class="container_nav">
 			<div class="row">
 				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light">
+					<nav class="main_navbar navbar-expand-md navbar-light">
 
-						<a class="navbar-brand" href="Main.jsp" target="_blank"> <img src="/TravelMaker/img/Logo.png"
+						<a class="navbar_logo" href="Main.jsp" target="_blank"> <img src="/TravelMaker/img/Logo.png"
 							alt="Logo"></a>
 
 						<button class="navbar-toggler" type="button"
@@ -64,7 +64,7 @@
 									<c:when
 										test="${info.user_type eq '회원' || info.user_type == null }">
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-											class="nav-link" href="Est_send.jsp">견적요청</a></li>
+											class="nav-link" href="Est_nomal_send.jsp">견적요청</a></li>
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active"><a
 											class="nav-link dropdown-toggle" data-toggle="dropdown"
 											href="#" role="button" aria-haspopup="true"
@@ -73,8 +73,7 @@
 												<a class="dropdown-item" href="Est_nomal_responseList.jsp">받은견적서</a>
 												<a class="dropdown-item" href="Est_ShowConsult.jsp">받은컨설팅</a>
 											</div></li>
-											<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-											class="nav-link" href="MyPage_normal.jsp">마이페이지</a></li>
+											
 									</c:when>
 									<c:when test="${info.user_type eq '고수' }">
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
@@ -88,9 +87,12 @@
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
 									class="nav-link" href="Info_main.jsp">정보거래</a></li>
 
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-									class="nav-link" href="Est_ShowConsult.jsp">커뮤니티</a></li>
+								<!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+									class="nav-link" href="Est_ShowConsult.jsp">커뮤니티</a></li> -->
 
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+											class="nav-link" href="MyPage_normal.jsp">마이페이지</a></li>
+											
 								<c:choose>
 									<c:when test="${info != null }">
 										<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a

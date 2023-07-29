@@ -1,6 +1,8 @@
 <%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,16 +51,16 @@
 
 <!-- =style 임시= -->
 <style>
-.container{
+.untree_co-section>.container {
 	margin-top: 94px;
 }
-.container2 {
+
+.mypage_container2 {
 	background: #fff;
 	padding: 24px;
 	border-radius: 13px;
 	position: relative;
 	margin: 0 12px;
-	box-shadow: 0 10px 16px 0 #cde4dd;
 	left: 40px;
 }
 
@@ -68,7 +70,6 @@
 	border-radius: 13px;
 	position: relative;
 	margin: 0 12px;
-	box-shadow: 0 10px 16px 0 #cde4dd;
 	left: 20px;
 }
 
@@ -158,19 +159,16 @@ strong {
 	font-size: 20px;
 	position: relative;
 	height: auto;
-	
- 	margin: 20px;
-     
+	margin: 20px;
 }
 
 .modal_btn {
-         height: 50px;
-         width: 100px;
-
-         position: absolute;
-         bottom: 0px;
-         top: 269px;
-    	 left: 230px;
+	height: 50px;
+	width: 100px;
+	position: absolute;
+	bottom: 0px;
+	top: 269px;
+	left: 230px;
 }
 
 /* 이미지 크기 지정 */
@@ -191,6 +189,8 @@ strong {
 #uploadedImage {
 	height: 190px;
 	width: 200px;
+	margin: 15px auto;
+	background-color: #e2e2e2;
 }
 
 .profile_test {
@@ -201,35 +201,38 @@ strong {
 }
 
 .upload_test {
-
-
+	
 }
 
 .button_test {
 	border: none;
-    background-color: rgba(0, 0, 0, 0);
-    color: #1a374d;
-    padding: 4px;
+	background-color: rgba(0, 0, 0, 0);
+	color: #1a374d;
+	padding: 4px;
 }
 
 .button_test2 {
 	width: 200px;
-    color: white;
-    background-color: #8d8d8d;
-    border: none;
-    font-size: 14px;
+	color: white;
+	background-color: #8d8d8d;
+	border: none;
+	font-size: 14px;
 }
 
 .cash_input {
-    border: none;
-    border-radius: 15px;
-    background: #4e73dde8;
-    color: white;
-    padding: 13px;
-    font-weight: bold;
-    /* box-shadow: 0px 5px 15px gray; */
-    /* cursor: pointer; */
-    font-size: 15px;
+	border: none;
+	border-radius: 15px;
+	background: #4e73dde8;
+	color: white;
+	padding: 13px;
+	font-weight: bold;
+	/* box-shadow: 0px 5px 15px gray; */
+	/* cursor: pointer; */
+	font-size: 15px;
+}
+
+main {
+	margin-top: 34px;
 }
 </style>
 </head>
@@ -237,8 +240,9 @@ strong {
 <body>
 	<%
 	UserDTO info = (UserDTO) session.getAttribute("info");
-	// String user_id = info.getUser_id();
-	String user_id = "sori";
+	String user_id = info.getUser_id();
+	String act_area = info.getAct_area();
+	/* String user_id = "sori"; */
 	String uploadSuccess = request.getParameter("upload_success");
 	String deleteSuccess = request.getParameter("delete_success");
 	%>
@@ -266,8 +270,8 @@ strong {
 	<!-- 네비게이션 시작 -->
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
-	
-	
+
+
 	<!-- ct name start -->
 	<div class="untree_co-section">
 		<div class="container">
@@ -287,7 +291,8 @@ strong {
 						if (info.getUser_pic() != null && !info.getUser_pic().isEmpty()) {
 							System.out.println("조건문진입");
 						%>
-						<button id="deleteProfileBtn" class="button_test">프로필 사진 삭제</button>
+						<button id="deleteProfileBtn" class="button_test">프로필 사진
+							삭제</button>
 						<!-- 삭제 여부 확인-->
 						<div id="confirmModal" style="display: none;">
 							<div id="confirmModalContent">
@@ -298,7 +303,7 @@ strong {
 									<input type="hidden" name="user_id" value="<%=user_id%>">
 								</form>
 								<div id="confirmBtnWrap">
-									<button id="confirmYesBtn" class="button_test">예  /</button>
+									<button id="confirmYesBtn" class="button_test">예 /</button>
 									<button id="confirmNoBtn" class="button_test">아니오</button>
 								</div>
 							</div>
@@ -317,13 +322,18 @@ strong {
 
 								<!-- 프로필 사진 삭제 스크립트 -->
 								<script>
-									const deleteProfileBtn = document.getElementById('deleteProfileBtn');
-									const confirmModal = document.getElementById('confirmModal');
-									const confirmYesBtn = document.getElementById('confirmYesBtn');
-									const confirmNoBtn = document.getElementById('confirmNoBtn');
+									const deleteProfileBtn = document
+											.getElementById('deleteProfileBtn');
+									const confirmModal = document
+											.getElementById('confirmModal');
+									const confirmYesBtn = document
+											.getElementById('confirmYesBtn');
+									const confirmNoBtn = document
+											.getElementById('confirmNoBtn');
 
 									// 삭제 버튼 클릭 시 모달 창 보이기
-									deleteProfileBtn.addEventListener(
+									deleteProfileBtn
+											.addEventListener(
 													'click',
 													function() {
 														confirmModal.style.display = 'block';
@@ -338,24 +348,31 @@ strong {
 										}
 									}
 
-			                          // 모달 창에서 "예" 버튼 클릭 시 프로필 사진 삭제 실행
-			                          confirmYesBtn.addEventListener('click', function() {      
-			                             // 폼 요소를 가져옵니다.
-			                                const deleteProfileForm = document.getElementById('deleteProfileForm');
+									// 모달 창에서 "예" 버튼 클릭 시 프로필 사진 삭제 실행
+									confirmYesBtn
+											.addEventListener(
+													'click',
+													function() {
+														// 폼 요소를 가져옵니다.
+														const deleteProfileForm = document
+																.getElementById('deleteProfileForm');
 
-			                                // DeletepicCon.do로 폼을 제출합니다.
-			                                deleteProfileForm.submit();
-			                            
-			                        
-			                            // 모달 창 닫기
-			                            confirmModal.style.display = 'none';
-			                          });
-			                        
-			                          // 모달 창에서 "아니오" 버튼 클릭 시 모달 창 닫기
-			                          confirmNoBtn.addEventListener('click', function() {
-			                            confirmModal.style.display = 'none';
-			                          });
-			                        </script>
+														// DeletepicCon.do로 폼을 제출합니다.
+														deleteProfileForm
+																.submit();
+
+														// 모달 창 닫기
+														confirmModal.style.display = 'none';
+													});
+
+									// 모달 창에서 "아니오" 버튼 클릭 시 모달 창 닫기
+									confirmNoBtn
+											.addEventListener(
+													'click',
+													function() {
+														confirmModal.style.display = 'none';
+													});
+								</script>
 
 
 								<!-- 사용자 프로필 사진이 없을 경우에는 사진 업로드 기능을 보여줍니다 -->
@@ -364,148 +381,180 @@ strong {
 									System.out.println("반대조건문진입");
 								%>
 								<div class="profile">
-								<div class="profile-image">
-								<div class="upload_test">
-									<form action="UploadpicCon.do" method="post" enctype="multipart/form-data">                      
-		                                 <input type="file" name="profileImage" id="profileImageInput" accept="image/*">
-		                                 <img id="uploadedImage" src="" alt="">                                 
-		                                 <input type="hidden" name="user_id" value="<%=user_id%>" class="button_test">
-		                                 <input type="submit" value="프로필사진 업로드하기" class="button_test2">
-									</form>
-								</div>
-								<%}%>
-							</div>
+									<div class="profile-image">
+										<div class="upload_test">
+											<form action="UploadpicCon.do" method="post"
+												enctype="multipart/form-data">
+												<input type="file" name="profileImage"
+													id="profileImageInput" accept="image/*"> <img
+													id="uploadedImage" src="" alt=""> <input
+													type="hidden" name="user_id" value="<%=user_id%>"
+													class="button_test"> <input type="submit"
+													value="프로필사진 업로드하기" class="button_test2">
+											</form>
+										</div>
+										<%
+										}
+										%>
+									</div>
 
-		                     <!-- 프사 업로드 스크립트 -->
-		
-		                     <script>
-		                         const profileImageInput = document.getElementById("profileImageInput");
-		                         const uploadedImage = document.getElementById("uploadedImage");
-		                     
-		                         profileImageInput.addEventListener("change", function() {
-		                             const file = profileImageInput.files[0];
-		                             const reader = new FileReader();
-		                     
-		                             reader.addEventListener("load", function() {
-		                                 uploadedImage.setAttribute("src", reader.result);
-		                                 uploadedImage.style.display = "block";
-		                                 profileImageInput.style.display = "none";
-		                             });
-		                     
-		                             if (file) {
-		                                 reader.readAsDataURL(file);
-		                             }
-		                         });
-		                     </script>
+									<!-- 프사 업로드 스크립트 -->
 
-							<div class="profile-user-settings">
+									<script>
+										const profileImageInput = document
+												.getElementById("profileImageInput");
+										const uploadedImage = document
+												.getElementById("uploadedImage");
 
-								<h1 class="profile-user-name"><%=info.getUser_name()%></h1>
-								&nbsp; <span>현재금액 : <%=info.getUser_cash()%></span> &nbsp;&nbsp;&nbsp;
-								<button id="popupBtn">충전하기</button>
-								<button class="btn profile-settings-btn"
-									aria-label="profile settings">
-									<i class="fas fa-cog" aria-hidden="true"></i>
-								</button>
-								<!-- <button class="btn profile-edit-btn"></button> -->
-								<div id="btnWrap">
+										profileImageInput
+												.addEventListener(
+														"change",
+														function() {
+															const file = profileImageInput.files[0];
+															const reader = new FileReader();
+
+															reader
+																	.addEventListener(
+																			"load",
+																			function() {
+																				uploadedImage
+																						.setAttribute(
+																								"src",
+																								reader.result);
+																				uploadedImage.style.display = "block";
+																				profileImageInput.style.display = "none";
+																			});
+
+															if (file) {
+																reader
+																		.readAsDataURL(file);
+															}
+														});
+									</script>
+
+									<div class="profile-user-settings">
+
+										<h1 class="profile-user-name"><%=info.getUser_name()%></h1>
+										&nbsp; <span>현재금액 : <%=info.getUser_cash()%></span>
+										&nbsp;&nbsp;&nbsp;
+										<button id="popupBtn">충전하기</button>
+										<button class="btn profile-settings-btn"
+											aria-label="profile settings">
+											<i class="fas fa-cog" aria-hidden="true"></i>
+										</button>
+										<!-- <button class="btn profile-edit-btn"></button> -->
+										<div id="btnWrap">
 
 
-									<form action="Paytest.jsp">
+											<form action="Paytest.jsp">
 
-										<!-- 모달창 -->
-										<div id="modalWrap">
-											<div id="modalBody">
-												<span id="closeBtn">&times;</span>
-												<!-- 모달창안 -->
-												
-												<div class="div_modal">
-													<h1>💵 캐쉬 충전하기</h1><br>
-												<p><input type="radio" name="charge" value="5000"
-														onclick="hideCustomInput()"> 5000원 </p> 
-														<p><input type="radio" name="charge" value="10000"
-														onclick="hideCustomInput()"> 10000원 </p>
-														<p><input type="radio" name="charge" value="30000"
-														onclick="hideCustomInput()"> 30000원 </p> 
-														<p><input type="radio" name="charge" value="50000"
-														onclick="hideCustomInput()"> 50000원 </p> 
-														<input type="radio" name="charge" id="customInputRadio"
-														onclick="showCustomInput()"> 직접입력 
-													<!-- 숨겨진 직접입력 값 입력 공간 -->
-													<input type="number" id="customInput"
-														style="display: none;">
-													<!-- 값을 보내는 버튼 -->
-													<div class="modal_btn">
-														<input type="button" value="선택완료"
-															onclick="sendChargeValue()" class="cash_input">
+												<!-- 모달창 -->
+												<div id="modalWrap">
+													<div id="modalBody">
+														<span id="closeBtn">&times;</span>
+														<!-- 모달창안 -->
+
+														<div class="div_modal">
+															<h1>💵 캐쉬 충전하기</h1>
+															<br>
+															<p>
+																<input type="radio" name="charge" value="5000"
+																	onclick="hideCustomInput()"> 5000원
+															</p>
+															<p>
+																<input type="radio" name="charge" value="10000"
+																	onclick="hideCustomInput()"> 10000원
+															</p>
+															<p>
+																<input type="radio" name="charge" value="30000"
+																	onclick="hideCustomInput()"> 30000원
+															</p>
+															<p>
+																<input type="radio" name="charge" value="50000"
+																	onclick="hideCustomInput()"> 50000원
+															</p>
+															<input type="radio" name="charge" id="customInputRadio"
+																onclick="showCustomInput()"> 직접입력
+															<!-- 숨겨진 직접입력 값 입력 공간 -->
+															<input type="number" id="customInput"
+																style="display: none;">
+															<!-- 값을 보내는 버튼 -->
+															<div class="modal_btn">
+																<input type="button" value="선택완료"
+																	onclick="sendChargeValue()" class="cash_input">
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
+											</form>
 										</div>
-								</div>
-								<!-- 모달 끝 -->
+										<!-- 모달 끝 -->
 
-								</form>
 
-								<!-- 모달 스크립트 시작 -->
-								<script>
-									// "직접입력" 라디오 버튼과 숨겨진 입력 필드에 대한 참조를 가져옵니다.
-									const customInputRadio = document
-											.getElementById("customInputRadio");
-									const customInput = document
-											.getElementById("customInput");
+										<!-- 모달 스크립트 시작 -->
+										<script>
+											// "직접입력" 라디오 버튼과 숨겨진 입력 필드에 대한 참조를 가져옵니다.
+											const customInputRadio = document
+													.getElementById("customInputRadio");
+											const customInput = document
+													.getElementById("customInput");
 
-									function showCustomInput() {
-										customInput.style.display = "block";
-									}
+											function showCustomInput() {
+												customInput.style.display = "block";
+											}
 
-									function hideCustomInput() {
-										customInput.style.display = "none";
-									}
+											function hideCustomInput() {
+												customInput.style.display = "none";
+											}
 
-									function sendChargeValue() {
-										var chargeValue;
+											function sendChargeValue() {
+												var chargeValue;
 
-										// 직접입력 라디오 버튼이 선택되었는지 확인
-										if (customInputRadio.checked) {
-											// 직접입력 값 입력 공간에서 값을 가져오기
-											chargeValue = customInput.value;
-										} else {
-											// 선택된 라디오 버튼의 값을 가져오기
-											var selectedRadio = document
-													.querySelector('input[name="charge"]:checked');
-											chargeValue = selectedRadio.value;
-										}
+												// 직접입력 라디오 버튼이 선택되었는지 확인
+												if (customInputRadio.checked) {
+													// 직접입력 값 입력 공간에서 값을 가져오기
+													chargeValue = customInput.value;
+												} else {
+													// 선택된 라디오 버튼의 값을 가져오기
+													var selectedRadio = document
+															.querySelector('input[name="charge"]:checked');
+													chargeValue = selectedRadio.value;
+												}
 
-										// 1000으로 나눈 나머지가 0인지 확인
-										if (chargeValue % 1000 !== 0) {
-											alert("1000단위로 입력해주세요.");
-										} else {
-											// Paytest 페이지로 값을 전달하기
-											window.location.href = "Paytest.jsp?charge="
-													+ chargeValue;
-										}
-									}
-								</script>
-								<!-- 모달 스크립트 끝 -->
-								<!--  </div></div> -->
+												// 1000으로 나눈 나머지가 0인지 확인
+												if (chargeValue % 1000 !== 0) {
+													alert("1000단위로 입력해주세요.");
+												} else {
+													// Paytest 페이지로 값을 전달하기
+													window.location.href = "Paytest.jsp?charge="
+															+ chargeValue;
+												}
+											}
+										</script>
+										<!-- 모달 스크립트 끝 -->
+										<!--  </div></div> -->
 
-								<div class="profile-bio">
-									<p>
-										<span class="profile-real-name">Jane Doe</span> <br>
-										Lorem ipsum dolor sit, amet consecteturadipisicing elit
-										📷✈️🏕️
-									</p>
+										<div class="profile-bio">
+											<p>
+												<span class="profile-real-name">활동 지역 : <%=info.getAct_area() %></span> <br>
+												Lorem ipsum dolor sit, amet consecteturadipisicing elit
+												📷✈️🏕️
+											</p>
+										</div>
+											<c:if test="${info.user_type eq '고수'}">
+												<button class="portfoilo-move-button" id="portfolio-button">포트폴리오 이동하기</button>
+											</c:if>
+										
+									</div>
 								</div>
 							</div>
-							
 						</div>
 				</header>
 				<!-- header end -->
 
 				<!-- 나의 정보거래 내역 시작 -->
 				<main>
-					<div class="container2">
+					<div class="mypage_container2">
 						<strong> 나의 정보거래 내역</strong>
 						<p>
 							<b>[전체]</b> 총 3건
@@ -549,15 +598,16 @@ strong {
 							<!-- End of gallery -->
 
 							<div class="loader"></div>
-
 						</div>
-						<!-- End of container -->
+					</div>
+					<!-- End of container -->
 				</main>
 				<!-- 나의 정보거래 내역 끝 -->
-				
-				
-			
 			</div>
+
+			<!-- 푸터 시작 -->
+			<jsp:include page="Footer.jsp"></jsp:include>
+			<!-- 푸터 끝 -->
 
 			<!-- partial -->
 			<script src="js/script.js"></script>
@@ -626,9 +676,20 @@ strong {
 
 				});
 			</script>
-		<!-- 푸터 시작 -->
-	<jsp:include page="Footer.jsp"></jsp:include>
-	<!-- 푸터 끝 -->
+			<!-- 버튼 스크립트 -->
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					// "구매하기" 버튼을 ID로 찾아서 변수에 할당합니다.
+					const purchaseButton = document
+							.getElementById('portfolio-button');
+
+					// "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
+					purchaseButton.addEventListener('click', function() {
+						// 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
+						window.location.href = 'Main.jsp';
+					});
+				});
+			</script>
 </body>
 
 </html>

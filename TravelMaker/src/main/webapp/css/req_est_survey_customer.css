@@ -31,7 +31,7 @@ body {
 }
 
 .container {
-  min-height: 65vh;
+  min-height: 100vh;
   display: grid;
   grid-gap: 40px;
   align-content: center;
@@ -501,7 +501,7 @@ height: 45px;
 padding: .8em .5em;
 border: 1px solid #999;
 font-family: inherit;
-background: url('./arrow\ -\ 복사본.jpg') no-repeat 95% 50%;
+background: url('./arrow\ -\ 蹂듭궗蹂�.jpg') no-repeat 95% 50%;
 border-radius: 0px;
 -webkit-appearance: none;
 -moz-appearance: none;
