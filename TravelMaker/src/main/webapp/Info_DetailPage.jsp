@@ -1,3 +1,4 @@
+<%@page import="model.HisDTO"%>
 <%@page import="model.UserDTO"%>
 <%@page import="model.InfoDTO"%>
 <%@page import="java.util.regex.Pattern"%>
@@ -49,7 +50,12 @@
 
 	<%
 	int info_num = Integer.parseInt(request.getParameter("info_num"));
+	UserDTO info = (UserDTO) session.getAttribute("info");
 	InfoDAO idao = new InfoDAO();
+	String user_id = info.getUser_id();
+	HisDTO show_his = idao.searchHis(new InfoDTO(user_id, info_num));
+	
+	
 	InfoDTO info_list = idao.showInfoSelect(info_num);
 	String info_title = info_list.getInfo_title();
 	String info_brief = info_list.getInfo_brief();
@@ -58,12 +64,30 @@
 	
 	System.out.println(info_num);
 	
-	UserDTO info = (UserDTO) session.getAttribute("info");
 	
 	int buy = idao.countBuy(info_num);	
 	
+	
+	String notification = (String) session.getAttribute("notification");
+	
+
+	System.out.println("노티피 : " + notification);
+	
+
+	
 	%>
 
+	<!-- 알림 메시지가 존재할 경우 해당 알림을 표시 -->
+	
+	<script>
+	<% if (notification != null) { %>
+		alert("<%=notification%>");
+		<%
+		// 알림 메시지를 띄운 후에, notification 세션을 제거합니다.
+		session.removeAttribute("notification");
+		%>
+	<% } %>
+	</script>
     <!-- img start -->
     <!-- 이미지 알고리즘 -->
     
@@ -203,20 +227,26 @@
                                	<input type="submit" value="구매하기">
                                </form>
                                
-                               <button id="purchaseButton">상세정보 보러가기</button>
+                               <%boolean hasShowHis = show_his != null;%>
+                               <button id="purchaseButton" <% if (hasShowHis) { %>class="blue-button"<% } else { %>class="gray-button" disabled<% } %>>
+    							상세정보 보러가기
+								</button>
                                
                                <!-- 버튼 스크립트 -->
-                               <script>
-								  document.addEventListener('DOMContentLoaded', function() {
-								    // "구매하기" 버튼을 ID로 찾아서 변수에 할당합니다.
-								    const purchaseButton = document.getElementById('purchaseButton');
+								<script>
+								    document.addEventListener('DOMContentLoaded', function() {
+								        const purchaseButton = document.getElementById('purchaseButton');
 								
-								    // "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
-								    purchaseButton.addEventListener('click', function() {
-								      // 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
-								      window.location.href = 'InfoBuyCon.do';
+								        <% if (hasShowHis) { %>
+								        purchaseButton.addEventListener('click', function() {
+								            window.location.href = 'Info_DetailShow.jsp';
+								        });
+								        <% } else { %>
+								        purchaseButton.addEventListener('click', function() {
+								            alert('구매해주세요');
+								        });
+								        <% } %>
 								    });
-								  });
 								</script>
 	
                               
@@ -337,6 +367,7 @@
     <script src="js/typed.js"></script>
 
     <script src="js/custom.js"></script>
+
 
 
 </body>

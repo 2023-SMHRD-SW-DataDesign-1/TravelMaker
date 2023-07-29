@@ -45,14 +45,18 @@ public class InfoBuyCon implements Command {
 		UserDTO info = udao.userInfo(user_id);
 
 		HisDTO show_his = idao.searchHis(new InfoDTO(user_id, info_num));
+		
+		String notification = "";
 
 		// trade_his테이블에 사용자의 info_num기록 있으면 구매한상품
 		if (show_his != null) {
 			System.out.println("이미 구매한 상품");
+			notification = "이미 구매한 상품";
 		} else {
 			// user_cash가 0보다 작으면 금액부족
 			if (user_cash < 0) {
 				System.out.println("금액부족");
+				notification = "금액부족";
 			} else {
 				
 				// 정보 가격만큼 사용자 cash 변경
@@ -64,6 +68,7 @@ public class InfoBuyCon implements Command {
 					int row = idao.insertHis(new InfoDTO(user_id, info_num));
 					if (row > 0) {
 						System.out.println("구매 성공");
+						notification = "구매 성공";
 
 					} else {
 						System.out.println("구매 실패");
@@ -78,8 +83,10 @@ public class InfoBuyCon implements Command {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("info", info);
+		
+	    session.setAttribute("notification", notification);
 
-		return "Info_DetailPage.jsp?info_num=" + info_num;
+		 return "Info_DetailPage.jsp?info_num=" + info_num;
 	}
 
 }
