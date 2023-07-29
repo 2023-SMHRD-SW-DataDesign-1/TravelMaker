@@ -43,29 +43,24 @@
 
 
 </head>
-<style>
-.untree_co-section{
-	margin-top: 94px;
-}
-</style>
+
 <body>
 
 
 	<%
 	int info_num = Integer.parseInt(request.getParameter("info_num"));
-	String info_title = request.getParameter("info_title");
-	String info_brief = request.getParameter("info_brief");
-	int info_fee = Integer.parseInt(request.getParameter("info_fee"));
-	String infouser_id = request.getParameter("infouser_id");
+	InfoDAO idao = new InfoDAO();
+	InfoDTO info_list = idao.showInfoSelect(info_num);
+	String info_title = info_list.getInfo_title();
+	String info_brief = info_list.getInfo_brief();
+	int info_fee = info_list.getInfo_fee();
+	String infouser_id = info_list.getUser_id();
+	
 	System.out.println(info_num);
 	
 	UserDTO info = (UserDTO) session.getAttribute("info");
 	
-	InfoDAO idao = new InfoDAO();
-	
-	int buy = idao.countBuy(info_num);
-			
-	
+	int buy = idao.countBuy(info_num);	
 	
 	%>
 
@@ -94,7 +89,6 @@
 		%>
     
     
-	<jsp:include page="Nav.jsp"></jsp:include>
     
     <div class="untree_co-section">
         <div class="container my-5">
@@ -173,7 +167,7 @@
                 <div class="col-lg-4">
                     <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
                       
-                        <form class="contact-form bg-white">
+                       
                             <div class="row">
                                 <div class="col-md-6">
 
@@ -205,26 +199,31 @@
                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                 <!-- 구매버튼 시작 -->
                                
-
-                                <button id="purchaseButton" class="btn btn-primary">구매하기</button>
-                                
-                                <!-- 구매버튼 스크립트 -->
-                                <script>
+                               <form action="InfoBuyCon.do?user_id=<%=info.getUser_id()%>&info_fee=<%=info_fee%>&user_cash=<%=info.getUser_cash()%>&info_num=<%=info_num%>" method="post">
+                               	<input type="submit" value="구매하기">
+                               </form>
+                               
+                               <button id="purchaseButton">상세정보 보러가기</button>
+                               
+                               <!-- 버튼 스크립트 -->
+                               <script>
 								  document.addEventListener('DOMContentLoaded', function() {
-								    // "구매하기" 버튼을 변수
+								    // "구매하기" 버튼을 ID로 찾아서 변수에 할당합니다.
 								    const purchaseButton = document.getElementById('purchaseButton');
 								
-								    // "구매하기" 버튼에 클릭 이벤트 리스너
+								    // "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
 								    purchaseButton.addEventListener('click', function() {
-								    // 버튼 클릭 시 "InfoBuyCon.do"
-								    window.location.href = 'InfoBuyCon.do?user_id=<%=info.getUser_id()%>&user_cash=<%=info.getUser_cash()%>&info_fee=<%=info_fee%>';
+								      // 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
+								      window.location.href = 'InfoBuyCon.do';
 								    });
 								  });
 								</script>
+	
+                              
                                 
-                                <!-- 구매버튼 끝-->
+        
+      
                             </div>
-                        </form>
                     </div>
 
                 </div>
@@ -232,7 +231,84 @@
         </div>
     </div>
 
-	<jsp:include page="Footer.jsp"></jsp:include>
+    <!-- main 하단 start -->
+    <div class="site-footer">
+        <div class="inner first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <h3 class="heading">About Tour</h3>
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                                there live the
+                                blind texts.</p>
+                        </div>
+                        <div class="widget">
+                            <ul class="list-unstyled social">
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                                <li><a href="#"><span class="icon-apple"></span></a></li>
+                                <li><a href="#"><span class="icon-google"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2 pl-lg-5">
+                        <div class="widget">
+                            <h3 class="heading">Pages</h3>
+                            <ul class="links list-unstyled">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="widget">
+                            <h3 class="heading">Resources</h3>
+                            <ul class="links list-unstyled">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <h3 class="heading">Contact</h3>
+                            <ul class="list-unstyled quick-info links">
+                                <li class="email"><a href="#">mail@example.com</a></li>
+                                <li class="phone"><a href="#">+1 222 212 3819</a></li>
+                                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="inner dark">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+                        <p>Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash;
+                            Designed with
+                            love by <a href="https://untree.co" class="link-highlight">Untree.co</a>
+                            <!-- License information: https://untree.co/license/ -->Distributed By <a
+                                href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="overlayer"></div>
     <div class="loader">

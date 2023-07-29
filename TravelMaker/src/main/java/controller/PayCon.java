@@ -36,6 +36,8 @@ public class PayCon implements Command {
 			System.out.println("입금실패");
 			moveURL = "Mypage_normal.jsp";
 		}
+		
+		
 
 		return moveURL;
 	}

@@ -187,8 +187,7 @@
 				if (matcher.find()) {
 					imgTags.append(matcher.group());
 				}
-				
-				System.out.println(imgTags.toString());
+
 				
 				// imgTags가 비어있는 경우, 다음 반복으로 넘어감
 			    if (imgTags.toString().isEmpty()) {

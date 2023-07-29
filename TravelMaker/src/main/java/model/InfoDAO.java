@@ -53,7 +53,21 @@ public class InfoDAO {
 		session.close();
 		
 		return buy;
-
 	}
+	
+	public HisDTO searchHis(InfoDTO dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		HisDTO show_his = session.selectOne("searchHis", dto);
+		session.close();
+		return show_his;
+	}
+	
+	public int insertHis(InfoDTO dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.insert("insertHis", dto);
+		session.close();
+		return row;
+	}
+	
 
 }
