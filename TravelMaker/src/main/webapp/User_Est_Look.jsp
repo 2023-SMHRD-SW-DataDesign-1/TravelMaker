@@ -13,17 +13,25 @@
 <html lang="en">
 
 <head>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <meta charset="UTF-8">
-  <title>CodePen - Project Management Dashboard UI</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="css/받은견적서조회User_Est_Look.css">
-  <!-- 팝업창 링크 시작 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <!-- 팝업창 링크 끝 -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>CodePen - Project Management Dashboard UI</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="css/User_Est_Look.css">
+<!-- 팝업창 링크 시작 -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<!-- 팝업창 링크 끝 -->
 </head>
 
 <body>
+
+	<!-- 네비게이션 시작 -->
+	<jsp:include page="Nav.jsp"></jsp:include>
+	<!-- 네비게이션 끝 -->
+
 
 	<%
 	ResDAO rdao = new ResDAO();
@@ -35,108 +43,104 @@
 	DecimalFormat df = new DecimalFormat("###,###");
 	%>
 
-  <div class="app-container">
-    <div class="app-content">
-      <div class="projects-section">
-        <div class="projects-section-header">
-          <p>받은 견적서</p>
+	<div class="app-container">
+		<div class="app-content">
+			<div class="projects-section">
+				<div class="projects-section-header">
+					<p>받은 견적서</p>
 
-          <!-- 팝업버튼 시작 -->
-          <div class="container2">
-            <a class="popupbutton" href="#popup">나의 견적요청</a>
-            <div class="popup" id="popup">
-              <div class="popup-inner">
-                <div class="popup__photo">
-                  <img
-                    src="https://www.10wallpaper.com/wallpaper/1366x768/1411/Eiffel_Tower_Paris_Night-Photography_HD_Wallpapers_1366x768.jpg"
-                    alt="">
-                </div>
-                <div class="popup__text">
-                  <h1>나의 견적 요청</h1>
-                  <p><%=sdto.getSend_country()%></p>
-                  <p><%=sdto.getSend_place() %></p>
-                  <p><%=sdto.getSend_budget()%></p>
-                  <p><%=sdto.getSend_s_date()%> ~ <%=sdto.getSend_e_date()%></p>
-                  <p><%=sdto.getSend_content()%></p>
-                </div>
-                <a class="popup__close" href="#">X</a>
-              </div>
-            </div>
-          </div>
-          <!-- 팝업버튼 끝 -->
-          <p class="time">23-07-24</p>
-          		<!-- 보유금액 표시 -->
-		<p>보유 마일리지 : <%=df.format(udto.getUser_cash())%>원</p>
-        </div>
-        <div class="projects-section-line">
-          <div class="projects-status">
-            <div class="item-status">
-              <span class="status-number">3</span>
-              <span class="status-type">전체 컨설팅</span>
-            </div>
-            <div class="item-status">
-              <span class="status-number">2</span>
-              <span class="status-type">받은 컨설팅</span>
-            </div>
-            <div class="item-status">
-              <span class="status-number">1</span>
-              <span class="status-type">지난 컨설팅</span>
-            </div>
-          </div>
-        </div>
+					<!-- 팝업버튼 시작 -->
+					<div class="container2">
+						<a class="popupbutton" href="#popup">나의 견적요청</a>
+						<div class="popup" id="popup">
+							<div class="popup-inner">
+								<div class="popup__photo">
+									<img
+										src="https://www.10wallpaper.com/wallpaper/1366x768/1411/Eiffel_Tower_Paris_Night-Photography_HD_Wallpapers_1366x768.jpg"
+										alt="">
+								</div>
+								<div class="popup__text">
+									<h1>나의 견적 요청</h1>
+									<p><%=sdto.getSend_country()%></p>
+									<p><%=sdto.getSend_place()%></p>
+									<p><%=sdto.getSend_budget()%></p>
+									<p><%=sdto.getSend_s_date()%>
+										~
+										<%=sdto.getSend_e_date()%></p>
+									<p><%=sdto.getSend_content()%></p>
+								</div>
+								<a class="popup__close" href="#">X</a>
+							</div>
+						</div>
+					</div>
+					<!-- 팝업버튼 끝 -->
 
-        <h3 class="center" style="font-weight: 900;">동남아여행</h3>
-        <!-- 동남아여행 받은 요청들 시작 -->
-        <div class="project-boxes jsGridView">
+				</div>
+				<div class="projects-section-line">
+					<div class="projects-status">
+						<div class="item-status">
+							<span class="status-number">전체 컨설팅 3</span> <span
+								class="status-number">보유 마일리지 : <%=df.format(udto.getUser_cash())%>원
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<h3 class="center" style="font-weight: 900;">동남아여행</h3>
+				<!-- 동남아여행 받은 요청들 시작 -->
+				<div class="project-boxes jsGridView">
 
 
-		<%
-		for (int i = 0; i < rdto_list.size(); i++) {
-		%>
+					<%
+					for (int i = 0; i < rdto_list.size(); i++) {
+					%>
 
-          <div class="project-box-wrapper">
-            <div class="project-box" style="background-color: #fee4cb;">
-              <div class="project-box-header">
-                <span><%=rdto_list.get(i).getRes_wr_date()%></span>
-                <div class="more-wrapper">
-                  <button class="project-btn-more">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="feather feather-more-vertical">
-                      <circle cx="12" cy="12" r="1" />
-                      <circle cx="12" cy="5" r="1" />
-                      <circle cx="12" cy="19" r="1" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <div class="project-box-content-header">
-                <p class="box-content-header"><%=rdto_list.get(i).getRes_num()%></p>
-                <p class="box-content-subheader"><%=rdto_list.get(i).getUser_id()%></p>
-                <p class="box-content-subheader"><%=rdto_list.get(i).getRes_content()%></p>
-                <p class="box-content-subheader"><%=df.format(rdto_list.get(i).getRes_fee())%>원</p>
-              </div>
-              
-              <!-- 채택 된 견적서 일 경우 채택 완료 표시 -->
-              
-              <div class="project-box-footer">
-			<%if(rdto_list.get(i).getPaid()==1){ %>
-				<button disabled>채택완료</button>			
-			<%}else{
-				// 채택된 견적서 외의 견적서는 disabled 버튼 처리
-				if(sdto.getChecked() == 1){%>			
-				<button disabled>채택하기</button>
-				<%}else{ %>
-				<!-- 아직 견적서들이 채택되기 전이라면 채택메서드 실행 -->
-				<button onclick="adoptEstimation(<%=sdto.getEst_num()%>, <%=rdto_list.get(i).getRes_num()%>)">채택하기</button>				
-				<%} %>
-			<%} %>            
-              </div>
-            </div>
-          </div>  
-          
-			<!-- 채택 스크립트 -->
-			<script>
+					<div class="project-box-wrapper">
+						<div class="project-box" style="background-color: #fee4cb;">
+							<div class="project-box-content-header">
+								<div class="project-box-header">
+									<span><%=rdto_list.get(i).getRes_wr_date()%></span>
+								</div>
+								<div class="project-box-content-header">
+									<p class="box-content-header"><%=rdto_list.get(i).getRes_num()%></p>
+									<p class="box-content-subheader"><%=rdto_list.get(i).getUser_id()%></p>
+									<p class="box-content-subheader"><%=rdto_list.get(i).getRes_content()%></p>
+									<p class="box-content-subheader"><%=df.format(rdto_list.get(i).getRes_fee())%>원
+									</p>
+								</div>
+
+								<!-- 채택 된 견적서 일 경우 채택 완료 표시 -->
+
+								<div class="project-box-footer">
+									<%
+									if (rdto_list.get(i).getPaid() == 1) {
+									%>
+									<button disabled>채택완료</button>
+									<%
+									} else {
+									// 채택된 견적서 외의 견적서는 disabled 버튼 처리
+									if (sdto.getChecked() == 1) {
+									%>
+									<button disabled>채택하기</button>
+									<%
+									} else {
+									%>
+									<!-- 아직 견적서들이 채택되기 전이라면 채택메서드 실행 -->
+									<button
+										onclick="adoptEstimation(<%=sdto.getEst_num()%>, <%=rdto_list.get(i).getRes_num()%>)">채택하기</button>
+									<%
+									}
+									%>
+									<%
+									}
+									%>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 채택 스크립트 -->
+					<script>
 			    function adoptEstimation(est_num, res_num) {
 			        var confirmed = confirm("정말 채택하시겠습니까?");
 			        if (confirmed) {
@@ -163,20 +167,27 @@
 			            });
 			        }
 			    }
-			</script> 
-            
-        <%
-		}
-		%>          
-        </div>
+			</script>
 
-      </div>
-    </div>
-  </div>
+					<%
+					}
+					%>
+				</div>
 
-  <!-- partial -->
-  <script src="js/받은견적서조회User_Est_Look.js"></script>
+			</div>
+		</div>
+	</div>
 
+
+
+
+
+	<!-- partial -->
+	<script src="js/받은견적서조회User_Est_Look.js"></script>
+
+	<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
 </body>
 
 </html>

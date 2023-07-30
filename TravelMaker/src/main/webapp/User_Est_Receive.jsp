@@ -72,14 +72,12 @@
 					<p class="time"></p>
 				</div>
 				<div class="projects-section-line">
-					<div class="projects-status">
 						<div class="item-status">
-							<span class="status-type">전체 컨설팅</span>
-							<span class="status-number"><%=send_list.size() %></span> 
+							<span class="status-number">전체 컨설팅 <%=send_list.size() %></span> 
 							<%DecimalFormat df = new DecimalFormat("###,###"); %>
-							<span>보유 마일리지 : <%=df.format(udto.getUser_cash())%>원</span>
+							<span class="status-number">보유 마일리지 : <%=df.format(udto.getUser_cash())%>원</span>
 						</div>
-					</div>
+					
 				</div>
 				
 				<!-- gosu-response 목록 시작 -->
@@ -95,11 +93,11 @@
 								<!-- 채택 된 견적일 경우 채택 완료 표시 -->
 								<%if(send_list.get(i).getChecked() == 1){ %>
 								<!-- 버튼말고 다른걸로해도됨 -->
-								<button>채택 완료!</button>
+								<span class="project-check"><img src="img/check.png">채택 완료</span>
 								<%} %>
 							</div>
 							<div class="box-progress-wrapper">
-								<p class="box-progress-header"><%=send_list.get(i).getSend_s_date()%>~<%=send_list.get(i).getSend_e_date()%></p>
+								<p class="box-progress-header"><%=send_list.get(i).getSend_s_date()%> ~ <%=send_list.get(i).getSend_e_date()%></p>
 								<div class="box-progress-bar">
 									<!-- <span class="box-progress"
 										style="width: 60%; background-color: #ff942e"></span> -->
