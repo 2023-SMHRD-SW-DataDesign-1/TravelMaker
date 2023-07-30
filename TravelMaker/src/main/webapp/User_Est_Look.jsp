@@ -101,13 +101,11 @@
 								<div class="project-box-header">
 									<span><%=rdto_list.get(i).getRes_wr_date()%></span>
 								</div>
-								<div class="project-box-content-header">
 									<p class="box-content-header"><%=rdto_list.get(i).getRes_num()%></p>
 									<p class="box-content-subheader"><%=rdto_list.get(i).getUser_id()%></p>
 									<p class="box-content-subheader"><%=rdto_list.get(i).getRes_content()%></p>
 									<p class="box-content-subheader"><%=df.format(rdto_list.get(i).getRes_fee())%>원
 									</p>
-								</div>
 
 								<!-- 채택 된 견적서 일 경우 채택 완료 표시 -->
 
