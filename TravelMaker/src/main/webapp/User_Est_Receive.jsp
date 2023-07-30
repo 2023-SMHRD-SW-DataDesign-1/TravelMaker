@@ -44,11 +44,11 @@
 	font-weight: bold;
 	margin: 10px;
 }
-
-.nav_under_img img{
+.nav_under_img{
 	width: 100%;
 	height: 115px;
 	position: absolute;
+	background-image: url('img/배경1.png');
 }
 
 </style>
@@ -60,9 +60,7 @@
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
 	
-	<div class="nav_under_img">
-	<img src="img/배경1.png" alt="">
-    </div>
+	<div class="nav_under_img"></div>
 	
 	<%
 	SendDAO sdao = new SendDAO();

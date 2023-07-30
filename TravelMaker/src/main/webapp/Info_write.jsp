@@ -9,6 +9,9 @@
    <meta charset="UTF-8">
    <!-- note head tart-->
    <title>글쓰기</title>
+	<link rel="stylesheet" href="css/main_nav.css">
+	<link rel="stylesheet" href="css/style.css">
+	
    <!-- include libraries(jQuery, bootstrap) -->
    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -20,11 +23,17 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places&callback=initMap">
       </script>
    <style>
-      /* h1 {
-         text-align: center;
-      } */
 
-
+	.main_navbar{
+		display: flex;
+		justify-content: space-between;
+	}
+	.main_navbar ul{
+		list-style: none;
+	}
+	.main_navbar ul li{
+		margin-left: 1.5rem;
+	}
       .price-tag {
          background-color: #4285F4;
          border-radius: 8px;
@@ -54,9 +63,8 @@
    <style>
       /*    */
       .editor-contents {
-         height: 700px;
-         padding-bottom: 50px;
-         /* margin-top: 50px; */
+         margin-top: 90px;
+         margin-bottom: 50px;
          width: 100%;
          display: flex;
          align-items: center;
@@ -79,7 +87,6 @@
          margin: 0;
          padding: 0 10px;
          margin-bottom: 10px;
-         font-family: 'Apple SD Gothic Neo';
          font-size: 14px;
       }
 
@@ -129,20 +136,19 @@
 
       .input_3 {
          /* 전송버튼 */
-         height: 55px;
-         border-top: none;
-         border-left: none;
-         border-right: none;
-         border-bottom: 3px solid black;
-
-         padding: 10px 30px;
+         width: 160px;
+         height: 40px;
+         border-radius: 7px;
+         background-color: #5882fa;
+         color: white;
+         text-align: center;
+         font-weight: bold;
+         border: none;
       }
 
       .div_2 {
-         /* 오른쪽하단 고정 */
-         position: absolute;
-
-         right: 550px;
+		display: block;
+		text-align: right;
       }
 
       .select_1 {
@@ -156,6 +162,7 @@
          -webkit-appearance: none;
          -moz-appearance: none;
          appearance: none;
+         margin-left: 2%;
       }
 
       .input_1 {
@@ -181,28 +188,130 @@
          height: 40px;
          font-size: 15px;
          border: 0;
-         /* border-radius: 15px; */
+         border-radius: 15px;
          outline: none;
          /* padding-left: 10px; */
          background-color: rgb(230, 230, 230);
       }
+      
+/* 네비게이션 시작  */
+.navbar-nav>li a{
+	font-size: 14px;
+	text-decoration: none;
+}
+   @media screen and (min-width: 576px){
+      .container_nav{
+         max-width: 540px;
+         margin: 0 auto;
+      }
+   }
+   @media screen and (min-width: 768px){
+      .container_nav{
+         max-width: 720px;
+         margin: 0 auto;
+      }
+   }
+   @media screen and (min-width: 992px){
+      .container_nav{
+         max-width: 960px;
+         margin: 0 auto;
+      }
+   }
+   @media screen and (min-width: 1200px){
+      .container_nav{
+         max-width: 1140px;
+         margin: 0 auto;
+      }
+   }
+  /* 네비게이션 끝 */
    </style>
 </head>
 
 <body>
-   <form action="InfowriterCon.do" method="post" onsubmit="return validateForm()">
+
+<!-- 네비게이션 시작 -->
+
+<div class="hero-anime">
+   <div class="navigation-wrap bg-light start-header start-style">
+      <div class="container_nav">
+         <div class="row">
+            <div class="col-12">
+               <nav class="main_navbar navbar-expand-md navbar-light">
+
+                  <a class="navbar_logo" href="Main.jsp" target="_blank"> <img src="/TravelMaker/img/Logo.png"
+                     alt="Logo"></a>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav ml-auto py-4 py-md-0">
+
+                        <c:choose>
+                           <c:when
+                              test="${info.user_type eq '회원' || info.user_type == null }">
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="User_Est_Send.jsp">견적요청</a></li>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active"><a
+                                 class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                 href="#" role="button" aria-haspopup="true"
+                                 aria-expanded="false">컨설팅</a>
+                                 <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="User_Est_Receive.jsp">받은견적서</a>
+                                    <a class="dropdown-item" href="User_Consult_Receive.jsp">받은컨설팅</a>
+                                 </div></li>                       
+                           </c:when>
+                           <c:when test="${info.user_type eq '고수' }">
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Receive.jsp">받은견적</a></li>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Paid.jsp">채택된견적</a></li>
+                           </c:when>
+                        </c:choose>
+
+
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                           class="nav-link" href="Info_main.jsp">정보거래</a></li>
+
+                        <!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                           class="nav-link" href="Est_ShowConsult.jsp">커뮤니티</a></li> -->
+
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="MyPage_normal.jsp">마이페이지</a></li>
+                                 
+                        <c:choose>
+                           <c:when test="${info != null }">
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="LogoutCon.do">${info.user_name}
+                                    ${info.user_type}님 로그아웃</a></li>
+                           </c:when>
+                           <c:otherwise>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Login.jsp">로그인 / 회원가입</a></li>
+                           </c:otherwise>
+                        </c:choose>
+
+                     </ul>
+                  </div>
+
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- 네비게이션 끝 -->
+
+   <form action="InfowriterCon.do" method="post" onsubmit="return validateForm()" class="form_wrap_google">
 
       <div class="editor-contents">
          <div id="editor-box">      
 
+               <input class="input_1" type="text" name="info_title" placeholder="제목을 입력해 주세요">
                <select class="select_1" name="info_cate">
                   <option disabled selected>카테고리</option>
                   <option value="사진">사진</option>
                   <option value="맛집">맛집</option>
                   <option value="숙소">숙소</option>
                </select>
-               &nbsp; &nbsp; &nbsp;
-               <input class="input_1" type="text" name="info_title" placeholder="제목을 입력해 주세요">
             
             <div class="div_3">
                <input class="input_4" type="text" name="info_brief" placeholder="간단한 설명을 입력해 주세요">
@@ -210,8 +319,8 @@
 
             <div id="map"></div>
             <textarea name="info_content" id="summernote"></textarea>
-            <div class="div_2"> 받을금액 : <input class="input_2" type="text" name="info_fee" placeholder="금액을 입력해 주세요">
-               &nbsp; &nbsp; &nbsp;
+            <div class="div_2"> 받을금액 : 
+            	<input class="input_2" type="text" name="info_fee" placeholder="금액을 입력해 주세요">
                	<input type="hidden" id="lat-input" name="lat"> 
 				<input type="hidden" id="lng-input" name="lng"> 
               	<input class="input_3" type="submit" value="작성완료">
@@ -346,6 +455,10 @@
 		}
 	</script>
 
+	
+	<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
 </body>
 
 </html>
