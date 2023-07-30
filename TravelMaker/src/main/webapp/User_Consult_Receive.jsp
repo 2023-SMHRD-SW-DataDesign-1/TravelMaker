@@ -73,8 +73,7 @@
 				<div class="projects-section-line">
 					<div class="projects-status">
 						<div class="item-status">
-							<span class="status-type">전체 컨설팅</span>
-							<span class="status-number"><%=consulted_list.size() %></span> 
+							<span class="status-number">전체 컨설팅 <%=consulted_list.size() %></span> 
 						</div>
 					</div>
 				</div>
@@ -121,14 +120,7 @@
 	<!-- 푸터 끝 -->
 	
 	
-	<script>
-	
-	date = new Date();
-	year = date.getFullYear();
-	month = date.getMonth() + 1;
-	day = date.getDate();
-	document.getElementsByClassName("time").innerHTML = year + "." + month + "." + day;
-	</script>
+
 	
 	<script src="js/Est_gosu_responseList.js"></script>
 	
