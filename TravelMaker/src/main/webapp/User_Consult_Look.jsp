@@ -15,7 +15,6 @@
   <meta charset="UTF-8">
   <title>일반회원 - 받은 컨설팅 조회</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/6035/grid.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>
   <link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/6035/icomoon-scrtpxls.css'>
   <link rel="stylesheet" href="css/show_consult_page.css">
@@ -33,24 +32,9 @@
     </script>
   <!-- 세부컨설팅작성페이지 link 및 script 끝 -->
 
-  <!--  -->
-
-  <!--  -->
-
   <!-- 세부컨설팅작성페이지 스타일1 시작 -->
   <style>
-    h1 {
-      text-align: center;
-    }
 
-    /* button {
-     float: right;
-     color: white;
-     background-color: skyblue;
-     border: none;
-     padding: 10px 30px;
-  }
-*/
     .input_3 {
       /* 전송버튼 */
       height: 55px;
@@ -98,7 +82,6 @@
 
   <!-- 세부컨설팅작성페이지 style2 시작 -->
   <style>
-    /*    */
     .editor-contents {
       height: 300px;
       padding-bottom: 50px;
@@ -130,7 +113,7 @@
     }
 
     #editor-box {
-      width: 800px;
+      width: 100%;
       height: 100%;
       display: inline-block;
 
@@ -212,21 +195,13 @@
       background-color: #5882FA;
     }
 
-    /*  */
-
-    /* #div_left {
-     width: 300px;
-     height: 900px;
-     background-color: #e6e6e6;
-     float: left;
-     position: fixed;
-     left: 0x; */
-    /* top: 100px */
-    /* } */
   </style>
-  <!-- 세부컨설팅작성페이지 style2 끝 -->
 </head>
-
+	
+	<!-- 네비게이션 시작 -->
+	<jsp:include page="Nav.jsp"></jsp:include>
+	<!-- 네비게이션 끝 -->
+	
 <body>
 	<%
 	System.out.println("est_showconsult 진입");
@@ -264,25 +239,8 @@
       <!-- 견적요청 리스트 시작 -->
       <div class="scroll-cards">
         <!-- 사이드 1번째 박스 시작 -->
-        <div class="card">
-          <div class="mails">
-            <img src="https://randomuser.me/api/portraits/men/20.jpg" />
-            <div class="mail-names">
-              <p><%=udto.getUser_name()%> 고객님의 견적요청</p>
-            </div>
-          </div>
-          <div class="mail-info">
-            <!-- 동남아여행 -->
-          </div>
-          <div>
-          </div>
-          <div class="check1">
-            <div class="bottom-info">
-
-            </div>
-            <div class="date">8:30 AM</div>
-          </div>
-        </div>
+        
+		<h1 class="side_box_title"><%=udto.getUser_name()%> 고객님의 견적요청</h1>
         <!-- 사이드 1번째 박스 끝 -->
 
         <!-- 사이드 2번째 박스 시작 -->
@@ -459,7 +417,10 @@
     document.addEventListener('DOMContentLoaded', initMap);
     </script>
 
-
+	
+	<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
 
 </body>
 

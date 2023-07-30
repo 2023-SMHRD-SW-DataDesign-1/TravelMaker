@@ -7,13 +7,25 @@ img {
   height: auto;
   vertical-align: sub;
 }
-
-body {
-  font-family: "Montserrat", sans-serif;
-  background: #ebebeb;
-  padding-top: 20px;
+.side_box_title{
+	font-size: 20px;
+	font-weight: bold;
+	display: block;
+	padding: 20px 0;
 }
-
+.container{
+	margin-top:94px;
+	margin-bottom: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+.grid_4{
+	width:30%;
+}
+.grid_8{
+	width:65%;
+	background-color: #f9f9f9
+}
 .btn {
   display: inline-block;
   padding: 6px 14px;
@@ -307,16 +319,6 @@ input[type=text]:focus {
 }
 
 /* 일차별 경로 css 시작 */
-body {	
-  margin: 0;
-  padding: 0;
-  background: rgb(230,230,230);
-  
-  color: rgb(50,50,50);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 112.5%;
-  line-height: 1.6em;
-}
 
 /* ================ The Timeline ================ */
 
@@ -599,7 +601,7 @@ body {
 
 /* 견적요청 리스트 css 시작 */
 .scroll-cards {
-  width: 300px;
+  width: 100%;
   height: 800px;
   overflow: auto;
 
