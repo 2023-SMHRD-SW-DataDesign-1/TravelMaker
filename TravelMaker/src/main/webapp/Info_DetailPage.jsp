@@ -241,7 +241,7 @@
 								
 								        <% if (hasShowHis) { %>
 								        purchaseButton.addEventListener('click', function() {
-								            window.location.href = 'Info_DetailShow.jsp';
+								            window.location.href = '정보거래구매후테스트본.jsp?info_num=<%=info_num%>';
 								        });
 								        <% } else { %>
 								        purchaseButton.addEventListener('click', function() {

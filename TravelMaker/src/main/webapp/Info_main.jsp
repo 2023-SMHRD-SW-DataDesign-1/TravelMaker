@@ -66,11 +66,13 @@
 }
 #test111 {
 	height: 500px;
-	width: 200px;
+	width: 100%;
 
 }
 #test111 img{
 	height: 100%;
+	width: 100% !important;
+	
 }
 </style>
 
