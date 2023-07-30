@@ -5,13 +5,14 @@
 	<insert id="est_send" parameterType="SendDTO">
 		insert into est_send values(est_send_num.nextval, #{user_id}, sysdate,
 		#{send_country}, #{send_place}, #{send_s_date}, #{send_e_date},
-		#{send_budget}, #{send_content})
+		#{send_budget}, #{send_content}, 0)
 	</insert>
 
 	<select id="SendUserInfo" resultType="ResDTO" parameterType="String">
 		select * from est_res where est_num = (select est_num from est_send where user_id = #{user_id})
 	</select>
 	
+	<!-- 견적번호로 est_send테이블 조회 -->
 	<select id="EstSend_nomalUser" resultType="SendDTO" parameterType="int">
 		select * from est_send where est_num = #{est_num}
 	</select>
@@ -28,6 +29,8 @@
 	<update id="checkEst" parameterType="int">
 		update est_send set checked = 1 where est_num = #{est_num}
 	</update>
+	
+
 	
 	
 </mapper>

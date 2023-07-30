@@ -59,7 +59,7 @@ public class SendCon implements Command {
 			System.out.println(send_content);
 
 			SendDTO dto = new SendDTO(est_num, user_id, send_wr_date, send_country, send_place, send_e_date,
-					send_s_date, send_budget, send_content);
+					send_s_date, send_budget, send_content, 0);
 
 			SendDAO dao = new SendDAO();
 			int row = dao.est_send(dto);

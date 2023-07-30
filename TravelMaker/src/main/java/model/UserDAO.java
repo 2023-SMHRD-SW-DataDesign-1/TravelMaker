@@ -73,5 +73,14 @@ public class UserDAO {
 		
 		return row;
 	}
+	
+	// est_num으로 작성자 이름 뽑기
+	public UserDTO showName(int est_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		UserDTO show_name = session.selectOne("showName", est_num);
+		session.close();
+		
+		return show_name;
+	}
 
 }

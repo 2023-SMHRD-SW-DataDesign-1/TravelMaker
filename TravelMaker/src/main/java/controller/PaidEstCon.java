@@ -10,9 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
+import model.HisDAO;
 import model.ResDAO;
 import model.ResDTO;
 import model.SendDAO;
+import model.SendDTO;
 import model.UserDAO;
 import model.UserDTO;
 
@@ -33,6 +35,8 @@ public class PaidEstCon extends HttpServlet {
 		ResDAO rdao = new ResDAO();
 		SendDAO sdao = new SendDAO();
 		UserDAO udao = new UserDAO();
+		HisDAO hdao = new HisDAO();
+		
 
 		int res_num = Integer.parseInt(request.getParameter("res_num"));
 		int est_num = Integer.parseInt(request.getParameter("est_num"));
@@ -51,6 +55,7 @@ public class PaidEstCon extends HttpServlet {
 		// 금액부족부터 검사
 		if (user_cash < 0) {
 			System.out.println("금액부족");
+			jsonResponse.put("paid", "false");
 		}else {
 			// 돈 충분 할 경우 구매처리
 			udao.buyInfo(new UserDTO(user_id, user_cash));
@@ -58,10 +63,11 @@ public class PaidEstCon extends HttpServlet {
 			// res_num인 견적서 paid처리
 			rdao.paidEst(res_num);
 			
+			hdao.estPay(new SendDTO(est_num, user_id));
+			
 			// est_num인 견적서 check처리
 			int row = sdao.checkEst(est_num);
-			
-			
+	
 			if (row > 0) {
 				System.out.println("채택 완료되었습니다");
 				jsonResponse.put("status", "checked");

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import command.Command;
 import controller.ConsultCon;
 import controller.DeletepicCon;
+import controller.EstimateWriteCon;
 import controller.GosuResponseCon;
 import controller.InfoBuyCon;
 import controller.InfowriterCon;
@@ -44,6 +45,7 @@ public class FrontController extends HttpServlet {
 		list.put("GosuResponseCon.do", new GosuResponseCon());
 		list.put("InfoBuyCon.do", new InfoBuyCon());
 		list.put("PortCon.do", new PortCon());
+		list.put("EstimateWriteCon.do", new EstimateWriteCon());
 		
 		
 	}

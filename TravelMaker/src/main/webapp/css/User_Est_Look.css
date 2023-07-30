@@ -46,8 +46,6 @@
   --message-btn: rgba(195, 207, 244, 0.1);
 }
 
-
-
 button,
 a {
   cursor: pointer;
@@ -970,6 +968,7 @@ h3 {
   font-weight: bold;
   box-shadow: 0px 5px 15px gray;
   cursor: pointer;
+
   /* 글자 밑줄 없애기 */
   text-decoration: none;
 }

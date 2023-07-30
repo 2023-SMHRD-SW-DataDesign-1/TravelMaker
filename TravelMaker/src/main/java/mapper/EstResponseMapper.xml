@@ -26,9 +26,10 @@
 		select * from est_res where paid = 0 and user_id = #{user_id}
 	</select>
 	
+	<!-- 견적서 업로드 -->
 	<insert id="GosuResponse" parameterType="ResDTO">
-		insert into est_res(res_num, est_num, user_id, res_wr_date, res_content, res_fee)
-		values(res_num_seq.nextVal, #{est_num}, #{user_id}, sysdate, #{res_content}, #{res_fee})
+		insert into est_res(res_num, est_num, user_id, res_wr_date, res_content, res_fee, res_place)
+		values(res_num_seq.nextVal, #{est_num}, #{user_id}, sysdate, #{res_content}, #{res_fee}, #{res_place})
 	</insert>
 	
 	<!-- 채택된 견적 paid 1로 -->
@@ -39,6 +40,11 @@
 	<!-- res_num으로 est_res테이블 조회 -->
 	<select id="showRes" parameterType="int" resultType="ResDTO">
 		select * from est_res where res_num = #{res_num}
+	</select>
+	
+	<!-- 해당 견적에 견적서 작성하였는지 검사 -->
+	<select id="checkWrite" parameterType="SendDTO" resultType="int">
+		select count(res_num) from est_res where user_id = #{user_id} and est_num = #{est_num}
 	</select>
 	
 	

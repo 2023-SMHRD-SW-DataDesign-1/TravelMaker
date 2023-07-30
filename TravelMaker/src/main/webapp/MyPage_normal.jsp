@@ -1,3 +1,4 @@
+<%@page import="model.HisDAO"%>
 <%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -8,8 +9,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>CodePen - Instagram Profile Layout with CSS Grid &amp;
-	Flexbox</title>
+<title>마이페이지</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
@@ -528,14 +528,12 @@ main {
 										</script>
 										<!-- 모달 스크립트 끝 -->
 
+											<c:if test="${info.user_type eq '고수'}">
 										<div class="profile-bio">
 											<p>
-												<span class="profile-real-name">활동 지역 : <%=info.getAct_area() %></span> <br>
-												Lorem ipsum dolor sit, amet consecteturadipisicing elit
-												📷✈️🏕️
+												<span class="profile-real-name">활동 지역 : <%=info.getAct_area() %></span>
 											</p>
 										</div>
-											<c:if test="${info.user_type eq '고수'}">
 												<button class="portfoilo-move-button" id="portfolio-button">포트폴리오</button>
 											</c:if>
 										
@@ -548,6 +546,11 @@ main {
 
 				<!-- 나의 정보거래 내역 시작 -->
 				<main>
+				<%
+				HisDAO hdao = new HisDAO();
+				hdao.showHis(user_id);
+				%>
+				
 					<div class="mypage_container2">
 						<strong> 나의 정보거래 내역</strong>
 						<p>

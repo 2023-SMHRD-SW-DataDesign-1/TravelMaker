@@ -11,7 +11,7 @@ public class ResDAO {
 
 	private static SqlSessionFactory sqlSessionFactory = sqlSessionManager.getSqlSession();
 
-	public static ArrayList<SendDTO> gosu_responseList(String user_id) {
+	public ArrayList<SendDTO> gosu_responseList(String user_id) {
 		System.out.println("메서드진입");
 		SqlSession session = sqlSessionFactory.openSession(true);
 		ArrayList<SendDTO> gosu_response_list = (ArrayList) session.selectList("gosu_responseList", user_id);
@@ -77,6 +77,16 @@ public class ResDAO {
 		session.close();
 		
 		return showRes;
+	}
+	
+	// 해당 견적에 견적서 작성하였는지 검사
+	public int checkWrite(SendDTO dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.selectOne("checkWrite", dto);
+		session.close();
+		
+		return row;
+		
 	}
 	
 }

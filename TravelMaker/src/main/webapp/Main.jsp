@@ -33,8 +33,7 @@
 <link rel="stylesheet" href="css/daterangepicker.css">
 <link rel="stylesheet" href="css/aos.css">
 <link rel="stylesheet" href="css/style.css">
-<title>Tour Free Bootstrap Template for Travel Agency by
-	Untree.co</title>
+<title>홈페이지</title>
 
 <!-- 메인 대표여행지 link 시작 -->
 <link

@@ -9,9 +9,10 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class SendDTO {
-	int est_num;
-	String user_id;
+	@NonNull int est_num;
+	@NonNull String user_id;
 	String send_wr_date;
 	String send_country;
 	String send_place;

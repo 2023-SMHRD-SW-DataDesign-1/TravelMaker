@@ -16,6 +16,7 @@
 		update user_info set user_cash = #{charge} where user_id = #{user_id}
 	</update>
 	
+	<!-- 유저 아이디로 정보조회 -->
 	<select id="userInfo" parameterType="String" resultType="UserDTO">
 		select * from user_info where user_id =#{user_id}	
 	</select>
@@ -34,6 +35,11 @@
 	
 	<select id="duplicateId" parameterType="String" resultType="int">
 		select count(user_id) from user_info where user_id=#{user_id}
+	</select>
+	
+	<!-- est_num으로 작성자 이름뽑기 -->
+	<select id="showName" parameterType="int" resultType="UserDTO">
+		select * from user_info where user_id = (select user_id from est_send where est_num = #{est_num})
 	</select>
 	
 	
