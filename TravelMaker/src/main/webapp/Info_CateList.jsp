@@ -5,6 +5,8 @@
 <%@page import="model.InfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -125,7 +127,7 @@ String info_cate = request.getParameter("info_cate");
 							    }
 							%>
 
-						<a href="Info_DetailPage.jsp?info_num=<%=info_num%>&info_title=<%=info_title%>&info_brief=<%=info_brief%>&info_fee=<%=info_fee%>&infouser_id=<%=infouser_id%>">
+						<a class="reqlogin" href="Info_DetailPage.jsp?info_num=<%=info_num%>&info_title=<%=info_title%>&info_brief=<%=info_brief%>&info_fee=<%=info_fee%>&infouser_id=<%=infouser_id%>">
 							<div class="gallery-item" tabindex="0">
 									<%=imgTags%>							
 								<div class="gallery-item-info">
@@ -153,6 +155,25 @@ String info_cate = request.getParameter("info_cate");
 			</main>
 			<!-- partial -->
 				<jsp:include page="Footer.jsp"></jsp:include>
+				
+<script>
+  // 알림 메시지를 표시하는 함수를 정의합니다.
+  function showAlertMessage() {
+    alert("로그인하세요"); // 원하는 알림 메시지로 변경하세요.
+  }
+
+  // "받은컨설팅" 링크에 이벤트 리스너를 추가합니다.
+  const reqLoginLinks = document.getElementsByClassName("reqlogin");
+  for (let i = 0; i < reqLoginLinks.length; i++) {
+    reqLoginLinks[i].addEventListener("click", function(event) {
+      // 'info' 변수가 'null'인지 확인합니다.
+      if (${info == null }) {
+        event.preventDefault(); // 링크의 기본 동작(지정된 URL로 이동)을 막습니다.
+        showAlertMessage(); // 알림 메시지를 표시합니다.
+      }
+    });
+  }
+</script>
 			
 			<script src="js/script.js"></script>
 

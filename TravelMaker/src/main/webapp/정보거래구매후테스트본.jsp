@@ -1,3 +1,5 @@
+<%@page import="model.UserDTO"%>
+<%@page import="model.UserDAO"%>
 <%@page import="model.InfoDTO"%>
 <%@page import="model.InfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -283,8 +285,9 @@
         }
 
         .mails>img {
-            width: 35px;
-            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
         }
 
         .mail-info {
@@ -422,7 +425,11 @@
 	InfoDAO idao = new InfoDAO();
 	InfoDTO show_info = idao.showInfoSelect(info_num);
 	int buy = idao.countBuy(info_num);	
+	String gosu_id = show_info.getUser_id();
+	UserDAO udao = new UserDAO();
+	UserDTO gosu_info = udao.userInfo(gosu_id);
 	
+
 	%>
 
     <div class="summernote_content">
@@ -447,9 +454,9 @@
         <!-- 사이드 1번째 박스 시작 -->
         <div class="card">
             <div class="mails">
-                <img src="https://randomuser.me/api/portraits/men/20.jpg" />
-                <div class="mail-names">
-                    <p><%=show_info.getUser_id() %></p>
+            <img class="profile_test" src="img/<%=gosu_info.getUser_pic()%>" alt="Profile Picture"> 
+			<div class="mail-names">
+				<p><%=show_info.getUser_id() %></p>
                 </div>
             </div>
             <div class="mail-info">

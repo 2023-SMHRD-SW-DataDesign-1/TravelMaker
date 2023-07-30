@@ -169,23 +169,10 @@
 												href="#" role="button" aria-haspopup="true"
 												aria-expanded="false">컨설팅</a>
 												<div class="dropdown-menu">
-													<a class="dropdown-item" href="User_Est_Receive.jsp">받은견적서</a>
-													<a id="reqlogin" class="dropdown-item" href="User_Consult_Receive.jsp">받은컨설팅</a>
-													<script>
-													  // 알림 메시지를 표시하는 함수를 정의합니다.
-													  function showAlertMessage() {
-													    alert("로그인하세요"); // 원하는 알림 메시지로 변경하세요.
-													  }
-													
-													  // "받은컨설팅" 링크에 이벤트 리스너를 추가합니다.
-													  document.getElementById("reqlogin").addEventListener("click", function(event) {
-													    // 'info' 변수가 'null'인지 확인합니다.
-													    if (${info == null }) {
-													      event.preventDefault(); // 링크의 기본 동작(지정된 URL로 이동)을 막습니다.
-													      showAlertMessage(); // 알림 메시지를 표시합니다.
-													    }
-													  });
-													</script>
+													<a class="dropdown-item reqlogin" href="User_Est_Receive.jsp" id="reqlogin">받은견적서</a>
+													<a class="dropdown-item reqlogin" href="User_Consult_Receive.jsp">받은컨설팅</a>
+					
+
 														
 												</div></li>
 
@@ -206,7 +193,7 @@
                            class="nav-link" href="Est_ShowConsult.jsp">커뮤니티</a></li> -->
 
 									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
-										class="nav-link" href="MyPage_normal.jsp">마이페이지</a></li>
+										class="nav-link reqlogin" href="MyPage_normal.jsp">마이페이지</a></li>
 
 									<c:choose>
 										<c:when test="${info != null }">
@@ -220,6 +207,7 @@
 										</c:otherwise>
 									</c:choose>
 
+
 								</ul>
 							</div>
 
@@ -231,6 +219,26 @@
 	</div>
 	
 	<!-- 네비게이션 끝 -->
+	
+								
+<script>
+  // 알림 메시지를 표시하는 함수를 정의합니다.
+  function showAlertMessage() {
+    alert("로그인하세요"); // 원하는 알림 메시지로 변경하세요.
+  }
+
+  // "받은컨설팅" 링크에 이벤트 리스너를 추가합니다.
+  const reqLoginLinks = document.getElementsByClassName("reqlogin");
+  for (let i = 0; i < reqLoginLinks.length; i++) {
+    reqLoginLinks[i].addEventListener("click", function(event) {
+      // 'info' 변수가 'null'인지 확인합니다.
+      if (${info == null }) {
+        event.preventDefault(); // 링크의 기본 동작(지정된 URL로 이동)을 막습니다.
+        showAlertMessage(); // 알림 메시지를 표시합니다.
+      }
+    });
+  }
+</script>
 
 
 
@@ -338,7 +346,7 @@
 			info_cate = "맛집";
 			ArrayList<InfoDTO> food_list = idao.topFive(info_cate);
 			
-			for (int i = 0; i < food_list.size(); i++) {
+			for (int i = 0; i < 2; i++) {
 				int info_num = food_list.get(i).getInfo_num();
 				String htmlString = idao.show(info_num);
 				// 정규 표현식 패턴
@@ -374,6 +382,49 @@
 				</div>
 				
 				<%} %>
+				
+			<%
+			info_cate = "숙소";
+			ArrayList<InfoDTO> hotel_list = idao.topFive(info_cate);
+			
+			for (int i = 0; i < 2; i++) {
+				int info_num = hotel_list.get(i).getInfo_num();
+				String htmlString = idao.show(info_num);
+				// 정규 표현식 패턴
+				String pattern = "<img\\s+[^>]*>";
+
+				// 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+				StringBuilder imgTags = new StringBuilder();
+
+				// 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+				Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
+
+				// 맨 앞에있는 img태그만
+				if (matcher.find()) {
+					imgTags.append(matcher.group());
+				}
+
+				
+				// imgTags가 비어있는 경우, 다음 반복으로 넘어감
+			    if (imgTags.toString().isEmpty()) {
+			        continue;
+			    }
+			%>
+			
+				<div class="swiper-slide swiper-slide--one">
+					<span style="position:absolute; top:30%	;">숙소</span> 
+				<!-- 	<div> -->
+<!-- 						<h2>Enjoy the exotic of sunny Hawaii</h2> -->
+						<div id="main-gallary-img-top2">
+						<%=imgTags%>
+						</div>
+<!-- 						<p>Maui, Hawaii</p> -->
+<!-- 					</div> -->
+				</div>
+				
+				<%} %>
+				
+				
 				
 				<!-- <div class="swiper-slide swiper-slide--two">
 					<span>subtropical</span>
