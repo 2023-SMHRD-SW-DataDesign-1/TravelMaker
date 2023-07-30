@@ -55,8 +55,7 @@
 						<div class="popup" id="popup">
 							<div class="popup-inner">
 								<div class="popup__photo">
-									<img
-										src="https://www.10wallpaper.com/wallpaper/1366x768/1411/Eiffel_Tower_Paris_Night-Photography_HD_Wallpapers_1366x768.jpg"
+									<img src="https://www.10wallpaper.com/wallpaper/1366x768/1411/Eiffel_Tower_Paris_Night-Photography_HD_Wallpapers_1366x768.jpg"
 										alt="">
 								</div>
 								<div class="popup__text">
@@ -99,32 +98,40 @@
 						<div class="project-box" style="background-color: #fee4cb;">
 							<div class="project-box-content-header">
 								<div class="project-box-header">
-									<span><%=rdto_list.get(i).getRes_wr_date()%></span>
-								</div>
+									<p><%=rdto_list.get(i).getRes_wr_date()%></p>
 									<p class="box-content-header"><%=rdto_list.get(i).getRes_num()%></p>
-									<p class="box-content-subheader"><%=rdto_list.get(i).getUser_id()%></p>
+								</div>
+								<div class="box-progress-bar">
+									<!-- <span class="box-progress"
+										style="width: 60%; background-color: #ff942e"></span> -->
+								</div>
+								<div class="project-box-content">
+									<span class="box-content-id"><%=rdto_list.get(i).getUser_id()%></span>
 									<p class="box-content-subheader"><%=rdto_list.get(i).getRes_content()%></p>
-									<p class="box-content-subheader"><%=df.format(rdto_list.get(i).getRes_fee())%>원
-									</p>
-
+								</div>
+									<p class="box-content-fee"><%=df.format(rdto_list.get(i).getRes_fee())%>원</p>
+								</div>
 								<!-- 채택 된 견적서 일 경우 채택 완료 표시 -->
 
 								<div class="project-box-footer">
 									<%
 									if (rdto_list.get(i).getPaid() == 1) {
 									%>
-									<button disabled>채택완료</button>
+									<button class="port_button">판매자 포트폴리오</button>
+									<button class="accept_button" disabled>채택완료</button>
 									<%
 									} else {
 									// 채택된 견적서 외의 견적서는 disabled 버튼 처리
 									if (sdto.getChecked() == 1) {
 									%>
-									<button disabled>채택하기</button>
+									<button class="port_button">판매자 포트폴리오</button>
+									<button class="accept_button" disabled>채택하기</button>
 									<%
 									} else {
 									%>
 									<!-- 아직 견적서들이 채택되기 전이라면 채택메서드 실행 -->
-									<button
+									<button class="port_button">판매자 포트폴리오</button>
+									<button class="accept_button" 
 										onclick="adoptEstimation(<%=sdto.getEst_num()%>, <%=rdto_list.get(i).getRes_num()%>)">채택하기</button>
 									<%
 									}
@@ -133,7 +140,6 @@
 									}
 									%>
 								</div>
-							</div>
 						</div>
 					</div>
 

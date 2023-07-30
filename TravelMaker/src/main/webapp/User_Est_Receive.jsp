@@ -127,15 +127,6 @@
 	<!-- 푸터 끝 -->
 	
 	
-	<script>
-	
-	date = new Date();
-	year = date.getFullYear();
-	month = date.getMonth() + 1;
-	day = date.getDate();
-	document.getElementsByClassName("time").innerHTML = year + "." + month + "." + day;
-	</script>
-	
 	<script src="js/Est_gosu_responseList.js"></script>
 	
 
