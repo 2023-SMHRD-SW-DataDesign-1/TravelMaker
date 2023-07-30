@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="model.UserDTO"%>
 <%@page import="model.ResDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -27,6 +28,7 @@
 	ArrayList<ResDTO> paid_list = rdao.showPaidlist(user_id);
 	ArrayList<ResDTO> Unpaid_list = rdao.showUnPaidlist(user_id);
 	System.out.println(paid_list.size());
+	DecimalFormat df = new DecimalFormat("###,###"); 
 	%>
 
     <div class="app-container">
@@ -83,21 +85,23 @@
                             </div>
                             <div class="project-box-content-header">
                                견적서No.<%=Unpaid_list.get(i).getEst_num() %>
-                                <p class="box-content-header"><%=Unpaid_list.get(i).getRes_place() %></p>
-                                <p class="box-content-subheader">최수환</p>
+                                <p class="box-content-header"><%=Unpaid_list.get(i).getRes_place()%></p>
+                                <p class="box-content-subheader">컨설팅 비용 : <%=df.format(Unpaid_list.get(i).getRes_fee())%>원</p>
                             </div>
                             <div class="project-box-footer">
                                 <button class="selection" style="color: rgb(125, 115, 115);">아직 채택 안됨</button>
                             </div>
                         </div>
                     </div>
-                    	<%
-						}
-						%>
+                    <%}%>
 				</div>
 
 					<h3 class="center" style="font-weight: 900;">채택 된 견적</h3>
 					 <div class="project-boxes jsGridView">
+					 
+					<%
+					for (int i = 0; i < paid_list.size(); i++) {
+					%>	
                     <!-- 채택된 견적 -->
                     <div class="project-box-wrapper">
                         <div class="project-box" style="background-color: #d7f1fb;">
@@ -148,7 +152,8 @@
                             </div>
                         </div>
                     </div>
-					</div>
+                    <%}%>
+				</div>
              
 
 
