@@ -82,6 +82,7 @@ public class InfoBuyCon implements Command {
 		}
 
 		HttpSession session = request.getSession();
+		info = udao.userInfo(user_id);
 		session.setAttribute("info", info);
 		
 	    session.setAttribute("notification", notification);

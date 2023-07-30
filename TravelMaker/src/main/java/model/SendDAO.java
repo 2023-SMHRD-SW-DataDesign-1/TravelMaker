@@ -51,4 +51,14 @@ public class SendDAO {
 
 		return (ArrayList<SendDTO>) send_list;
 	}
+	
+	// 견적서 채택 시 해당 견적 채택완료 메서드
+	public int checkEst(int est_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("checkEst", est_num);
+		session.close();
+
+		return row;
+	}
+	
 }

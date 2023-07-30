@@ -69,5 +69,14 @@ public class InfoDAO {
 		return row;
 	}
 	
+	// 판매량 상위 5개 썸네일
+	public ArrayList<InfoDTO> topFive(String info_cate){
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<InfoDTO> top_five = session.selectList("topFive", info_cate);
+		session.close();
+		return (ArrayList<InfoDTO>) top_five;
+		
+	}
+	
 
 }

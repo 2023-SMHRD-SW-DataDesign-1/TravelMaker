@@ -205,6 +205,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                    	보유금액 : <%=info.getUser_cash()%>
                                         <label class="text-black" for="lname">💵<%=info_fee %>캐시</label>
                                         <!-- <input type="text" class="form-control" id="lname"> -->
                                     </div>

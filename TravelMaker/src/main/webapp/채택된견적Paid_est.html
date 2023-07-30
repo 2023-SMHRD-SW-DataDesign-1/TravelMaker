@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Project Management Dashboard UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="css/받은견적서조회User_Est_Look.css">
+    <!-- 팝업창 링크 시작 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!-- 팝업창 링크 끝 -->
+</head>
+
+<body>
+
+    <div class="app-container">
+        <div class="app-content">
+            <div class="projects-section">
+                <div class="projects-section-header">
+                    <p>채택된 견적</p>
+
+                    <!-- 팝업버튼 시작 -->
+                    <!-- <div class="container2">
+            <a class="popupbutton" href="#popup">나의 견적요청</a>
+            <div class="popup" id="popup">
+              <div class="popup-inner">
+                <div class="popup__photo">
+                  <img
+                    src="https://www.10wallpaper.com/wallpaper/1366x768/1411/Eiffel_Tower_Paris_Night-Photography_HD_Wallpapers_1366x768.jpg"
+                    alt="">
+                </div>
+                <div class="popup__text">
+                  <h1>나의 견적 요청</h1>
+                  <p>동남아여행</p>
+                  <p>베트남</p>
+                  <p>10~15만</p>
+                  <p>230725~230728</p>
+                  <p>잘부탁드립니다</p>
+                </div>
+                <a class="popup__close" href="#">X</a>
+              </div>
+            </div>
+          </div> -->
+                    <!-- 팝업버튼 끝 -->
+                    <p class="time">23-07-24</p>
+                </div>
+                <div class="projects-section-line">
+                    <div class="projects-status">
+                        <div class="item-status">
+                            <span class="status-number">3</span>
+                            <span class="status-type">전체 견적요청</span>
+                        </div>
+                        <div class="item-status">
+                            <span class="status-number">2</span>
+                            <span class="status-type">현재 견적요청</span>
+                        </div>
+                        <div class="item-status">
+                            <span class="status-number">1</span>
+                            <span class="status-type">지난 견적요청</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="center" style="font-weight: 900;">전체 견적요청</h3>
+                <!-- 동남아여행 받은 요청들 시작 -->
+                <div class="project-boxes jsGridView">
+
+                    <!-- 첫번째 견적요청 -->
+                    <div class="project-box-wrapper">
+                        <div class="project-box" style="background-color: #dadada;">
+                            <!-- #fee4cb -->
+                            <div class="project-box-header">
+                                <span>23-05-05</span>
+                                <div class="more-wrapper">
+                                    <button class="project-btn-more">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-more-vertical">
+                                            <circle cx="12" cy="12" r="1" />
+                                            <circle cx="12" cy="5" r="1" />
+                                            <circle cx="12" cy="19" r="1" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="project-box-content-header">
+                                <p class="box-content-header">동남아 여행</p>
+                                <p class="box-content-subheader">최수환</p>
+                            </div>
+                            <div class="box-progress-wrapper">
+                                <p class="box-progress-header">컨설팅 마감 기간</p>
+                                <div class="box-progress-bar">
+                                    <span class="box-progress" style="width: 100%; background-color: black"></span>
+                                </div>
+                                <p class="box-progress-percentage">100%</p>
+                            </div>
+                            <div class="project-box-footer">
+                                <div class="participants">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
+                                        alt="participant">
+                                    <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                                        alt="participant">
+                                    <button class="add-participant" style="color: #ff942e;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                            <path d="M12 5v14M5 12h14" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="days-left" style="color: black;">
+                                    end
+                                </div>
+                                <button class="selection" style="color: rgb(125, 115, 115);">컨설팅마감</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 두번째 견적요청 -->
+                    <div class="project-box-wrapper">
+                        <div class="project-box" style="background-color: #dadada;">
+                            <div class="project-box-header">
+                                <span>23-07-20</span>
+                                <div class="more-wrapper">
+                                    <button class="project-btn-more">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-more-vertical">
+                                            <circle cx="12" cy="12" r="1" />
+                                            <circle cx="12" cy="5" r="1" />
+                                            <circle cx="12" cy="19" r="1" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="project-box-content-header">
+                                <p class="box-content-header">베트남</p>
+                                <p class="box-content-subheader">황운기</p>
+                            </div>
+                            <div class="box-progress-wrapper">
+                                <p class="box-progress-header">컨설팅 마감 기간</p>
+                                <div class="box-progress-bar">
+                                    <span class="box-progress" style="width: 100%; background-color: black"></span>
+                                </div>
+                                <p class="box-progress-percentage">100%</p>
+                            </div>
+                            <div class="project-box-footer">
+                                <div class="participants">
+                                    <img src="https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1215&q=80"
+                                        alt="participant">
+                                    <img src="https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2555&q=80"
+                                        alt="participant">
+                                    <button class="add-participant" style="color: #ff942e;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                            <path d="M12 5v14M5 12h14" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="days-left" style="color: black;">
+                                    end
+                                </div>
+                                <button class="selection" style="color: rgb(125, 115, 115);">컨설팅마감</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 세번째 견적요청 -->
+                    <div class="project-box-wrapper">
+                        <div class="project-box" style="background-color: #d7f1fb;">
+                            <div class="project-box-header">
+                                <span>23-07-20</span>
+                                <div class="more-wrapper">
+                                    <button class="project-btn-more">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-more-vertical">
+                                            <circle cx="12" cy="12" r="1" />
+                                            <circle cx="12" cy="5" r="1" />
+                                            <circle cx="12" cy="19" r="1" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="project-box-content-header">
+                                <p class="box-content-header">일본</p>
+                                <p class="box-content-subheader">박소리</p>
+                            </div>
+                            <div class="box-progress-wrapper">
+                                <p class="box-progress-header">컨설팅 마감 기간</p>
+                                <div class="box-progress-bar">
+                                    <span class="box-progress" style="width: 70%; background-color: #2a5a91"></span>
+                                </div>
+                                <p class="box-progress-percentage">70%</p>
+                            </div>
+                            <div class="project-box-footer">
+                                <div class="participants">
+                                    <img src="https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1215&q=80"
+                                        alt="participant">
+                                    <img src="https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2555&q=80"
+                                        alt="participant">
+                                    <button class="add-participant" style="color: #ff942e;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                            <path d="M12 5v14M5 12h14" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="days-left" style="color: #3c618c;">
+                                    5 Days Left
+                                </div>
+                                <button class="selection" style="color: #2a5a91;">컨설팅완료</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 네번째 견적요청 -->
+                    <div class="project-box-wrapper">
+                        <div class="project-box" style="background-color: #d7f1fb;">
+                            <div class="project-box-header">
+                                <span>23-07-20</span>
+                                <div class="more-wrapper">
+                                    <button class="project-btn-more">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-more-vertical">
+                                            <circle cx="12" cy="12" r="1" />
+                                            <circle cx="12" cy="5" r="1" />
+                                            <circle cx="12" cy="19" r="1" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="project-box-content-header">
+                                <p class="box-content-header">국내</p>
+                                <p class="box-content-subheader">백진혁</p>
+                            </div>
+                            <div class="box-progress-wrapper">
+                                <p class="box-progress-header">컨설팅 마감 기간</p>
+                                <div class="box-progress-bar">
+                                    <span class="box-progress" style="width: 30%; background-color: #2a5a91"></span>
+                                </div>
+                                <p class="box-progress-percentage">30%</p>
+                            </div>
+                            <div class="project-box-footer">
+                                <div class="participants">
+                                    <img src="https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1215&q=80"
+                                        alt="participant">
+                                    <img src="https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2555&q=80"
+                                        alt="participant">
+                                    <button class="add-participant" style="color: #ff942e;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                            <path d="M12 5v14M5 12h14" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="days-left" style="color: #3c618c;">
+                                    2 Days Left
+                                </div>
+                                <button class="selection" style="color: #2a5a91;">컨설팅완료</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 동남아여행 받은 요청들 끝 -->
+                <!-- <h3 class="center">국내여행</h3> -->
+                <!-- 국내여행 받은 요청들 시작 -->
+                <!-- <div class="project-boxes jsGridView">
+          <div class="project-box-wrapper">
+            <div class="project-box">
+              <div class="project-box-header">
+                <span>23-07-22</span>
+                <div class="more-wrapper">
+                  <button class="project-btn-more">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-more-vertical">
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="12" cy="5" r="1" />
+                      <circle cx="12" cy="19" r="1" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="project-box-content-header">
+                <p class="box-content-header">국내 여행</p>
+                <p class="box-content-subheader">김아무개</p>
+              </div>
+              <div class="box-progress-wrapper">
+                <p class="box-progress-header">컨설팅 마감 기간</p>
+                <div class="box-progress-bar">
+                  <span class="box-progress" style="width: 100%; background-color: #096c86"></span>
+                </div>
+                <p class="box-progress-percentage">100%</p>
+              </div>
+              <div class="project-box-footer">
+                <div class="participants">
+                  <img
+                    src="https://images.unsplash.com/photo-1587628604439-3b9a0aa7a163?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjR8fHdvbWFufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                    alt="participant">
+                  <img
+                    src="https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1215&q=80"
+                    alt="participant">
+                  <button class="add-participant" style="color: #096c86;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-plus">
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="days-left" style="color: #096c86;">
+                  2 Days Left
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-box-wrapper">
+            <div class="project-box">
+              <div class="project-box-header">
+                <span>23-07-22</span>
+                <div class="more-wrapper">
+                  <button class="project-btn-more">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-more-vertical">
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="12" cy="5" r="1" />
+                      <circle cx="12" cy="19" r="1" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="project-box-content-header">
+                <p class="box-content-header">국내 여행</p>
+                <p class="box-content-subheader">김아무개</p>
+              </div>
+              <div class="box-progress-wrapper">
+                <p class="box-progress-header">컨설팅 마감 기간</p>
+                <div class="box-progress-bar">
+                  <span class="box-progress" style="width: 100%; background-color: #096c86"></span>
+                </div>
+                <p class="box-progress-percentage">100%</p>
+              </div>
+              <div class="project-box-footer">
+                <div class="participants">
+                  <img
+                    src="https://images.unsplash.com/photo-1587628604439-3b9a0aa7a163?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjR8fHdvbWFufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+                    alt="participant">
+                  <img
+                    src="https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1215&q=80"
+                    alt="participant">
+                  <button class="add-participant" style="color: #096c86;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-plus">
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="days-left" style="color: #096c86;">
+                  2 Days Left
+                </div>
+              </div>
+            </div>
+          </div> -->
+                <!-- 국내여행 받은 요청들 끝 -->
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- partial -->
+    <script src="js/받은견적서조회User_Est_Look.js"></script>
+
+</body>
+
+</html>

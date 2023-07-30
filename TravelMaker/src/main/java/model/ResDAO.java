@@ -60,4 +60,23 @@ public class ResDAO {
 	
 		return row;
 	}
+	
+	// 채택된 견적 paid = 1로 바꾸기
+	public int paidEst(int res_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("paidEst", res_num);
+		session.close();
+	
+		return row;
+	}
+	
+	// res_num으로 est_res테이블 조회
+	public ResDTO showRes(int res_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		ResDTO showRes = session.selectOne("showRes", res_num);
+		session.close();
+		
+		return showRes;
+	}
+	
 }

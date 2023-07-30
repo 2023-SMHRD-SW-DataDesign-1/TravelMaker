@@ -19,4 +19,5 @@ public class SendDTO {
 	String send_e_date;
 	int send_budget;
 	String send_content;
+	int checked;
 }

@@ -91,6 +91,7 @@
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
 					<h2 class="section-title text-center">나만 알고있던 인스타감성 포토스팟📸</h2>
+					<h2>TOP 5</h2>
 					<a href="Info_CateList.jsp?info_cate=사진">
 						<button>보러가기💬</button>
 					</a>
@@ -104,7 +105,7 @@
 				<%
 				InfoDAO idao = new InfoDAO();
 				String info_cate = "사진";
-				ArrayList<InfoDTO> pic_list = idao.showCateInfo(info_cate);
+				ArrayList<InfoDTO> pic_list = idao.topFive(info_cate);
 				
 
 				for (int i = 0; i < pic_list.size(); i++) {
@@ -132,7 +133,7 @@
 				%>
 
 				<div class="item">
-					<a class="media-thumb" href="Info_Show.jsp?info_num=<%=pic_list.get(i).getInfo_num()%>">
+					<a class="media-thumb" href="Info_DetailPage.jsp?info_num=<%=pic_list.get(i).getInfo_num()%>&info_title=<%=pic_list.get(i).getInfo_title()%>&info_brief=<%=pic_list.get(i).getInfo_brief()%>&info_fee=<%=pic_list.get(i).getInfo_fee()%>&infouser_id=<%=pic_list.get(i).getUser_id()%>">
 						<div class="media-text">
 
 							<h3><%=pic_list.get(i).getInfo_title()%></h3>
@@ -158,6 +159,7 @@
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
 					<h2 class="section-title text-center">혼자 몰래가서 배터지게 먹고오는 🥘</h2>
+					<h2>TOP 5</h2>
 				</div>
 					<a href="Info_CateList.jsp?info_cate=맛집">
 						<button>보러가기💬</button>
@@ -169,7 +171,7 @@
 			<!-- 맛집 썸네일 알고리즘 -->
 			<%
 			info_cate = "맛집";
-			ArrayList<InfoDTO> food_list = idao.showCateInfo(info_cate);
+			ArrayList<InfoDTO> food_list = idao.topFive(info_cate);
 			
 			for (int i = 0; i < food_list.size(); i++) {
 				int info_num = food_list.get(i).getInfo_num();
@@ -196,7 +198,7 @@
 			%>
 			
 				<div class="item">
-					<a class="media-thumb" href="Info_Show.jsp?info_num=<%=food_list.get(i).getInfo_num()%>">
+					<a class="media-thumb" href="Info_DetailPage.jsp?info_num=<%=food_list.get(i).getInfo_num()%>&info_title=<%=food_list.get(i).getInfo_title()%>&info_brief=<%=food_list.get(i).getInfo_brief()%>&info_fee=<%=food_list.get(i).getInfo_fee()%>&infouser_id=<%=food_list.get(i).getUser_id()%>">
 						<div class="media-text">
 							<h3><%=food_list.get(i).getInfo_title()%></h3>
 							<span class="location">-</span>
@@ -220,6 +222,7 @@
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
 					<h2 class="section-title text-center">공유금지🤫 구름위에서 자는거처럼 편안하게🏡</h2>
+					<h2>TOP 5</h2>
 				</div>
 					<a href="Info_CateList.jsp?info_cate=숙소">
 						<button>보러가기💬</button>
@@ -231,7 +234,7 @@
 			<!-- 숙소 알고리즘 -->
 			<%
 			info_cate = "숙소";
-			ArrayList<InfoDTO> hotel_list = idao.showCateInfo(info_cate);
+			ArrayList<InfoDTO> hotel_list = idao.topFive(info_cate);
 			
 			for (int i = 0; i < hotel_list.size(); i++) {
 				int info_num = hotel_list.get(i).getInfo_num();
@@ -257,7 +260,7 @@
 			%>
 
 				<div class="item">
-						<a class="media-thumb" href="Info_Show.jsp?info_num=<%=hotel_list.get(i).getInfo_num()%>">
+						<a class="media-thumb" href="Info_DetailPage.jsp?info_num=<%=hotel_list.get(i).getInfo_num()%>&info_title=<%=hotel_list.get(i).getInfo_title()%>&info_brief=<%=hotel_list.get(i).getInfo_brief()%>&info_fee=<%=hotel_list.get(i).getInfo_fee()%>&infouser_id=<%=hotel_list.get(i).getUser_id()%>">
 						<div class="media-text">
 							<h3><%=hotel_list.get(i).getInfo_title()%></h3>
 							<span class="location">-</span>

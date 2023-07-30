@@ -42,6 +42,19 @@
 	font-weight: bold;
 	margin: 10px;
 }
+
+figure#burnsbox { 
+  overflow: hidden; 
+  position: relative; 
+  padding-top: 30%;  
+  width: 100%; 
+  margin: 0 auto; 
+}
+figure#burnsbox img { 
+  animation: zoom 12s alternate infinite; 
+  position: absolute; 
+  top: 0; left:-5%; width: 110%; height: 40%; 
+}
 </style>
 </head>
 <body>
@@ -56,6 +69,10 @@
 	<!-- 네비게이션 시작 -->
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
+	
+	<figure id="burnsbox">
+	<img src="img/배경테스트.jpg" alt="Photograph of Janelle Monae in concert, shot in sillouette against a blue light">
+	</figure>
 	
 	<c:set var="gosu_response_list" value="${ResDAO.gosu_responseList(info.user_id)}"></c:set>
 

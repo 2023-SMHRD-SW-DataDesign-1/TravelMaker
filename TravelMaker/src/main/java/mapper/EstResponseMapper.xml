@@ -16,11 +16,12 @@
 		select * from est_res where est_num = #{est_num}	
 	</select>
 	
-	<!-- 채택된견적 -->
+	<!-- 채택된견적 보여주기-->
 	<select id="showPaidlist" parameterType="String" resultType="ResDTO">
 		select * from est_res where paid = 1 and user_id = #{user_id}
 	</select>
 	
+	<!-- 채택 안된 견적 -->
 	<select id="showUnPaidlist" parameterType="String" resultType="ResDTO">
 		select * from est_res where paid = 0 and user_id = #{user_id}
 	</select>
@@ -29,5 +30,17 @@
 		insert into est_res(res_num, est_num, user_id, res_wr_date, res_content, res_fee)
 		values(res_num_seq.nextVal, #{est_num}, #{user_id}, sysdate, #{res_content}, #{res_fee})
 	</insert>
+	
+	<!-- 채택된 견적 paid 1로 -->
+	<update id="paidEst" parameterType="int">
+		update est_res set paid = 1 where res_num = #{res_num}
+	</update>
+	
+	<!-- res_num으로 est_res테이블 조회 -->
+	<select id="showRes" parameterType="int" resultType="ResDTO">
+		select * from est_res where res_num = #{res_num}
+	</select>
+	
+	
 	
 </mapper>

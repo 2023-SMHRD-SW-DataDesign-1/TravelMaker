@@ -24,4 +24,10 @@
 		select * from est_send where user_id = #{user_id}
 	</select>
 	
+	<!-- 견적서 채택시 해당 견적 채택완료 처리 -->
+	<update id="checkEst" parameterType="int">
+		update est_send set checked = 1 where est_num = #{est_num}
+	</update>
+	
+	
 </mapper>

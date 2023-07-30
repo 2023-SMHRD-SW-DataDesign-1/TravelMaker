@@ -35,5 +35,11 @@
 	<insert id="insertHis" parameterType="InfoDTO">
 		insert into trade_his(his_num, user_id, info_num) values(his_num_seq.nextval, #{user_id}, #{info_num})
 	</insert>
+	
+	<!-- 판매량 상위 5개만 보여주도록 -->
+	<!-- 부등호 쓸려면 <![CDATA[ ]]> 로 감싸기 -->
+	<select id="topFive" parameterType="String" resultType="InfoDTO">
+		select * from info_trade where info_num in (select info_num from(select info_num from trade_his group by info_num order by count(info_num) desc) where info_cate = #{info_cate} and <![CDATA[rownum <= 5]]>)
+	</select>
 
 </mapper>

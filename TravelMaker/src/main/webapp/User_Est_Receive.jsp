@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="model.UserDTO"%>
 <%@page import="model.SendDTO"%>
 <%@page import="model.SendDAO"%>
@@ -75,6 +76,8 @@
 						<div class="item-status">
 							<span class="status-type">전체 컨설팅</span>
 							<span class="status-number"><%=send_list.size() %></span> 
+							<%DecimalFormat df = new DecimalFormat("###,###"); %>
+							<span>보유 마일리지 : <%=df.format(udto.getUser_cash())%>원</span>
 						</div>
 					</div>
 				</div>
@@ -89,6 +92,11 @@
 						<div class="project-box" style="background-color: #fee4cb;">
 							<div class="project-box-content-header">
 								<p class="box-content-header"><%=send_list.get(i).getSend_place()%></p>
+								<!-- 채택 된 견적일 경우 채택 완료 표시 -->
+								<%if(send_list.get(i).getChecked() == 1){ %>
+								<!-- 버튼말고 다른걸로해도됨 -->
+								<button>채택 완료!</button>
+								<%} %>
 							</div>
 							<div class="box-progress-wrapper">
 								<p class="box-progress-header"><%=send_list.get(i).getSend_s_date()%>~<%=send_list.get(i).getSend_e_date()%></p>
