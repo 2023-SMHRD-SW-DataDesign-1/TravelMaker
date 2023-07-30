@@ -1,403 +1,475 @@
+<%@page import="model.UserDTO"%>
+<%@page import="model.UserDAO"%>
+<%@page import="model.SendDTO"%>
+<%@page import="model.SendDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>고수 - 컨설팅 작성</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <title>CodePen - Dashboard Design with Flexbox</title>
+    <!-- <link rel="stylesheet" href="./컨설팅작성Gosu_Est_Paid.css"> -->
+    <!-- 세부컨설팅 link 시작 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places&callback=initMap">
+        </script>
+    <!-- 세부컨설팅 link 끝 -->
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css'>
-  <link rel="stylesheet" href="css/detail_consult.css">
+    <!-- 마크도장link 시작 -->
+    <link href="https://fonts.googleapis.com/css?family=Cousine&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chonburi&display=swap" rel="stylesheet">
+    <!-- 마크도장link 끝 -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-  <!-- 세부작성페이지 link 및 스크립트 시작 -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- include summernote css/js -->
-  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places&callback=initMap">
-    </script>
-  <!-- 세부작성페이지 link 및 스크립트 끝 -->
+    <!-- 세부컨설팅 style1 시작 -->
+    <style>
+        h1 {
+            text-align: center;
+        }
 
-  <!-- 고객견적 link 시작 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <!-- 고객견적 link 끝 -->
+        /* button {
+       float: right;
+       color: white;
+       background-color: skyblue;
+       border: none;
+       padding: 10px 30px;
+     }
+     */
+        .input_3 {
+            /* 전송버튼 */
+            height: 55px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 3px solid black;
+            padding: 10px 30px;
+        }
+
+        .div_2 {
+            /* 오른쪽하단 고정 */
+            position: absolute;
+            right: 20px;
+            /* margin-left: 1500px; */
+        }
+
+        .price-tag {
+            background-color: #4285F4;
+            border-radius: 8px;
+            color: #FFFFFF;
+            font-size: 14px;
+            padding: 10px 15px;
+            position: relative;
+        }
+
+        .price-tag::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translate(-50%, 0);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #4285F4;
+        }
+
+        [class$=api-load-alpha-banner] {
+            display: none;
+        }
+    </style>
+    <!-- 세부 컨설팅 style1 끝 -->
+    
+    <!-- 세부 컨설팅 style2 시작 -->
+    <style>
+        /*    */
+        .editor-contents {
+            height: 700px;
+            padding-bottom: 50px;
+            /* margin-top: 50px; */
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #tip-title-box {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #tip-title {
+            width: 700px;
+            height: 40px;
+            border: 1px #D8D8D8 solid;
+            border-radius: 5px;
+            margin: 0;
+            padding: 0 10px;
+            margin-bottom: 10px;
+            font-family: 'Apple SD Gothic Neo';
+            font-size: 14px;
+        }
+
+        #editor-box {
+            width: 700px;
+            height: 100%;
+            display: inline-block
+        }
+
+        #btn-box-center {
+            width: 700px;
+        }
+
+        #cancel-btn {
+            width: 160px;
+            height: 40px;
+            border-radius: 7px;
+            border: 1px #D8D8D8 solid;
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #submit-btn {
+            width: 160px;
+            height: 40px;
+            border-radius: 7px;
+            background-color: #5882FA;
+            color: white;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #map {
+            /* top: 100px; */
+            height: 300px;
+            width: 700px;
+            /* 지도랑 나란히 정렬 */
+            display: inline-block
+        }
+
+        #search-location {
+            width: 170px;
+            height: 40px;
+            font-size: 14px;
+            border: 1px solid #535353;
+            background-color: rgb(230, 230, 230);
+        }
+
+        #btn_group {
+            /* text-align: center;
+     display: inline-block; */
+
+            display: flex;
+            justify-content: center;
+            /* background-color: #f2f3f7; */
+        }
+
+        /*  */
+        #test_btn1 {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            margin-right: 0px;
+        }
+
+        #test_btn2 {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            margin-left: -1px;
+        }
+
+        #btn_group button {
+            /* #5882FA; */
+            border: 1px solid #5882FA;
+            background-color: rgba(0, 0, 0, 0);
+            color: #5882FA;
+            padding: 5px;
+        }
+
+        #btn_group button:hover {
+            color: white;
+            background-color: #5882FA;
+        }
+
+        /* 견적요청 바 css */
+
+        .scroll-cards {
+            width: 300px;
+            height: 800px;
+            overflow: auto;
+
+            /* 화면고정 */
+            position: fixed;
+            left: 50px;
+            top: 40px;
+            /* padding: 20px 0px 5px 20px; */
+        }
+
+        .card {
+            background-color: #f2f3f7;
+            border-radius: 4px;
+            margin-top: 8px;
+            margin-bottom: 5px;
+            padding: 20px 0px 20px 0px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 5px 1px 20px 1px #ddd;
+            transform: scale(0.96);
+        }
+
+        .mails {
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+        }
+
+        .mails>img {
+            width: 35px;
+            border-radius: 10px;
+        }
+
+        .mail-info {
+            margin: 10px 65px;
+            margin-left: 20px;
+            line-height: 1.7;
+            font-weight: 600;
+        }
 
 
-  <!-- 세부작성페이지 스타일 시작 -->
-  <style>
-    h1 {
-      text-align: center;
-    }
+        .bottom-info {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    /* button {
-   float: right;
-   color: white;
-   background-color: skyblue;
-   border: none;
-   padding: 10px 30px;
-}
-*/
-    .input_3 {
-      /* 전송버튼 */
-      height: 55px;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      border-bottom: 3px solid black;
-      padding: 10px 30px;
-    }
+        p {
+            margin: 0 0 10px;
+        }
 
-    .div_2 {
-      /* 오른쪽하단 고정 */
-      position: absolute;
-      right: 20px;
-      /* margin-left: 1500px; */
-    }
+        .mail-names {
+            color: grey;
+            font-weight: bold;
+            font-size: 15px;
+            margin-left: 10px;
+        }
+    </style>
+    <!-- 세부 컨설팅 style2 끝 -->
 
-    .price-tag {
-      background-color: #4285F4;
-      border-radius: 8px;
-      color: #FFFFFF;
-      font-size: 14px;
-      padding: 10px 15px;
-      position: relative;
-    }
+    <!-- 최종컨설팅 마크 style 시작 -->
+    <style>    
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 10vh;
+        }
 
-    .price-tag::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 100%;
-      transform: translate(-50%, 0);
-      width: 0;
-      height: 0;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-top: 8px solid #4285F4;
-    }
+        .M {
+            font-size: 5vmin;
+            color: #ac6b4d;
+            font-family: 'Chonburi', cursive;
+        }
 
-    [class$=api-load-alpha-banner] {
-      display: none;
-    }
-  </style>
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="Untree.co">
-<link rel="shortcut icon" href="favicon.png">
-<meta name="description" content="" />
-<meta name="keywords" content="bootstrap, bootstrap4" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
-  rel="stylesheet">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-<link rel="stylesheet" href="css/daterangepicker.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/style.css">
-<title>Tour Free Bootstrap Template for Travel Agency by
-  Untree.co</title> -->
-  <style>
-    /*    */
-
-    .editor-contents {
-      height: 700px;
-      padding-bottom: 50px;
-      /* margin-top: 50px; */
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-
-    #tip-title-box {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    #tip-title {
-      width: 700px;
-      height: 40px;
-      border: 1px #D8D8D8 solid;
-      border-radius: 5px;
-      margin: 0;
-      padding: 0 10px;
-      margin-bottom: 10px;
-      font-family: 'Apple SD Gothic Neo';
-      font-size: 14px;
-    }
-
-    #editor-box {
-      width: 800px;
-      height: 100%;
-      display: inline-block
-    }
-
-    #btn-box-center {
-      width: 800px;
-    }
-
-    #cancel-btn {
-      width: 160px;
-      height: 40px;
-      border-radius: 7px;
-      border: 1px #D8D8D8 solid;
-      float: left;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #submit-btn {
-      width: 160px;
-      height: 40px;
-      border-radius: 7px;
-      background-color: #66CCCC;
-      color: white;
-      float: right;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #map {
-      /* top: 100px; */
-      height: 300px;
-      width: 800px;
-
-      /* 지도랑 나란히 정렬 */
-      /* display: inline-block */
-    }
-
-    #search-location {
-      margin-top: 1.5%;
-      width: 170px;
-      height: 40px;
-      font-size: 14px;
-      border: 1px solid white;
-      /* border: 1px solid #535353;/ */
-      background-color: rgb(230, 230, 230);
-    }
-
-    #btn_group {
-      /* text-align: center;
-   display: inline-block; */
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    /*  */
-    #test_btn1 {
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      margin-right: 0px;
-    }
-
-    #test_btn2 {
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      margin-left: -1px;
-    }
-
-    #btn_group button {
-      /* #5882FA; */
-      border: 1px solid #66CCCC;
-      background-color: rgba(0, 0, 0, 0);
-      color: #66CCCC;
-      padding: 5px;
-    }
-
-    #btn_group button:hover {
-      color: white;
-      background-color: #66CCCC;
-    }
-
-
-    /* 네비게이션 바를 숨기기 위한 CSS 클래스 정의 */
-    .hide-on-small-screen {
-      display: block; /* 기본적으로 표시 */
-    }
-
-    /* 미디어 쿼리를 사용하여 작은 화면에서 (너비 <= 1200px) 네비게이션 바를 숨김 */
-    @media screen and (max-width: 1455px) {
-      .hide-on-small-screen {
-        display: none; /* 작은 화면에서 숨김 */
-      }
-    }
-  </style>
-  <!-- 세부작성페이지 스타일 끝 -->
+        #circ {
+            font-size: 0.8vmin;
+            color: #bebbbc;
+            font-family: 'Cousine', monospace;
+            position: relative;
+            margin-top: -3vmin;
+            left: 1vmin;
+        }
+    </style>
+    <!-- 최종컨설팅 마크 style 끝 -->
 </head>
 
 <body>
-  <!-- partial:index.partial.html -->
-  <div>
-  <div class="hide-on-small-screen">
-    <nav role='navigation'>
-      <ul>
-        <li><a href="#">
-            <i class="icon-desktop"></i>Dashboard
-          </a></li>
-        <li><a href="#">
-            <i class="icon-bar-chart"></i>Analytics
-          </a></li>
-        <li><a href="#">
-            <i class="icon-film"></i>Media
-          </a></li>
-        <li><a href="#">
-            <i class="icon-comments"></i>Comments
-          </a></li>
-        <li><a href="#">
-            <i class="icon-columns"></i>Widgets
-          </a></li>
-        <li><a href="#">
-            <i class="icon-calendar"></i>Planner
-          </a></li>
-        <li><a href="#">
-            <i class="icon-file-text-alt"></i>Report
-          </a></li>
-        <li><a href="#">
-            <i class="icon-arrow-right"></i>Directions
-          </a></li>
-      </ul>
-    </nav>
-  </div>
-    <div>
-      <div class="top-bar">
 
-        <!-- 
-        <form class="search">
-          <input type="search" placeholder="Search">
-          <button class="icon-search"></button>
-        </form>
-        -->
+	<%
+	int res_num = Integer.parseInt(request.getParameter("res_num"));
+	int est_num = Integer.parseInt(request.getParameter("est_num"));
+	
+	SendDAO sdao = new SendDAO();
+	SendDTO show_est = sdao.EstSend_nomalUser(est_num);
+	UserDAO udao = new UserDAO();
+	UserDTO show_name = udao.showName(est_num);
+	
+	%>
 
-        <div>
-          <div>
-            <img src="http://gravatar.com/avatar/141af5ff80a1541d755c97f9c7a3281c?s=80">
-            <span class="desktop">고수, </span><span class="tablet">홍길동</span>
-          </div>
-          <button class="icon-envelope"></button>
-          <button class="icon-bell"></button>
-          <button class="icon-gear"></button>
+    <div class="dashboard">
+        <!-- 최종컨설팅 마크 시작 -->
+        <div class="wrapper">
+
+            <div class="M">Final Consulting</div>
         </div>
-        <!-- <button><i class="icon-signout"></i><span class="desktop">고수마이페이지</span></button> -->
-      </div>
-      <div class="page">
-        <!-- 세부컨설팅작성페이지 바디 시작 -->
+        <!-- 최종컨설팅 마크 끝 -->
+        <div class="right-side">
 
-        <div>
+            <div class="right-body">
+                <div class="scroll-cards">
+                    <!-- 사이드 1번째 박스 시작 -->
+                    <div class="card">
+                        <div class="mails">
+                            <img src="https://randomuser.me/api/portraits/men/20.jpg" />
+                            <div class="mail-names">
+                                <p><%=show_name.getUser_name()%> 고객님의 견적요청</p>
+                            </div>
+                        </div>
+                        <div class="mail-info">
+                            <!-- 동남아여행 -->
+                        </div>
+                        <div>
+                        </div>
+                        <div class="check1">
+                            <div class="bottom-info">
 
-          <div id="btn_group">
-            <button id="test_btn1" onclick="addMarker()" style="position: relative">마커 추가</button>
-            <button id="test_btn2" onclick="removeLastMarker()" style="position: relative">마커 삭제</button>
+                            </div>
+                            <div class="date">8:30 AM</div>
+                        </div>
+                    </div>
+                    <!-- 사이드 1번째 박스 끝 -->
 
-          </div>
+                    <!-- 사이드 2번째 박스 시작 -->
+                    <div class="card">
+                        <div class="mails">
+                            <div class="mail-names">
+                                어디로가세요?
+                            </div>
+                        </div>
+                        <div class="mail-info">
+                            일본
 
-            <div class="editor-contents">
-              <div id="editor-box">
+                            <div>
+                            </div>
+                            <div class="bottom-info">
+                                </label>
 
-                <div id="map"></div>
-		          <form action="ConsultCon.do" method="post">
-		                <textarea name="cons_content" id="summernote"></textarea>
-		                <!-- 사용자가 생성한 마커 정보를 서버로 전송하기 위한 HTML Form -->
-		                <input type="hidden" id="lat-input" name="lat">
-		                <input type="hidden" id="lng-input" name="lng">
-		                <input class="input_3" type="submit" value="작성완료">
-		          </form>
-          
-          
-                <div id="btn-box-center">
-                  <div id="cancel-btn">취소</div>
-                  <div id="submit-btn">컨설팅 보내기</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- 사이드 2번째 박스 끝 -->
+
+                    <!-- 사이드 3번째 박스 시작 -->
+                    <div class="card">
+                        <div class="mails">
+                            <div class="mail-names">
+                                구체적인 목적지가 어디세요?
+                            </div>
+                        </div>
+                        <div class="mail-info">
+                            오사카,도쿄
+                        </div>
+                        <div>
+                        </div>
+                        <div class="bottom-info">
+
+                        </div>
+                    </div>
+                    <!-- 사이드 3번째 박스 끝 -->
+
+                    <!-- 사이드 4번째 박스 시작 -->
+                    <div class="card">
+                        <div class="mails">
+                            <div class="mail-names">
+                                예산이 얼마나 되세요?
+                            </div>
+                        </div>
+                        <div class="mail-info">
+                            150만~200만
+                        </div>
+                        <div>
+                        </div>
+                        <div class="bottom-info">
+
+                        </div>
+                    </div>
+                    <!-- 사이드 4번째 박스 끝 -->
+
+                    <!-- 사이드 5번째 박스 시작 -->
+                    <div class="card">
+                        <div class="mails">
+                            <div class="mail-names">
+                                언제 가세요?
+                            </div>
+                        </div>
+                        <div class="mail-info">
+                            7/28~8/3
+                        </div>
+                        <div>
+                        </div>
+                        <div class="bottom-info">
+
+                        </div>
+                    </div>
+                    <!-- 사이드 5번째 박스 끝 -->
+
+                    <!-- 사이드 6번째 박스 시작 -->
+                    <div class="card">
+                        <div class="mails">
+                            <div class="mail-names">
+                                고수에게 추가적인 요청사항이 있나요?
+                            </div>
+                        </div>
+                        <div class="mail-info">
+                            맛집위주
+                        </div>
+                        <div>
+                        </div>
+                        <div class="bottom-info">
+
+                        </div>
+                    </div>
+                    <!-- 사이드 6번째 박스 끝 -->
                 </div>
-              </div>
-            </div>
-          <input id="search-location" type="text" placeholder="장소를 검색하세요">
 
+                <div class="message">
+
+
+                    <!-- 지도 및 서머노트 시작 -->
+
+                    <div id="btn_group">
+                        <button id="test_btn1" onclick="addMarker()" style="position: relative">마커 추가</button>
+                        <button id="test_btn2" onclick="removeLastMarker()" style="position: relative">마커 삭제</button>
+                    </div>
+
+                    <form action="ConsultCon.do?est_num=<%=est_num%>" method="post">
+                        <div class="editor-contents">
+                            <div id="editor-box">
+                                <div id="map"></div>
+                                <textarea name="cons_content" id="summernote"></textarea>
+                                <!-- 사용자가 생성한 마커 정보를 서버로 전송하기 위한 HTML Form -->
+                                <input type="hidden" id="lat-input" name="lat">
+                                <input type="hidden" id="lng-input" name="lng">
+                                <div id="btn-box-center">
+                                    <div id="cancel-btn">취소</div>
+                                    <input type="submit" value="컨설팅 보내기">
+                                    <!-- <div id="submit-btn">컨설팅 보내기</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- 사용자의 위치를 검색할 수 있는 검색 박스를 추가할 입력 요소 -->
+
+                    <input id="search-location" type="text" placeholder="장소를 검색하세요">
+                    <!-- 지도 및 서머노트 끝 -->
+
+                </div>
+            </div>
         </div>
+  
 
-        <!-- 세부컨설팅작성페이지 바디 끝 -->
-
-
-        <aside>
-
-
-          <!-- <div class="widget featured">
-            <h2>Balance</h2>
-            <p>£14,679</p>
-          </div> -->
-
-          <div class="widget">
-
-            <!-- 고객견적요청 시작 -->
-            <div class="price-table-wrapper">
-              <div class="pricing-table">
-                <h2 class="pricing-table__header">- 고객견적요청 -</h2>
-
-                <a target="_blank" class="pricing-table__button" href="http://www.digimadmedia.com">
-                  고객마이페이지 이동
-                </a>
-                <ul class="pricing-table__list">
-                  <li>국가<br>국내</li>
-                  <li>목적지<br>경주</li>
-                  <li>예산<br>10~15만</li>
-                  <li>날짜<br>0712~0722</li>
-                  <li>요청사항<br>잘부탁드립니다</li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- 고객견적요청 끝 !! -->
-            <!--
-            <header>
-              <h2>Quick Links</h2>
-            </header>
-            <menu type="list">
-              <li><a href="#">New Tasks <i class="icon-bookmark"></i></a></li>
-              <li><a href="#">Activity <i class="icon-location-arrow"></i></a></li>
-              <li><a href="#">Parameters <i class="icon-gear"></i></a></li>
-              <li><a href="#">My Cards <i class="icon-credit-card"></i></a></li>
-              <li><a href="#">Users <i class="icon-group"></i></a></li>
-            </menu>
-            -->
-          </div>
-          <form class="widget">
-            <header>
-              <h2>Customer Support?</h2>
-            </header>
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Comments"></textarea>
-            <div>
-              <button type="submit">Send</button>
-            </div>
-          </form>
-        </aside>
-      </div>
-    </div>
-  </div>
-  <!-- partial -->
-
-
-
-
-
-
-  <!-- 세부컨설팅작성페이지 스크립트 시작 -->
+        
    <script>
       // 메인화면 페이지 로드 함수
       $(document).ready(function() {
@@ -515,11 +587,6 @@
          }
       }
    </script>
-  <!-- 세부컨설팅작성페이지 스크립트 끝 -->
-
-  <!-- 고객견적 link 시작 -->
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,100' rel='stylesheet' type='text/css'>
-  <!-- 고객견적 link 끝 -->
 </body>
 
 </html>
