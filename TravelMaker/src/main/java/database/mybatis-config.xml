@@ -38,5 +38,6 @@
 		<mapper resource="mapper/EstResponseMapper.xml" />
 		<mapper resource="mapper/EstConsultMapper.xml" />
 		<mapper resource="mapper/PortfolioMapper.xml" />
+		<mapper resource="mapper/HistoryMapper.xml" />
 	</mappers>
 </configuration>

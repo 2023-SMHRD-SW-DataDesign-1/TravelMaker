@@ -17,7 +17,7 @@
   <meta charset="UTF-8">
   <title>CodePen - Project Management Dashboard UI</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="css/받은견적서조회User_Est_Look.css">
+  <link rel="stylesheet" href="css/User_Est_Look.css">
   <!-- 팝업창 링크 시작 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <!-- 팝업창 링크 끝 -->
@@ -149,7 +149,10 @@
 			                    withCredentials: true // 세션 쿠키를 전송하도록 설정
 			                },
 			                success: function(response) {
-			                    if (response.status === "checked") {
+			                	
+			                	if (response.paid === "false") {
+			                		alert("금액이 부족합니다.");
+			                	}else if (response.status === "checked") {
 			                        alert("채택되었습니다.");
 			                        // 채택 성공 후 페이지 새로 고침
 			                        location.reload();
@@ -175,7 +178,8 @@
   </div>
 
   <!-- partial -->
-  <script src="js/받은견적서조회User_Est_Look.js"></script>
+  <script src="js/
+  User_Est_Look.js"></script>
 
 </body>
 

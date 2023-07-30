@@ -18,5 +18,6 @@ public class ResDTO {
 	@NonNull String res_content;
 	@NonNull int res_fee;
 	int paid;
+	@NonNull String res_place;
 
 }

@@ -1,10 +1,13 @@
 
+<%@page import="model.UserDAO"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="model.ResDTO"%>
+<%@page import="model.UserDTO"%>
+<%@page import="model.SendDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.ResDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,84 +46,97 @@
 	margin: 10px;
 }
 
-figure#burnsbox { 
-  overflow: hidden; 
-  position: relative; 
-  padding-top: 30%;  
-  width: 100%; 
-  margin: 0 auto; 
-}
-figure#burnsbox img { 
-  animation: zoom 12s alternate infinite; 
-  position: absolute; 
-  top: 0; left:-5%; width: 110%; height: 40%; 
-}
 </style>
 </head>
 <body>
 
-	<c:if test="${info == null}">
-		<script>
-			alert("로그인 후 이용해주세요.");
-			location.href="Login.jsp";
-		</script>
-	</c:if>
+	<!-- 작성완료 알림문 시작 -->
+	<%
+	String noti = (String) session.getAttribute("noti");
+	%>
+	<script>
+		<%if (noti != null){ %>
+		alert("<%=noti%>");
+		<%
+		session.removeAttribute("noti");
+		}%>
+	</script>
+	<!-- 작성완료 알림문 끝 -->
+
+	
+	<%
+	UserDTO info = (UserDTO) session.getAttribute("info");
+	String user_id = info.getUser_id();
+	ResDAO rdao = new ResDAO();
+	
+	ArrayList<SendDTO> est_list = rdao.gosu_responseList(user_id);
+	DecimalFormat df = new DecimalFormat("###,###"); 
+	UserDAO udao = new UserDAO();
+	
+	
+	%>
 
 	<!-- 네비게이션 시작 -->
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
 	
-	<figure id="burnsbox">
-	<img src="img/배경테스트.jpg" alt="Photograph of Janelle Monae in concert, shot in sillouette against a blue light">
-	</figure>
-	
-	<c:set var="gosu_response_list" value="${ResDAO.gosu_responseList(info.user_id)}"></c:set>
 
 	<div class="app-container">
 		<div class="app-content">
 			<div class="projects-section">
 				<div class="projects-section-header">
-					<p>내가받은 요청</p>
+					<p><%=info.getAct_area()%>여행 견적</p>
 					<p class="time"></p>
 				</div>
 				<div class="projects-section-line">
 					<div class="projects-status">
 						<div class="item-status">
-							<span class="status-type">전체 컨설팅</span>
-							<span class="status-number">${gosu_response_list.size()}</span> 
+							<span class="status-type">받은 견적</span>
+							<span class="status-number"><%=est_list.size() %></span> 
 						</div>
 					</div>
 				</div>
 				
 				<!-- gosu-response 목록 시작 -->
 				
-				<%-- <h3 class="center">${response_list.send_country}</h3> --%>
 				<div class="project-boxes jsGridView">
 				
-				<c:forEach var="response_list" items="${gosu_response_list}" varStatus="status">
+				<%for(int i = 0; i < est_list.size(); i++){ %>
 					<div class="project-box-wrapper">
 						<div class="project-box" style="background-color: #fee4cb;">
 							<div class="project-box-content-header">
-								<p class="box-content-header">${response_list.send_place}</p>
-								<p class="box-content-subheader">${response_list.user_id}</p>
+								견적No.<%=est_list.get(i).getEst_num()%>
+								<p class="box-content-header"><%=est_list.get(i).getSend_place()%></p>
+								<%UserDTO show_name = udao.showName(est_list.get(i).getEst_num()); %>
+								<p class="box-content-subheader"><%=show_name.getUser_name()%></p>
 							</div>
 							<div class="box-progress-wrapper">
-								<p class="box-progress-header">${response_list.send_s_date}~${response_list.send_e_date}</p>
+								<p class="box-progress-header"><%=est_list.get(i).getSend_s_date()%>~<%=est_list.get(i).getSend_e_date()%></p>
 								<div class="box-progress-bar">
 									<!-- <span class="box-progress"
 										style="width: 60%; background-color: #ff942e"></span> -->
 								</div>
 							</div>
 							<div class="project-footer-box">
-								<span>${response_list.send_content}</span>
+								<span><%=est_list.get(i).getSend_content()%></span>
 								<div class="project-move-box">
-									<p>요청금액 ${response_list.send_budget}</p>
-									<a href="Gosu_Est_Write.jsp?est_num=${response_list.est_num}">견적작성</a>
+									<p>요청금액 <%=df.format(est_list.get(i).getSend_budget())%></p>
+
+									<%
+									int row = rdao.checkWrite(new SendDTO(est_list.get(i).getEst_num(), user_id));
+									if (row > 0){
+									%>
+									<a href="">작성완료</a>
+									<%
+									}else{
+									%>
+									<a href="Gosu_Est_Write.jsp?est_num=<%=est_list.get(i).getEst_num()%>">견적서 작성</a>
+									<%} %>
 								</div>
 							</div>
 						</div>
 					</div>
-				</c:forEach>
+				<%} %>
 					<!-- gosu-response 목록 끝 -->
 					
 				</div>

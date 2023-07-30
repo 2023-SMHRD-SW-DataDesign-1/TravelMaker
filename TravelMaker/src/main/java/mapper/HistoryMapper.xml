@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.InfoMapper">
+
+	<!-- 견적 채택되면 구매기록 -->
+	<insert id="estPay" parameterType="SendDTO">
+		insert into trade_his(user_id, est_num) values(#{user_id}, #{est_num})
+	</insert>
+	
+	<!-- id로 구매기록 조회 -->
+	<select id="showHis" parameterType="String" resultType="HisDTO">
+		select * from trade_his where user_id = #{user_id}
+	</select>
+
+
+
+
+</mapper>

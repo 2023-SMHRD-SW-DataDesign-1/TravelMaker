@@ -85,16 +85,15 @@
 					<div class="form-group">
 						<select name="send_country" id="dropdown">
 							<!-- <option value>국가선택</option> -->
-							<option value="Afghanistan">국내</option>
-							<option value="Åland Islands">동남아</option>
-							<option value="Albania">유럽</option>
-							<option value="Algeria">러시아</option>
-							<option value="American Samoa">북미</option>
-							<option value="Andorra">남미</option>
-							<option value="Albania">아프리카</option>
-							<option value="Algeria">인도</option>
-							<option value="American Samoa">중국</option>
-							<option value="Andorra">일본</option>
+							<option value="국내">국내</option>
+							<option value="동남아">동남아</option>
+							<option value="유럽">유럽</option>
+							<option value="북미">북미</option>
+							<option value="남미">남미</option>
+							<option value="아프리카">아프리카</option>
+							<option value="인도">인도</option>
+							<option value="중국">중국</option>
+							<option value="일본">일본</option>
 						</select>
 						<p class="error-message"></p>
 					</div>
@@ -153,11 +152,8 @@
 					<!-- 캘린더 시작 -->
 					<section class="calendar">
 						<div class="calendar__inputs">
-							<input class="calendar__input" name="send_s_date"
-								readonly="readonly" type="text" id="calendar-start"
-								placeholder="Start Date"> <input class="calendar__input"
-								name="send_e_date" readonly="readonly" type="text"
-								id="calendar-end" placeholder="End Date">
+							<input class="calendar__input" name="send_s_date" readonly="readonly" type="text" id="calendar-start" placeholder="Start Date"> 
+							<input class="calendar__input" name="send_e_date" readonly="readonly" type="text" id="calendar-end" placeholder="End Date">
 						</div>
 						<!-- 리셋버튼-->
 						<div class="calendar__pikaday" id="calendar-container"></div>
