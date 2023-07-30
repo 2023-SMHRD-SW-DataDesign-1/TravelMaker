@@ -1,3 +1,5 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="model.UserDAO"%>
 <%@page import="model.SendDTO"%>
 <%@page import="model.SendDAO"%>
 <%@page import="model.UserDTO"%>
@@ -208,9 +210,7 @@
 	ConsultDAO csdao = new ConsultDAO();
 
 	UserDTO udto = (UserDTO) session.getAttribute("info");
-	//String user_id = "user_test";
 	String user_id = udto.getUser_id();
-	// System.out.println("로그인 한 아이디 : " + user_id);
 	int est_num = Integer.parseInt(request.getParameter("est_num"));
 	ConsultDTO show_final_consult = csdao.showfinalConsult(est_num);
 	System.out.println("show_final_consult : " + show_final_consult);
@@ -218,7 +218,11 @@
 	
 	SendDAO sdao = new SendDAO();
 	SendDTO show_send = sdao.EstSend_nomalUser(est_num);
-
+	
+	UserDAO udao = new UserDAO();
+	UserDTO gosu_info = udao.userInfo(show_final_consult.getUser_id());
+	DecimalFormat df = new DecimalFormat("###,###");
+	
 	%>
 
 
@@ -227,12 +231,13 @@
     <div class="grid_4">
       <section class="box widget locations">
         <div class="avatar">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6035/scrtpxls_location.png" />
+        <!-- 고수 프사 -->
+        <img class="profile_test" src="img/<%=gosu_info.getUser_pic()%>" alt="Profile Picture">
         </div>
         <div class="details">
-          <h2>De Westerkerk</h2>
+          <h2>고수 ID : <%=gosu_info.getUser_id() %></h2>
           <p>Prinsengracht 281</p>
-          <a href="#" class="btn btn-primary btn-block btn-large">고수 마이페이지</a>
+          <a href="portfolio_list.jsp?user_id=<%=gosu_info.getUser_id()%>" class="btn btn-primary btn-block btn-large">고수 마이페이지</a>
         </div>
       </section>
 
@@ -290,7 +295,7 @@
             </div>
           </div>
           <div class="mail-info">
-            <%=show_send.getSend_budget() %>
+            <%=df.format(show_send.getSend_budget())%>원
           </div>
           <div>
           </div>

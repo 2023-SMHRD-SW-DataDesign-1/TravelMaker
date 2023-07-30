@@ -45,6 +45,12 @@
 	margin: 10px;
 }
 
+.nav_under_img img{
+	width: 100%;
+	height: 115px;
+	position: absolute;
+}
+
 </style>
 </head>
 <body>
@@ -78,6 +84,10 @@
 	<!-- 네비게이션 시작 -->
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
+	
+	<div class="nav_under_img">
+	<img src="img/배경2.png" alt="">
+    </div>
 	
 
 	<div class="app-container">

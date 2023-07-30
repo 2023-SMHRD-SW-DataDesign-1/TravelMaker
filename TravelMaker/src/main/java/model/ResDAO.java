@@ -86,6 +86,15 @@ public class ResDAO {
 		session.close();
 		
 		return row;
+	}
+	
+	public String findId(int res_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		String find_id = session.selectOne("findId", res_num);
+		session.close();
+		
+		return find_id;
+		
 		
 	}
 	

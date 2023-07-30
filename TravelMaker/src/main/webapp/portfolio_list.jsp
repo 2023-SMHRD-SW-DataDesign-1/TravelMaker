@@ -1,3 +1,6 @@
+<%@page import="model.UserDAO"%>
+<%@page import="model.PortDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.PortDAO"%>
 <%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -216,12 +219,7 @@ main {
 </head>
 <% 
 	String noti= (String) session.getAttribute("noti");
-	System.out.println("노티피 : " + noti);
-	
 	PortDAO pdao = new PortDAO();
-	
-
-	
 	%>
 
 	<!-- 알림 메시지가 존재할 경우 해당 알림을 표시 -->
@@ -239,32 +237,18 @@ main {
 
 	<%
 	UserDTO info = (UserDTO) session.getAttribute("info");
-	String user_id = info.getUser_id();
-	String act_area = info.getAct_area();
+	// String user_id = info.getUser_id();
+	String user_id = request.getParameter("user_id");
+	UserDAO udao = new UserDAO();
+	UserDTO user_info = udao.userInfo(user_id);
+	String act_area = user_info.getAct_area();
 	/* String user_id = "sori"; */
 	String uploadSuccess = request.getParameter("upload_success");
 	String deleteSuccess = request.getParameter("delete_success");
+	System.out.println("받아온id : " + user_id);
+	System.out.println("세션id : " + info.getUser_id());
 	%>
-	<!-- 사진 업로드 성공 시 -->
-	<%
-	if (uploadSuccess != null && uploadSuccess.equals("true")) {
-	%>
-	<script>
-		alert("업로드 완료");
-	</script>
-	<%
-	}
-	%>
-
-	<%
-	if (deleteSuccess != null && deleteSuccess.equals("true")) {
-	%>
-	<script>
-		alert("삭제 완료");
-	</script>
-	<%
-	}
-	%>
+	
 
 	<!-- 네비게이션 시작 -->
 	<jsp:include page="Nav.jsp"></jsp:include>
@@ -287,260 +271,31 @@ main {
 				<header>
 					<div class="container">
 						<!-- 사용자 프로필 사진이 있을 경우에만 사진을 보여줍니다 -->
-						<%
-						if (info.getUser_pic() != null && !info.getUser_pic().isEmpty()) {
-							System.out.println("조건문진입");
-						%>
-						<button id="deleteProfileBtn" class="button_test">프로필 사진
-							삭제</button>
-						<!-- 삭제 여부 확인-->
-						<div id="confirmModal" style="display: none;">
-							<div id="confirmModalContent">
-								<span>정말 삭제하시겠습니까?</span>
-								<form action="DeletepicCon.do" id="deleteProfileForm"
-									method="post">
-									<!-- 필요한 경우 추가적인 폼 입력 요소를 추가하세요 -->
-									<input type="hidden" name="user_id" value="<%=user_id%>">
-								</form>
-								<div id="confirmBtnWrap">
-									<button id="confirmYesBtn" class="button_test">예 /</button>
-									<button id="confirmNoBtn" class="button_test">아니오</button>
-								</div>
-							</div>
-						</div>
+						
 						<div class="profile">
-
 							<!-- 프로필 사진 부분 -->
 							<div class="profile-image">
-
-								<img class="profile_test" src="img/<%=info.getUser_pic()%>"
-									alt="Profile Picture">
-								<%
-								}
-								%>
+								<img class="profile_test" src="img/<%=user_info.getUser_pic()%>"	alt="Profile Picture">
 
 
-								<!-- 프로필 사진 삭제 스크립트 -->
-								<script>
-									const deleteProfileBtn = document
-											.getElementById('deleteProfileBtn');
-									const confirmModal = document
-											.getElementById('confirmModal');
-									const confirmYesBtn = document
-											.getElementById('confirmYesBtn');
-									const confirmNoBtn = document
-											.getElementById('confirmNoBtn');
-
-									// 삭제 버튼 클릭 시 모달 창 보이기
-									deleteProfileBtn
-											.addEventListener(
-													'click',
-													function() {
-														confirmModal.style.display = 'block';
-													});
-
-									function handleProfilePicDeletion(result) {
-										if (result.success) {
-											alert("프로필 사진이 삭제되었습니다.");
-											location.reload(); // 페이지 새로고침
-										} else {
-											alert("프로필 사진 삭제에 실패했습니다.");
-										}
-									}
-
-									// 모달 창에서 "예" 버튼 클릭 시 프로필 사진 삭제 실행
-									confirmYesBtn
-											.addEventListener(
-													'click',
-													function() {
-														// 폼 요소를 가져옵니다.
-														const deleteProfileForm = document
-																.getElementById('deleteProfileForm');
-
-														// DeletepicCon.do로 폼을 제출합니다.
-														deleteProfileForm
-																.submit();
-
-														// 모달 창 닫기
-														confirmModal.style.display = 'none';
-													});
-
-									// 모달 창에서 "아니오" 버튼 클릭 시 모달 창 닫기
-									confirmNoBtn
-											.addEventListener(
-													'click',
-													function() {
-														confirmModal.style.display = 'none';
-													});
-								</script>
-
-
-								<!-- 사용자 프로필 사진이 없을 경우에는 사진 업로드 기능을 보여줍니다 -->
-								<%
-								if (info.getUser_pic() == null || info.getUser_pic().isEmpty()) {
-									System.out.println("반대조건문진입");
-								%>
-								<div class="profile">
-									<div class="profile-image">
-										<div class="upload_test">
-											<form action="UploadpicCon.do" method="post"
-												enctype="multipart/form-data">
-												<input type="file" name="profileImage"
-													id="profileImageInput" accept="image/*"> <img
-													id="uploadedImage" src="" alt=""> <input
-													type="hidden" name="user_id" value="<%=user_id%>"
-													class="button_test"> <input type="submit"
-													value="프로필사진 업로드하기" class="button_test2">
-											</form>
-										</div>
-										<%
-										}
-										%>
 									</div>
-
-									<!-- 프사 업로드 스크립트 -->
-
-									<script>
-										const profileImageInput = document
-												.getElementById("profileImageInput");
-										const uploadedImage = document
-												.getElementById("uploadedImage");
-
-										profileImageInput
-												.addEventListener(
-														"change",
-														function() {
-															const file = profileImageInput.files[0];
-															const reader = new FileReader();
-
-															reader
-																	.addEventListener(
-																			"load",
-																			function() {
-																				uploadedImage
-																						.setAttribute(
-																								"src",
-																								reader.result);
-																				uploadedImage.style.display = "block";
-																				profileImageInput.style.display = "none";
-																			});
-
-															if (file) {
-																reader
-																		.readAsDataURL(file);
-															}
-														});
-									</script>
+	
 
 									<div class="profile-user-settings">
 
-										<h1 class="profile-user-name"><%=info.getUser_name()%></h1>
-										&nbsp; <span>현재금액 : <%=info.getUser_cash()%></span>
-										&nbsp;&nbsp;&nbsp;
-										<button id="popupBtn">충전하기</button>
-										<button class="btn profile-settings-btn"
-											aria-label="profile settings">
-											<i class="fas fa-cog" aria-hidden="true"></i>
-										</button>
-										<!-- <button class="btn profile-edit-btn"></button> -->
-										<div id="btnWrap">
-
-
-											<form action="Paytest.jsp">
-
-												<!-- 모달창 -->
-												<div id="modalWrap">
-													<div id="modalBody">
-														<span id="closeBtn">&times;</span>
-														<!-- 모달창안 -->
-
-														<div class="div_modal">
-															<h1>Add cash💵</h1>
-															<br>
-															<p>
-																<input type="radio" name="charge" value="5000"
-																	onclick="hideCustomInput()"> 5000원
-															</p>
-															<p>
-																<input type="radio" name="charge" value="10000"
-																	onclick="hideCustomInput()"> 10000원
-															</p>
-															<p>
-																<input type="radio" name="charge" value="30000"
-																	onclick="hideCustomInput()"> 30000원
-															</p>
-															<p>
-																<input type="radio" name="charge" value="50000"
-																	onclick="hideCustomInput()"> 50000원
-															</p>
-															<input type="radio" name="charge" id="customInputRadio"
-																onclick="showCustomInput()"> 직접입력
-															<!-- 숨겨진 직접입력 값 입력 공간 -->
-															<input type="number" id="customInput"
-																style="display: none;">
-															<!-- 값을 보내는 버튼 -->
-															<div class="modal_btn">
-																<input type="button" value="선택완료"
-																	onclick="sendChargeValue()" class="cash_input">
-															</div>
-														</div>
-													</div>
-												</div>
-											</form>
-										</div>
-										<!-- 모달 끝 -->
-
-
-										<!-- 모달 스크립트 시작 -->
-										<script>
-											// "직접입력" 라디오 버튼과 숨겨진 입력 필드에 대한 참조를 가져옵니다.
-											const customInputRadio = document
-													.getElementById("customInputRadio");
-											const customInput = document
-													.getElementById("customInput");
-
-											function showCustomInput() {
-												customInput.style.display = "block";
-											}
-
-											function hideCustomInput() {
-												customInput.style.display = "none";
-											}
-
-											function sendChargeValue() {
-												var chargeValue;
-
-												// 직접입력 라디오 버튼이 선택되었는지 확인
-												if (customInputRadio.checked) {
-													// 직접입력 값 입력 공간에서 값을 가져오기
-													chargeValue = customInput.value;
-												} else {
-													// 선택된 라디오 버튼의 값을 가져오기
-													var selectedRadio = document
-															.querySelector('input[name="charge"]:checked');
-													chargeValue = selectedRadio.value;
-												}
-
-												// 1000으로 나눈 나머지가 0인지 확인
-												if (chargeValue % 1000 !== 0) {
-													alert("1000단위로 입력해주세요.");
-												} else {
-													// Paytest 페이지로 값을 전달하기
-													window.location.href = "Paytest.jsp?charge="
-															+ chargeValue;
-												}
-											}
-										</script>
-										<!-- 모달 스크립트 끝 -->
+										<h1 class="profile-user-name"><%=user_info.getUser_name()%></h1>
+										<%if (user_id.equals(info.getUser_id())){%>
+										<span>현재금액 : <%=user_info.getUser_cash()%></span>
+										<%}%>
+										
 
 										<div class="profile-bio">
-											<p>
-												<span class="profile-real-name">활동 지역 : <%=info.getAct_area() %></span> <br>
-												Lorem ipsum dolor sit, amet consecteturadipisicing elit
-												📷✈️🏕️
-											</p>
+											<p><span class="profile-real-name">활동 지역 : <%=user_info.getAct_area() %></span><p>
+												<p>한줄 자기소개부분</p>
 										</div>
+											<%if (user_id.equals(info.getUser_id())){%>
 											<button class="portfoilo-move-button" id="portfolio-button">포트폴리오 작성하기</button>
+											<%}%>
 										
 									</div>
 								</div>
@@ -549,9 +304,22 @@ main {
 				</header>
 				<!-- header end -->
 
+	<%
+	ArrayList<PortDTO> port_list = pdao.showPort(user_id);
+	%>
+
+
+
 				<main>
 					<div class="mypage_container2">
 						<div>
+						<%if (port_list.size() == 0){ %>
+						<h1>작성된 포트폴리오가 없습니다.</h1>
+						<%}%>
+						<p>포폴 제목 : <%=port_list.get(0).getPort_title() %></p>
+						<p>포폴 내용 : <%=port_list.get(0).getPort_content() %></p>
+						
+						
 						
 						</div>
 					</div>
@@ -584,65 +352,7 @@ main {
 			<!-- main script end -->
 
 			<!-- modal script start -->
-			<script>
-				const btn = document.getElementById('popupBtn');
-				const modal = document.getElementById('modalWrap');
-				const closeBtn = document.getElementById('closeBtn');
-
-				btn.onclick = function() {
-					modal.style.display = 'block';
-				}
-				closeBtn.onclick = function() {
-					modal.style.display = 'none';
-				}
-
-				window.onclick = function(event) {
-					if (event.target == modal) {
-						modal.style.display = "none";
-					}
-				}
-			</script>
-			<!-- modal script end -->
-
-			<script>
-				$(function() {
-
-					//직접입력 인풋박스 기존에는 숨어있다가
-
-					$("#selboxDirect").hide();
-
-					$("#selbox").change(function() {
-
-						//직접입력을 누를 때 나타남
-
-						if ($("#selbox").val() == "direct") {
-
-							$("#selboxDirect").show();
-
-						} else {
-
-							$("#selboxDirect").hide();
-
-						}
-
-					})
-
-				});
-			</script>
-			<!-- 버튼 스크립트 -->
-			<script>
-				document.addEventListener('DOMContentLoaded', function() {
-					// "구매하기" 버튼을 ID로 찾아서 변수에 할당합니다.
-					const purchaseButton = document
-							.getElementById('portfolio-button');
-
-					// "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
-					purchaseButton.addEventListener('click', function() {
-						// 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
-						window.location.href = 'portfolio_write.jsp';
-					});
-				});
-			</script>
+		
 
 
 </body>

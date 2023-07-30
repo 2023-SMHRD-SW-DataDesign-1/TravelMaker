@@ -1,3 +1,5 @@
+<%@page import="model.ConsultDAO"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="model.UserDTO"%>
 <%@page import="model.SendDTO"%>
 <%@page import="model.SendDAO"%>
@@ -43,6 +45,12 @@
 	font-weight: bold;
 	margin: 10px;
 }
+
+.nav_under_img img{
+	width: 100%;
+	height: 115px;
+	position: absolute;
+}
 </style>
 </head>
 <body>
@@ -52,11 +60,18 @@
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
 	
+	<div class="nav_under_img">
+	<img src="img/배경5.png" alt="">
+    </div>
+	
 	<%
 	SendDAO sdao = new SendDAO();
 	UserDTO udto = (UserDTO) session.getAttribute("info");
 	String user_id = udto.getUser_id();
 	ArrayList<SendDTO> consulted_list = sdao.consultedEst(user_id);	
+	DecimalFormat df = new DecimalFormat("###,###");
+	ConsultDAO cdao = new ConsultDAO();
+
 	
 	%>
 	
@@ -87,19 +102,27 @@
 					<div class="project-box-wrapper">
 						<div class="project-box" style="background-color: #fee4cb;">
 							<div class="project-box-content-header">
-								<p class="box-content-header"><%=consulted_list.get(i).getSend_place()%></p>
+								<p class="box-content-header"><%=consulted_list.get(i).getSend_country()%></p>
+								
+<%-- 								<%if (cdao.checkConsult(consulted_list.get(i).getEst_num()) > 0) {%>
+								<span class="project-check"><img src="img/check.png">컨설팅 완료</span>
+								<%}%>	 --%>
+															
 							</div>
 							<div class="box-progress-wrapper">
+								<p class="box-progress-header"><%=consulted_list.get(i).getSend_place()%></p>
+								<p class="box-progress-header">견적No.<%=consulted_list.get(i).getEst_num()%></p>
 								<p class="box-progress-header"><%=consulted_list.get(i).getSend_s_date()%>~<%=consulted_list.get(i).getSend_e_date()%></p>
+								<p>여행 예산 :<%=df.format(consulted_list.get(i).getSend_budget())%>원</p>
 								<div class="box-progress-bar">
 									<!-- <span class="box-progress"
 										style="width: 60%; background-color: #ff942e"></span> -->
 								</div>
 							</div>
 							<div class="project-footer-box">
+							견적내용<br>
 								<span><%=consulted_list.get(i).getSend_content()%></span>
 								<div class="project-move-box">
-									<p>요청금액 <%=consulted_list.get(i).getSend_budget()%></p>
 									<a href="User_Consult_Look.jsp?est_num=<%=consulted_list.get(i).getEst_num()%>">컨설팅 보러가기</a>
 								</div>
 							</div>

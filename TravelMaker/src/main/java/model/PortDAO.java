@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -16,4 +19,14 @@ public class PortDAO {
 		
 		return row;
 	}
+	
+	// 아이디로 포폴 조회
+	public ArrayList<PortDTO> showPort(String user_id){
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<PortDTO> port_list = session.selectList("showPort", user_id);
+		session.close();
+		
+		return (ArrayList<PortDTO>) port_list;
+	}
+	
 }

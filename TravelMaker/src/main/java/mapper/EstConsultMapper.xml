@@ -18,8 +18,15 @@
 		select * from est_send where user_id = #{user_id} and est_num in(select est_num from est_consult)	
 	</select>
 	
+	<!-- est_num으로 consult테이블 조회 -->
 	<select id="showfinalConsult" parameterType="int" resultType="ConsultDTO">
 		select * from est_consult where est_num = #{est_num}
 	</select>
+	
+	<!-- est_num으로 컨설팅 받았는지 확인 -->
+	<select id="checkConsult" parameterType="int" resultType="int">
+		select count(cons_num) from est_consult where est_num = #{est_num}
+	</select>
+	
 
 </mapper>

@@ -78,16 +78,21 @@
 				<div class="projects-section-line">
 					<div class="projects-status">
 						<div class="item-status">
-							<span class="status-number">전체 컨설팅 3</span> <span
-								class="status-number">보유 마일리지 : <%=df.format(udto.getUser_cash())%>원
+							<!-- <span class="status-number">전체 컨설팅 3</span>  -->
+							<span class="status-number">보유 마일리지 : <%=df.format(udto.getUser_cash())%>원
 							</span>
 						</div>
 					</div>
 				</div>
 
-				<h3 class="center" style="font-weight: 900;">동남아여행</h3>
+				<h3 class="center" style="font-weight: 900;"><%=sdto.getSend_country()%> 여행</h3>
 				<!-- 동남아여행 받은 요청들 시작 -->
 				<div class="project-boxes jsGridView">
+
+				<%if (rdto_list.size()==0){%>
+					<h1>아직 받은 견적서가 없습니다.</h1>
+					
+				<%}%>
 
 
 					<%
@@ -114,25 +119,33 @@
 								<!-- 채택 된 견적서 일 경우 채택 완료 표시 -->
 
 								<div class="project-box-footer">
+									<button class="port_button" id="portfolio-button">판매자 포트폴리오</button>
+									<script>
+										document.addEventListener('DOMContentLoaded', function() {
+											const purchaseButton = document.getElementById('portfolio-button');
+											purchaseButton.addEventListener('click', function() {
+												window.location.href = 'portfolio_list.jsp?user_id=<%=rdto_list.get(i).getUser_id()%>';
+											});
+										});
+									</script>
 									<%
 									if (rdto_list.get(i).getPaid() == 1) {
 									%>
-									<button class="port_button">판매자 포트폴리오</button>
-									<button class="accept_button" disabled>채택완료</button>
+									<!-- <button class="port_button">판매자 포트폴리오</button> -->
+									<button class="accepted_button1" disabled>채택완료</button>
 									<%
 									} else {
 									// 채택된 견적서 외의 견적서는 disabled 버튼 처리
 									if (sdto.getChecked() == 1) {
 									%>
-									<button class="port_button">판매자 포트폴리오</button>
-									<button class="accept_button" disabled>채택하기</button>
+									<!-- <button class="port_button">판매자 포트폴리오</button> -->
+									<button class="accepted_button2" disabled>채택하기</button>
 									<%
 									} else {
 									%>
 									<!-- 아직 견적서들이 채택되기 전이라면 채택메서드 실행 -->
-									<button class="port_button">판매자 포트폴리오</button>
-									<button class="accept_button" 
-										onclick="adoptEstimation(<%=sdto.getEst_num()%>, <%=rdto_list.get(i).getRes_num()%>)">채택하기</button>
+									<!-- 버튼 스크립트 -->
+									<button class="accept_button" onclick="adoptEstimation(<%=sdto.getEst_num()%>, <%=rdto_list.get(i).getRes_num()%>)">채택하기</button>
 									<%
 									}
 									%>

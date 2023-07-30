@@ -49,6 +49,9 @@ public class PaidEstCon extends HttpServlet {
 		int res_fee = showRes.getRes_fee();
 		int user_cash = info.getUser_cash() - res_fee;
 		
+		String gosu_id = rdao.findId(res_num);
+		UserDTO gosu_info = udao.userInfo(gosu_id);
+		int gosu_money = gosu_info.getUser_cash() + res_fee;
 		
 		JSONObject jsonResponse = new JSONObject(); // 응답용 JSON 객체 생성
 
@@ -59,6 +62,9 @@ public class PaidEstCon extends HttpServlet {
 		}else {
 			// 돈 충분 할 경우 구매처리
 			udao.buyInfo(new UserDTO(user_id, user_cash));
+			
+			// fee만큼 판매자에게 입금처리
+			udao.buyInfo(new UserDTO(gosu_id, gosu_money));
 			
 			// res_num인 견적서 paid처리
 			rdao.paidEst(res_num);

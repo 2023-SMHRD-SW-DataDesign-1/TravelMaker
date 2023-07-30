@@ -282,7 +282,6 @@ main {
 						<!-- 사용자 프로필 사진이 있을 경우에만 사진을 보여줍니다 -->
 						<%
 						if (info.getUser_pic() != null && !info.getUser_pic().isEmpty()) {
-							System.out.println("조건문진입");
 						%>
 						<button id="deleteProfileBtn" class="button_test">프로필 사진
 							삭제</button>
@@ -371,7 +370,6 @@ main {
 								<!-- 사용자 프로필 사진이 없을 경우에는 사진 업로드 기능을 보여줍니다 -->
 								<%
 								if (info.getUser_pic() == null || info.getUser_pic().isEmpty()) {
-									System.out.println("반대조건문진입");
 								%>
 								<div class="profile">
 									<div class="profile-image">
@@ -683,7 +681,7 @@ main {
 					// "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
 					purchaseButton.addEventListener('click', function() {
 						// 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
-						window.location.href = 'portfolio_list.jsp';
+						window.location.href = 'portfolio_list.jsp?user_id=<%=user_id%>';
 					});
 				});
 			</script>
