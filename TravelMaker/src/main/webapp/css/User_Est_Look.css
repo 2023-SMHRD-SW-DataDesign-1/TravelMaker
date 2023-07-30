@@ -564,6 +564,25 @@ a {
   background-color: var(--main-color-card);
 }
 
+/*===========portButton=============*/
+.port_button{
+	border: none;
+	padding: 6px 10px;
+	font-weight: bold;
+	border-radius: 15px;
+	background-color: #75c2f6;
+	color: #fff;
+	box-shadow: 1px 1px 5px #78726c;
+}
+.accept_button{
+	border: none;
+	padding: 6px 10px;
+	font-weight: bold;
+	border-radius: 15px;
+	background-color: #1D5D9B;
+	color: #fff;
+	box-shadow: 1px 1px 5px #78726c;
+}
 .project-box-header {
   display: flex;
   align-items: center;
@@ -995,7 +1014,7 @@ h3 {
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 2;
+  z-index: 9999;
   visibility: hidden;
   opacity: 0;
   overflow: hiden;
