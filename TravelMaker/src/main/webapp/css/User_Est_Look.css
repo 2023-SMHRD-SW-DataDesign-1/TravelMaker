@@ -53,7 +53,6 @@ a {
 
 .app-container {
   margin-top: 70px;
-  margin-bottom: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -273,7 +272,7 @@ a {
   flex: 2;
   background-color: var(--projects-section);
   border-radius: 32px;
-  padding: 32px 150px 0 150px;
+  padding: 32px 150px;
   overflow: hidden;
   height: 100%;
   display: flex;
@@ -587,6 +586,7 @@ a {
 
 .project-box-content-header p {
   margin: 0;
+  font-weight: bold;
 }
 
 .project-box-wrapper {
@@ -643,9 +643,18 @@ a {
 .box-content-subheader {
   font-size: 14px;
   line-height: 24px;
-  opacity: 0.7;
+  font-weight: bold;
 }
-
+.box-content-id{
+	display: block;
+	text-align: left;
+	font-weight: bold;
+}
+.box-content-fee{
+	display: block;
+	text-align: right;
+	font-weight: bold;
+}
 .box-progress {
   display: block;
   height: 4px;
@@ -690,7 +699,7 @@ a {
   width: calc(100% + 32px);
   top: 0;
   left: -16px;
-  height: 1px;
+  height: 2px;
 }
 
 .participants {
@@ -904,6 +913,7 @@ a {
 
   .box-progress-header {
     font-size: 12px;
+    font-weight: bold;
   }
 
   .box-progress-percentage {
@@ -938,7 +948,9 @@ h3 {
   transition-property: transform;
   transition: 0.25s ease;
 }
-
+.center{
+	margin-bottom: 30px;
+}
 
 /* 텍스트 헤드라인 css 끝 */
 
