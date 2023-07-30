@@ -31,6 +31,11 @@
 	DecimalFormat df = new DecimalFormat("###,###"); 
 	%>
 
+	<!-- 네비게이션 시작 -->
+	<jsp:include page="Nav.jsp"></jsp:include>
+	<!-- 네비게이션 끝 -->
+	
+	
     <div class="app-container">
         <div class="app-content">
             <div class="projects-section">
@@ -152,6 +157,12 @@
             </div>
         </div>
     </div>
+
+	<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
+	
+
 
     <!-- partial -->
     <script src="js/User_Est_Look.js"></script>

@@ -1,4 +1,3 @@
-
 <%@page import="model.UserDAO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="model.ResDTO"%>
@@ -91,8 +90,7 @@
 				<div class="projects-section-line">
 					<div class="projects-status">
 						<div class="item-status">
-							<span class="status-type">받은 견적</span>
-							<span class="status-number"><%=est_list.size() %></span> 
+							<span class="status-number">받은 견적 <%=est_list.size() %></span> 
 						</div>
 					</div>
 				</div>
@@ -105,7 +103,7 @@
 					<div class="project-box-wrapper">
 						<div class="project-box" style="background-color: #fee4cb;">
 							<div class="project-box-content-header">
-								견적No.<%=est_list.get(i).getEst_num()%>
+								<span class="box-content-num">견적서 No.<%=est_list.get(i).getEst_num()%></span>
 								<p class="box-content-header"><%=est_list.get(i).getSend_place()%></p>
 								<%UserDTO show_name = udao.showName(est_list.get(i).getEst_num()); %>
 								<p class="box-content-subheader"><%=show_name.getUser_name()%></p>

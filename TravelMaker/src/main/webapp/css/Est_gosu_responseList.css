@@ -588,7 +588,12 @@ button, a {
 .more-wrapper {
   position: relative;
 }
-
+.box-content-num{
+	display: block;
+	text-align: left;
+	font-size: 10px;
+	color: gray;
+}
 .box-content-header {
   font-size: 16px;
   line-height: 24px;
@@ -630,8 +635,12 @@ button, a {
 }
 
 .project-footer-box {
-  padding-top: 16px;
+  padding-top: 5px;
   position: relative;
+}
+.project-footer-box > span{
+	display: block;
+	margin-bottom: 16px;
 }
 .project-footer-box p{
 	text-align: right;
