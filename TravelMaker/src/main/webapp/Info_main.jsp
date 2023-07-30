@@ -5,6 +5,8 @@
 <%@page import="model.InfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,9 +74,14 @@
 #test111 img{
 	height: 100%;
 	width: 100% !important;
-	
 }
+
+.media-text h2{
+	background: #CEE3F6;
+}
+
 </style>
+
 
 </head>
 
@@ -82,6 +89,9 @@
 	<!-- 네비게이션 시작 -->
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
+
+
+
 	
 	
 	<a href="Info_write.jsp"><button class="write_btn">작성하러가기
@@ -135,10 +145,10 @@
 				%>
 
 				<div class="item">
-					<a class="media-thumb" href="Info_DetailPage.jsp?info_num=<%=pic_list.get(i).getInfo_num()%>&info_title=<%=pic_list.get(i).getInfo_title()%>&info_brief=<%=pic_list.get(i).getInfo_brief()%>&info_fee=<%=pic_list.get(i).getInfo_fee()%>&infouser_id=<%=pic_list.get(i).getUser_id()%>">
+					<a class="media-thumb reqlogin" href="Info_DetailPage.jsp?info_num=<%=pic_list.get(i).getInfo_num()%>&info_title=<%=pic_list.get(i).getInfo_title()%>&info_brief=<%=pic_list.get(i).getInfo_brief()%>&info_fee=<%=pic_list.get(i).getInfo_fee()%>&infouser_id=<%=pic_list.get(i).getUser_id()%>">
 						<div class="media-text">
 
-							<h3><%=pic_list.get(i).getInfo_title()%></h3>
+							<h2><%=pic_list.get(i).getInfo_title()%></h2>
 
 							<span class="location">-</span>
 						</div> <!-- <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid"> -->
@@ -200,9 +210,9 @@
 			%>
 			
 				<div class="item">
-					<a class="media-thumb" href="Info_DetailPage.jsp?info_num=<%=food_list.get(i).getInfo_num()%>&info_title=<%=food_list.get(i).getInfo_title()%>&info_brief=<%=food_list.get(i).getInfo_brief()%>&info_fee=<%=food_list.get(i).getInfo_fee()%>&infouser_id=<%=food_list.get(i).getUser_id()%>">
+					<a class="media-thumb reqlogin" href="Info_DetailPage.jsp?info_num=<%=food_list.get(i).getInfo_num()%>&info_title=<%=food_list.get(i).getInfo_title()%>&info_brief=<%=food_list.get(i).getInfo_brief()%>&info_fee=<%=food_list.get(i).getInfo_fee()%>&infouser_id=<%=food_list.get(i).getUser_id()%>">
 						<div class="media-text">
-							<h3><%=food_list.get(i).getInfo_title()%></h3>
+							<h2><%=food_list.get(i).getInfo_title()%></h2>
 							<span class="location">-</span>
 						</div> 
 						<div id="test111" >
@@ -262,10 +272,10 @@
 			%>
 
 				<div class="item">
-						<a class="media-thumb" href="Info_DetailPage.jsp?info_num=<%=hotel_list.get(i).getInfo_num()%>&info_title=<%=hotel_list.get(i).getInfo_title()%>&info_brief=<%=hotel_list.get(i).getInfo_brief()%>&info_fee=<%=hotel_list.get(i).getInfo_fee()%>&infouser_id=<%=hotel_list.get(i).getUser_id()%>">
+						<a class="media-thumb reqlogin" href="Info_DetailPage.jsp?info_num=<%=hotel_list.get(i).getInfo_num()%>&info_title=<%=hotel_list.get(i).getInfo_title()%>&info_brief=<%=hotel_list.get(i).getInfo_brief()%>&info_fee=<%=hotel_list.get(i).getInfo_fee()%>&infouser_id=<%=hotel_list.get(i).getUser_id()%>">
 						<div class="media-text">
-							<h3><%=hotel_list.get(i).getInfo_title()%></h3>
-							<span class="location">-</span>
+							<h2><%=hotel_list.get(i).getInfo_title()%></h2>
+							<span class="location"><%=hotel_list.get(i).getInfo_brief()%></span>
 						</div> 
 						<div id="test111" >
 						<%=imgTags%>							
@@ -278,6 +288,28 @@
 		</div>
 	</div>
 	<!-- 숙소 추천 카테고리 end -->
+	
+		
+<script>
+  // 알림 메시지를 표시하는 함수를 정의합니다.
+  function showAlertMessage() {
+    alert("로그인하세요"); // 원하는 알림 메시지로 변경하세요.
+  }
+
+  // "받은컨설팅" 링크에 이벤트 리스너를 추가합니다.
+  const reqLoginLinks = document.getElementsByClassName("reqlogin");
+  for (let i = 0; i < reqLoginLinks.length; i++) {
+    reqLoginLinks[i].addEventListener("click", function(event) {
+      // 'info' 변수가 'null'인지 확인합니다.
+      if (${info == null }) {
+        event.preventDefault(); // 링크의 기본 동작(지정된 URL로 이동)을 막습니다.
+        showAlertMessage(); // 알림 메시지를 표시합니다.
+      }
+    });
+  }
+</script>
+
+
 
 
 	<!-- 푸터 시작 -->
