@@ -1,3 +1,8 @@
+<%@page import="java.util.regex.Pattern"%>
+<%@page import="java.util.regex.Matcher"%>
+<%@page import="model.InfoDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.InfoDAO"%>
 <%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -84,6 +89,12 @@
          margin: 0 auto;
       }
    }
+/* 	.swiper-slide--one {
+	background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+ 	url(https://images.unsplash.com/photo-1556206079-747a7a424d3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80)
+    no-repeat 50% 50% / cover;
+	}   */
+   
 </style>
 
 
@@ -267,28 +278,52 @@
 
 	<!-- 메인 사진첩 시작 -->
 
+				<!-- 사진 썸네일 알고리즘 -->
+
+
+
 	<!-- partial:index.partial.html -->
 	<section>
 		<div class="swiper">
 			<div class="swiper-wrapper">
+			
+		<%
+		InfoDAO idao = new InfoDAO();
+		String info_cate = "사진";
+		ArrayList<InfoDTO> pic_list = idao.topFive(info_cate);
+		
+		for (int i = 0; i < pic_list.size(); i++) {
+			int info_num = pic_list.get(i).getInfo_num();
+			String htmlString = idao.show(info_num);
+			// 정규 표현식 패턴
+			String pattern = "<img\\s+[^>]*>";
+			// 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+			StringBuilder imgTags = new StringBuilder();
+			// 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+			Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
+			// 맨 앞에있는 img태그만
+			if (matcher.find()) {
+				imgTags.append(matcher.group());
+			}			
+			
+			// imgTags가 비어있는 경우, 다음 반복으로 넘어감
+		    if (imgTags.toString().isEmpty()) {
+		        continue;
+		    }
+			
+		%>
+			
 				<div class="swiper-slide swiper-slide--one">
-					<span>domestic</span>
-					<div>
-						<h2>Enjoy the exotic of sunny Hawaii</h2>
-						<p>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none"
-								viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-								class="w-6 h-6">
-                        <path stroke-linecap="round"
-									stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                     </svg>
-							Maui, Hawaii
-						</p>
-					</div>
+					<span>domestic</span> 
+				<!-- 	<div> -->
+<!-- 						<h2>Enjoy the exotic of sunny Hawaii</h2> -->
+						<%=imgTags%>
+<!-- 						<p>Maui, Hawaii</p> -->
+<!-- 					</div> -->
 				</div>
+				
+				<%} %>
+				
 				<div class="swiper-slide swiper-slide--two">
 					<span>subtropical</span>
 					<div>

@@ -27,20 +27,14 @@ public class ConsultCon implements Command {
 			e.printStackTrace();
 		}
 
-		/*
-		 * HttpSession session = request.getSession();
-		 * 
-		 * UserDTO udto = (UserDTO) session.getAttribute("info");
-		 */
+		HttpSession session = request.getSession();
 
-		int est_num = 10;
-//		String user_id = udto.getUser_id();
-		String user_id = "sun";
+		UserDTO udto = (UserDTO) session.getAttribute("info");
+		int est_num = Integer.parseInt(request.getParameter("est_num"));
+		String user_id = udto.getUser_id();
 		String cons_lat = request.getParameter("lat");
 		String cons_lng = request.getParameter("lng");
-		
-		System.out.println("lat : " + cons_lat);
-		System.out.println("lng : " + cons_lng);
+
 		String cons_content = request.getParameter("cons_content");
 
 		ConsultDAO cdao = new ConsultDAO();
@@ -53,7 +47,7 @@ public class ConsultCon implements Command {
 			System.out.println("실패");
 		}
 
-		return null;
+		return "Main.jsp";
 	}
 
 }

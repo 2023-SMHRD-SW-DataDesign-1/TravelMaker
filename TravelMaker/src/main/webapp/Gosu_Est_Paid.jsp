@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <title>고수 - 채택 된 견적</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="css/User_Est_Look.css">
+    <link rel="stylesheet" href="css/User_Est_Look_ver2.css">
     <!-- 팝업창 링크 시작 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <!-- 팝업창 링크 끝 -->
@@ -41,16 +41,16 @@
                 <div class="projects-section-line">
                     <div class="projects-status">
                         <div class="item-status">
-                            <span class="status-number">3</span>
-                            <span class="status-type">전체 견적요청</span>
+                            <span class="status-type">전체 견적서</span>
+                            <span class="status-number"><%=paid_list.size()+Unpaid_list.size() %></span>
                         </div>
                         <div class="item-status">
-                            <span class="status-number">2</span>
-                            <span class="status-type">현재 견적요청</span>
+                            <span class="status-type">채택되지 않은 견적서</span>
+                            <span class="status-number"><%=Unpaid_list.size()%></span>
                         </div>
                         <div class="item-status">
-                            <span class="status-number">1</span>
-                            <span class="status-type">지난 견적요청</span>
+                            <span class="status-type">채택된 견적서</span>
+                            <span class="status-number"><%=paid_list.size()%></span>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         <div class="project-box" style="background-color: #dadada;">
                             <!-- #fee4cb -->
                             <div class="project-box-header">
-                                <span><%=Unpaid_list.get(i).getRes_wr_date() %></span>
+                                <span><%=Unpaid_list.get(i).getRes_wr_date()%></span>
                                 <div class="more-wrapper">
                                     <button class="project-btn-more">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -106,7 +106,7 @@
                     <div class="project-box-wrapper">
                         <div class="project-box" style="background-color: #d7f1fb;">
                             <div class="project-box-header">
-                                <span>23-07-20</span>
+                                <span><%=paid_list.get(i).getRes_wr_date()%></span>
                                 <div class="more-wrapper">
                                     <button class="project-btn-more">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -121,34 +121,25 @@
                                 </div>
                             </div>
                             <div class="project-box-content-header">
-                                <p class="box-content-header">일본</p>
-                                <p class="box-content-subheader">박소리</p>
-                            </div>
-                            <div class="box-progress-wrapper">
-                                <p class="box-progress-header">컨설팅 마감 기간</p>
-                                <div class="box-progress-bar">
-                                    <span class="box-progress" style="width: 70%; background-color: #2a5a91"></span>
-                                </div>
-                                <p class="box-progress-percentage">70%</p>
+                            견적서No.<%=paid_list.get(i).getEst_num() %>
+                                <p class="box-content-header"><%=paid_list.get(i).getRes_place()%></p>
+                                <p class="box-content-subheader">컨설팅 비용 : <%=df.format(Unpaid_list.get(i).getRes_fee())%>원</p>
                             </div>
                             <div class="project-box-footer">
-                                <div class="participants">
-                                    <img src="https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1215&q=80"
-                                        alt="participant">
-                                    <img src="https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2555&q=80"
-                                        alt="participant">
-                                    <button class="add-participant" style="color: #ff942e;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-                                            <path d="M12 5v14M5 12h14" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="days-left" style="color: #3c618c;">
-                                    5 Days Left
-                                </div>
-                                <button class="selection" style="color: #2a5a91;">컨설팅완료</button>
+                                <button class="selection" style="color: #2a5a91;">채택 완료</button>
+                                <button id="moveButton" class="selection" style="color: #2a5a91;">컨설팅 작성하기</button>
+                                
+                  
+                               <!-- 버튼 스크립트 -->
+								<script>
+								    document.addEventListener('DOMContentLoaded', function() {
+								        const moveButton = document.getElementById('moveButton');
+								        moveButton.addEventListener('click', function() {
+								            window.location.href = 'Gosu_Est_Consult.jsp?res_num=<%=paid_list.get(i).getRes_num()%>&est_num=<%=paid_list.get(i).getEst_num()%>';
+								        });
+								    });
+								</script>
+                                
                             </div>
                         </div>
                     </div>
