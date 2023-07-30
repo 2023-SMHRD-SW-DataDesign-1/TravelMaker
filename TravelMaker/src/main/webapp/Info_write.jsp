@@ -190,14 +190,14 @@
 </head>
 
 <body>
-   <form action="InfowriterCon.do">
+   <form action="InfowriterCon.do" method="post" onsubmit="return validateForm()">
 
       <div class="editor-contents">
          <div id="editor-box">      
 
                <select class="select_1" name="info_cate">
                   <option disabled selected>카테고리</option>
-                  <option value="명소">명소</option>
+                  <option value="사진">사진</option>
                   <option value="맛집">맛집</option>
                   <option value="숙소">숙소</option>
                </select>
@@ -222,37 +222,43 @@
    
    	<!-- 금액제한 스크립트 -->
 	<script>
-	function validateForm() {
-          var chargeValue;
-
-        	 // input값 가져오기
-             var selectedRadio = document.querySelector('input[name="info_fee"]');
-             chargeValue = selectedRadio.value;
-             var info_cate = document.getElementsByName('info_cate')[0].value;
-             var info_title = document.getElementsByName('info_title')[0].value;
-             var info_brief = document.getElementsByName('info_brief')[0].value;
-             var info_content = document.getElementById('summernote').value;
-             var info_fee = document.getElementsByName('info_fee')[0].value;
-             var lat_input = document.getElementById('lat-input').value;
-             var lng_input = document.getElementById('lng-input').value;
-             
-             if (info_cate === "" || info_title === "" || info_brief === "" || info_content === "" || info_fee === "" || lat_input === "" || lng_input === "") {
-                 alert("모든 값을 입력해주세요.");
-              // 폼 제출을 방지
-                 return false; 
-             }
-          
-
-         	 // 100으로 나눈 나머지가 0인지 확인
-         	 if (chargeValue % 100 !== 0) {
-          	   	alert("금액을 100단위로 입력해주세요.");
-           	 	return false;
-             
-       		 }  
-         	// 모든 필드가 채워져 있으면 폼 제출
-         	 return true; 
-          }
-       
+	  function validateForm() {
+	    // input값 가져오기
+	    var selectedRadio = document.querySelector('input[name="info_fee"]');
+	    var chargeValue = selectedRadio.value;
+	    var info_cate = document.getElementsByName('info_cate')[0].value;
+	    var info_title = document.getElementsByName('info_title')[0].value;
+	    var info_brief = document.getElementsByName('info_brief')[0].value;
+	    var info_content = document.getElementById('summernote').value;
+	    var info_fee = document.getElementsByName('info_fee')[0].value;
+	    var lat_input = document.getElementById('lat-input').value;
+	    var lng_input = document.getElementById('lng-input').value;
+	
+	    if (info_cate === "" || info_title === "" || info_brief === "" || info_content === "" || info_fee === "" || lat_input === "" || lng_input === "") {
+	      alert("모든 값을 입력해주세요.");
+	      // 폼 제출을 방지
+	      return false;
+	    }
+	
+	    // 100으로 나눈 나머지가 0인지 확인
+	    if (chargeValue % 100 !== 0) {
+	      alert("금액을 100단위로 입력해주세요.");
+	      return false;
+	    }
+	
+	    // 모든 필드가 채워져 있으면 폼 제출
+	    return true;
+	  }
+	</script>
+	
+	<!-- 엔터로 submit 방지 -->
+	<script>
+	  // Enter 키 입력 시 폼 제출 방지
+	  document.addEventListener('keydown', function (event) {
+	    if (event.key === 'Enter') {
+	      event.preventDefault();
+	    }
+	  });
 	</script>
    
    

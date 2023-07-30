@@ -94,7 +94,16 @@
  	url(https://images.unsplash.com/photo-1556206079-747a7a424d3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80)
     no-repeat 50% 50% / cover;
 	}   */
+	#main-gallary-img-top2{
+		height: 100%;
+	}
    
+	#main-gallary-img-top2 img{
+		width: 100% !important;
+		height: 100%;
+		border-radius: 18px;
+	}
+	
 </style>
 
 
@@ -292,7 +301,7 @@
 		String info_cate = "사진";
 		ArrayList<InfoDTO> pic_list = idao.topFive(info_cate);
 		
-		for (int i = 0; i < pic_list.size(); i++) {
+		for (int i = 0; i < 2; i++) {
 			int info_num = pic_list.get(i).getInfo_num();
 			String htmlString = idao.show(info_num);
 			// 정규 표현식 패턴
@@ -310,21 +319,63 @@
 		    if (imgTags.toString().isEmpty()) {
 		        continue;
 		    }
-			
-		%>
+			%>
 			
 				<div class="swiper-slide swiper-slide--one">
-					<span>domestic</span> 
+					<span style="position:absolute; top:10%	;">사진</span> 
 				<!-- 	<div> -->
 <!-- 						<h2>Enjoy the exotic of sunny Hawaii</h2> -->
+						<div id="main-gallary-img-top2">
 						<%=imgTags%>
+						</div>
 <!-- 						<p>Maui, Hawaii</p> -->
 <!-- 					</div> -->
 				</div>
 				
 				<%} %>
 				
-				<div class="swiper-slide swiper-slide--two">
+			<%
+			info_cate = "맛집";
+			ArrayList<InfoDTO> food_list = idao.topFive(info_cate);
+			
+			for (int i = 0; i < food_list.size(); i++) {
+				int info_num = food_list.get(i).getInfo_num();
+				String htmlString = idao.show(info_num);
+				// 정규 표현식 패턴
+				String pattern = "<img\\s+[^>]*>";
+
+				// 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+				StringBuilder imgTags = new StringBuilder();
+
+				// 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+				Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
+
+				// 맨 앞에있는 img태그만
+				if (matcher.find()) {
+					imgTags.append(matcher.group());
+				}
+
+				
+				// imgTags가 비어있는 경우, 다음 반복으로 넘어감
+			    if (imgTags.toString().isEmpty()) {
+			        continue;
+			    }
+			%>
+			
+				<div class="swiper-slide swiper-slide--one">
+					<span style="position:absolute; top:20%	;">맛집</span> 
+				<!-- 	<div> -->
+<!-- 						<h2>Enjoy the exotic of sunny Hawaii</h2> -->
+						<div id="main-gallary-img-top2">
+						<%=imgTags%>
+						</div>
+<!-- 						<p>Maui, Hawaii</p> -->
+<!-- 					</div> -->
+				</div>
+				
+				<%} %>
+				
+				<!-- <div class="swiper-slide swiper-slide--two">
 					<span>subtropical</span>
 					<div>
 						<h2>The Island of Eternal Spring</h2>
@@ -342,6 +393,9 @@
 						</p>
 					</div>
 				</div>
+
+
+
 
 				<div class="swiper-slide swiper-slide--three">
 					<span>history</span>
@@ -399,7 +453,7 @@
 							Whitsunday Islands, Australia
 						</p>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<!-- Add Pagination -->
 			<div class="swiper-pagination"></div>
