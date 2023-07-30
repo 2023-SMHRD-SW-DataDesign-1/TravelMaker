@@ -33,7 +33,6 @@ public class LoginCon implements Command {
 		System.out.println(user_pw);
 
 		UserDTO info = new UserDAO().login(new UserDTO(user_id, user_pw));
-		System.out.println(info);
 
 		String moveURL = "";
 		

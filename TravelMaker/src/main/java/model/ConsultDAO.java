@@ -38,5 +38,15 @@ public class ConsultDAO {
 		session.close();
 		return show_final_consult;
 	}
+	
+	// est_num으로 컨설팅 받았는지 확인
+	public int checkConsult(int est_num) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.selectOne("checkConsult", est_num);
+		session.close();
+		return row;
+		
+		
+	}
 
 }

@@ -583,6 +583,26 @@ a {
 	color: #fff;
 	box-shadow: 1px 1px 5px #78726c;
 }
+
+.accepted_button1{
+	border: none;
+	padding: 6px 10px;
+	font-weight: bold;
+	border-radius: 15px;
+	background-color: #0404B4;
+	color: #fff;
+	box-shadow: 1px 1px 5px #78726c;
+}
+
+.accepted_button2{
+	border: none;
+	padding: 6px 10px;
+	font-weight: bold;
+	border-radius: 15px;
+	background-color: #848484;
+	color: #fff;
+	box-shadow: 1px 1px 5px #78726c;
+}
 .project-box-header {
   display: flex;
   align-items: center;

@@ -7,9 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-   <link rel="stylesheet" href="css/main_nav.css">
-   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/style.css">
    <!-- include libraries(jQuery, bootstrap) -->
    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -17,6 +14,9 @@
    <!-- include summernote css/js -->
    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+   <link rel="stylesheet" href="css/main_nav.css">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
    <style>
       /* @import "//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css"; */
       .editor-contents {
@@ -196,7 +196,7 @@
 		<h1 style="padding: 30px 0;">포트폴리오 작성</h1>
 	</div>
 
-	<form action="PortCon.do">
+	<form action="PortCon.do" method="post">
 		<div class="editor-contents">
 			<div id="tip-title-box">
 				<input id="tip-title" name="port_title" placeholder="제목을 입력해 주세요">
@@ -222,7 +222,7 @@
 			$('#summernote').summernote({
 				placeholder : '내용을 작성하세요',
 				height : 400,
-				maxHeight : 400
+				width : 1000
 			});
 		});
 

@@ -55,10 +55,10 @@ public class FrontController extends HttpServlet {
 		System.out.println("[FrontController]");
 
 		String reqURI = request.getRequestURI();
-		System.out.println(reqURI);
+
 
 		String contextPath = request.getContextPath();
-		System.out.println(contextPath);
+
 
 		String path = reqURI.substring(contextPath.length() + 1);
 
