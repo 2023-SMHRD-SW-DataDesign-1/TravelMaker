@@ -31,15 +31,19 @@ body {
 }
 
 .container {
-  min-height: 100vh;
-  display: grid;
-  grid-gap: 40px;
+  margin-top: 94px;
+  margin-bottom: 50xp;
   align-content: center;
 }
-
+.user_est_send_flexBox{
+	display: flex;
+	justify-content: space-around;
+	
+}
 .main {
   display: block;
   align-self: start;
+  width: 40%;
 }
 
 button,
@@ -116,8 +120,9 @@ button:-moz-focusring,
 }
 
 .header {
-  align-self: center;
+  align-self: flex-start;
   text-align: center;
+  width: 50%;
 }
 
 .header__title {
@@ -152,15 +157,9 @@ label {
 
 @media (min-width: 700px) {
   .container {
-    grid-template-columns: 1fr 1fr;
     max-width: 1400px;
     margin: 0 auto;
     align-items: center;
-  }
-
-  .header,
-  .main {
-    grid-row: 1;
   }
 }
 
@@ -363,7 +362,7 @@ label {
 
 #recommendation {
   resize: none;
-  height: 200px;
+  height: 50px;
   width: 400px;
 }
 
@@ -385,7 +384,6 @@ label {
   font-family: inherit;
   width: 100%;
   resize: vertical;
-  min-height: 100px;
   max-width: 300px;
   color: var(--darkBlue);
   -webkit-appearance: none;
@@ -499,7 +497,7 @@ button[disabled] {
 width: 150px;
 height: 45px;
 padding: .8em .5em;
-border: 1px solid #999;
+border: 2px solid var(--lightBlue);
 font-family: inherit;
 background: url('./arrow\ -\ 蹂듭궗蹂�.jpg') no-repeat 95% 50%;
 border-radius: 0px;

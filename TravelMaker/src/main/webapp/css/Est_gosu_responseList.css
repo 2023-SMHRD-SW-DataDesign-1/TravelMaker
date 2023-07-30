@@ -76,7 +76,7 @@ button, a {
 }
 
 .app-container {
-  margin-top: 80px;
+  margin-top: 70px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -88,10 +88,9 @@ button, a {
   font-family: "DM Sans", sans-serif;
 }
 .app-content {
-  display: flex;
   height: 100%;
   overflow: hidden;
-  padding: 16px 24px 24px 0;
+  padding: 24px;
 }
 .app-header {
   display: flex;
@@ -271,7 +270,7 @@ button, a {
   flex: 2;
   background-color: var(--projects-section);
   border-radius: 32px;
-  padding: 32px 150px 0 150px;
+  padding: 32px 150px;
   overflow: hidden;
   height: 100%;
   display: flex;
@@ -299,13 +298,11 @@ button, a {
   font-size: 20px;
 }
 
-.projects-status {
+.item-status {
   display: flex;
+  justify-content: space-between;
 }
 
-.item-status {
-  margin-right: 16px;
-}
 .item-status:not(:last-child) .status-type:after {
   content: "";
   position: absolute;
@@ -319,7 +316,7 @@ button, a {
 }
 
 .status-number {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 32px;
   font-weight: 700;
   color: var(--main-color);
@@ -535,7 +532,7 @@ button, a {
 .project-box {
   --main-color-card: #dbf6fd;
   border-radius: 30px;
-  padding: 16px;
+  padding: 16px 16px 3px 16px;
   background-color: var(--main-color-card);
 }
 .project-box-header {
@@ -552,6 +549,7 @@ button, a {
   line-height: 16px;
 }
 .project-box-content-header {
+  position:relative;
   text-align: center;
   margin-bottom: 16px;
 }
@@ -653,12 +651,25 @@ button, a {
 	justify-content: space-between;
 }
 .project-move-box a{
+	font-size: 12px;
+	font-weight: bold;
 	padding: 8px;
 	background-color: #f3b77e;
 	margin-bottom: 1rem;
 	color: white;
 	border-radius: 15px;
-	box-shadow: 1px 1px 5px #95622f;
+	box-shadow: 1px 1px 5px #78726c;
+}
+.project-check{
+	position:absolute;
+	top: 9px;
+	left: 0;
+	color: #ff2147;
+	font-weight: bold;
+}
+.project-check img{
+	height: 15px;
+	margin-top: -5px;
 }
 .participants {
   display: flex;
