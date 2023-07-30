@@ -7,11 +7,6 @@
    --lemon: #a7e9af;
 }
 
-body {
-   background-color: white;
-   font-family: 'Lato', sans-serif;
-   zoom: 1;
-}
 
 button {
    background-color: white;
@@ -112,7 +107,6 @@ button {
 }
 
 .calendar {
-   background-color: var(--blue);
    padding: 16px;
    margin: 0 auto;
    display: flex;

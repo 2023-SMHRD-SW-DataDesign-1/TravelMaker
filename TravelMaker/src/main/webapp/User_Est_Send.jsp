@@ -143,29 +143,6 @@
 						</div>
 						<!-- =========== -->
 						<p class="error-message"></p>
-
-<<<<<<< HEAD
-=======
-				</section>
-				<!-- 세번째질문 끝 -->
-
-				<!-- 네번째질문 시작 -->
-				<section class="survey__panel" aria-hidden="true" data-index="4"
-					data-panel="fourthPanel" data-requirement="option">
-					<h2 class="survey__panel__question">
-						<span class="visuallyhidden">Question 4 of 5 </span>언제 가세요?
-					</h2>
-
-					<!-- 캘린더 시작 -->
-					<section class="calendar">
-						<div class="calendar__inputs">
-							<input class="calendar__input" name="send_s_date" readonly="readonly" type="text" id="calendar-start" placeholder="Start Date"> 
-							<input class="calendar__input" name="send_e_date" readonly="readonly" type="text" id="calendar-end" placeholder="End Date">
-						</div>
-						<!-- 리셋버튼-->
-						<div class="calendar__pikaday" id="calendar-container"></div>
-						<button class="calendar__reset" id="calendar-clear">Reset</button>
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker.git
 					</section>
 					<!-- 세번째질문 끝 -->
 
