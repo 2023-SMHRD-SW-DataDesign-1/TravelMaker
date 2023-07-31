@@ -1,3 +1,4 @@
+<%@page import="model.RatingDAO"%>
 <%@page import="java.util.regex.Pattern"%>
 <%@page import="java.util.regex.Matcher"%>
 <%@page import="model.InfoDTO"%>
@@ -46,6 +47,7 @@
 <link rel="stylesheet" href="css/daterangepicker.css">
 <link rel="stylesheet" href="css/aos.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/Star_style.css">
 <!-- main head end -->
 
 
@@ -252,10 +254,10 @@ main {
 	UserDTO info = (UserDTO) session.getAttribute("info");
 	String user_id = info.getUser_id();
 	String act_area = info.getAct_area();
-	/* String user_id = "sori"; */
 	String uploadSuccess = request.getParameter("upload_success");
 	String deleteSuccess = request.getParameter("delete_success");
-	DecimalFormat df = new DecimalFormat("###,###"); 
+	DecimalFormat df = new DecimalFormat("###,###");
+	RatingDAO radao = new RatingDAO();
 	%>
 	<!-- 사진 업로드 성공 시 -->
 	<%
@@ -307,8 +309,7 @@ main {
 						<div id="confirmModal" style="display: none;">
 							<div id="confirmModalContent">
 								<span>정말 삭제하시겠습니까?</span>
-								<form action="DeletepicCon.do" id="deleteProfileForm"
-									method="post">
+								<form action="DeletepicCon.do" id="deleteProfileForm" method="post">
 									<!-- 필요한 경우 추가적인 폼 입력 요소를 추가하세요 -->
 									<input type="hidden" name="user_id" value="<%=user_id%>">
 								</form>
@@ -332,20 +333,13 @@ main {
 
 								<!-- 프로필 사진 삭제 스크립트 -->
 								<script>
-									const deleteProfileBtn = document
-											.getElementById('deleteProfileBtn');
-									const confirmModal = document
-											.getElementById('confirmModal');
-									const confirmYesBtn = document
-											.getElementById('confirmYesBtn');
-									const confirmNoBtn = document
-											.getElementById('confirmNoBtn');
+									const deleteProfileBtn = document.getElementById('deleteProfileBtn');
+									const confirmModal = document.getElementById('confirmModal');
+									const confirmYesBtn = document.getElementById('confirmYesBtn');
+									const confirmNoBtn = document.getElementById('confirmNoBtn');
 
 									// 삭제 버튼 클릭 시 모달 창 보이기
-									deleteProfileBtn
-											.addEventListener(
-													'click',
-													function() {
+									deleteProfileBtn.addEventListener('click',function() {
 														confirmModal.style.display = 'block';
 													});
 
@@ -359,26 +353,19 @@ main {
 									}
 
 									// 모달 창에서 "예" 버튼 클릭 시 프로필 사진 삭제 실행
-									confirmYesBtn
-											.addEventListener(
-													'click',
-													function() {
+									confirmYesBtn.addEventListener('click',function() {
 														// 폼 요소를 가져옵니다.
-														const deleteProfileForm = document
-																.getElementById('deleteProfileForm');
+														const deleteProfileForm = document.getElementById('deleteProfileForm');
 
 														// DeletepicCon.do로 폼을 제출합니다.
-														deleteProfileForm
-																.submit();
+														deleteProfileForm.submit();
 
 														// 모달 창 닫기
 														confirmModal.style.display = 'none';
 													});
 
 									// 모달 창에서 "아니오" 버튼 클릭 시 모달 창 닫기
-									confirmNoBtn
-											.addEventListener(
-													'click',
+									confirmNoBtn.addEventListener('click',
 													function() {
 														confirmModal.style.display = 'none';
 													});
@@ -505,10 +492,8 @@ main {
 										<!-- 모달 스크립트 시작 -->
 										<script>
 											// "직접입력" 라디오 버튼과 숨겨진 입력 필드에 대한 참조를 가져옵니다.
-											const customInputRadio = document
-													.getElementById("customInputRadio");
-											const customInput = document
-													.getElementById("customInput");
+											const customInputRadio = document.getElementById("customInputRadio");
+											const customInput = document.getElementById("customInput");
 
 											function showCustomInput() {
 												customInput.style.display = "block";
@@ -548,6 +533,14 @@ main {
 										<div class="profile-bio">
 											<p>
 												<span class="profile-real-name">활동 지역 : <%=info.getAct_area() %></span>
+											</p>
+											<p>
+											<%
+											Double teststar = radao.showRate(user_id);
+											teststar = Math.floor(teststar * 2) / 2.0;
+											%>
+											<span class="box-content-id">고수 별점 : <%=radao.showRate(user_id)%></span>
+											<div class="review-stars" data-stars="<%=teststar%>"></div>
 											</p>
 										</div>
 												<button class="portfoilo-move-button" id="portfolio-button">포트폴리오</button>

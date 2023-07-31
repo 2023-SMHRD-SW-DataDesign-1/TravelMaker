@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +16,20 @@ public class DeletepicCon implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		System.out.println("딜리트 픽 컨트롤러");
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		UserDAO udao = new UserDAO();
 
 		String user_id = request.getParameter("user_id");
+		System.out.println("아이디 : " + user_id);
 
 		int row = udao.deletePic(user_id);
 
