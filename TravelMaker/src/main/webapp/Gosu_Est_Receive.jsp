@@ -49,7 +49,7 @@
 	width: 100%;
 	height: 115px;
 	position: absolute;
-	background-image: url('img/배경2.png');
+	background-image: url('img/background-image2.png');
 }
 
 </style>

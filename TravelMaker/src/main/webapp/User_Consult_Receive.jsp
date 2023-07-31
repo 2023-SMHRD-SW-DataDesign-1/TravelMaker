@@ -61,7 +61,7 @@
 	<!-- 네비게이션 끝 -->
 	
 	<div class="nav_under_img">
-	<img src="img/배경5.png" alt="">
+	<img src="img/background-image1.png" alt="#">
     </div>
 	
 	<%
