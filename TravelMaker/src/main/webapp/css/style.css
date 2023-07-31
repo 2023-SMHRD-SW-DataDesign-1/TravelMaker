@@ -916,14 +916,13 @@ a.text-primary:hover {
 .media-thumb .media-text {
   position: absolute;
   top: 20px;
-  left: 40px;
+  left: 20px;
   z-index: 2;
   opacity: 1;
   visibility: visible;
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  margin-top: 20px;
 }
 
 .media-thumb .media-text h3 {
@@ -935,8 +934,8 @@ a.text-primary:hover {
 }
 
 .media-thumb .media-text .location {
-  font-size: .8rem;
-  color: rgba(26, 55, 77, 0.5);
+  font-size: 13px;
+  color: white;
 }
 
 .media-thumb .media-text h3,
@@ -954,9 +953,6 @@ a.text-primary:hover {
   color: #ffffff;
 }
 
-.media-thumb:hover .location {
-  color: rgba(255, 255, 255, 0.5);
-}
 
 .media-thumb:hover img {
   -webkit-transform: scale(1);
@@ -979,25 +975,8 @@ a.text-primary:hover {
 
 .section-title {
   position: relative;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   display: inline-block;
-}
-
-.section-title:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 30px;
-  height: 2px;
-  background: #1A374D;
-}
-
-.section-title.text-center:before {
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
 }
 
 .media-1 {
@@ -1443,9 +1422,11 @@ a.text-primary:hover {
   font-size: 18px;
   font-weight: 700;
 }
-
+#accordion_1{
+	background-color: #f1f1f1;
+	border-radius: 15px;
+}
 .custom-accordion .accordion-item {
-  background-color: #f9f9f9;
   margin-bottom: 0px;
   position: relative;
   border-radius: 0px;
@@ -1463,7 +1444,6 @@ a.text-primary:hover {
   padding-left: 40px;
   border-radius: 0;
   position: relative;
-  background: #ffffff;
 }
 
 .custom-accordion .accordion-item .btn-link:before {

@@ -75,21 +75,9 @@
                             <!-- #fee4cb -->
                             <div class="project-box-header">
                                 <span><%=Unpaid_list.get(i).getRes_wr_date()%></span>
-                                <div class="more-wrapper">
-                                    <button class="project-btn-more">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1" />
-                                            <circle cx="12" cy="5" r="1" />
-                                            <circle cx="12" cy="19" r="1" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <span>견적서No.<%=Unpaid_list.get(i).getEst_num() %></span>
                             </div>
                             <div class="project-box-content-header">
-                               견적서No.<%=Unpaid_list.get(i).getEst_num() %>
                                 <p class="box-content-header"><%=Unpaid_list.get(i).getRes_place()%></p>
                                 <p class="box-content-subheader">컨설팅 비용 : <%=df.format(Unpaid_list.get(i).getRes_fee())%>원</p>
                             </div>
@@ -112,21 +100,9 @@
                         <div class="project-box" style="background-color: #d7f1fb;">
                             <div class="project-box-header">
                                 <span><%=paid_list.get(i).getRes_wr_date()%></span>
-                                <div class="more-wrapper">
-                                    <button class="project-btn-more">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1" />
-                                            <circle cx="12" cy="5" r="1" />
-                                            <circle cx="12" cy="19" r="1" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <span>견적서No.<%=paid_list.get(i).getEst_num() %></span>
                             </div>
                             <div class="project-box-content-header">
-                            견적서No.<%=paid_list.get(i).getEst_num() %>
                                 <p class="box-content-header"><%=paid_list.get(i).getRes_place()%></p>
                                 <p class="box-content-subheader">컨설팅 비용 : <%=df.format(Unpaid_list.get(i).getRes_fee())%>원</p>
                             </div>

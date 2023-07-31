@@ -42,12 +42,20 @@
 	Untree.co</title>
 
 <style>
-/* .ct_btn {
-            position: absolute;
-            left: 1350px;
-            padding: 10px 30px;
-            position: fixed;
-        } */
+.text-center{
+	position: relative;
+}
+.move-button{
+	position: absolute;
+	display: inline-block;
+	color: white;
+	background-color: #79afe9;
+	padding: 8px 13px;
+	top: 20px;
+	right: 0;
+	border-radius: 15px;
+	font-weight: bold;
+}
 .write_btn {
 	position: fixed;
 	bottom: 50px;
@@ -77,7 +85,9 @@
 }
 
 .media-text h2{
-	background: #CEE3F6;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 </style>
@@ -103,12 +113,9 @@
 			<div class="row text-center justify-content-center mb-5">
 				<div class="col-lg-7">
 					<h2 class="section-title text-center">나만 알고있던 인스타감성 포토스팟📸</h2>
-					<h2>TOP 5</h2>
-					<a href="Info_CateList.jsp?info_cate=사진">
-						<button>보러가기💬</button>
-					</a>
-				
+					<h2>TOP 5</h2>				
 				</div>
+					<a href="Info_CateList.jsp?info_cate=사진" class="move-button">보러가기💬</a>
 			</div>
 
 			<div class="owl-carousel owl-3-slider">
@@ -147,12 +154,8 @@
 				<div class="item">
 					<a class="media-thumb reqlogin" href="Info_DetailPage.jsp?info_num=<%=pic_list.get(i).getInfo_num()%>&info_title=<%=pic_list.get(i).getInfo_title()%>&info_brief=<%=pic_list.get(i).getInfo_brief()%>&info_fee=<%=pic_list.get(i).getInfo_fee()%>&infouser_id=<%=pic_list.get(i).getUser_id()%>">
 						<div class="media-text">
-
 							<h2><%=pic_list.get(i).getInfo_title()%></h2>
-
-							<span class="location">-</span>
-						</div> <!-- <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid"> -->
-
+						</div> 
 						<div id="test111">
 						<%=imgTags%>
 							
@@ -173,9 +176,7 @@
 					<h2 class="section-title text-center">혼자 몰래가서 배터지게 먹고오는 🥘</h2>
 					<h2>TOP 5</h2>
 				</div>
-					<a href="Info_CateList.jsp?info_cate=맛집">
-						<button>보러가기💬</button>
-					</a>
+				<a href="Info_CateList.jsp?info_cate=맛집" class="move-button">보러가기💬</a>
 			</div>
 
 			<div class="owl-carousel owl-3-slider">
@@ -213,9 +214,8 @@
 					<a class="media-thumb reqlogin" href="Info_DetailPage.jsp?info_num=<%=food_list.get(i).getInfo_num()%>&info_title=<%=food_list.get(i).getInfo_title()%>&info_brief=<%=food_list.get(i).getInfo_brief()%>&info_fee=<%=food_list.get(i).getInfo_fee()%>&infouser_id=<%=food_list.get(i).getUser_id()%>">
 						<div class="media-text">
 							<h2><%=food_list.get(i).getInfo_title()%></h2>
-							<span class="location">-</span>
 						</div> 
-						<div id="test111" >
+						<div id="test111">
 						<%=imgTags%>							
 						</div>
 					</a>
@@ -236,9 +236,7 @@
 					<h2 class="section-title text-center">공유금지🤫 구름위에서 자는거처럼 편안하게🏡</h2>
 					<h2>TOP 5</h2>
 				</div>
-					<a href="Info_CateList.jsp?info_cate=숙소">
-						<button>보러가기💬</button>
-					</a>
+					<a href="Info_CateList.jsp?info_cate=숙소" class="move-button">보러가기💬</a>
 			</div>
 
 			<div class="owl-carousel owl-3-slider">

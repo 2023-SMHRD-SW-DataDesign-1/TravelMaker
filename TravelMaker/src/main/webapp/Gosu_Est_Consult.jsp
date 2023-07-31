@@ -9,10 +9,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Dashboard Design with Flexbox</title>
+    <title>고수 - 컨설팅 작성 페이지</title>
+<link rel="stylesheet" href="css/main_nav.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
     <!-- <link rel="stylesheet" href="./컨설팅작성Gosu_Est_Paid.css"> -->
     <!-- 세부컨설팅 link 시작 -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
@@ -28,18 +30,15 @@
 
     <!-- 세부컨설팅 style1 시작 -->
     <style>
-        h1 {
-            text-align: center;
-        }
-
-        /* button {
-       float: right;
-       color: white;
-       background-color: skyblue;
-       border: none;
-       padding: 10px 30px;
-     }
-     */
+    .dashboard{
+    	max-width: 1140px;
+    	margin: 0 auto;
+    	margin-top: 90px;
+    }
+    .right-body{
+    	display: flex;
+    	justify-content: space-between;
+    }
         .input_3 {
             /* 전송버튼 */
             height: 55px;
@@ -87,9 +86,10 @@
     
     <!-- 세부 컨설팅 style2 시작 -->
     <style>
-        /*    */
+		.message{
+			width: 65%;
+		}
         .editor-contents {
-            height: 700px;
             padding-bottom: 50px;
             /* margin-top: 50px; */
             width: 100%;
@@ -114,7 +114,6 @@
             margin: 0;
             padding: 0 10px;
             margin-bottom: 10px;
-            font-family: 'Apple SD Gothic Neo';
             font-size: 14px;
         }
 
@@ -126,6 +125,7 @@
 
         #btn-box-center {
             width: 700px;
+            margin-top: 30px;
         }
 
         #cancel-btn {
@@ -149,6 +149,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            border: none;
         }
 
         #map {
@@ -168,12 +169,9 @@
         }
 
         #btn_group {
-            /* text-align: center;
-     display: inline-block; */
-
             display: flex;
             justify-content: center;
-            /* background-color: #f2f3f7; */
+            margin-bottom: 30px;
         }
 
         /*  */
@@ -190,11 +188,10 @@
         }
 
         #btn_group button {
-            /* #5882FA; */
             border: 1px solid #5882FA;
             background-color: rgba(0, 0, 0, 0);
             color: #5882FA;
-            padding: 5px;
+            padding: 5px 10px;
         }
 
         #btn_group button:hover {
@@ -205,15 +202,10 @@
         /* 견적요청 바 css */
 
         .scroll-cards {
-            width: 300px;
+            width: 30%;
             height: 800px;
             overflow: auto;
 
-            /* 화면고정 */
-            position: fixed;
-            left: 50px;
-            top: 40px;
-            /* padding: 20px 0px 5px 20px; */
         }
 
         .card {
@@ -275,20 +267,42 @@
             margin-top: 10vh;
         }
 
-        .M {
-            font-size: 5vmin;
-            color: #ac6b4d;
-            font-family: 'Chonburi', cursive;
-        }
-
         #circ {
             font-size: 0.8vmin;
             color: #bebbbc;
-            font-family: 'Cousine', monospace;
-            position: relative;
             margin-top: -3vmin;
             left: 1vmin;
         }
+        
+/* 네비게이션 시작  */
+.navbar-nav>li a{
+	font-size: 14px;
+}
+   @media screen and (min-width: 576px){
+      .container_nav{
+         max-width: 540px;
+         margin: 0 auto;
+      }
+   }
+   @media screen and (min-width: 768px){
+      .container_nav{
+         max-width: 720px;
+         margin: 0 auto;
+      }
+   }
+   @media screen and (min-width: 992px){
+      .container_nav{
+         max-width: 960px;
+         margin: 0 auto;
+      }
+   }
+   @media screen and (min-width: 1200px){
+      .container_nav{
+         max-width: 1140px;
+         margin: 0 auto;
+      }
+   }
+  /* 네비게이션 끝 */
     </style>
     <!-- 최종컨설팅 마크 style 끝 -->
 </head>
@@ -304,37 +318,95 @@
 	UserDAO udao = new UserDAO();
 	UserDTO show_name = udao.showName(est_num);
 	
+	UserDTO info = (UserDTO)session.getAttribute("info");
+	
 	%>
+	
+	
 
+<!-- 네비게이션 시작 -->
+
+<div class="hero-anime">
+   <div class="navigation-wrap bg-light start-header start-style">
+      <div class="container_nav">
+         <div class="row">
+            <div class="col-12">
+               <nav class="main_navbar navbar-expand-md navbar-light">
+
+                  <a class="navbar_logo" href="Main.jsp" target="_blank"> <img src="/TravelMaker/img/Logo.png"
+                     alt="Logo"></a>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav ml-auto py-4 py-md-0">
+
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Receive.jsp">받은견적</a></li>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Paid.jsp">채택된견적</a></li>
+                        <%-- <c:choose>
+                           <c:when
+                              test="${info.user_type eq '회원' || info.user_type == null }">
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="User_Est_Send.jsp">견적요청</a></li>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active"><a
+                                 class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                 href="#" role="button" aria-haspopup="true"
+                                 aria-expanded="false">컨설팅</a>
+                                 <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="User_Est_Receive.jsp">받은견적서</a>
+                                    <a class="dropdown-item" href="User_Consult_Receive.jsp">받은컨설팅</a>
+                                 </div></li>                       
+                           </c:when>
+                           <c:when test="${info.user_type eq '고수' }">
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Receive.jsp">받은견적</a></li>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Paid.jsp">채택된견적</a></li>
+                           </c:when>
+                        </c:choose> --%>
+
+
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                           class="nav-link" href="Info_main.jsp">정보거래</a></li>
+
+                        <!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                           class="nav-link" href="Est_ShowConsult.jsp">커뮤니티</a></li> -->
+
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="MyPage_normal.jsp">마이페이지</a></li>
+                        
+                        <%if(info != null){ %>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="LogoutCon.do"><%=info.getUser_name() %>
+                                    <%=info.getUser_type() %>님 로그아웃</a></li>
+                        <%}%>
+                     </ul>
+                  </div>
+
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<!-- 네비게이션 끝 -->
+	
     <div class="dashboard">
-        <!-- 최종컨설팅 마크 시작 -->
-        <div class="wrapper">
-
-            <div class="M">Final Consulting</div>
-        </div>
-        <!-- 최종컨설팅 마크 끝 -->
         <div class="right-side">
-
             <div class="right-body">
                 <div class="scroll-cards">
+                
                     <!-- 사이드 1번째 박스 시작 -->
                     <div class="card">
                         <div class="mails">
-                            <img src="https://randomuser.me/api/portraits/men/20.jpg" />
                             <div class="mail-names">
                                 <p><%=show_name.getUser_name()%> 고객님의 견적요청</p>
                             </div>
                         </div>
-                        <div class="mail-info">
-                            <!-- 동남아여행 -->
-                        </div>
-                        <div>
-                        </div>
                         <div class="check1">
-                            <div class="bottom-info">
-
-                            </div>
-                            <div class="date">8:30 AM</div>
+                            <div class="mail-info">8:30 AM</div>
                         </div>
                     </div>
                     <!-- 사이드 1번째 박스 끝 -->
@@ -348,15 +420,7 @@
                         </div>
                         <div class="mail-info">
                             일본
-
-                            <div>
-                            </div>
-                            <div class="bottom-info">
-                                </label>
-
-                            </div>
-
-                        </div>
+						</div>
                     </div>
                     <!-- 사이드 2번째 박스 끝 -->
 
@@ -367,14 +431,7 @@
                                 구체적인 목적지가 어디세요?
                             </div>
                         </div>
-                        <div class="mail-info">
-                            오사카,도쿄
-                        </div>
-                        <div>
-                        </div>
-                        <div class="bottom-info">
-
-                        </div>
+                        <div class="mail-info">오사카,도쿄</div>
                     </div>
                     <!-- 사이드 3번째 박스 끝 -->
 
@@ -387,11 +444,6 @@
                         </div>
                         <div class="mail-info">
                             150만~200만
-                        </div>
-                        <div>
-                        </div>
-                        <div class="bottom-info">
-
                         </div>
                     </div>
                     <!-- 사이드 4번째 박스 끝 -->
@@ -406,11 +458,6 @@
                         <div class="mail-info">
                             7/28~8/3
                         </div>
-                        <div>
-                        </div>
-                        <div class="bottom-info">
-
-                        </div>
                     </div>
                     <!-- 사이드 5번째 박스 끝 -->
 
@@ -424,19 +471,13 @@
                         <div class="mail-info">
                             맛집위주
                         </div>
-                        <div>
-                        </div>
-                        <div class="bottom-info">
-
-                        </div>
                     </div>
                     <!-- 사이드 6번째 박스 끝 -->
                 </div>
 
+
+                <!-- 지도 및 서머노트 시작 -->
                 <div class="message">
-
-
-                    <!-- 지도 및 서머노트 시작 -->
 
                     <div id="btn_group">
                         <button id="test_btn1" onclick="addMarker()" style="position: relative">마커 추가</button>
@@ -452,9 +493,8 @@
                                 <input type="hidden" id="lat-input" name="lat">
                                 <input type="hidden" id="lng-input" name="lng">
                                 <div id="btn-box-center">
-                                    <div id="cancel-btn">취소</div>
-                                    <input type="submit" value="컨설팅 보내기">
-                                    <!-- <div id="submit-btn">컨설팅 보내기</div> -->
+									<a href="Gosu_Est_Receive.jsp" id="cancel-btn">취소</a>
+									<input type="submit" value="견적서 보내기" id="submit-btn">
                                 </div>
                             </div>
                         </div>
@@ -467,8 +507,7 @@
                 </div>
             </div>
         </div>
-  
-
+	</div>
         
    <script>
       // 메인화면 페이지 로드 함수
@@ -587,6 +626,12 @@
          }
       }
    </script>
+   
+   
+	
+	<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
 </body>
 
 </html>

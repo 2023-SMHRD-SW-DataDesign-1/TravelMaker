@@ -157,7 +157,6 @@ a {
 .dark .search-wrapper {
   box-shadow: none;
 }
-
 .search-input {
   border: none;
   flex: 1;
@@ -497,6 +496,7 @@ a {
 .project-boxes.jsGridView {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 .project-boxes.jsGridView .project-box-wrapper {
@@ -936,23 +936,8 @@ h3 {
   transition-property: transform;
   transition: 0.25s ease;
 }
-
-h3::after {
-  content: '';
-  border-top: 4px solid #000;
-  width: 100%;
-  position: absolute;
-  display: block;
-  transform: rotateY(90deg);
-  transition: transform 0.25s linear;
-}
-
-h3:hover {
-  transform: scale(1);
-}
-
-h3:hover::after {
-  transform: rotate(0deg);
+.center{
+	margin: 20px auto;
 }
 
 /* 텍스트 헤드라인 css 끝 */
