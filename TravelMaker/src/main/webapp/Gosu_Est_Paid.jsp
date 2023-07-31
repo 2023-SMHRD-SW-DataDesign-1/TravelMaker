@@ -75,7 +75,7 @@
                             <!-- #fee4cb -->
                             <div class="project-box-header">
                                 <span><%=Unpaid_list.get(i).getRes_wr_date()%></span>
-                                <span>견적서No.<%=Unpaid_list.get(i).getEst_num() %></span>
+                                <span>No.<%=Unpaid_list.get(i).getEst_num() %></span>
                             </div>
                             <div class="project-box-content-header">
                                 <p class="box-content-header"><%=Unpaid_list.get(i).getRes_place()%></p>
@@ -100,7 +100,7 @@
                         <div class="project-box" style="background-color: #d7f1fb;">
                             <div class="project-box-header">
                                 <span><%=paid_list.get(i).getRes_wr_date()%></span>
-                                <span>견적서No.<%=paid_list.get(i).getEst_num() %></span>
+                                <span>No.<%=paid_list.get(i).getEst_num() %></span>
                             </div>
                             <div class="project-box-content-header">
                                 <p class="box-content-header"><%=paid_list.get(i).getRes_place()%></p>

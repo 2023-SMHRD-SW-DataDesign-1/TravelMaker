@@ -281,7 +281,7 @@ button, a {
 }
 .projects-section-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 24px;
   color: var(--main-color);
@@ -588,14 +588,25 @@ button, a {
 .more-wrapper {
   position: relative;
 }
+.projects-section-header > h1{
+	z-index: 99;
+	display: block;
+	margin: 0 auto;
+	font-weight: bold;
+	color: #575757;
+	background-color: white;
+	padding: 20px 40px;
+	border-radius: 30px;
+}
 .box-content-num{
 	display: block;
 	text-align: left;
-	font-size: 10px;
+	font-size: 13px;
 	color: gray;
+	font-weight: bold;
 }
 .box-content-header {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   font-weight: 700;
   opacity: 0.7;
@@ -646,15 +657,6 @@ button, a {
 	text-align: right;
 	font-weight: bold;
 }
-/* .project-box-footer:after {
-  content: "";
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.6);
-  width: calc(100% + 32px);
-  top: 0;
-  left: -16px;
-  height: 1px;
-} */
 .project-move-box{
 	display: flex;
 	justify-content: space-between;
@@ -668,6 +670,12 @@ button, a {
 	color: white;
 	border-radius: 15px;
 	box-shadow: 1px 1px 5px #78726c;
+}
+.numbering{
+	font-size: 13px;
+	font-weight: bold;
+	color: #979797;
+	margin-top: 15px;
 }
 .project-check{
 	position:absolute;

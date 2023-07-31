@@ -50,7 +50,6 @@ public class InfowriterCon implements Command {
 		System.out.println("아이디 : " + user_id);
 		System.out.println("카테고리 : " + info_cate);
 		System.out.println("제목 : " + info_title);
-		System.out.println("내용 : " + info_content);
 		System.out.println("요금 : " + info_fee);
 		System.out.println("lat : " + info_lat);
 		System.out.println("lng : " + info_lng);

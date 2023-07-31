@@ -77,8 +77,7 @@
 		<div class="app-content">
 			<div class="projects-section">
 				<div class="projects-section-header">
-					<p>내가 보낸 견적</p>
-					<p class="time"></p>
+					<h1>내가 보낸 견적</h1>
 				</div>
 				<div class="projects-section-line">
 						<div class="item-status">
@@ -107,7 +106,6 @@
 							</div>
 							<div class="box-progress-wrapper">
 								<p class="box-progress-header"><%=send_list.get(i).getSend_place()%></p>
-								<p class="box-progress-header">견적No.<%=send_list.get(i).getEst_num() %></p>
 								<p class="box-progress-header"><%=send_list.get(i).getSend_s_date()%> ~ <%=send_list.get(i).getSend_e_date()%></p>
 								<p>여행 예산 :<%=df.format(send_list.get(i).getSend_budget())%>원</p>
 								<div class="box-progress-bar">
@@ -116,9 +114,9 @@
 								</div>
 							</div>
 							<div class="project-footer-box">
-							견적내용<br>
 								<span><%=send_list.get(i).getSend_content()%></span>
 								<div class="project-move-box">
+									<span class="numbering">No.<%=send_list.get(i).getEst_num() %></span>
 									<a href="User_Est_Look.jsp?est_num=<%=send_list.get(i).getEst_num()%>">견적서 보러가기</a>
 								</div>
 							</div>

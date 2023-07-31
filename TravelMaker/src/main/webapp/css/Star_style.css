@@ -3,6 +3,8 @@
   position: relative;
   width: 180px;
   height: 42px;
+  left: 50%;
+  transform : translate(-50%, 0);
   user-select: none;
   background: var(--stars);
   --stars: url("https://i.ibb.co/VphZ2h8/Star.png")

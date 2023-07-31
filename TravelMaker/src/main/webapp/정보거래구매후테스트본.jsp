@@ -390,7 +390,6 @@
             padding: 5px;
             width: 100%;
 			flex-wrap: wrap;
-            background-color: #ebebeb;
         }
         /* 네비게이션 시작  */
 .navbar-nav>li a{
