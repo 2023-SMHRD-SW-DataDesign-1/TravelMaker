@@ -155,6 +155,7 @@
 					<a class="media-thumb reqlogin" href="Info_DetailPage.jsp?info_num=<%=pic_list.get(i).getInfo_num()%>&info_title=<%=pic_list.get(i).getInfo_title()%>&info_brief=<%=pic_list.get(i).getInfo_brief()%>&info_fee=<%=pic_list.get(i).getInfo_fee()%>&infouser_id=<%=pic_list.get(i).getUser_id()%>">
 						<div class="media-text">
 							<h2><%=pic_list.get(i).getInfo_title()%></h2>
+							<span class="location"><%=pic_list.get(i).getInfo_brief()%></span>
 						</div> 
 						<div id="test111">
 						<%=imgTags%>
@@ -214,6 +215,7 @@
 					<a class="media-thumb reqlogin" href="Info_DetailPage.jsp?info_num=<%=food_list.get(i).getInfo_num()%>&info_title=<%=food_list.get(i).getInfo_title()%>&info_brief=<%=food_list.get(i).getInfo_brief()%>&info_fee=<%=food_list.get(i).getInfo_fee()%>&infouser_id=<%=food_list.get(i).getUser_id()%>">
 						<div class="media-text">
 							<h2><%=food_list.get(i).getInfo_title()%></h2>
+							<span class="location"><%=food_list.get(i).getInfo_brief()%></span>
 						</div> 
 						<div id="test111">
 						<%=imgTags%>							

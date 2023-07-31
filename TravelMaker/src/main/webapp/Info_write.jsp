@@ -190,7 +190,7 @@
          border: 0;
          border-radius: 15px;
          outline: none;
-         /* padding-left: 10px; */
+         padding-left: 10px;
          background-color: rgb(230, 230, 230);
       }
       
