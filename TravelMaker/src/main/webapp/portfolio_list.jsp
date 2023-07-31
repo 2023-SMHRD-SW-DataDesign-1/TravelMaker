@@ -4,7 +4,7 @@
 <%@page import="model.PortDAO"%>
 <%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -217,22 +217,23 @@ main {
 }
 </style>
 </head>
-<% 
-	String noti= (String) session.getAttribute("noti");
-	PortDAO pdao = new PortDAO();
-	%>
+<%
+String noti = (String) session.getAttribute("noti");
+PortDAO pdao = new PortDAO();
+%>
 
-	<!-- 알림 메시지가 존재할 경우 해당 알림을 표시 -->
+<!-- 알림 메시지가 존재할 경우 해당 알림을 표시 -->
+
+<script>
+	<%if (noti != null) {%>
+		alert("<%=noti%>
+	");
+<%// 알림 메시지를 띄운 후에, notification 세션을 제거합니다.
+session.removeAttribute("noti");%>
 	
-	<script>
-	<% if (noti != null) { %>
-		alert("<%=noti%>");
-		<%
-		// 알림 메시지를 띄운 후에, notification 세션을 제거합니다.
-		session.removeAttribute("noti");
-		%>
-	<% } %>
-	</script>
+<%}%>
+	
+</script>
 <body>
 
 	<%
@@ -248,7 +249,7 @@ main {
 	System.out.println("받아온id : " + user_id);
 	System.out.println("세션id : " + info.getUser_id());
 	%>
-	
+
 
 	<!-- 네비게이션 시작 -->
 	<jsp:include page="Nav.jsp"></jsp:include>
@@ -271,89 +272,113 @@ main {
 				<header>
 					<div class="container">
 						<!-- 사용자 프로필 사진이 있을 경우에만 사진을 보여줍니다 -->
-						
+
 						<div class="profile">
 							<!-- 프로필 사진 부분 -->
 							<div class="profile-image">
-								<img class="profile_test" src="img/<%=user_info.getUser_pic()%>"	alt="Profile Picture">
+								<img class="profile_test" src="img/<%=user_info.getUser_pic()%>"
+									alt="Profile Picture">
 
 
-									</div>
-	
-
-									<div class="profile-user-settings">
-
-										<h1 class="profile-user-name"><%=user_info.getUser_name()%></h1>
-										<%if (user_id.equals(info.getUser_id())){%>
-										<span>현재금액 : <%=user_info.getUser_cash()%></span>
-										<%}%>
-										
-
-										<div class="profile-bio">
-											<p><span class="profile-real-name">활동 지역 : <%=user_info.getAct_area() %></span><p>
-												<p>한줄 자기소개부분</p>
-										</div>
-											<%if (user_id.equals(info.getUser_id())){%>
-											<button class="portfoilo-move-button" id="portfolio-button">포트폴리오 작성하기</button>
-											<%}%>
-										
-									</div>
-								</div>
 							</div>
-						</div>
-				</header>
-				<!-- header end -->
-
-	<%
-	ArrayList<PortDTO> port_list = pdao.showPort(user_id);
-	%>
 
 
+							<div class="profile-user-settings">
 
-				<main>
-					<div class="mypage_container2">
-						<div>
-						<%if (port_list.size() == 0){ %>
-						<h1>작성된 포트폴리오가 없습니다.</h1>
-						<%}%>
-						<p>포폴 제목 : <%=port_list.get(0).getPort_title() %></p>
-						<p>포폴 내용 : <%=port_list.get(0).getPort_content() %></p>
-						
-						
-						
+								<h1 class="profile-user-name"><%=user_info.getUser_name()%></h1>
+								<%
+								if (user_id.equals(info.getUser_id())) {
+								%>
+								<span>현재금액 : <%=user_info.getUser_cash()%></span>
+								<%}%>
+
+
+								<div class="profile-bio">
+									<p>
+										<span class="profile-real-name">활동 지역 : <%=user_info.getAct_area()%></span>
+									</p>
+									<p>한줄 자기소개부분</p>
+								</div>
+								<%
+								if (user_id.equals(info.getUser_id())) {
+								%>
+								<button onclick="goToPortfolioWrite()">포폴작성</button>
+								<%}%>
+
+
+							</div>
+
 						</div>
 					</div>
-				</main>
-				
 			</div>
 
-			<!-- 푸터 시작 -->
-			<jsp:include page="Footer.jsp"></jsp:include>
-			<!-- 푸터 끝 -->
-
-			<!-- partial -->
-			<script src="js/script.js"></script>
-
-			<!-- main script start -->
-			<script src="js/jquery-3.4.1.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-			<script src="js/owl.carousel.min.js"></script>
-			<script src="js/jquery.animateNumber.min.js"></script>
-			<script src="js/jquery.waypoints.min.js"></script>
-			<script src="js/jquery.fancybox.min.js"></script>
-			<script src="js/aos.js"></script>
-			<script src="js/moment.min.js"></script>
-			<script src="js/daterangepicker.js"></script>
-
-			<script src="js/typed.js"></script>
+			<%
+			ArrayList<PortDTO> port_list = pdao.showPort(user_id);
+			System.out.println(port_list.size());
+			System.out.println("리스트 null확인" + port_list);
+			%>
 
 
-			<script src="./js/custom.js"></script>
-			<!-- main script end -->
-
-			<!-- modal script start -->
-		
 
 
+			<div>
+				<div>
+					<%
+					if (port_list == null || port_list.isEmpty()) {
+					%>
+					<h1>작성된 포트폴리오가 없습니다.</h1>
+					<%}else{%>
+					<p>포폴 제목 :<%=port_list.get(0).getPort_title()%></p>
+					<p>포폴 내용 :<%=port_list.get(0).getPort_content()%></p>
+					<%} %>
+				</div>
+			</div>
+			</header>
+			<!-- header end -->
+
+
+		</div>
+	</div>
+
+	<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
+
+	<!-- partial -->
+	<script src="js/script.js"></script>
+
+	<!-- main script start -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/daterangepicker.js"></script>
+
+	<script src="js/typed.js"></script>
+
+
+	<script src="./js/custom.js"></script>
+	<!-- main script end -->
+
+	<!-- modal script start -->
+	
+<script>
+function goToPortfolioWrite() {
+  // 현재 페이지에서 포폴작성 페이지로 이동합니다.
+  // 이동할 페이지 URL을 설정해줍니다.
+  var portfolioWriteURL = "portfolio_write.jsp";
+
+  // 이동할 페이지로 리다이렉트합니다.
+  // window.location.href를 사용하여 페이지 이동을 수행합니다.
+  window.location.href = portfolioWriteURL;
+}
+</script>
+
+	
+	
 </body>
 </html>
