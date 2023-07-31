@@ -42,7 +42,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
         rel="stylesheet">
 
-	<link rel="stylesheet" href="css/main_nav.css">
+   <link rel="stylesheet" href="css/main_nav.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
@@ -57,13 +57,13 @@
     <!-- 지도 관련 style1 시작 -->
     <style>
     .info-wrap-content{
-    	display: flex;
-    	justify-content: space-between;
-    	max-width: 1140px;
-    	margin: 0 auto;
-    	margin-top: 94px;
-    	margin-bottom: 50px;
-    	
+       display: flex;
+       justify-content: space-between;
+       max-width: 1140px;
+       margin: 0 auto;
+       margin-top: 94px;
+       margin-bottom: 50px;
+       
     }
         h1 {
             text-align: center;
@@ -373,11 +373,11 @@
 
         /*  */
         .title_div {
-			margin-bottom: 30px;
+         margin-bottom: 30px;
         }
 
         .summernote_content {
-        	width: 65%;
+           width: 65%;
             display: flex;
             flex-direction: column;
             text-align: center;
@@ -389,12 +389,12 @@
             justify-content: center;
             padding: 5px;
             width: 100%;
-			flex-wrap: wrap;
+         flex-wrap: wrap;
         }
         /* 네비게이션 시작  */
 .navbar-nav>li a{
-	font-size: 14px;
-	text-decoration: none;
+   font-size: 14px;
+   text-decoration: none;
 }
    @media screen and (min-width: 576px){
       .container_nav{
@@ -426,22 +426,22 @@
 </head>
 
 <body>
-	
-	<%
-	
-	int info_num = Integer.parseInt(request.getParameter("info_num"));
-	System.out.println("인포넘 : " + info_num);
-	InfoDAO idao = new InfoDAO();
-	InfoDTO show_info = idao.showInfoSelect(info_num);
-	int buy = idao.countBuy(info_num);	
-	String gosu_id = show_info.getUser_id();
-	UserDAO udao = new UserDAO();
-	UserDTO gosu_info = udao.userInfo(gosu_id);
-		
-	
-	UserDTO info = (UserDTO)session.getAttribute("info");
-	
-	%>
+   
+   <%
+   
+   int info_num = Integer.parseInt(request.getParameter("info_num"));
+   System.out.println("인포넘 : " + info_num);
+   InfoDAO idao = new InfoDAO();
+   InfoDTO show_info = idao.showInfoSelect(info_num);
+   int buy = idao.countBuy(info_num);   
+   String gosu_id = show_info.getUser_id();
+   UserDAO udao = new UserDAO();
+   UserDTO gosu_info = udao.userInfo(gosu_id);
+      
+   
+   UserDTO info = (UserDTO)session.getAttribute("info");
+   
+   %>
 
 <div class="hero-anime">
    <div class="navigation-wrap bg-light start-header start-style">
@@ -456,7 +456,7 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav ml-auto py-4 py-md-0">
 
-							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
                                  class="nav-link" href="Gosu_Est_Receive.jsp">받은견적</a></li>
                               <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
                                  class="nav-link" href="Gosu_Est_Paid.jsp">채택된견적</a></li>
@@ -506,7 +506,7 @@
       </div>
    </div>
 </div>
-	
+   
 <div class="info-wrap-content">
    
     <div class="scroll-cards">
@@ -514,8 +514,8 @@
         <div class="card">
             <div class="mails">
             <img class="profile_test" src="img/<%=gosu_info.getUser_pic()%>" alt="Profile Picture"> 
-			<div class="mail-names">
-				<p><%=show_info.getUser_id() %></p>
+         <div class="mail-names">
+            <p><%=show_info.getUser_id() %></p>
                 </div>
             </div>
             <div class="mail-info">
@@ -552,7 +552,7 @@
         </div>
         <!-- 
         <div class="card">
-        	
+           
             갤러리 시작
 
             <section class="slider-section">
@@ -626,25 +626,11 @@
 
                     <!-- 지도 관련 body 시작 -->
 
-
-                    <!-- <div id="div_left"></div> -->
-                    <form action="ConsultCon.do" method="post">
                         <div class="editor-contents">
                             <div id="editor-box">
                                 <div id="map"></div>
-
-                                <!-- 사용자가 생성한 마커 정보를 서버로 전송하기 위한 HTML Form -->
-                                <input type="hidden" id="lat-input" name="lat">
-                                <input type="hidden" id="lng-input" name="lng">
-
                             </div>
                         </div>
-                    </form>
-                    <!-- 사용자의 위치를 검색할 수 있는 검색 박스를 추가할 입력 요소 -->
-                    <!-- 지도가 표시될 요소 -->
-                    <input id="search-location" type="text" placeholder="장소를 검색하세요">
-                    <!-- note script start-->
-                    <!-- 지도 관련 body 끝 -->
                 </div>
             </div>
         </div>
@@ -653,7 +639,7 @@
 
 
   <!-- 지도 관련 스크립트 시작 -->
-	 <script>
+    <script>
         // JSP 페이지에서 받아온 위도와 경도 값
         var latValue = <%=show_info.getInfo_lat()%>;
         var lngValue = <%=show_info.getInfo_lng()%>;
@@ -722,9 +708,9 @@
     <!-- 갤러리 스크립트 시작 -->
     
     
-	<!-- 푸터 시작 -->
-	<jsp:include page="Footer.jsp"></jsp:include>
-	<!-- 푸터 끝 -->
+   <!-- 푸터 시작 -->
+   <jsp:include page="Footer.jsp"></jsp:include>
+   <!-- 푸터 끝 -->
 </body>
 
 </html>
