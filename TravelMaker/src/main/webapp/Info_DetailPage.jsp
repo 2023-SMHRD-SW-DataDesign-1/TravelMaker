@@ -26,7 +26,7 @@
     <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
     
     <!-- like css -->
-    <link rel="stylesheet" href="css/좋아요버튼.css">
+    <link rel="stylesheet" href="css/like_button.css">
 
 </head>
 
@@ -39,6 +39,10 @@
 }
 .col-lg-4{
 	margin-right: 8rem;
+}
+.bought-bottn{
+	display: flex;
+	justify-content: flex-right;
 }
 </style>
 
@@ -176,8 +180,8 @@
                                 <span class="like__number">구매횟수 : <%=buy %></span>
                                 <!-- like 끝 -->
                                 <!-- 구매버튼 시작 -->
-                               <div>
-	                               <form action="InfoBuyCon.do?user_id=<%=info.getUser_id()%>&info_fee=<%=info_fee%>&user_cash=<%=info.getUser_cash()%>&info_num=<%=info_num%>" method="post">
+                               <div class="bought-bottn">
+	                               <form class="bought_margin" action="InfoBuyCon.do?user_id=<%=info.getUser_id()%>&info_fee=<%=info_fee%>&user_cash=<%=info.getUser_cash()%>&info_num=<%=info_num%>" method="post">
 	                               	<input type="submit" value="구매하기">
 	                               </form>
 	                               
