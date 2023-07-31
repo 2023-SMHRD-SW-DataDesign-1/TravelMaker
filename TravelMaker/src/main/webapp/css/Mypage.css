@@ -1,6 +1,15 @@
-:root {
-    font-size: 10px;
-}
+/*
+
+All grid code is placed in a 'supports' rule (feature query) at the bottom of the CSS (Line 310). 
+        
+The 'supports' rule will only run if your browser supports CSS grid.
+
+Flexbox and floats are used as a fallback so that browsers which don't support grid will still recieve a similar layout.
+
+*/
+
+/* Base Styles */
+
 
 *,
 *::before,
@@ -8,14 +17,10 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: "Open Sans", Arial, sans-serif;
-    min-height: 100vh;
-    background-color: #fafafa;
-    color: #262626;
-    padding-bottom: 3rem;
+.untree_co-section{
+	width: 1140px;
+	
 }
-
 img {
     display: block;
 }
@@ -52,7 +57,7 @@ img {
 /* Profile Section */
 
 .profile {
-    padding: 5rem 0;
+    padding: 2rem 0;
 }
 
 .profile::after {
@@ -310,10 +315,10 @@ Remove or comment-out the code block below to see how the browser will fall-back
 @supports (display: grid) {
     .profile {
        display: grid;
-   	   grid-template-columns: 1fr 2fr;
-  	   align-items: center;
-   	   /* grid-template-rows: repeat(3, auto); */
-  	   /* grid-column-gap: 3rem; */
+         grid-template-columns: 1fr 2fr;
+        align-items: center;
+         /* grid-template-rows: repeat(3, auto); */
+        /* grid-column-gap: 3rem; */
     }
 
     .profile-image {
@@ -322,7 +327,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 
     .gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
         grid-gap: 2rem;
     }
 

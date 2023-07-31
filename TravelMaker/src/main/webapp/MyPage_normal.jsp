@@ -25,8 +25,7 @@
    href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="css/정보거래_카테고리별.css">
-<!--  href="style.css" => 정보거래_카테고리별.css -->
+<link rel="stylesheet" href="css/Mypage.css">
 
 <meta name="description" content="" />
 <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -178,6 +177,7 @@ strong {
    height: 200px;
    width: 200px;
    display: inline-block;
+   border-radius: 50%;
 }
 
 .profile-user-settings {
@@ -433,14 +433,13 @@ main {
                            <div class="profile-user-settings">
 
                               <h1 class="profile-user-name"><%=info.getUser_name()%></h1>
-                              &nbsp; <span>현재금액 : <%=df.format(info.getUser_cash())%>원</span>
-                              &nbsp;&nbsp;&nbsp;
+                              <span>현재금액 : <%=df.format(info.getUser_cash())%>원</span>
+                              
                               <button id="btn">충전하기</button>
                               <button class="btn profile-settings-btn"
                                  aria-label="profile settings">
                                  <i class="fas fa-cog" aria-hidden="true"></i>
                               </button>
-                              <!-- <button class="btn profile-edit-btn"></button> -->
                               <div id="btnWrap">
 
 
@@ -596,13 +595,11 @@ main {
                   <p>
                      <b>[전체]</b> 총 3건
                   </p>
-                  <p>
                   <div class="btn_group">
                      <button class="test_btn1">전체</button>
                      <button class="test_btn2">판매내역</button>
                      <button class="test_btn3">구매내역</button>
                   </div>
-                  </p>
                   
                   <div class="gallery">
                   
