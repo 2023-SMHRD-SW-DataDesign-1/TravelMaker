@@ -44,6 +44,11 @@
 	display: flex;
 	justify-content: flex-right;
 }
+.mb-0{
+	font-size: 14px;
+	padding: 18px 18px 0 18px;
+	font-weight: bold;
+}
 </style>
 
 <body>
@@ -131,12 +136,7 @@
                         <h2 class="section-title"><%=info_title %></h2>
                         <div class="custom-accordion" id="accordion_1">
                             <div class="accordion-item">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse"
-                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        간단한 설명</button>
-                                </h2>
-
+                                <h2 class="mb-0">간단한 설명</h2>
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                     data-parent="#accordion_1">
                                     <div class="accordion-body">

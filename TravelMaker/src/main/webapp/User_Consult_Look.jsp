@@ -82,11 +82,9 @@
     [class$=api-load-alpha-banner] {
       display: none;
     }
-  </style>
   <!-- 세부컨설팅작성페이지 style1 끝 -->
 
   <!-- 세부컨설팅작성페이지 style2 시작 -->
-  <style>
     .editor-contents {
       height: 300px;
       padding-bottom: 50px;
@@ -200,9 +198,6 @@
       background-color: #5882FA;
     }
 
-  </style>
-  
-  <style>
   /* 모달 스타일 */
   .modal {
     display: none;
@@ -306,9 +301,9 @@
           <!-- 고수 평점 매기기 버튼 -->
           
           <%if (row > 0) { %>
-          <button id="ratedbtn" class="btn btn-primary btn-block btn-large" style="color: #0000FF">고수 평점 매기기</button>
+          <button id="ratedbtn" class="btn btn-rate btn-block btn-large">고수 평점 매기기</button>
           <%}else{ %>          
-		<a href="#" id="rateButton" class="btn btn-primary btn-block btn-large">고수 평점 매기기</a>
+		<a href="#" id="rateButton" class="btn btn-rate btn-block btn-large">고수 평점 매기기</a>
 		<%} %>
 
 		<script>

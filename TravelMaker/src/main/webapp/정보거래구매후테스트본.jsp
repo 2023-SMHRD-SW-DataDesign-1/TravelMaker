@@ -1,3 +1,5 @@
+<%@page import="model.SendDTO"%>
+<%@page import="model.SendDAO"%>
 <%@page import="model.UserDTO"%>
 <%@page import="model.UserDAO"%>
 <%@page import="model.InfoDTO"%>
@@ -9,7 +11,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - CSS Animation of opening modal</title>
+    <title>정보거래</title>
     <link rel="stylesheet" href="css/show_detail_info.css">
     <!-- 지도 관련 link 시작 -->
     <!-- include libraries(jQuery, bootstrap) -->
@@ -40,6 +42,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
         rel="stylesheet">
 
+	<link rel="stylesheet" href="css/main_nav.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
@@ -53,18 +56,19 @@
 
     <!-- 지도 관련 style1 시작 -->
     <style>
+    .info-wrap-content{
+    	display: flex;
+    	justify-content: space-between;
+    	max-width: 1140px;
+    	margin: 0 auto;
+    	margin-top: 94px;
+    	margin-bottom: 50px;
+    	
+    }
         h1 {
             text-align: center;
         }
 
-        /* button {
-         float: right;
-         color: white;
-         background-color: skyblue;
-         border: none;
-         padding: 10px 30px;
-      }
-       */
         .input_3 {
             /* 전송버튼 */
             height: 55px;
@@ -107,10 +111,10 @@
         [class$=api-load-alpha-banner] {
             display: none;
         }
-    </style>
+
     <!-- 지도 관련 style1 끝  -->
     <!-- 지도 관련 style2 시작 -->
-    <style>
+
         /*    */
         .editor-contents {
             height: 800px;
@@ -224,28 +228,14 @@
             background-color: #5882FA;
         }
 
-        /*  */
 
-        /* #div_left {
-         width: 300px;
-         height: 900px;
-         background-color: #e6e6e6;
-         float: left;
-         position: fixed;
-         left: 0x; */
-        /* top: 100px */
-        /* } */
-    </style>
     <!-- 지도관련 style2 끝 -->
-    <style>
+
         #wrap_boxContent {
             width: 1200px;
             background-color: gray;
         }
 
-        /* .content2 {
-            height: 500px;
-        } */
 
 
 
@@ -253,14 +243,9 @@
         /* 견적요청 바 css */
 
         .scroll-cards {
-            width: 300px;
-            height: 800px;
+            width: 30%;
             overflow: auto;
 
-            /* 화면고정 */
-            position: fixed;
-            left: 50px;
-            top: 40px;
             /* padding: 20px 0px 5px 20px; */
         }
 
@@ -336,9 +321,9 @@
             padding: 10px;
             font-size: 15px;
         }
-    </style>
+
     <!-- 갤러리 스타일 시작 -->
-    <style>
+
         .slider-section {
             position: relative;
             overflow: hidden;
@@ -388,13 +373,11 @@
 
         /*  */
         .title_div {
-            display: flex;
-            justify-content: center;
-
-
+			margin-bottom: 30px;
         }
 
         .summernote_content {
+        	width: 65%;
             display: flex;
             flex-direction: column;
             text-align: center;
@@ -402,54 +385,130 @@
         }
 
         .content2 {
-            /* top: 100px;
-            right: 200px;
-            position: relative; */
-
             display: flex;
             justify-content: center;
             padding: 5px;
-            width: 700px;
-
-            background-color: #ebebeb;
+            width: 100%;
+			flex-wrap: wrap;
         }
+        /* 네비게이션 시작  */
+.navbar-nav>li a{
+	font-size: 14px;
+	text-decoration: none;
+}
+   @media screen and (min-width: 576px){
+      .container_nav{
+         max-width: 540px;
+         margin: 0 auto;
+      }
+   }
+   @media screen and (min-width: 768px){
+      .container_nav{
+         max-width: 720px;
+         margin: 0 auto;
+      }
+   }
+   @media screen and (min-width: 992px){
+      .container_nav{
+         max-width: 960px;
+         margin: 0 auto;
+      }
+   }
+   @media screen and (min-width: 1200px){
+      .container_nav{
+         max-width: 1140px;
+         margin: 0 auto;
+      }
+   }
+  /* 네비게이션 끝 */
     </style>
     <!-- 갤러리 스타일 끝 -->
 </head>
 
 <body>
-
+	
 	<%
 	
 	int info_num = Integer.parseInt(request.getParameter("info_num"));
+	System.out.println("인포넘 : " + info_num);
 	InfoDAO idao = new InfoDAO();
 	InfoDTO show_info = idao.showInfoSelect(info_num);
 	int buy = idao.countBuy(info_num);	
 	String gosu_id = show_info.getUser_id();
 	UserDAO udao = new UserDAO();
 	UserDTO gosu_info = udao.userInfo(gosu_id);
+		
 	
-
+	UserDTO info = (UserDTO)session.getAttribute("info");
+	
 	%>
 
-    <div class="summernote_content">
-        <div class="title_div">
-            <h1 style="border-left: 10px solid #286090; padding: 0.5em; border-bottom: 2px solid #286090; ">
-                제목을 작성해주세요
-            </h1>
+<div class="hero-anime">
+   <div class="navigation-wrap bg-light start-header start-style">
+      <div class="container_nav">
+         <div class="row">
+            <div class="col-12">
+               <nav class="main_navbar navbar-expand-md navbar-light">
 
-        </div>
-        <!-- <br> -->
+                  <a class="navbar_logo" href="Main.jsp" target="_blank"> <img src="/TravelMaker/img/Logo.png"
+                     alt="Logo"></a>
 
-        <!-- 사진 및 글 작성 시작 -->
-        <div class="content2">
-            <p> <%=show_info.getInfo_content() %> </p>
-        </div>
-        <!-- 사진 및 글 작성 끝 -->
-    </div>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav ml-auto py-4 py-md-0">
+
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Receive.jsp">받은견적</a></li>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Paid.jsp">채택된견적</a></li>
+                        <%-- <c:choose>
+                           <c:when
+                              test="${info.user_type eq '회원' || info.user_type == null }">
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="User_Est_Send.jsp">견적요청</a></li>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active"><a
+                                 class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                 href="#" role="button" aria-haspopup="true"
+                                 aria-expanded="false">컨설팅</a>
+                                 <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="User_Est_Receive.jsp">받은견적서</a>
+                                    <a class="dropdown-item" href="User_Consult_Receive.jsp">받은컨설팅</a>
+                                 </div></li>                       
+                           </c:when>
+                           <c:when test="${info.user_type eq '고수' }">
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Receive.jsp">받은견적</a></li>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="Gosu_Est_Paid.jsp">채택된견적</a></li>
+                           </c:when>
+                        </c:choose> --%>
 
 
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                           class="nav-link" href="Info_main.jsp">정보거래</a></li>
 
+                        <!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                           class="nav-link" href="Est_ShowConsult.jsp">커뮤니티</a></li> -->
+
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="MyPage_normal.jsp">마이페이지</a></li>
+                        
+                        <%if(info != null){ %>
+                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a
+                                 class="nav-link" href="LogoutCon.do"><%=info.getUser_name() %>
+                                    <%=info.getUser_type() %>님 로그아웃</a></li>
+                        <%}%>
+                     </ul>
+                  </div>
+
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+	
+<div class="info-wrap-content">
+   
     <div class="scroll-cards">
         <!-- 사이드 1번째 박스 시작 -->
         <div class="card">
@@ -482,21 +541,19 @@
             </div>
             <div class="mail-info">
                 <%=buy %>
-
-                <div>
-                </div>
-                <div class="bottom-info">
-                    </label>
-
-                </div>
-
             </div>
 
             <div class="btn_div">
                 <button id="btn_test">다른상품 보러가기 💬</button>
             </div>
 
-            <!-- 갤러리 시작 -->
+
+
+        </div>
+        <!-- 
+        <div class="card">
+        	
+            갤러리 시작
 
             <section class="slider-section">
 
@@ -529,12 +586,30 @@
                 <button class="slider-section__button slider-section__button--right">&#10095;</button>
 
             </section>
-            <!-- 갤러리 끝 -->
-        </div>
+            갤러리 끝
+        </div> -->
         <!-- 사이드 2번째 박스 끝 -->
-
-
+        
+        
     </div>
+    
+    <div class="summernote_content">
+        <div class="title_div">
+            <h1><%=show_info.getInfo_title() %></h1>
+
+        </div>
+        <!-- <br> -->
+
+        <!-- 사진 및 글 작성 시작 -->
+        <div class="content2">
+            <p> <%=show_info.getInfo_content() %> </p>
+        </div>
+        <!-- 사진 및 글 작성 끝 -->
+    </div>
+</div>
+
+
+
 
     <div class="popup-page">
         <div class="page__container">
@@ -645,6 +720,11 @@
         });
     </script>
     <!-- 갤러리 스크립트 시작 -->
+    
+    
+	<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
 </body>
 
 </html>

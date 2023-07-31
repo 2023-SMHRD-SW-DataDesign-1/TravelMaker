@@ -82,8 +82,7 @@
 		<div class="app-content">
 			<div class="projects-section">
 				<div class="projects-section-header">
-					<p>내가받은 요청</p>
-					<p class="time"></p>
+					<h1>내가받은 요청</h1>
 				</div>
 				<div class="projects-section-line">
 					<div class="projects-status">
@@ -111,7 +110,6 @@
 							</div>
 							<div class="box-progress-wrapper">
 								<p class="box-progress-header"><%=consulted_list.get(i).getSend_place()%></p>
-								<p class="box-progress-header">견적No.<%=consulted_list.get(i).getEst_num()%></p>
 								<p class="box-progress-header"><%=consulted_list.get(i).getSend_s_date()%>~<%=consulted_list.get(i).getSend_e_date()%></p>
 								<p>여행 예산 :<%=df.format(consulted_list.get(i).getSend_budget())%>원</p>
 								<div class="box-progress-bar">
@@ -120,9 +118,9 @@
 								</div>
 							</div>
 							<div class="project-footer-box">
-							견적내용<br>
 								<span><%=consulted_list.get(i).getSend_content()%></span>
 								<div class="project-move-box">
+									<span class="numbering">No.<%=consulted_list.get(i).getEst_num()%></span>
 									<a href="User_Consult_Look.jsp?est_num=<%=consulted_list.get(i).getEst_num()%>">컨설팅 보러가기</a>
 								</div>
 							</div>

@@ -93,8 +93,7 @@
 		<div class="app-content">
 			<div class="projects-section">
 				<div class="projects-section-header">
-					<p><%=info.getAct_area()%>여행 견적</p>
-					<p class="time"></p>
+					<h1><%=info.getAct_area()%>여행 견적</h1>
 				</div>
 				<div class="projects-section-line">
 					<div class="projects-status">
@@ -112,7 +111,7 @@
 					<div class="project-box-wrapper">
 						<div class="project-box" style="background-color: #fee4cb;">
 							<div class="project-box-content-header">
-								<span class="box-content-num">견적서 No.<%=est_list.get(i).getEst_num()%></span>
+								<span class="box-content-num">No.<%=est_list.get(i).getEst_num()%></span>
 								<p class="box-content-header"><%=est_list.get(i).getSend_place()%></p>
 								<%UserDTO show_name = udao.showName(est_list.get(i).getEst_num()); %>
 								<p class="box-content-subheader"><%=show_name.getUser_name()%></p>
@@ -133,7 +132,7 @@
 									int row = rdao.checkWrite(new SendDTO(est_list.get(i).getEst_num(), user_id));
 									if (row > 0){
 									%>
-									<a href="">작성완료</a>
+									<a href="#">작성완료</a>
 									<%
 									}else{
 									%>

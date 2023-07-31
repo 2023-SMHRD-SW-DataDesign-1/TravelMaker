@@ -24,7 +24,8 @@
 }
 
 .like__number {
-  font-size: 0.8rem;
+  font-size: 14px;
+  padding: 5px 5px 5px 0;
 }
 
 .container2 {
@@ -33,4 +34,25 @@
 }
 .bought_margin{
 	margin-right: 10px;
+}
+.bought_margin input{
+	padding: 5px 10px;
+	border: none;
+	background-color: #22b1f7;
+	border-radius:15px;
+	color: white;
+}
+.gray-button{
+	border: none;
+	background-color: #f1f1f1;
+	border-radius: 15px;
+	color: gray;
+	padding: 5px 10px;
+}
+.blue-button{
+	border: none;
+	background-color: #75b5d5;
+	border-radius:15px;
+	padding: 5px 10px;
+	color: white;
 }

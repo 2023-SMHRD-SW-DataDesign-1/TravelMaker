@@ -87,11 +87,21 @@ a.text-primary:hover {
 .btn.btn-primary {
   background: #1A374D;
   border-color: #1A374D;
+  font-weight: bold;
 }
-
+.btn.btn-rate{
+	background: #1a73e8;
+	border-color: white;
+	font-weight: bold;
+	color: white;
+}
 .btn.btn-primary:hover {
   border-color: #1f425c;
-  background: #1f425c;
+  background: #4f687b;
+}
+.btn.btn-rate:hover {
+  background: #83afe9;
+	color: white;
 }
 
 .btn.btn-outline-white {
@@ -1485,7 +1495,7 @@ a.text-primary:hover {
 }
 
 .custom-accordion .accordion-item .accordion-body {
-  padding: 20px 20px 20px 20px;
+  padding: 18px;
   color: #888;
 }
 
