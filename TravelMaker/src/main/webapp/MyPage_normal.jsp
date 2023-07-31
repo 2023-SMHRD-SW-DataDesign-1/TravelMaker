@@ -1,3 +1,10 @@
+<%@page import="java.util.regex.Pattern"%>
+<%@page import="java.util.regex.Matcher"%>
+<%@page import="model.InfoDTO"%>
+<%@page import="model.InfoDAO"%>
+<%@page import="model.HisDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="model.HisDAO"%>
 <%@page import="model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -227,6 +234,16 @@ strong {
 main {
 	margin-top: 34px;
 }
+
+#test111 {
+	/* height: 500px; */
+	width: 100%;
+
+}
+#test111 img{
+	height: 200px;
+	width: 100% !important;
+}
 </style>
 </head>
 
@@ -238,6 +255,7 @@ main {
 	/* String user_id = "sori"; */
 	String uploadSuccess = request.getParameter("upload_success");
 	String deleteSuccess = request.getParameter("delete_success");
+	DecimalFormat df = new DecimalFormat("###,###"); 
 	%>
 	<!-- 사진 업로드 성공 시 -->
 	<%
@@ -428,7 +446,7 @@ main {
 									<div class="profile-user-settings">
 
 										<h1 class="profile-user-name"><%=info.getUser_name()%></h1>
-										&nbsp; <span>현재금액 : <%=info.getUser_cash()%></span>
+										&nbsp; <span>현재금액 : <%=df.format(info.getUser_cash())%>원</span>
 										&nbsp;&nbsp;&nbsp;
 										<button id="popupBtn">충전하기</button>
 										<button class="btn profile-settings-btn"
@@ -546,10 +564,14 @@ main {
 				<main>
 				<%
 				HisDAO hdao = new HisDAO();
-				hdao.showHis(user_id);
+				ArrayList<HisDTO> his_list = hdao.showHis(user_id);
+				
+				InfoDAO idao = new InfoDAO();
+				
 				%>
 				
 					<div class="mypage_container2">
+					
 						<strong> 나의 정보거래 내역</strong>
 						<p>
 							<b>[전체]</b> 총 3건
@@ -561,18 +583,48 @@ main {
 							<button class="test_btn3">구매내역</button>
 						</div>
 						</p>
+						
 						<div class="gallery">
+						
+							<%for (int i = 0; i < his_list.size(); i++) {
+								int info_num = his_list.get(i).getInfo_num();
+								String htmlString = idao.show(info_num);
+								// 정규 표현식 패턴
+								String pattern = "<img\\s+[^>]*>";
 
-							<div class="gallery-item" tabindex="0">
+								// 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+								StringBuilder imgTags = new StringBuilder();
 
-								<img
-									src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-									class="gallery-image" alt="">
+								// 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+								Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
 
-								<div class="gallery-item-info">자세히보기</div>
+								// 맨 앞에있는 img태그만
+								if (matcher.find()) {
+									imgTags.append(matcher.group());
+								}			
+								
+								// imgTags가 비어있는 경우, 다음 반복으로 넘어감
+							    if (imgTags.toString().isEmpty()) {
+							        continue;
+							    }
+							
+							
+							%>
+							<div class="item">
+									<div class="media-text">
+										<span class="location">-</span>
+									</div> <!-- <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid"> -->
+			
+									<div id="test111">
+									<%=imgTags%>
+										
+									</div>
+								</a>
 							</div>
+							
+							<%} %>
 
-							<div class="gallery-item" tabindex="0">
+<!-- 							<div class="gallery-item" tabindex="0">
 
 								<img
 									src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
@@ -589,7 +641,7 @@ main {
 
 								<div class="gallery-item-info">자세히보기</div>
 
-							</div>
+							</div> -->
 							<!-- End of gallery -->
 
 							<div class="loader"></div>

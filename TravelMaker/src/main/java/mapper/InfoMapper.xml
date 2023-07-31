@@ -16,6 +16,7 @@
 		select info_content from info_trade where info_num=#{info_num}
 	</select>
 	
+	<!-- info_num으로 정보조회 -->
 	<select id="showInfoSelect" parameterType="int" resultType="InfoDTO">
 		select * from info_trade where info_num=#{info_num}
 	</select>
@@ -51,5 +52,8 @@ where info_num in (
         order by count(info_num) desc) 
     where <![CDATA[rownum <= 5]]>)
 	</select>
+
+
+
 
 </mapper>
