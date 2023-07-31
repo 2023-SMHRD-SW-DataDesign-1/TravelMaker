@@ -35,6 +35,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places&callback=initMap">
     </script>
   <!-- 세부컨설팅작성페이지 link 및 script 끝 -->
+  <link rel="stylesheet" href="css/Star_style.css">
 
   <!-- 세부컨설팅작성페이지 스타일1 시작 -->
   <style>
@@ -290,7 +291,17 @@
         </div>
         <div class="details">
           <h2>고수 ID : <%=gosu_info.getUser_id() %></h2>
-          <p>Prinsengracht 281</p>
+          <p>고수 별점 : <%=radao.showRate(gosu_info.getUser_id())%></p>
+
+			<%
+			Double teststar = radao.showRate(gosu_info.getUser_id());
+			teststar = Math.floor(teststar * 2) / 2.0;
+			%>
+			<div class="review-stars" data-stars="<%=teststar%>"></div>
+          
+          
+          
+          
           <a href="portfolio_list.jsp?user_id=<%=gosu_info.getUser_id()%>" class="btn btn-primary btn-block btn-large">고수 마이페이지</a>
           <!-- 고수 평점 매기기 버튼 -->
           
