@@ -1,3 +1,4 @@
+<%@page import="model.UserDTO"%>
 <%@page import="java.util.regex.Pattern"%>
 <%@page import="java.util.regex.Matcher"%>
 <%@page import="model.InfoDTO"%>
@@ -100,12 +101,15 @@
 	<jsp:include page="Nav.jsp"></jsp:include>
 	<!-- 네비게이션 끝 -->
 
-
+	<%
+	UserDTO info = (UserDTO) session.getAttribute("info");
+	%>
 
 	
+	<%if (info.getUser_type().equals("고수")) {%>
+	<a href="Info_write.jsp"><button class="write_btn">작성하러가기💬</button></a>
 	
-	<a href="Info_write.jsp"><button class="write_btn">작성하러가기
-			💬</button></a>
+	<%}%>
 
 	<!-- 사진 추천 카테고리 start -->
 	<div class="untree_co-section">

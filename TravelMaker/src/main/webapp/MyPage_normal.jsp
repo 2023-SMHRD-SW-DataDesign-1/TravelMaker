@@ -240,9 +240,9 @@ main {
 #test111 {
 	/* height: 500px; */
 	width: 100%;
-
 }
-#test111 img{
+
+#test111 img {
 	height: 200px;
 	width: 100% !important;
 }
@@ -299,6 +299,8 @@ main {
 			<div class="container3">
 				<header>
 					<div class="container">
+
+
 						<!-- 사용자 프로필 사진이 있을 경우에만 사진을 보여줍니다 -->
 						<%
 						if (info.getUser_pic() != null && !info.getUser_pic().isEmpty()) {
@@ -309,8 +311,8 @@ main {
 						<div id="confirmModal" style="display: none;">
 							<div id="confirmModalContent">
 								<span>정말 삭제하시겠습니까?</span>
-								<form action="DeletepicCon.do" id="deleteProfileForm" method="post">
-									<!-- 필요한 경우 추가적인 폼 입력 요소를 추가하세요 -->
+								<form action="DeletepicCon.do" id="deleteProfileForm"
+									method="post">
 									<input type="hidden" name="user_id" value="<%=user_id%>">
 								</form>
 								<div id="confirmBtnWrap">
@@ -331,45 +333,7 @@ main {
 								%>
 
 
-								<!-- 프로필 사진 삭제 스크립트 -->
-								<script>
-									const deleteProfileBtn = document.getElementById('deleteProfileBtn');
-									const confirmModal = document.getElementById('confirmModal');
-									const confirmYesBtn = document.getElementById('confirmYesBtn');
-									const confirmNoBtn = document.getElementById('confirmNoBtn');
 
-									// 삭제 버튼 클릭 시 모달 창 보이기
-									deleteProfileBtn.addEventListener('click',function() {
-														confirmModal.style.display = 'block';
-													});
-
-									function handleProfilePicDeletion(result) {
-										if (result.success) {
-											alert("프로필 사진이 삭제되었습니다.");
-											location.reload(); // 페이지 새로고침
-										} else {
-											alert("프로필 사진 삭제에 실패했습니다.");
-										}
-									}
-
-									// 모달 창에서 "예" 버튼 클릭 시 프로필 사진 삭제 실행
-									confirmYesBtn.addEventListener('click',function() {
-														// 폼 요소를 가져옵니다.
-														const deleteProfileForm = document.getElementById('deleteProfileForm');
-
-														// DeletepicCon.do로 폼을 제출합니다.
-														deleteProfileForm.submit();
-
-														// 모달 창 닫기
-														confirmModal.style.display = 'none';
-													});
-
-									// 모달 창에서 "아니오" 버튼 클릭 시 모달 창 닫기
-									confirmNoBtn.addEventListener('click',
-													function() {
-														confirmModal.style.display = 'none';
-													});
-								</script>
 
 
 								<!-- 사용자 프로필 사진이 없을 경우에는 사진 업로드 기능을 보여줍니다 -->
@@ -381,10 +345,12 @@ main {
 										<div class="upload_test">
 											<form action="UploadpicCon.do" method="post"
 												enctype="multipart/form-data">
-												<input type="file" name="profileImage" id="profileImageInput" accept="image/*"> 
-												<img id="uploadedImage" src="" alt=""> 
-												<input type="hidden" name="user_id" value="<%=user_id%>" class="button_test"> 
-												<input type="submit" value="프로필사진 업로드하기" class="button_test2" id="uploadButton">
+												<input type="file" name="profileImage"
+													id="profileImageInput" accept="image/*"> <img
+													id="uploadedImage" src="" alt=""> <input
+													type="hidden" name="user_id" value="<%=user_id%>"
+													class="button_test"> <input type="submit"
+													value="프로필사진 업로드하기" class="button_test2" id="uploadButton">
 											</form>
 										</div>
 										<%
@@ -433,8 +399,8 @@ main {
 									<div class="profile-user-settings">
 
 										<h1 class="profile-user-name"><%=info.getUser_name()%></h1>
-										&nbsp; <span>현재금액 : <%=df.format(info.getUser_cash())%>원</span>
-										&nbsp;&nbsp;&nbsp;
+										&nbsp; <span>현재금액 : <%=df.format(info.getUser_cash())%>원
+										</span> &nbsp;&nbsp;&nbsp;
 										<button id="popupBtn">충전하기</button>
 										<button class="btn profile-settings-btn"
 											aria-label="profile settings">
@@ -529,42 +495,44 @@ main {
 										</script>
 										<!-- 모달 스크립트 끝 -->
 
-											<c:if test="${info.user_type eq '고수'}">
-										<div class="profile-bio">
-											<p>
-												<span class="profile-real-name">활동 지역 : <%=info.getAct_area() %></span>
-											</p>
-											<p>
-											<%
-											Double teststar = radao.showRate(user_id);
-											teststar = Math.floor(teststar * 2) / 2.0;
-											%>
-											<span class="box-content-id">고수 별점 : <%=radao.showRate(user_id)%></span>
-											<div class="review-stars" data-stars="<%=teststar%>"></div>
-											</p>
-										</div>
-												<button class="portfoilo-move-button" id="portfolio-button">포트폴리오</button>
-											</c:if>
-										
+										<c:if test="${info.user_type eq '고수'}">
+											<div class="profile-bio">
+												<p>
+													<span class="profile-real-name">활동 지역 : <%=info.getAct_area()%></span>
+												</p>
+												<p>
+													<%
+													Double teststar = radao.showRate(user_id);
+													teststar = Math.floor(teststar * 2) / 2.0;
+													%>
+													<span class="box-content-id">고수 별점 : <%=radao.showRate(user_id)%></span>
+												<div class="review-stars" data-stars="<%=teststar%>"></div>
+
+
+											</div>
+											<button class="portfoilo-move-button" id="portfolio-button">포트폴리오</button>
+										</c:if>
+
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
+
 				</header>
 				<!-- header end -->
 
 				<!-- 나의 정보거래 내역 시작 -->
 				<main>
-				<%
-				HisDAO hdao = new HisDAO();
-				ArrayList<HisDTO> his_list = hdao.showHis(user_id);
-				
-				InfoDAO idao = new InfoDAO();
-				
-				%>
-				
+					<%
+					HisDAO hdao = new HisDAO();
+					ArrayList<HisDTO> his_list = hdao.showHis(user_id);
+
+					InfoDAO idao = new InfoDAO();
+					%>
+
 					<div class="mypage_container2">
-					
+
 						<strong> 나의 정보거래 내역</strong>
 						<p>
 							<b>[전체]</b> 총 3건
@@ -575,11 +543,12 @@ main {
 							<button class="test_btn2">판매내역</button>
 							<button class="test_btn3">구매내역</button>
 						</div>
-						</p>
-						
+
+
 						<div class="gallery">
-						
-							<%for (int i = 0; i < his_list.size(); i++) {
+
+							<%
+							for (int i = 0; i < his_list.size(); i++) {
 								int info_num = his_list.get(i).getInfo_num();
 								String htmlString = idao.show(info_num);
 								// 정규 표현식 패턴
@@ -594,48 +563,27 @@ main {
 								// 맨 앞에있는 img태그만
 								if (matcher.find()) {
 									imgTags.append(matcher.group());
-								}			
-								
+								}
+
 								// imgTags가 비어있는 경우, 다음 반복으로 넘어감
-							    if (imgTags.toString().isEmpty()) {
-							        continue;
-							    }
-							
-							
+								if (imgTags.toString().isEmpty()) {
+									continue;
+								}
 							%>
 							<div class="item">
-									<div class="media-text">
-										<span class="location">-</span>
-									</div> <!-- <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid"> -->
-			
-									<div id="test111">
+								<div class="media-text">
+									<span class="location">-</span>
+								</div>
+
+								<div id="test111">
 									<%=imgTags%>
-										
-									</div>
-								</a>
-							</div>
-							
-							<%} %>
 
-<!-- 							<div class="gallery-item" tabindex="0">
-
-								<img
-									src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
-									class="gallery-image" alt="">
-
-								<div class="gallery-item-info">자세히보기</div>
+								</div>
 							</div>
 
-							<div class="gallery-item" tabindex="0">
-
-								<img
-									src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
-									class="gallery-image" alt="">
-
-								<div class="gallery-item-info">자세히보기</div>
-
-							</div> -->
-							<!-- End of gallery -->
+							<%
+							}
+							%>
 
 							<div class="loader"></div>
 						</div>
@@ -644,92 +592,118 @@ main {
 				</main>
 				<!-- 나의 정보거래 내역 끝 -->
 			</div>
+		</div>
+	</div>
 
-			<!-- 푸터 시작 -->
-			<jsp:include page="Footer.jsp"></jsp:include>
-			<!-- 푸터 끝 -->
+	<!-- 푸터 시작 -->
+	<jsp:include page="Footer.jsp"></jsp:include>
+	<!-- 푸터 끝 -->
 
-			<!-- partial -->
-			<script src="js/script.js"></script>
+	<!-- partial -->
+	<script src="js/script.js"></script>
+	<!-- main script start -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/daterangepicker.js"></script>
+	<script src="js/typed.js"></script>
+	<script src="./js/custom.js"></script>
+	<!-- main script end -->
 
-			<!-- main script start -->
-			<script src="js/jquery-3.4.1.min.js"></script>
-			<script src="js/popper.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-			<script src="js/owl.carousel.min.js"></script>
-			<script src="js/jquery.animateNumber.min.js"></script>
-			<script src="js/jquery.waypoints.min.js"></script>
-			<script src="js/jquery.fancybox.min.js"></script>
-			<script src="js/aos.js"></script>
-			<script src="js/moment.min.js"></script>
-			<script src="js/daterangepicker.js"></script>
 
-			<script src="js/typed.js"></script>
+<script>
 
 
-			<script src="./js/custom.js"></script>
-			<!-- main script end -->
+<!-- modal script start -->
+const btn = document.getElementById('popupBtn');
+const modal = document.getElementById('modalWrap');
+const closeBtn = document.getElementById('closeBtn');
 
-			<!-- modal script start -->
-			<script>
-				const btn = document.getElementById('popupBtn');
-				const modal = document.getElementById('modalWrap');
-				const closeBtn = document.getElementById('closeBtn');
+btn.onclick = function() {
+	modal.style.display = 'block';
+}
+closeBtn.onclick = function() {
+	modal.style.display = 'none';
+}
 
-				btn.onclick = function() {
-					modal.style.display = 'block';
-				}
-				closeBtn.onclick = function() {
-					modal.style.display = 'none';
-				}
+window.onclick = function(event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
+}
+<!-- modal script end -->
 
-				window.onclick = function(event) {
-					if (event.target == modal) {
-						modal.style.display = "none";
-					}
-				}
-			</script>
-			<!-- modal script end -->
 
-			<script>
-				$(function() {
 
-					//직접입력 인풋박스 기존에는 숨어있다가
+$(function(){
+	//직접입력 인풋박스 기존에는 숨어있다가
+	$("#selboxDirect").hide();
+	$("#selbox").change(function() {
+	//직접입력을 누를 때 나타남
+	if ($("#selbox").val() == "direct") {
+		$("#selboxDirect").show();
+	} else {
+		$("#selboxDirect").hide();
+	}
+})
+});
 
-					$("#selboxDirect").hide();
+<!-- 버튼 스크립트 -->
+document.addEventListener('DOMContentLoaded', function() {
+	// "구매하기" 버튼을 ID로 찾아서 변수에 할당합니다.
+	const purchaseButton = document.getElementById('portfolio-button');
 
-					$("#selbox").change(function() {
+	// "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
+	purchaseButton.addEventListener('click', function() {
+		// 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
+		window.location.href = 'portfolio_list.jsp?user_id=<%=user_id%>';
+		});
+	});
+	
+	
+<!-- 프로필 사진 삭제 스크립트 -->
+const deleteProfileBtn = document.getElementById('deleteProfileBtn');
+const confirmModal = document.getElementById('confirmModal');
+const confirmYesBtn = document.getElementById('confirmYesBtn');
+const confirmNoBtn = document.getElementById('confirmNoBtn');
 
-						//직접입력을 누를 때 나타남
-
-						if ($("#selbox").val() == "direct") {
-
-							$("#selboxDirect").show();
-
-						} else {
-
-							$("#selboxDirect").hide();
-
-						}
-
-					})
-
+// 삭제 버튼 클릭 시 모달 창 보이기
+deleteProfileBtn.addEventListener('click',function() {
+					confirmModal.style.display = 'block';
 				});
-			</script>
-			<!-- 버튼 스크립트 -->
-			<script>
-				document.addEventListener('DOMContentLoaded', function() {
-					// "구매하기" 버튼을 ID로 찾아서 변수에 할당합니다.
-					const purchaseButton = document
-							.getElementById('portfolio-button');
 
-					// "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
-					purchaseButton.addEventListener('click', function() {
-						// 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
-						window.location.href = 'portfolio_list.jsp?user_id=<%=user_id%>';
-					});
+function handleProfilePicDeletion(result) {
+	if (result.success) {
+		alert("프로필 사진이 삭제되었습니다.");
+		location.reload(); // 페이지 새로고침
+	} else {
+		alert("프로필 사진 삭제에 실패했습니다.");
+	}
+}
+
+// 모달 창에서 "예" 버튼 클릭 시 프로필 사진 삭제 실행
+confirmYesBtn.addEventListener('click',function() {
+	// 폼 요소를 가져옵니다.
+	const deleteProfileForm = document.getElementById('deleteProfileForm');
+	// DeletepicCon.do로 폼을 제출합니다.
+	deleteProfileForm.submit();
+	// 모달 창 닫기
+	confirmModal.style.display = 'none';
 				});
-			</script>
+
+// 모달 창에서 "아니오" 버튼 클릭 시 모달 창 닫기
+confirmNoBtn.addEventListener('click', function() {
+					confirmModal.style.display = 'none';
+});
+</script>
+
+
 </body>
 
 </html>
