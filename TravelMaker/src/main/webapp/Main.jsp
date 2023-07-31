@@ -311,7 +311,7 @@
 		String info_cate = "사진";
 		ArrayList<InfoDTO> pic_list = idao.topFive(info_cate);
 		
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < pic_list.size(); i++) {
 			int info_num = pic_list.get(i).getInfo_num();
 			String htmlString = idao.show(info_num);
 			// 정규 표현식 패턴
@@ -348,7 +348,7 @@
 			info_cate = "맛집";
 			ArrayList<InfoDTO> food_list = idao.topFive(info_cate);
 			
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < pic_list.size(); i++) {
 				int info_num = food_list.get(i).getInfo_num();
 				String htmlString = idao.show(info_num);
 				// 정규 표현식 패턴
@@ -389,7 +389,7 @@
 			info_cate = "숙소";
 			ArrayList<InfoDTO> hotel_list = idao.topFive(info_cate);
 			
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < pic_list.size(); i++) {
 				int info_num = hotel_list.get(i).getInfo_num();
 				String htmlString = idao.show(info_num);
 				// 정규 표현식 패턴
