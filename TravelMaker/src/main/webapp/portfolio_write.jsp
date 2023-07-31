@@ -222,7 +222,7 @@
 			$('#summernote').summernote({
 				placeholder : '내용을 작성하세요',
 				height : 400,
-				width : 1000
+				width : 600
 			});
 		});
 

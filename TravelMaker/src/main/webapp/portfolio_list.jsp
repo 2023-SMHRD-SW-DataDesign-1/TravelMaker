@@ -297,7 +297,6 @@ session.removeAttribute("noti");%>
 									<p>
 										<span class="profile-real-name">활동 지역 : <%=user_info.getAct_area()%></span>
 									</p>
-									<p>한줄 자기소개부분</p>
 								</div>
 								<%
 								if (user_id.equals(info.getUser_id())) {
