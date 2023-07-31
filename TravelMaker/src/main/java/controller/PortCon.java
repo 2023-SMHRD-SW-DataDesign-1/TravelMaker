@@ -37,7 +37,7 @@ public class PortCon implements Command {
 		
 		System.out.println("user_id :" + user_id);
 		System.out.println("port_title :" + port_title);
-		System.out.println("port_content :" + port_content);
+		
 		
 		PortDAO pdao = new PortDAO();
 		String noti = "";
