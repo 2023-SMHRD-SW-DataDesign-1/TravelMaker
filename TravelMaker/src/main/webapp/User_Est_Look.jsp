@@ -1,3 +1,4 @@
+<%@page import="model.RatingDAO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="model.UserDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -41,6 +42,7 @@
 	SendDTO sdto = sdao.EstSend_nomalUser(est_num);
 	ArrayList<ResDTO> rdto_list = rdao.nomal_responseList(est_num);
 	DecimalFormat df = new DecimalFormat("###,###");
+	RatingDAO radao = new RatingDAO();
 	%>
 
 	<div class="app-container">
@@ -112,6 +114,7 @@
 								</div>
 								<div class="project-box-content">
 									<span class="box-content-id"><%=rdto_list.get(i).getUser_id()%></span>
+									<span class="box-content-id">고수 별점 : <%=radao.showRate(rdto_list.get(i).getUser_id())%></span>
 									<p class="box-content-subheader"><%=rdto_list.get(i).getRes_content()%></p>
 								</div>
 									<p class="box-content-fee"><%=df.format(rdto_list.get(i).getRes_fee())%>원</p>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.RatingMapper">
+	
+	<!-- 평점 매기기 기능 -->
+	<insert id="rateGosu" parameterType="RatingDTO">
+		insert into user_ratings values(rating_num_seq.nextval, #{user_id}, #{rating}, #{rate_user_id})
+	</insert>
+	
+	<!-- 평점 조회 기능 -->
+	<select id="showRate" parameterType="String" resultType="Double">
+		select avg(rating) from user_ratings where user_id = #{user_id}
+	</select>
+	
+	<!-- 고수에게 평점 매겼는지 검사 -->
+	<select id="isRate" parameterType="RatingDTO" resultType="int">
+		select count(rating_num) from user_ratings where user_id = #{user_id} and rate_user_id = #{rate_user_id}
+	</select>
+
+	
+</mapper>

@@ -15,6 +15,7 @@
 		<typeAlias type="model.ConsultDTO" alias="ConsultDTO" />
 		<typeAlias type="model.CashDTO" alias="CashDTO" />
 		<typeAlias type="model.PicDTO" alias="PicDTO" />
+		<typeAlias type="model.RatingDTO" alias="RatingDTO" />
 
 	</typeAliases>
 
@@ -39,5 +40,6 @@
 		<mapper resource="mapper/EstConsultMapper.xml" />
 		<mapper resource="mapper/PortfolioMapper.xml" />
 		<mapper resource="mapper/HistoryMapper.xml" />
+		<mapper resource="mapper/RatingMapper.xml" />
 	</mappers>
 </configuration>
