@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-	<link rel="stylesheet" href="css/정보거래_카테고리별.css">
+	<link rel="stylesheet" href="css/Mypage.css">
 
 	<!-- main head start -->
 	<meta charset="utf-8">

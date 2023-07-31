@@ -1,302 +1,735 @@
+<%@page import="model.RatingDAO"%>
+<%@page import="java.util.regex.Pattern"%>
+<%@page import="java.util.regex.Matcher"%>
+<%@page import="model.InfoDTO"%>
+<%@page import="model.InfoDAO"%>
+<%@page import="model.HisDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="model.HisDAO"%>
+<%@page import="model.UserDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <!-- note head tart-->
-   <title>글쓰기</title>
-   <!-- include libraries(jQuery, bootstrap) -->
-   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-   <!-- include summernote css/js -->
-   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-   <script async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places&callback=initMap">
-      </script>
-   <style>
-      /* h1 {
-         text-align: center;
+<meta charset="UTF-8">
+<title>마이페이지</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+   href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+<link rel="stylesheet"
+   href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+<link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="css/정보거래_카테고리별.css">
+<!--  href="style.css" => 정보거래_카테고리별.css -->
+
+<meta name="description" content="" />
+<meta name="keywords" content="bootstrap, bootstrap4" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
+   rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="css/daterangepicker.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/Star_style.css">
+<!-- main head end -->
+
+
+<!-- =style 임시= -->
+<style>
+.untree_co-section>.container {
+   margin-top: 94px;
+}
+
+.mypage_container2 {
+   background: #fff;
+   padding: 24px;
+   border-radius: 13px;
+   position: relative;
+   margin: 0 12px;
+   left: 40px;
+}
+
+.container3 {
+   background: #fff;
+   padding: 24px;
+   border-radius: 13px;
+   position: relative;
+   margin: 0 12px;
+   left: 20px;
+}
+
+/* .ctbtn {
+         border: none;
+         background-color: rgb(206, 230, 240);
+         border-radius: 15px;
       } */
+strong {
+   font-size: large;
+}
 
+/* btn 테스트 */
+.test_btn1 {
+   border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
+   margin-right: -2px;
+}
 
-      .price-tag {
-         background-color: #4285F4;
-         border-radius: 8px;
-         color: #FFFFFF;
-         font-size: 14px;
-         padding: 10px 15px;
-         position: relative;
-      }
+.test_btn2 {
+   margin-left: -4px;
+}
 
-      .price-tag::after {
-         content: "";
-         position: absolute;
-         left: 50%;
-         top: 100%;
-         transform: translate(-50%, 0);
-         width: 0;
-         height: 0;
-         border-left: 8px solid transparent;
-         border-right: 8px solid transparent;
-         border-top: 8px solid #4285F4;
-      }
+.test_btn3 {
+   border-top-right-radius: 5px;
+   border-bottom-right-radius: 5px;
+   margin-left: -6px;
+}
 
-      [class$=api-load-alpha-banner] {
-         display: none;
-      }
-   </style>
-   <style>
-      /*    */
-      .editor-contents {
-         height: 700px;
-         padding-bottom: 50px;
-         /* margin-top: 50px; */
-         width: 100%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         flex-direction: row;
-         flex-wrap: wrap;
-      }
+.btn_group button {
+   /* #5882FA; */
+   border: 1px solid #5882FA;
+   background-color: rgba(0, 0, 0, 0);
+   color: #5882FA;
+   padding: 4px;
+}
 
-      #tip-title-box {
-         width: 100%;
-         display: flex;
-         justify-content: center;
-      }
+.btn_group button:hover {
+   color: white;
+   background-color: #5882FA;
+}
 
-      #tip-title {
-         width: 700px;
-         height: 40px;
-         border: 1px #D8D8D8 solid;
-         border-radius: 5px;
-         margin: 0;
-         padding: 0 10px;
-         margin-bottom: 10px;
-         font-family: 'Apple SD Gothic Neo';
-         font-size: 14px;
-      }
+/* 모달 css start */
+#popupBtn {
+   font-weight: bold;
+   border: none;
+}
 
-      #editor-box {
-         width: 800px;
-         height: 100%;
-         display: inline-block
-      }
+#modalWrap {
+   position: fixed;
+   z-index: 1;
+   padding-top: 100px;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   background-color: rgba(0, 0, 0, 0.4);
+   display: none;
+}
 
-      #map {
-         /* top: 100px; */
-         height: 300px;
-         width: 800px;
-         /* 지도랑 나란히 정렬 */
-         display: inline-block
-      }
+#modalBody {
+   width: 400px;
+   height: 400px;
+   padding: 30px 30px;
+   margin: 0 auto;
+   /* border: 2px solid #777; */
+   background-color: #fff;
+   /* 테두리 */
+   border: 5px solid;
+   border-radius: 20px;
+   border-image: linear-gradient(to right, #fbfcb9be, #ffcdf3aa, #65d3ffaa);
+   border-image-slice: 1;
+}
 
-      #search-location {
-         width: 170px;
-         height: 40px;
-         font-size: 13px;
-         border: 1px solid #535353;
- 
+#closeBtn {
+   float: right;
+   font-weight: bold;
+   color: #777;
+   font-size: 25px;
+   cursor: pointer;
+}
 
-         /* border: 0; */
-         border-radius: 15px;
-         outline: none;
-         padding-left: 10px;
-         background-color: rgb(253, 253, 253);
-      }
+.div_modal {
+   width: 200px;
+   height: 100px;
+   font-size: 20px;
+   position: relative;
+   height: auto;
+   margin: 20px;
+}
 
-      #btn_group {
-         /* text-align: center;
-         display: inline-block; */
-         display: flex;
-         justify-content: center;
-      }
+.modal_btn {
+   height: 50px;
+   width: 100px;
+   position: absolute;
+   bottom: 0px;
+   top: 269px;
+   left: 230px;
+}
 
-      .input_2 {
-         /* 받을금액 */
-         height: 55px;
-         border-top: none;
-         border-left: none;
-         border-right: none;
-         border-bottom: 3px solid black;
-      }
+/* 이미지 크기 지정 */
+.profile-image {
+   height: 200px;
+   width: 200px;
+   display: inline-block;
+}
 
-      .input_3 {
-         /* 전송버튼 */
-         height: 55px;
-         border-top: none;
-         border-left: none;
-         border-right: none;
-         border-bottom: 3px solid black;
+.profile-user-settings {
+   display: inline-block;
+}
 
-         padding: 10px 30px;
-      }
+.profile {
+   justify-items: center;
+}
 
-      .div_2 {
-         /* 오른쪽하단 고정 */
-         position: absolute;
+#uploadedImage {
+   height: 190px;
+   width: 200px;
+   margin: 15px auto;
+   background-color: #e2e2e2;
+}
 
-         right: 550px;
-      }
+.profile_test {
+   /* 업로드된 사진 크기지정*/
+   height: 200px;
+   width: 200px;
+   display: inline-block;
+}
 
-      .select_1 {
-         /* 카테고리 */
-         width: 200px;
-         padding: .8em .5em;
-         border: 1px solid #999;
-         font-family: inherit;
-         background: url('arrow.jpg') no-repeat 95% 50%;
-         border-radius: 0px;
-         -webkit-appearance: none;
-         -moz-appearance: none;
-         appearance: none;
-      }
+.upload_test {
+   
+}
 
-      .input_1 {
-         /* 제목 */
-         width: 570px;
-         height: 40px;
-         font-size: 15px;
+.button_test {
+   border: none;
+   background-color: rgba(0, 0, 0, 0);
+   color: #1a374d;
+   padding: 4px;
+}
 
-         border: 0;
-         border-radius: 15px;
-         outline: none;
-         padding-left: 10px;
-         background-color: rgb(233, 233, 233);
-      }
+.button_test2 {
+   width: 200px;
+   color: white;
+   background-color: #8d8d8d;
+   border: none;
+   font-size: 14px;
+}
 
-      .div_3 {
-         margin: 15px 25px 15px 0px;
-      }
+.cash_input {
+   border: none;
+   border-radius: 15px;
+   background: #4e73dde8;
+   color: white;
+   padding: 13px;
+   font-weight: bold;
+   /* box-shadow: 0px 5px 15px gray; */
+   /* cursor: pointer; */
+   font-size: 15px;
+}
 
-      .input_4 {
-         /* 간단한 설명 */
-         width: 800px;
-         height: 40px;
-         font-size: 15px;
-         border: 0;
-         /* border-radius: 15px; */
-         outline: none;
-         /* padding-left: 10px; */
-         background-color: rgb(230, 230, 230);
-      }
-   </style>
+main {
+   margin-top: 34px;
+}
+
+#test111 {
+   /* height: 500px; */
+   width: 100%;
+
+}
+#test111 img{
+   height: 200px;
+   width: 100% !important;
+}
+</style>
 </head>
 
 <body>
-   <form action="InfowriterCon.do">
+   <%
+   UserDTO info = (UserDTO) session.getAttribute("info");
+   String user_id = info.getUser_id();
+   String act_area = info.getAct_area();
+   String uploadSuccess = request.getParameter("upload_success");
+   String deleteSuccess = request.getParameter("delete_success");
+   DecimalFormat df = new DecimalFormat("###,###");
+   RatingDAO radao = new RatingDAO();
+   %>
+   <!-- 사진 업로드 성공 시 -->
+   <%
+   if (uploadSuccess != null && uploadSuccess.equals("true")) {
+   %>
+   <script>
+      alert("업로드 완료");
+   </script>
+   <%
+   }
+   %>
 
-      <div class="editor-contents">
-         <div id="editor-box">      
-            
-            
-               <select class="select_1" name="info_cate">
-                  <option disabled selected>카테고리</option>
-                  <option value="명소">명소</option>
-                  <option value="맛집">맛집</option>
-                  <option value="숙소">숙소</option>
-               </select>
-               &nbsp; &nbsp; &nbsp;
-               <input class="input_1" type="text" name="info_title" placeholder="제목을 입력해 주세요">
-            
-            <div class="div_3">
-               <input class="input_4" type="text" name="" placeholder="간단한 설명을 입력해 주세요">
+   <%
+   if (deleteSuccess != null && deleteSuccess.equals("true")) {
+   %>
+   <script>
+      alert("삭제 완료");
+   </script>
+   <%
+   }
+   %>
+
+   <!-- 네비게이션 시작 -->
+   <jsp:include page="Nav.jsp"></jsp:include>
+   <!-- 네비게이션 끝 -->
+
+
+   <!-- ct name start -->
+   <div class="untree_co-section">
+      <div class="container">
+         <div class="row text-center justify-content-center mb-5">
+            <div class="col-lg-7">
+               <h1 class="section-title text-center">마이페이지</h1>
             </div>
-
-            <div id="map"></div>
-            <textarea name="cons_content" id="summernote"></textarea>
-            <div class="div_2">
-               받을금액 : <input class="input_2" type="text" name="info_fee" placeholder="금액을 입력해 주세요">
-               &nbsp; &nbsp; &nbsp;
-               <input class="input_3" type="submit" value="작성완료">
-            </div>
-
          </div>
-      </div>
-   </form>
-   <!-- 사용자의 위치를 검색할 수 있는 검색 박스를 추가할 입력 요소 -->
-   <!-- 지도가 표시될 요소 -->
-   <input id="search-location" type="text" placeholder=" 장소를 검색해 주세요">
-   <!-- note script start-->
-	<script>
-		// 메인화면 페이지 로드 함수
-		$(document).ready(function() {
-			$('#summernote').summernote({
-				placeholder : '내용을 작성하세요',
-				height : 400,
-				maxHeight : 400
-			});
-		});
+         <!-- ct name end -->
 
-		// 지도스크립트 시작
-		let marker; // 전역 변수로 마커 변수를 선언합니다.
+         <!-- header start -->
+         <div class="container3">
+            <header>
+               <div class="container">
+                  <!-- 사용자 프로필 사진이 있을 경우에만 사진을 보여줍니다 -->
+                  <%
+                  if (info.getUser_pic() != null && !info.getUser_pic().isEmpty()) {
+                  %>
+                  <button id="deleteProfileBtn" class="button_test">프로필 사진
+                     삭제</button>
+                  <!-- 삭제 여부 확인-->
+                  <div id="confirmModal" style="display: none;">
+                     <div id="confirmModalContent">
+                        <span>정말 삭제하시겠습니까?</span>
+                        <form action="DeletepicCon.do" id="deleteProfileForm" method="post">
+                           <!-- 필요한 경우 추가적인 폼 입력 요소를 추가하세요 -->
+                           <input type="hidden" name="user_id" value="<%=user_id%>">
+                        </form>
+                        <div id="confirmBtnWrap">
+                           <button id="confirmYesBtn" class="button_test">예 /</button>
+                           <button id="confirmNoBtn" class="button_test">아니오</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="profile">
 
-		// 구글 지도 API 스크립트 로딩 후 실행될 콜백 함수입니다.
-		function initMap() {
-			// 사용자의 위치를 검색할 수 있는 검색 박스를 추가합니다.
-			const input = document.getElementById('search-location');
-			const searchBox = new google.maps.places.SearchBox(input);
+                     <!-- 프로필 사진 부분 -->
+                     <div class="profile-image">
 
-			// 지도 생성 및 설정
-			const map = new google.maps.Map(document.getElementById('map'), {
-				center : {
-					lat : 37.5,
-					lng : 127
-				}, // 지도 초기 중심 위치
-				zoom : 8
-			// 초기 줌 레벨
-			});
+                        <img class="profile_test" src="img/<%=info.getUser_pic()%>"
+                           alt="Profile Picture">
+                        <%
+                        }
+                        %>
 
-			// 지도에 검색 박스 추가
-			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-			// 검색 결과가 변경되었을 때, 해당 위치로 지도의 중심을 이동하고 마커를 생성합니다.
-			searchBox.addListener('places_changed', function() {
-				const places = searchBox.getPlaces();
+                        <!-- 프로필 사진 삭제 스크립트 -->
+                        <script>
+                           const deleteProfileBtn = document.getElementById('deleteProfileBtn');
+                           const confirmModal = document.getElementById('confirmModal');
+                           const confirmYesBtn = document.getElementById('confirmYesBtn');
+                           const confirmNoBtn = document.getElementById('confirmNoBtn');
 
-				if (places.length === 0) {
-					return;
-				}
+                           // 삭제 버튼 클릭 시 모달 창 보이기
+                           deleteProfileBtn.addEventListener('click',function() {
+                                          confirmModal.style.display = 'block';
+                                       });
 
-				// 검색 결과의 첫 번째 위치를 선택합니다.
-				const place = places[0];
+                           function handleProfilePicDeletion(result) {
+                              if (result.success) {
+                                 alert("프로필 사진이 삭제되었습니다.");
+                                 location.reload(); // 페이지 새로고침
+                              } else {
+                                 alert("프로필 사진 삭제에 실패했습니다.");
+                              }
+                           }
 
-				// 선택한 위치로 지도의 중심 이동
-				map.setCenter(place.geometry.location);
-				map.setZoom(12); // 지도 줌 레벨 설정
+                           // 모달 창에서 "예" 버튼 클릭 시 프로필 사진 삭제 실행
+                           confirmYesBtn.addEventListener('click',function() {
+                                          // 폼 요소를 가져옵니다.
+                                          const deleteProfileForm = document.getElementById('deleteProfileForm');
 
-				// 기존 마커가 있을 경우 제거합니다.
-				if (marker) {
-					marker.setMap(null);
-				}
+                                          // DeletepicCon.do로 폼을 제출합니다.
+                                          deleteProfileForm.submit();
 
-				// 선택한 위치에 마커 생성
-				marker = new google.maps.Marker({
-					map : map,
-					position : place.geometry.location,
-					title : place.name,
-					draggable : true
-				// 마커를 드래그할 수 있도록 설정합니다.
-				});
+                                          // 모달 창 닫기
+                                          confirmModal.style.display = 'none';
+                                       });
 
-				// 마커의 드래그 이벤트 리스너를 추가하여 마커 위치가 변경될 때 Form에 마커 정보를 업데이트합니다.
-				marker.addListener('dragend', function() {
-					const latInput = document.getElementById('lat-input');
-					const lngInput = document.getElementById('lng-input');
-					latInput.value = marker.getPosition().lat();
-					lngInput.value = marker.getPosition().lng();
-				});
-				   // 위치 검색 후 마커를 생성했으므로, lat과 lng 값을 업데이트합니다.
-	            const latInput = document.getElementById('lat-input');
-	            const lngInput = document.getElementById('lng-input');
-	            latInput.value = place.geometry.location.lat();
-	            lngInput.value = place.geometry.location.lng();
-			});
-		}
-	</script>
+                           // 모달 창에서 "아니오" 버튼 클릭 시 모달 창 닫기
+                           confirmNoBtn.addEventListener('click',
+                                       function() {
+                                          confirmModal.style.display = 'none';
+                                       });
+                        </script>
 
+
+                        <!-- 사용자 프로필 사진이 없을 경우에는 사진 업로드 기능을 보여줍니다 -->
+                        <%
+                        if (info.getUser_pic() == null || info.getUser_pic().isEmpty()) {
+                        %>
+                        <div class="profile">
+                           <div class="profile-image">
+                              <div class="upload_test">
+                                 <form action="UploadpicCon.do" method="post"
+                                    enctype="multipart/form-data">
+                                    <input type="file" name="profileImage" id="profileImageInput" accept="image/*"> 
+                                    <img id="uploadedImage" src="" alt=""> 
+                                    <input type="hidden" name="user_id" value="<%=user_id%>" class="button_test"> 
+                                    <input type="submit" value="프로필사진 업로드하기" class="button_test2" id="uploadButton">
+                                 </form>
+                              </div>
+                              <%
+                              }
+                              %>
+                           </div>
+
+                           <!-- 프사 업로드 스크립트 -->
+
+                           <script>
+                              const profileImageInput = document.getElementById("profileImageInput");
+                              const uploadedImage = document.getElementById("uploadedImage");
+                               const uploadButton = document.getElementById("uploadButton");
+                              
+                               // 업로드 버튼을 비활성화하는 함수
+                               function disableUploadButton() {
+                                   uploadButton.disabled = true;
+                                   uploadButton.style.backgroundColor = "gray"; // 비활성화 시 배경색을 회색으로 설정
+                               }
+
+                               // 업로드 버튼을 활성화하는 함수
+                               function enableUploadButton() {
+                                   uploadButton.disabled = false;
+                                   uploadButton.style.backgroundColor = "#5882FA"; // 활성화 시 배경색을 파란색으로 설정
+                               }
+
+                              profileImageInput.addEventListener("change",function() {
+                                 const file = profileImageInput.files[0];
+                                 const reader = new FileReader();
+                                 // 사용자가 파일을 선택한 후에 "업로드하기" 버튼을 활성화합니다
+                                    enableUploadButton();
+                                 reader.addEventListener("load",function() {
+                                    uploadedImage.setAttribute("src",reader.result);
+                                    uploadedImage.style.display = "block";
+                                    profileImageInput.style.display = "none";
+                                    });
+                                 if (file) {
+                                    reader.readAsDataURL(file);
+                                    }
+                                 });
+                              
+                              disableUploadButton()
+
+                           </script>
+
+                           <div class="profile-user-settings">
+
+                              <h1 class="profile-user-name"><%=info.getUser_name()%></h1>
+                              &nbsp; <span>현재금액 : <%=df.format(info.getUser_cash())%>원</span>
+                              &nbsp;&nbsp;&nbsp;
+                              <button id="popupBtn">충전하기</button>
+                              <button class="btn profile-settings-btn"
+                                 aria-label="profile settings">
+                                 <i class="fas fa-cog" aria-hidden="true"></i>
+                              </button>
+                              <!-- <button class="btn profile-edit-btn"></button> -->
+                              <div id="btnWrap">
+
+
+                                 <form action="Paytest.jsp">
+
+                                    <!-- 모달창 -->
+                                    <div id="modalWrap">
+                                       <div id="modalBody">
+                                          <span id="closeBtn">&times;</span>
+                                          <!-- 모달창안 -->
+
+                                          <div class="div_modal">
+                                             <h1>Add cash💵</h1>
+                                             <br>
+                                             <p>
+                                                <input type="radio" name="charge" value="5000"
+                                                   onclick="hideCustomInput()"> 5000원
+                                             </p>
+                                             <p>
+                                                <input type="radio" name="charge" value="10000"
+                                                   onclick="hideCustomInput()"> 10000원
+                                             </p>
+                                             <p>
+                                                <input type="radio" name="charge" value="30000"
+                                                   onclick="hideCustomInput()"> 30000원
+                                             </p>
+                                             <p>
+                                                <input type="radio" name="charge" value="50000"
+                                                   onclick="hideCustomInput()"> 50000원
+                                             </p>
+                                             <input type="radio" name="charge" id="customInputRadio"
+                                                onclick="showCustomInput()"> 직접입력
+                                             <!-- 숨겨진 직접입력 값 입력 공간 -->
+                                             <input type="number" id="customInput"
+                                                style="display: none;">
+                                             <!-- 값을 보내는 버튼 -->
+                                             <div class="modal_btn">
+                                                <input type="button" value="선택완료"
+                                                   onclick="sendChargeValue()" class="cash_input">
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </form>
+                              </div>
+                              <!-- 모달 끝 -->
+
+
+                              <!-- 모달 스크립트 시작 -->
+                              <script>
+                                 // "직접입력" 라디오 버튼과 숨겨진 입력 필드에 대한 참조를 가져옵니다.
+                                 const customInputRadio = document.getElementById("customInputRadio");
+                                 const customInput = document.getElementById("customInput");
+
+                                 function showCustomInput() {
+                                    customInput.style.display = "block";
+                                 }
+
+                                 function hideCustomInput() {
+                                    customInput.style.display = "none";
+                                 }
+
+                                 function sendChargeValue() {
+                                    var chargeValue;
+
+                                    // 직접입력 라디오 버튼이 선택되었는지 확인
+                                    if (customInputRadio.checked) {
+                                       // 직접입력 값 입력 공간에서 값을 가져오기
+                                       chargeValue = customInput.value;
+                                    } else {
+                                       // 선택된 라디오 버튼의 값을 가져오기
+                                       var selectedRadio = document
+                                             .querySelector('input[name="charge"]:checked');
+                                       chargeValue = selectedRadio.value;
+                                    }
+
+                                    // 1000으로 나눈 나머지가 0인지 확인
+                                    if (chargeValue % 1000 !== 0) {
+                                       alert("1000단위로 입력해주세요.");
+                                    } else {
+                                       // Paytest 페이지로 값을 전달하기
+                                       window.location.href = "Paytest.jsp?charge="
+                                             + chargeValue;
+                                    }
+                                 }
+                              </script>
+                              <!-- 모달 스크립트 끝 -->
+
+                                 <c:if test="${info.user_type eq '고수'}">
+                              <div class="profile-bio">
+                                 <p>
+                                    <span class="profile-real-name">활동 지역 : <%=info.getAct_area() %></span>
+                                 </p>
+                                 <p>
+                                 <%
+                                 Double teststar = radao.showRate(user_id);
+                                 teststar = Math.floor(teststar * 2) / 2.0;
+                                 %>
+                                 <span class="box-content-id">고수 별점 : <%=radao.showRate(user_id)%></span>
+                                 <div class="review-stars" data-stars="<%=teststar%>"></div>
+                                 </p>
+                              </div>
+                                    <button class="portfoilo-move-button" id="portfolio-button">포트폴리오</button>
+                                 </c:if>
+                              
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+            </header>
+            <!-- header end -->
+
+            <!-- 나의 정보거래 내역 시작 -->
+            <main>
+            <%
+            HisDAO hdao = new HisDAO();
+            ArrayList<HisDTO> his_list = hdao.showHis(user_id);
+            
+            InfoDAO idao = new InfoDAO();
+            
+            %>
+            
+               <div class="mypage_container2">
+               
+                  <strong> 나의 정보거래 내역</strong>
+                  <p>
+                     <b>[전체]</b> 총 3건
+                  </p>
+                  <p>
+                  <div class="btn_group">
+                     <button class="test_btn1">전체</button>
+                     <button class="test_btn2">판매내역</button>
+                     <button class="test_btn3">구매내역</button>
+                  </div>
+                  </p>
+                  
+                  <div class="gallery">
+                  
+                     <%for (int i = 0; i < his_list.size(); i++) {
+                        int info_num = his_list.get(i).getInfo_num();
+                        String htmlString = idao.show(info_num);
+                        // 정규 표현식 패턴
+                        String pattern = "<img\\s+[^>]*>";
+
+                        // 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+                        StringBuilder imgTags = new StringBuilder();
+
+                        // 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+                        Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
+
+                        // 맨 앞에있는 img태그만
+                        if (matcher.find()) {
+                           imgTags.append(matcher.group());
+                        }         
+                        
+                        // imgTags가 비어있는 경우, 다음 반복으로 넘어감
+                         if (imgTags.toString().isEmpty()) {
+                             continue;
+                         }
+                     
+                     
+                     %>
+                     <div class="item">
+                           <div class="media-text">
+                              <span class="location">-</span>
+                           </div> <!-- <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid"> -->
+         
+                           <div id="test111">
+                           <%=imgTags%>
+                              
+                           </div>
+                        </a>
+                     </div>
+                     
+                     <%} %>
+
+<!--                      <div class="gallery-item" tabindex="0">
+
+                        <img
+                           src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
+                           class="gallery-image" alt="">
+
+                        <div class="gallery-item-info">자세히보기</div>
+                     </div>
+
+                     <div class="gallery-item" tabindex="0">
+
+                        <img
+                           src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
+                           class="gallery-image" alt="">
+
+                        <div class="gallery-item-info">자세히보기</div>
+
+                     </div> -->
+                     <!-- End of gallery -->
+
+                     <div class="loader"></div>
+                  </div>
+               </div>
+               <!-- End of container -->
+            </main>
+            <!-- 나의 정보거래 내역 끝 -->
+         </div>
+
+         <!-- 푸터 시작 -->
+         <jsp:include page="Footer.jsp"></jsp:include>
+         <!-- 푸터 끝 -->
+
+         <!-- partial -->
+         <script src="js/script.js"></script>
+
+         <!-- main script start -->
+         <script src="js/jquery-3.4.1.min.js"></script>
+         <script src="js/popper.min.js"></script>
+         <script src="js/bootstrap.min.js"></script>
+         <script src="js/owl.carousel.min.js"></script>
+         <script src="js/jquery.animateNumber.min.js"></script>
+         <script src="js/jquery.waypoints.min.js"></script>
+         <script src="js/jquery.fancybox.min.js"></script>
+         <script src="js/aos.js"></script>
+         <script src="js/moment.min.js"></script>
+         <script src="js/daterangepicker.js"></script>
+
+         <script src="js/typed.js"></script>
+
+
+         <script src="./js/custom.js"></script>
+         <!-- main script end -->
+
+         <!-- modal script start -->
+         <script>
+            const btn = document.getElementById('popupBtn');
+            const modal = document.getElementById('modalWrap');
+            const closeBtn = document.getElementById('closeBtn');
+
+            btn.onclick = function() {
+               modal.style.display = 'block';
+            }
+            closeBtn.onclick = function() {
+               modal.style.display = 'none';
+            }
+
+            window.onclick = function(event) {
+               if (event.target == modal) {
+                  modal.style.display = "none";
+               }
+            }
+         </script>
+         <!-- modal script end -->
+
+         <script>
+            $(function() {
+
+               //직접입력 인풋박스 기존에는 숨어있다가
+
+               $("#selboxDirect").hide();
+
+               $("#selbox").change(function() {
+
+                  //직접입력을 누를 때 나타남
+
+                  if ($("#selbox").val() == "direct") {
+
+                     $("#selboxDirect").show();
+
+                  } else {
+
+                     $("#selboxDirect").hide();
+
+                  }
+
+               })
+
+            });
+         </script>
+         <!-- 버튼 스크립트 -->
+         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+               // "구매하기" 버튼을 ID로 찾아서 변수에 할당합니다.
+               const purchaseButton = document
+                     .getElementById('portfolio-button');
+
+               // "구매하기" 버튼에 클릭 이벤트 리스너를 추가합니다.
+               purchaseButton.addEventListener('click', function() {
+                  // 버튼 클릭 시 "InfoBuyCon.do"로 리다이렉트합니다.
+                  window.location.href = 'portfolio_list.jsp?user_id=<%=user_id%>';
+               });
+            });
+         </script>
 </body>
 
 </html>
