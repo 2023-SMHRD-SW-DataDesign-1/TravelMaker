@@ -34,7 +34,7 @@
 	</select>
 	
 	<insert id="insertHis" parameterType="InfoDTO">
-		insert into trade_his(his_num, user_id, info_num, info_cate) values(his_num_seq.nextval, #{user_id}, #{info_num}, #{info_cate})
+		insert into trade_his(his_num, user_id, info_num, trade_cate) values(his_num_seq.nextval, #{user_id}, #{info_num}, #{info_cate})
 	</insert>
 	
 	<!-- 판매량 상위 5개만 보여주도록 -->
