@@ -1,3 +1,4 @@
+<%@page import="model.RatingDAO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="model.UserDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -24,6 +25,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <!-- 팝업창 링크 끝 -->
+<link rel="stylesheet" href="css/Star_style.css">
 </head>
 
 <body>
@@ -41,6 +43,7 @@
 	SendDTO sdto = sdao.EstSend_nomalUser(est_num);
 	ArrayList<ResDTO> rdto_list = rdao.nomal_responseList(est_num);
 	DecimalFormat df = new DecimalFormat("###,###");
+	RatingDAO radao = new RatingDAO();
 	%>
 
 	<div class="app-container">
@@ -112,6 +115,13 @@
 								</div>
 								<div class="project-box-content">
 									<span class="box-content-id"><%=rdto_list.get(i).getUser_id()%></span>
+									<%
+									Double teststar = radao.showRate(rdto_list.get(i).getUser_id());
+									teststar = Math.floor(teststar * 2) / 2.0;
+									%>
+									<div class="review-stars" data-stars="<%=teststar%>"></div>
+									<span class="box-content-id">고수 별점 : <%=radao.showRate(rdto_list.get(i).getUser_id())%></span>
+									
 									<p class="box-content-subheader"><%=rdto_list.get(i).getRes_content()%></p>
 								</div>
 									<p class="box-content-fee"><%=df.format(rdto_list.get(i).getRes_fee())%>원</p>

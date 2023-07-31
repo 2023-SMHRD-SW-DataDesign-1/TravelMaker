@@ -156,11 +156,8 @@
 						<!-- 캘린더 시작 -->
 						<section class="calendar">
 							<div class="calendar__inputs">
-								<input class="calendar__input" name="send_s_date"
-									readonly="readonly" type="text" id="calendar-start"
-									placeholder="Start Date"> <input
-									class="calendar__input" name="send_e_date" readonly="readonly"
-									type="text" id="calendar-end" placeholder="End Date">
+								<input class="calendar__input" name="send_s_date" readonly="readonly" type="text" id="calendar-start" placeholder="Start Date"> 
+								<input class="calendar__input" name="send_e_date" readonly="readonly" type="text" id="calendar-end" placeholder="End Date">
 							</div>
 							<!-- 리셋버튼-->
 							<div class="calendar__pikaday" id="calendar-container"></div>
@@ -253,6 +250,7 @@
 	<script
 		src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
 	<script src="js/price.js"></script>
+	
 
 
 </body>

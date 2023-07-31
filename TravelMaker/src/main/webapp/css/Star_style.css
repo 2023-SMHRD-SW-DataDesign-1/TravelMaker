@@ -1,0 +1,57 @@
+.review-stars {
+  display: block;
+  position: relative;
+  width: 180px;
+  height: 42px;
+  user-select: none;
+  background: var(--stars);
+  --stars: url("https://i.ibb.co/VphZ2h8/Star.png")
+    right/auto 100% no-repeat;
+}
+.review-stars:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--stars);
+  filter: grayscale(1);
+}
+.review-stars[data-stars="4.5"]:after {
+  width: 10%;
+}
+.review-stars[data-stars="4.0"]:after {
+  width: 20%;
+}
+.review-stars[data-stars="3.5"]:after {
+  width: 30%;
+}
+.review-stars[data-stars="3.0"]:after {
+  width: 40%;
+}
+.review-stars[data-stars="2.5"]:after {
+  width: 50%;
+}
+.review-stars[data-stars="2.0"]:after {
+  width: 60%;
+}
+.review-stars[data-stars="1.5"]:after {
+  width: 70%;
+}
+.review-stars[data-stars="1.0"]:after {
+  width: 80%;
+}
+.review-stars[data-stars="0.5"]:after {
+  width: 90%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  margin: 0;
+}

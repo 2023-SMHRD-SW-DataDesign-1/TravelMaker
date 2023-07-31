@@ -1,3 +1,5 @@
+<%@page import="model.RatingDTO"%>
+<%@page import="model.RatingDAO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="model.UserDAO"%>
 <%@page import="model.SendDTO"%>
@@ -33,6 +35,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVZvJsIiCZbQU6t85J6Rm1oBHHtRh_5d8&libraries=places&callback=initMap">
     </script>
   <!-- 세부컨설팅작성페이지 link 및 script 끝 -->
+  <link rel="stylesheet" href="css/Star_style.css">
 
   <!-- 세부컨설팅작성페이지 스타일1 시작 -->
   <style>
@@ -198,6 +201,54 @@
     }
 
   </style>
+  
+  <style>
+  /* 모달 스타일 */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-content {
+    background-color: #fff;
+    margin: 20% auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+  }
+
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover {
+    color: #000;
+    cursor: pointer;
+  }
+
+  /* 평점 선택 영역에 대한 추가 스타일 */
+  #ratingArea {
+    text-align: center;
+  }
+
+  #ratingArea input[type="radio"] {
+    margin: 10px;
+  }
+
+  #ratingArea button {
+    margin-top: 20px;
+  }
+</style>
 </head>
 	
 	<!-- 네비게이션 시작 -->
@@ -223,6 +274,10 @@
 	UserDTO gosu_info = udao.userInfo(show_final_consult.getUser_id());
 	DecimalFormat df = new DecimalFormat("###,###");
 	
+	RatingDAO radao = new RatingDAO();
+	int row = radao.isRate(new RatingDTO(gosu_info.getUser_id(), user_id));
+	
+	
 	%>
 
 
@@ -236,8 +291,121 @@
         </div>
         <div class="details">
           <h2>고수 ID : <%=gosu_info.getUser_id() %></h2>
-          <p>Prinsengracht 281</p>
+          <p>고수 별점 : <%=radao.showRate(gosu_info.getUser_id())%></p>
+
+			<%
+			Double teststar = radao.showRate(gosu_info.getUser_id());
+			teststar = Math.floor(teststar * 2) / 2.0;
+			%>
+			<div class="review-stars" data-stars="<%=teststar%>"></div>
+          
+          
+          
+          
           <a href="portfolio_list.jsp?user_id=<%=gosu_info.getUser_id()%>" class="btn btn-primary btn-block btn-large">고수 마이페이지</a>
+          <!-- 고수 평점 매기기 버튼 -->
+          
+          <%if (row > 0) { %>
+          <button id="ratedbtn" class="btn btn-primary btn-block btn-large" style="color: #0000FF">고수 평점 매기기</button>
+          <%}else{ %>          
+		<a href="#" id="rateButton" class="btn btn-primary btn-block btn-large">고수 평점 매기기</a>
+		<%} %>
+
+		<script>
+	    // "고수 평점 매기기" 버튼을 클릭하면 모달을 표시합니다.
+	    ratedbtn.onclick = function() {
+	        alert("이미 평가한 고수입니다.");
+	    };
+		
+		</script>
+         
+		<!-- 평점을 위한 모달 -->
+		<div id="ratingModal" class="modal">
+		  <div class="modal-content">
+		    <span class="close">&times;</span>
+		    <h2>평점 선택</h2>
+		    <input type="radio" name="rating" value="1">1
+		    <input type="radio" name="rating" value="2">2
+		    <input type="radio" name="rating" value="3">3
+		    <input type="radio" name="rating" value="4">4
+		    <input type="radio" name="rating" value="5">5
+		    <button id="submitRating">평가하기</button>
+		  </div>
+		</div>
+		
+		<script>
+		$(document).ready(function() {
+		    // 모달 요소를 가져옵니다.
+		    const modal = document.getElementById("ratingModal");
+
+		    // "평점 매기기" 버튼 요소를 가져옵니다.
+		    const rateButton = document.getElementById("rateButton");
+
+		    // 모달 안의 닫기 버튼 요소를 가져옵니다.
+		    const closeSpan = document.getElementsByClassName("close")[0];
+
+		    // "평점 매기기" 버튼을 클릭하면 모달을 표시합니다.
+		    rateButton.onclick = function() {
+		      modal.style.display = "block";
+		    };
+
+		    // 모달 안의 닫기 버튼을 클릭하면 모달을 닫습니다.
+		    closeSpan.onclick = function() {
+		      modal.style.display = "none";
+		    };
+
+		    // 모달 외부를 클릭하면 모달을 닫습니다.
+		    window.onclick = function(event) {
+		      if (event.target == modal) {
+		        modal.style.display = "none";
+		      }
+		    };
+
+		    // "평가하기" 버튼 클릭 이벤트를 추가합니다.
+		    $("#submitRating").click(function() {
+		      // 선택한 평점 값을 가져옵니다.
+		      const ratingValue = $("input[name='rating']:checked").val();
+
+ 			    // AJAX 요청 보내기
+			    $.ajax({
+			      type: "POST",
+			      url: "RatingCon", // RatingCon 서블릿 주소
+			      data: { rating: ratingValue, user_id: "<%=gosu_info.getUser_id()%>", rate_user_id: "<%=user_id%>"},
+			      success: function(response) {
+			        // 평가 완료 알림창 띄우기
+			        alert("평가가 완료되었습니다.");
+			        location.reload();
+			        // 고수 평점 매기기 버튼 비활성화
+			        $("#rateButton").find("input, button").prop("disabled", true);
+			      },
+			      error: function(xhr, status, error) {
+			        console.error("AJAX 요청 실패:", error);
+			      }
+			    });
+			  });
+			});
+		</script>
+		
+<%-- 		<script>
+		$(document).ready(function() {
+		  //row 변수가 0보다 클 경우, 고수 평점 매기기 버튼을 비활성화
+		  <% if (row > 0) { %>
+		    $("#rateButton").find("input, button").prop("disabled", true);
+		  <% } %>
+		  
+		  // 평점 매기기 버튼을 클릭했을 때 평가 여부를 확인하여 알림창
+		  rateButton.onclick = function() {
+		    // row 변수가 0보다 클 경우 이미 평가한 상태이므로 알림창
+		    <% if (row > 0) { %>
+		      alert("이미 평가하셨습니다.");
+		    <% } else { %>
+		      modal.style.display = "block";
+		    <% } %>
+		  };
+		});
+		</script> --%>
+		
+          
         </div>
       </section>
 
@@ -245,7 +413,7 @@
       <div class="scroll-cards">
         <!-- 사이드 1번째 박스 시작 -->
         
-		<h1 class="side_box_title"><%=udto.getUser_name()%> 고객님의 견적요청</h1>
+		<h1 class="side_box_title">나의 견적내용</h1>
         <!-- 사이드 1번째 박스 끝 -->
 
         <!-- 사이드 2번째 박스 시작 -->
