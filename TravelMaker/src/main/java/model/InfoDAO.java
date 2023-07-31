@@ -51,32 +51,49 @@ public class InfoDAO {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		int buy = session.selectOne("countBuy", info_num);
 		session.close();
-		
+
 		return buy;
 	}
-	
+
 	public HisDTO searchHis(InfoDTO dto) {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		HisDTO show_his = session.selectOne("searchHis", dto);
 		session.close();
 		return show_his;
 	}
-	
+
 	public int insertHis(InfoDTO dto) {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		int row = session.insert("insertHis", dto);
 		session.close();
 		return row;
 	}
-	
+
 	// 판매량 상위 5개 썸네일
-	public ArrayList<InfoDTO> topFive(String info_cate){
+	public ArrayList<InfoDTO> topFive(String info_cate) {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		List<InfoDTO> top_five = session.selectList("topFive", info_cate);
 		session.close();
 		return (ArrayList<InfoDTO>) top_five;
-		
+
 	}
-	
+
+	// 판매량 상위 2개 썸네일
+	public ArrayList<InfoDTO> topTwo(String info_cate) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<InfoDTO> top_five = session.selectList("topTwo", info_cate);
+		session.close();
+		return (ArrayList<InfoDTO>) top_five;
+
+	}
+
+	// id로 info정보조회
+	public ArrayList<InfoDTO> showInfoList(String user_id) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<InfoDTO> info_list = session.selectList("showInfoList", user_id);
+		session.close();
+		return (ArrayList<InfoDTO>) info_list;
+
+	}
 
 }

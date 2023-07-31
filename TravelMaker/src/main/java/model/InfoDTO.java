@@ -30,5 +30,12 @@ public class InfoDTO {
 		this.user_id = user_id;
 	}
 	
+	public InfoDTO(int info_num, String user_id, String info_cate) {
+		super();
+		this.info_num = info_num;
+		this.user_id = user_id;
+		this.info_cate = info_cate;
+	}
+	
 	
 }

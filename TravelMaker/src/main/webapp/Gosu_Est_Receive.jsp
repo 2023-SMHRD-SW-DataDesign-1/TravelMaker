@@ -117,7 +117,7 @@
 								<p class="box-content-subheader"><%=show_name.getUser_name()%></p>
 							</div>
 							<div class="box-progress-wrapper">
-								<p class="box-progress-header"><%=est_list.get(i).getSend_s_date()%>~<%=est_list.get(i).getSend_e_date()%></p>
+								<p class="box-progress-header"><%=est_list.get(i).getSend_e_date()%>~<%=est_list.get(i).getSend_s_date()%></p>
 								<div class="box-progress-bar">
 									<!-- <span class="box-progress"
 										style="width: 60%; background-color: #ff942e"></span> -->

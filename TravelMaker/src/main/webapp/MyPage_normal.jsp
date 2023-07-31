@@ -593,53 +593,97 @@ main {
                
                   <strong> 나의 정보거래 내역</strong>
                   <p>
-                     <b>[전체]</b> 총 3건
+                     <b>[전체]</b> 총 <%=his_list.size() %>건
                   </p>
                   <div class="btn_group">
-                     <button class="test_btn1">전체</button>
+                     
+                     <%if (info.getUser_type().equals("고수")){ %>
                      <button class="test_btn2">판매내역</button>
+                     <%}else{ %>
                      <button class="test_btn3">구매내역</button>
+                     <%} %>
                   </div>
                   
                   <div class="gallery">
                   
-                     <%for (int i = 0; i < his_list.size(); i++) {
-                        int info_num = his_list.get(i).getInfo_num();
-                        String htmlString = idao.show(info_num);
-                        // 정규 표현식 패턴
-                        String pattern = "<img\\s+[^>]*>";
+                     <%if (info.getUser_type().equals("고수")){ 
+                    	 ArrayList<InfoDTO> info_list = idao.showInfoList(user_id);
+                    	 for (int i = 0; i < info_list.size(); i++) {
+                             int info_num = info_list.get(i).getInfo_num();
+                             String htmlString = idao.show(info_num);
+                             // 정규 표현식 패턴
+                             String pattern = "<img\\s+[^>]*>";
 
-                        // 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
-                        StringBuilder imgTags = new StringBuilder();
+                             // 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+                             StringBuilder imgTags = new StringBuilder();
 
-                        // 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
-                        Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
+                             // 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+                             Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
 
-                        // 맨 앞에있는 img태그만
-                        if (matcher.find()) {
-                           imgTags.append(matcher.group());
-                        }         
-                        
-                        // imgTags가 비어있는 경우, 다음 반복으로 넘어감
-                         if (imgTags.toString().isEmpty()) {
-                             continue;
-                         }
-                     
-                     
+                             // 맨 앞에있는 img태그만
+                             if (matcher.find()) {
+                                imgTags.append(matcher.group());
+                             }         
+                             
+                             // imgTags가 비어있는 경우, 다음 반복으로 넘어감
+                              if (imgTags.toString().isEmpty()) {
+                                  continue;
+                              }
+                          	InfoDTO show_info = idao.showInfoSelect(info_num);
                      %>
+                     
                      <div class="item">
-                           <div class="media-text">
-                              <span class="location">-</span>
-                           </div> <!-- <img src="img/hero-slider-1.jpg" alt="Image" class="img-fluid"> -->
-         
-                           <div id="test111">
-                           <%=imgTags%>
-                              
-                           </div>
-                        </a>
+					<a class="media-thumb reqlogin" href="Info_DetailPage.jsp?info_num=<%=info_num%>&info_title=<%=show_info.getInfo_title()%>&info_brief=<%=show_info.getInfo_brief()%>&info_fee=<%=show_info.getInfo_fee()%>&infouser_id=<%=show_info.getUser_id()%>">
+						<div id="test111">
+						<%=imgTags%>
+						</div>
+					</a>
+                        
                      </div>
                      
                      <%} %>
+                     
+                  
+                     <%}else{
+                    	 for (int i = 0; i < his_list.size(); i++) {
+                             int info_num = his_list.get(i).getInfo_num();
+                             String htmlString = idao.show(info_num);
+                             // 정규 표현식 패턴
+                             String pattern = "<img\\s+[^>]*>";
+
+                             // 정규 표현식 패턴에 매칭되는 부분을 찾아서 저장할 변수
+                             StringBuilder imgTags = new StringBuilder();
+
+                             // 정규 표현식에 매칭되는 부분을 찾기 위한 Matcher 객체 생성
+                             Matcher matcher = Pattern.compile(pattern).matcher(htmlString);
+
+                             // 맨 앞에있는 img태그만
+                             if (matcher.find()) {
+                                imgTags.append(matcher.group());
+                             }         
+                             
+                             // imgTags가 비어있는 경우, 다음 반복으로 넘어감
+                              if (imgTags.toString().isEmpty()) {
+                                  continue;
+                              }
+                          	InfoDTO show_info = idao.showInfoSelect(info_num);
+                    	 %>
+                     <div class="item">
+					<a class="media-thumb reqlogin" href="Info_DetailPage.jsp?info_num=<%=info_num%>&info_title=<%=show_info.getInfo_title()%>&info_brief=<%=show_info.getInfo_brief()%>&info_fee=<%=show_info.getInfo_fee()%>&infouser_id=<%=show_info.getUser_id()%>">
+						<div id="test111">
+						<%=imgTags%>
+						</div>
+					</a>
+                        
+                     </div>
+                     
+                     <%} %>
+                     
+                     <%} %>
+                     
+                     
+                  
+
 
 <!--                      <div class="gallery-item" tabindex="0">
 

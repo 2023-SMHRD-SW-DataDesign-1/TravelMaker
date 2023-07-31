@@ -132,10 +132,8 @@ String info_cate = request.getParameter("info_cate");
 									<%=imgTags%>							
 								<div class="gallery-item-info">
 									<ul>
-										<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i
-												class="fas fa-heart" aria-hidden="true"></i> 56</li>
-										<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i
-												class="fas fa-comment" aria-hidden="true"></i> 2</li>
+									<%int buy = idao.countBuy(pic_list.get(i).getInfo_num()); %>
+										<li class="gallery-item-likes"><span class="visually-hidden"></span>구매횟수 : <%=buy%></li>
 									</ul>
 								</div>
 							</div>

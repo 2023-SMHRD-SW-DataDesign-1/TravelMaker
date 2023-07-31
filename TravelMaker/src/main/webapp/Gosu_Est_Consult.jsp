@@ -508,6 +508,16 @@
             </div>
         </div>
 	</div>
+	<!-- 엔터로 submit 방지 -->
+	<script>
+	  // Enter 키 입력 시 폼 제출 방지
+	  document.addEventListener('keydown', function (event) {
+	    if (event.key === 'Enter') {
+	      event.preventDefault();
+	    }
+	  });
+	</script>        
+
         
    <script>
       // 메인화면 페이지 로드 함수

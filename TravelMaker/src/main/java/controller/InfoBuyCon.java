@@ -34,6 +34,8 @@ public class InfoBuyCon implements Command {
 		String user_id = request.getParameter("user_id");
 		int info_fee = Integer.parseInt(request.getParameter("info_fee"));
 		int info_num = Integer.parseInt(request.getParameter("info_num"));
+		
+		 
 
 		int user_cash = Integer.parseInt(request.getParameter("user_cash")) - info_fee;
 		System.out.println("아이디 : " + user_id);
@@ -41,10 +43,13 @@ public class InfoBuyCon implements Command {
 		System.out.println("user_cash : " + user_cash);
 
 		InfoDAO idao = new InfoDAO();
+		
+		InfoDTO show_info = idao.showInfoSelect(info_num);
 
 		UserDTO info = udao.userInfo(user_id);
 
 		HisDTO show_his = idao.searchHis(new InfoDTO(user_id, info_num));
+		String info_cate = show_info.getInfo_cate();
 		
 		String notification = "";
 
@@ -65,7 +70,7 @@ public class InfoBuyCon implements Command {
 					System.out.println("금액차감성공");
 					
 					// trade_his테이블에 사용자 이름으로 info_num 등록
-					int row = idao.insertHis(new InfoDTO(user_id, info_num));
+					int row = idao.insertHis(new InfoDTO(info_num, user_id, info_cate));
 					if (row > 0) {
 						System.out.println("구매 성공");
 						notification = "구매 성공";

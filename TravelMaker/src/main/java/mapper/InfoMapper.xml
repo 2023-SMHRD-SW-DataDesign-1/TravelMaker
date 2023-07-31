@@ -34,7 +34,7 @@
 	</select>
 	
 	<insert id="insertHis" parameterType="InfoDTO">
-		insert into trade_his(his_num, user_id, info_num) values(his_num_seq.nextval, #{user_id}, #{info_num})
+		insert into trade_his(his_num, user_id, info_num, info_cate) values(his_num_seq.nextval, #{user_id}, #{info_num}, #{info_cate})
 	</insert>
 	
 	<!-- 판매량 상위 5개만 보여주도록 -->
@@ -51,6 +51,26 @@ where info_num in (
         group by info_num 
         order by count(info_num) desc) 
     where <![CDATA[rownum <= 5]]>)
+	</select>
+	
+	<!-- 상위 2개만 -->
+		<select id="topTwo" parameterType="String" resultType="InfoDTO">
+		select * 
+from info_trade 
+where info_num in (
+    select info_num 
+    from(
+        select info_num 
+        from trade_his 
+        where trade_cate = #{info_cate}
+        group by info_num 
+        order by count(info_num) desc) 
+    where <![CDATA[rownum <= 2]]>)
+	</select>
+	
+	<!-- 아이디로 info정보조회 -->
+	<select id="showInfoList" parameterType="String" resultType="InfoDTO">
+		select * from info_trade where user_id = #{user_id}
 	</select>
 
 
