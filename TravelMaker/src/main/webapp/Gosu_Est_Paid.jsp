@@ -36,12 +36,15 @@
 	<!-- 네비게이션 끝 -->
 	
 	
+	<div class="nav_under_img">
+	<img src="img/background-image2.png" alt="#">
+    </div>
+	
     <div class="app-container">
         <div class="app-content">
             <div class="projects-section">
                 <div class="projects-section-header">
-                    <p>채택된 견적</p>
-
+                    <h1>채택 견적</h1>
                 </div>
                 <div class="projects-section-line">
                     <div class="projects-status">
