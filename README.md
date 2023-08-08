@@ -43,7 +43,7 @@
 <br>
 
 ## 📌 SW유스케이스
-![image](https://user-images.githubusercontent.com/25995055/178401023-9a015e66-aa6e-4d74-8564-9b1f9d306649.png)
+![유스케이프](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/12bb539e-5e3e-4f96-9a49-4cc99b95e45a)
 <br>
 
 ## 📌 서비스 흐름도
