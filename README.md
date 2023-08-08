@@ -1,4 +1,4 @@
-# 📎 꽃 보러 갈래?(팀명: 아름답조)
+# 📎 TravelMaker(팀명: 여행을만들다)
 ![image](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/217f5fdf-df9c-4934-96dd-e569726e9b31)
 
 
