@@ -1,5 +1,5 @@
 # 📎 꽃 보러 갈래?(팀명: 아름답조)
-![image](https://user-images.githubusercontent.com/25995055/178401309-2a2ffc86-ef45-439b-bfd8-6978312100bc.png)
+![image](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/217f5fdf-df9c-4934-96dd-e569726e9b31)
 
 
 ## 👀 서비스 소개
