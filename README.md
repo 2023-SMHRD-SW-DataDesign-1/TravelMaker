@@ -94,16 +94,36 @@
 
 ## 🖥 화면 구성
 
-### 로그인/회원가입/회원괸리/회원수정/회원탈퇴
-![image](https://user-images.githubusercontent.com/25995055/178401098-95f15a0e-a2de-415e-83d5-883bb4cb0656.png)
+### 메인화면
+![메인화면](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/f73bb436-ca06-457d-b728-ad3673d5f0fe)
 <br>
 
-### 옷 정보/코디 추천(날씨, 팁, 오늘의 코디, 참고할 수 있는 코디)
-![image](https://user-images.githubusercontent.com/25995055/178401127-287e6de2-4396-49fc-a107-59c4d5cd55c7.png)
+### 견적요청
+![견적요청페이지](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/e32569b9-bbbd-4d32-a128-894df3272a60)
 <br>
 
-### 일정/고객센터
-![image](https://user-images.githubusercontent.com/25995055/178401150-861f0e93-0f40-4fae-98c1-2099bf513c8d.png)
+### 견적서 작성
+![견적서작성페이지](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/43cda7f9-db36-4514-816b-315a9a8d9c1b)
+<br>
+
+### 채택하기
+![채택하기페이지](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/d4cf4465-18f8-47c8-b1d7-084e1cd6d5ac)
+<br>
+
+### 최종컨설팅
+![최종컨설팅페이지](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/cd0f9628-bfcf-4256-8b02-547d7e0f3104)
+<br>
+
+### 정보 거래
+![정보거래페이지](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/69ce4279-e304-455e-a164-b03f41afed20)
+<br>
+
+### 정보구매
+![정보구매페이지](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/a514d768-61ef-4107-9632-c806f17c44dd)
+<br>
+
+### 마일리지 충전
+![마일리지충전페이지](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/c2e50206-dd8e-4da8-aa8a-84d325940343)
 <br>
 
 ## 👨‍👩‍👦‍👦 팀원 역할
