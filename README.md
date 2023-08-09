@@ -37,7 +37,7 @@
 <br>
 
 ## ⛏ 기술스택
-![기술스택](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/d42b8bc9-309e-4bf2-bb50-1463ee0e6107)
+![기이술스택](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/cea0f2b0-9364-464f-a5f0-e26b97b0a7b3)
 <br>
 
 ## ⚙ 시스템 아키텍처(구조) 예시 
