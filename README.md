@@ -50,7 +50,7 @@
 <br>
 
 ## 📌 서비스 흐름도
-![서비스흐름도](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/e5ed1e68-9934-4caa-b628-0b31e8139814)
+![흐름도](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134526924/a1e1b174-ed85-4d43-971a-aac3718bbefe)
 <br>
 
 ## 📌 ER다이어그램
