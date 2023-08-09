@@ -4,6 +4,7 @@
 *** 다이어그램 이걸로 바꾸기
 ![er다이어그램](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134501995/e3be3161-51fb-4e23-8a38-839511b6a948)
 *** gif 테스트
+![녹화_2023_08_09_12_22_21_386](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134501995/3bc99bf8-54a3-442f-aa98-ea4cb3212d59)
 
 
 
