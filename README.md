@@ -41,7 +41,7 @@
 <br>
 
 ## ⚙ 시스템 아키텍처(구조) 예시 
-![시스템아키텍쳐](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134493617/f28479f0-7657-4e41-a6ee-2090a038866c)
+![포트원추가이미지](https://github.com/2023-SMHRD-SW-DataDesign-1/TravelMaker/assets/134526924/7f0c4c51-09fd-40e5-baad-a7d795625c07)
 
 <br>
 
